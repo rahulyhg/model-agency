@@ -13,7 +13,7 @@ return [
 		    'class' => \common\lib\View::class
 	    ],
 	    'setting' => [
-		    'class' => \common\components\setting\SettingComponent::class,
+		    'class' => \modules\setting\components\SettingComponent::class,
 	    ],
 	    'filestorage' => [
 		    'class' => common\components\filestorage\FileStorage::className(),
@@ -26,4 +26,9 @@ return [
 		    'class' => \common\components\metronic\Metronic::class
 	    ],
     ],
+    'modules' => [
+        'page' => [
+            'class' => modules\page\Module::class
+        ],
+    ]
 ];

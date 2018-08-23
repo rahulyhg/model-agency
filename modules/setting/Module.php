@@ -1,25 +1,12 @@
 <?php
 namespace modules\setting;
 
-use common\lib\SMModule;
 use modules\setting\common\models\Setting;
 use ReflectionClass;
 
-class Module extends \yii\base\Module
+class Module extends \common\lib\Module
 {
   public $app = 'backend';
-
-  public function init()
-  {
-    parent::init();
-    $childClassInfo = new ReflectionClass($this);
-    $dirPath = dirname($childClassInfo->getFileName());
-    $dirName = basename($dirPath);
-    if ($this->app == 'backend') {
-      $this->viewPath = $dirPath . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'views';
-      $this->controllerNamespace = 'modules\\' . $dirName . '\\backend\\controllers';
-    }
-  }
 
   /**
    * Set setting value by section and key

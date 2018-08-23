@@ -2,6 +2,10 @@
 
 use yii\db\Migration;
 
+/**
+ * Class m161018_130543_create_setting_module_tables
+ * yii migrate --migrationPath=modules/setting/migrations
+ */
 class m161018_130543_create_setting_module_tables extends Migration
 {
   public function safeUp()

@@ -1,4 +1,9 @@
-Add component
+Add module to backend\config\main
+'setting' => [
+  'class' => modules\setting\Module::class,
+],
+
+Add component to common\config\main
 'setting' => [
   'class' => modules\setting\components\SettingComponent::class,
 ],
