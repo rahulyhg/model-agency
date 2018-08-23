@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\block;
+namespace modules\banner;
 
 use modules\banner\common\models\Banner;
 

@@ -38,6 +38,9 @@ return [
         'block' => [
             'class' => modules\block\Module::class,
         ],
+        'banner' => [
+            'class' => modules\banner\Module::class,
+        ],
     ],
     'components' => [
         'i18n' => [
