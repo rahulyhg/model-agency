@@ -42,6 +42,7 @@ class Banner extends \yii\db\ActiveRecord
       [['position'], 'required'],
       [['name', 'position'], 'string', 'max' => 255],
       [['created_at', 'updated_at'], 'integer'],
+      ['text', 'safe'],
       ['position', 'unique'],
     ];
   }

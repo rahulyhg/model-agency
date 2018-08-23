@@ -54,14 +54,23 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="m-portlet__body">
             <div class="row">
-                <div class="col-md-6">
-                  <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                          <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <?= $form->field($model, 'position')->textInput(['maxlength' => true, 'disabled' => $model->isNewRecord ? null : 'disabled']) ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                  <?= $form->field($model, 'position')->textInput(['maxlength' => true, 'disabled' => $model->isNewRecord ? null : 'disabled']) ?>
+                <div class="col-md-7">
+                  <?= $form->field($model, 'text')->textarea(['rows' => 5]) ?>
                 </div>
+
             </div>
         </div>
     </div>
