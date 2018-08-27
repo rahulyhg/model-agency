@@ -2,6 +2,7 @@
 
 namespace modules\setting\common\models;
 
+use modules\setting\Module;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -52,14 +53,23 @@ class Setting extends ActiveRecord
      */
     public function attributeLabels()
     {
+//        return [
+//            'id' => 'ID',
+//            'key' => 'Ключ',
+//            'value' => 'Значение',
+//            'section' => 'Секция',
+//            'description' => 'Описание',
+//            'created_at' => 'Дата создания',
+//            'updated_at' => 'Дата последнего обновления',
+//        ];
         return [
-            'id' => 'ID',
-            'key' => 'Ключ',
-            'value' => 'Значение',
-            'section' => 'Секция',
-            'description' => 'Описание',
-            'created_at' => 'Дата создания',
-            'updated_at' => 'Дата последнего обновления',
+            'id' => Module::t('attributeLabels', 'id'),
+            'key' => Module::t('attributeLabels', 'key'),
+            'value' => Module::t('attributeLabels', 'value'),
+            'section' => Module::t('attributeLabels', 'section'),
+            'description' => Module::t('attributeLabels', 'description'),
+            'created_at' => Module::t('attributeLabels', 'created_at'),
+            'updated_at' => Module::t('attributeLabels', 'updated_at'),
         ];
     }
 }

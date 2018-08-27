@@ -45,6 +45,15 @@
                 <i class="m-menu__ver-arrow la la-angle-right"></i>
             </a>
         </li>
+        <li class="m-menu__item">
+            <a href="<?= yii\helpers\Url::to( [ '/banner' ] ) ?>" class="m-menu__link">
+                <span class="m-menu__item-here"></span>
+                <i class="m-menu__link-icon flaticon-book"></i>
+                <span class="m-menu__link-text">
+                Banner
+              </span>
+            </a>
+        </li>
         <li class="m-menu__item m-menu__item--bottom-2">
             <a href="<?= yii\helpers\Url::to( [ '/block' ] ) ?>" class="m-menu__link">
                 <i class="m-menu__link-icon flaticon-squares-4"></i>
