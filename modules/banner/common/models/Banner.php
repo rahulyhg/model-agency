@@ -2,6 +2,7 @@
 
 namespace modules\banner\common\models;
 
+use modules\banner\Module;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -53,12 +54,12 @@ class Banner extends \yii\db\ActiveRecord
   public function attributeLabels()
   {
     return [
-      'id' => 'ID',
-      'name' => 'Name',
-      'text' => 'Text',
-      'position' => 'Position',
-      'created_at' => 'Created At',
-      'updated_at' => 'Updated At',
+      'id' => Module::t('attributeLabels', 'id'),
+      'name' => Module::t('attributeLabels', 'name'),
+      'text' => Module::t('attributeLabels', 'text'),
+      'position' => Module::t('attributeLabels', 'position'),
+      'created_at' => Module::t('attributeLabels', 'created_at'),
+      'updated_at' => Module::t('attributeLabels', 'updated_at'),
     ];
   }
 }

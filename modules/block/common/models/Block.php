@@ -5,6 +5,7 @@ namespace modules\block\common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
+use modules\block\Module;
 
 /**
  * This is the model class for table "{{%block}}".
@@ -54,14 +55,14 @@ class Block extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'key' => 'Key',
-            'content' => 'Content',
-            'description' => 'Description',
-            'css' => 'Css',
-            'js' => 'Js',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id' => Module::t('attributeLabels', 'id'),
+            'key' => Module::t('attributeLabels', 'key'),
+            'content' => Module::t('attributeLabels', 'content'),
+            'description' => Module::t('attributeLabels', 'description'),
+            'css' => Module::t('attributeLabels', 'css'),
+            'js' => Module::t('attributeLabels', 'js'),
+            'created_at' => Module::t('attributeLabels', 'created_at'),
+            'updated_at' => Module::t('attributeLabels', 'updated_at'),
         ];
     }
 }

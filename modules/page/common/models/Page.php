@@ -3,6 +3,7 @@
 namespace modules\page\common\models;
 
 use common\behaviors\UploadFileBehavior;
+use modules\page\Module;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -83,14 +84,14 @@ class Page extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'           => 'ID',
-			'title'        => 'Title',
-			'slug'         => 'Slug',
-			'content'      => 'Content',
-			'thumbnail_id' => 'Thumbnail',
-			'thumbnailFile' => 'Thumbnail',
-			'created_at'   => 'Created At',
-			'updated_at'   => 'Updated At',
+      'id'           => Module::t('attributeLabels', 'id'),
+      'title'        => Module::t('attributeLabels', 'title'),
+      'slug'         => Module::t('attributeLabels', 'slug'),
+      'content'      => Module::t('attributeLabels', 'content'),
+      'thumbnail_id' => Module::t('attributeLabels', 'thumbnail_id'),
+      'thumbnailFile' => Module::t('attributeLabels', 'thumbnailFile'),
+      'created_at'   => Module::t('attributeLabels', 'created_at'),
+      'updated_at'   => Module::t('attributeLabels', 'updated_at'),
 		];
 	}
 
