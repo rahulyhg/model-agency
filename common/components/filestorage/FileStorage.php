@@ -134,7 +134,7 @@ class FileStorage extends \yii\base\Component implements IFileStorage
      * @param $model
      * @param $attribute
      * @param $dir
-     * @return false|int false если загрузка не удалась, массив id записей о файле в базе данных, если загрузка успешна
+     * @return false|int[] false если загрузка не удалась, массив id записей о файле в базе данных, если загрузка успешна
      */
     public function multipleUploadFromModel($model, $attribute, $dir = null)
     {

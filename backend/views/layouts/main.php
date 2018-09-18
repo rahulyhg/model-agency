@@ -55,7 +55,7 @@ opacity: 1;
           <div class="m-stack m-stack--ver m-stack--general">
             <div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
               <a href="<?= Url::home() ?>" class="m-brand__logo-wrapper">
-                <img alt="" src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/demo/demo3/media/img/logo/logo.png">
+                <img alt="" src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/demo/default/media/img/logo/logo.png">
               </a>
             </div>
             <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -100,86 +100,6 @@ opacity: 1;
           <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
             <div class="m-stack__item m-topbar__nav-wrapper">
               <ul class="m-topbar__nav m-nav m-nav--inline">
-
-                <li class="m-nav__item m-topbar__quick-actions m-topbar__quick-actions--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click" m-dropdown-persistent="1" aria-expanded="true">
-                  <a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
-                    <span class="m-nav__link-badge m-badge m-badge--accent">3</span>
-                    <span class="m-nav__link-icon"><i class="flaticon-alert-2"></i></span>
-                  </a>
-                  <div class="m-dropdown__wrapper" style="z-index: 101;">
-                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                    <div class="m-dropdown__inner">
-                      <div class="m-dropdown__header m--align-center" style="background: url(<?= \common\components\metronic\Metronic::getAssetsUrl($this) ?>/app/media/img/misc/notification_bg.jpg); background-size: cover;">
-                        <span class="m-dropdown__header-title">9 уведомлений</span>
-                      </div>
-                      <div class="m-dropdown__body">
-                        <div class="m-dropdown__content">
-                          <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
-                            <li class="nav-item m-tabs__item">
-                              <a class="nav-link m-tabs__link active" data-toggle="tab" href="#today_notification" role="tab" aria-selected="true">
-                                Сегодня
-                              </a>
-                            </li>
-                            <li class="nav-item m-tabs__item">
-                              <a class="nav-link m-tabs__link" data-toggle="tab" href="#tommorrow_notification"
-                                 role="tab" aria-selected="true">Завтра</a>
-                            </li>
-                          </ul>
-                          <div class="tab-content">
-                            <div class="tab-pane active" id="today_notification" role="tabpanel">
-                              <div class="m-scrollable m-scroller ps ps--active-y" data-scrollable="true"
-                                   data-height="250" data-mobile-height="200" style="height: 250px; overflow: hidden;">
-                                <div class="m-list-timeline m-list-timeline--skin-light">
-                                  <div class="m-list-timeline__items">
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Перезвонить по заказу Lorem Ipsum и напомнить о чем-то там очень важном</a></span>
-                                      <span class="m-list-timeline__time">12:25</span>
-                                    </div>
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Подготовить Коммерческое Предложение</a></span>
-                                      <span class="m-list-timeline__time">15:40</span>
-                                    </div>
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Сделать что-то крутое</a></span>
-                                      <span class="m-list-timeline__time">16:10</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tab-pane" id="tommorrow_notification" role="tabpanel">
-                              <div class="m-scrollable m-scroller ps" data-scrollable="true" data-height="250"
-                                   data-mobile-height="200" style="height: 250px; overflow: hidden;">
-                                <div class="m-list-timeline m-list-timeline--skin-light">
-                                  <div class="m-list-timeline__items">
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Сделать что-то крутое</a></span>
-                                      <span class="m-list-timeline__time">11:17</span>
-                                    </div>
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Lorem ipsum dolor sit amet</a></span>
-                                      <span class="m-list-timeline__time">14:10</span>
-                                    </div>
-                                    <div class="m-list-timeline__item">
-                                      <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
-                                      <span class="m-list-timeline__text"><a href="#">Сделать что-то крутое</a></span>
-                                      <span class="m-list-timeline__time">16:10</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
 
                 <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
                     m-dropdown-toggle="click">
@@ -265,18 +185,51 @@ opacity: 1;
     </div>
     <!-- END: Left Aside -->
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
-      <?/*php if ($this->title && $this->showTitle) : ?>
-        <!-- BEGIN: Subheader -->
-        <div class="m-subheader ">
-          <div class="d-flex align-items-center">
-            <div class="mr-auto">
-              <h3 class="m-subheader__title m-subheader__title--separator">
-                <?= $this->title ?>
-              </h3>
+      <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+          <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">Horizontal Scrolling</h3>
+            <?= backend\widgets\Breadcrumbs::widget([
+              'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <!--<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+              <li class="m-nav__item m-nav__item--home">
+                <a href="#" class="m-nav__link m-nav__link--icon">
+                  <i class="m-nav__link-icon la la-home"></i>
+                </a>
+              </li>
+              <li class="m-nav__separator">-</li>
+              <li class="m-nav__item">
+                <a href="" class="m-nav__link">
+                  <span class="m-nav__link-text">Metronic Datatable</span>
+                </a>
+              </li>
+              <li class="m-nav__separator">-</li>
+              <li class="m-nav__item">
+                <a href="" class="m-nav__link">
+                  <span class="m-nav__link-text">Scrolling</span>
+                </a>
+              </li>
+              <li class="m-nav__separator">-</li>
+              <li class="m-nav__item">
+                <a href="" class="m-nav__link">
+                  <span class="m-nav__link-text">Horizontal Scrolling</span>
+                </a>
+              </li>
+            </ul>-->
+          </div>
+          <div>
+            <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
+              <a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air">
+						<span>
+							<i class="la la-cart-plus"></i>
+							<span>New Order</span>
+						</span>
+              </a>
             </div>
           </div>
         </div>
-      <?php endif; /**/?>
+      </div>
       <!-- END: Subheader -->
       <div class="m-content">
         <?= Alert::widget([
@@ -291,609 +244,6 @@ opacity: 1;
   <!-- end:: Body -->
 </div>
 <!-- end:: Page -->
-<!-- begin::Quick Sidebar -->
-<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
-  <div class="m-quick-sidebar__content m--hide">
-				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
-					<i class="la la-close"></i>
-				</span>
-    <ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
-      <li class="nav-item m-tabs__item">
-        <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
-          Messages
-        </a>
-      </li>
-      <li class="nav-item m-tabs__item">
-        <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
-          Settings
-        </a>
-      </li>
-      <li class="nav-item m-tabs__item">
-        <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
-          Logs
-        </a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
-        <div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
-          <div class="m-messenger__messages">
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--in">
-                <div class="m-messenger__message-pic">
-                  <img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/app/media/img//users/user3.jpg" alt="">
-                </div>
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-username">
-                      Megan wrote
-                    </div>
-                    <div class="m-messenger__message-text">
-                      Hi Bob. What time will be the meeting ?
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--out">
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-text">
-                      Hi Megan. It's at 2.30PM
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--in">
-                <div class="m-messenger__message-pic">
-                  <img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/app/media/img/users/user3.jpg" alt="">
-                </div>
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-username">
-                      Megan wrote
-                    </div>
-                    <div class="m-messenger__message-text">
-                      Will the development team be joining ?
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--out">
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-text">
-                      Yes sure. I invited them as well
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__datetime">
-              2:30PM
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--in">
-                <div class="m-messenger__message-pic">
-                  <img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/app/media/img/users/user3.jpg" alt="">
-                </div>
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-username">
-                      Megan wrote
-                    </div>
-                    <div class="m-messenger__message-text">
-                      Noted. For the Coca-Cola Mobile App project as well ?
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--out">
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-text">
-                      Yes, sure.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--out">
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-text">
-                      Please also prepare the quotation for the Loop CRM project as well.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__datetime">
-              3:15PM
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--in">
-                <div class="m-messenger__message-no-pic m--bg-fill-danger">
-											<span>
-												M
-											</span>
-                </div>
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-username">
-                      Megan wrote
-                    </div>
-                    <div class="m-messenger__message-text">
-                      Noted. I will prepare it.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--out">
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-text">
-                      Thanks Megan. I will see you later.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="m-messenger__wrapper">
-              <div class="m-messenger__message m-messenger__message--in">
-                <div class="m-messenger__message-pic">
-                  <img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/app/media/img/users/user3.jpg" alt="">
-                </div>
-                <div class="m-messenger__message-body">
-                  <div class="m-messenger__message-arrow"></div>
-                  <div class="m-messenger__message-content">
-                    <div class="m-messenger__message-username">
-                      Megan wrote
-                    </div>
-                    <div class="m-messenger__message-text">
-                      Sure. See you in the meeting soon.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="m-messenger__seperator"></div>
-          <div class="m-messenger__form">
-            <div class="m-messenger__form-controls">
-              <input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
-            </div>
-            <div class="m-messenger__form-tools">
-              <a href="" class="m-messenger__form-attachment">
-                <i class="la la-paperclip"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">
-        <div class="m-list-settings">
-          <div class="m-list-settings__group">
-            <div class="m-list-settings__heading">
-              General Settings
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Email Notifications
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" checked="checked" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Site Tracking
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										SMS Alerts
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Backup Storage
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Audit Logs
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" checked="checked" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-          </div>
-          <div class="m-list-settings__group">
-            <div class="m-list-settings__heading">
-              System Settings
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										System Logs
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Error Reporting
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Applications Logs
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Backup Servers
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" checked="checked" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-            <div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Audit Logs
-									</span>
-              <span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-                        <input type="checkbox" name="">
-                        <span></span>
-                      </label>
-										</span>
-									</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
-        <div class="m-list-timeline">
-          <div class="m-list-timeline__group">
-            <div class="m-list-timeline__heading">
-              System Logs
-            </div>
-            <div class="m-list-timeline__items">
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  12 new users registered
-                  <span class="m-badge m-badge--warning m-badge--wide">
-												important
-											</span>
-                </a>
-                <span class="m-list-timeline__time">
-											Just now
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  System shutdown
-                </a>
-                <span class="m-list-timeline__time">
-											11 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
-                <a href="" class="m-list-timeline__text">
-                  New invoice received
-                </a>
-                <span class="m-list-timeline__time">
-											20 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
-                <a href="" class="m-list-timeline__text">
-                  Database overloaded 89%
-                  <span class="m-badge m-badge--success m-badge--wide">
-												resolved
-											</span>
-                </a>
-                <span class="m-list-timeline__time">
-											1 hr
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  System error
-                </a>
-                <span class="m-list-timeline__time">
-											2 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server down
-                  <span class="m-badge m-badge--danger m-badge--wide">
-												pending
-											</span>
-                </a>
-                <span class="m-list-timeline__time">
-											3 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server up
-                </a>
-                <span class="m-list-timeline__time">
-											5 hrs
-										</span>
-              </div>
-            </div>
-          </div>
-          <div class="m-list-timeline__group">
-            <div class="m-list-timeline__heading">
-              Applications Logs
-            </div>
-            <div class="m-list-timeline__items">
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  New order received
-                  <span class="m-badge m-badge--info m-badge--wide">
-												urgent
-											</span>
-                </a>
-                <span class="m-list-timeline__time">
-											7 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  12 new users registered
-                </a>
-                <span class="m-list-timeline__time">
-											Just now
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  System shutdown
-                </a>
-                <span class="m-list-timeline__time">
-											11 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
-                <a href="" class="m-list-timeline__text">
-                  New invoices received
-                </a>
-                <span class="m-list-timeline__time">
-											20 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
-                <a href="" class="m-list-timeline__text">
-                  Database overloaded 89%
-                </a>
-                <span class="m-list-timeline__time">
-											1 hr
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  System error
-                  <span class="m-badge m-badge--info m-badge--wide">
-												pending
-											</span>
-                </a>
-                <span class="m-list-timeline__time">
-											2 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server down
-                </a>
-                <span class="m-list-timeline__time">
-											3 hrs
-										</span>
-              </div>
-            </div>
-          </div>
-          <div class="m-list-timeline__group">
-            <div class="m-list-timeline__heading">
-              Server Logs
-            </div>
-            <div class="m-list-timeline__items">
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server up
-                </a>
-                <span class="m-list-timeline__time">
-											5 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  New order received
-                </a>
-                <span class="m-list-timeline__time">
-											7 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  12 new users registered
-                </a>
-                <span class="m-list-timeline__time">
-											Just now
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  System shutdown
-                </a>
-                <span class="m-list-timeline__time">
-											11 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
-                <a href="" class="m-list-timeline__text">
-                  New invoice received
-                </a>
-                <span class="m-list-timeline__time">
-											20 mins
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
-                <a href="" class="m-list-timeline__text">
-                  Database overloaded 89%
-                </a>
-                <span class="m-list-timeline__time">
-											1 hr
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  System error
-                </a>
-                <span class="m-list-timeline__time">
-											2 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server down
-                </a>
-                <span class="m-list-timeline__time">
-											3 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
-                <a href="" class="m-list-timeline__text">
-                  Production server up
-                </a>
-                <span class="m-list-timeline__time">
-											5 hrs
-										</span>
-              </div>
-              <div class="m-list-timeline__item">
-                <span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
-                <a href="" class="m-list-timeline__text">
-                  New order received
-                </a>
-                <span class="m-list-timeline__time">
-											1117 hrs
-										</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end::Quick Sidebar -->
 <!-- begin::Scroll Top -->
 <div id="m_scroll_top" class="m-scroll-top">
   <i class="la la-arrow-up"></i>
@@ -901,7 +251,6 @@ opacity: 1;
 <!-- end::Scroll Top -->
 
 <!-- end::Body -->
-</body>
 <?php $this->endBody() ?>
 </body>
 </html>
