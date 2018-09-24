@@ -1,17 +1,15 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\Url;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\LangSearch */
+/* @var $searchModel backend\models\Lang2Search */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Языки';
+$this->title = 'Langs';
 $this->params['breadcrumbs'][] = $this->title;
-$title = 'Все языки'
 ?>
 <div class="m-portlet">
   <div class="m-portlet__head">
@@ -49,25 +47,29 @@ $title = 'Все языки'
     <div class="dataTables_wrapper">
       <div class="row">
         <div class="col-sm-12">
-          <?php Pjax::begin(); ?>
-          <?= GridView::widget([
-            'id' => 'lang-grid',
-            'options' => ['class' => 'dataTable'],
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'columns' => [
-              ['class' => \backend\lib\CheckboxColumn::class],
-              'id',
-              'name',
-              'label',
-              'ietf_tag',
-              'is_default',
-              ['class' => \backend\lib\ActionColumn::class],
-            ],
-          ]); ?>
-          <?php Pjax::end(); ?>
+  
+    <?= GridView::widget([
+        'id' => 'lang-grid',
+        'options' => ['class' => 'dataTable'],
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => \backend\lib\CheckboxColumn::class],
+
+            'id',
+            'name',
+            'label',
+            'ietf_tag',
+            'is_default',
+            //'created_at',
+            //'updated_at',
+
+            ['class' => \backend\lib\ActionColumn::class],
+        ],
+    ]); ?>
         </div>
       </div>
     </div>
   </div>
 </div>
+

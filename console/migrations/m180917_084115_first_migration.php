@@ -67,9 +67,9 @@ class m180917_084115_first_migration extends Migration
 
     $this->createTable('{{%lang}}', [
       'id' => $this->integer()->notNull()->unique(),
-      'name' => $this->string(64),
+      'name' => $this->string(64)->notNull(),
       'label' => $this->string(64),
-      'ietf_tag' => $this->string(64),
+      'ietf_tag' => $this->string(64)->notNull(),
       'is_default' => $this->boolean()->notNull()->defaultValue(0),
       'created_at' => $this->integer()->notNull(),
       'updated_at' => $this->integer()->notNull(),
@@ -121,7 +121,7 @@ class m180917_084115_first_migration extends Migration
 
     $this->createTable('{{%attribute_type}}', [
       'id' => $this->primaryKey(),
-      'name' => $this->string(255),
+      'name' => $this->string(255)->notNull(),
     ], $tableOptions);
 
     $this->createTable('{{%attribute}}', [

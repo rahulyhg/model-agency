@@ -27,7 +27,8 @@
         "yii2tech/ar-position": "^1.0",
         "mihaildev/yii2-elfinder": "*",
         "vova07/yii2-imperavi-widget": "^2.0",
-        "wbraganca/yii2-dynamicform": "dev-master"
+        "wbraganca/yii2-dynamicform": "dev-master",
+        "yii2tech/ar-variation": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
