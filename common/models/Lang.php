@@ -31,9 +31,10 @@ class Lang extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'required'],
+            [['id', 'name', 'ietf_tag'], 'required'],
             [['id', 'is_default', 'created_at', 'updated_at'], 'integer'],
             [['name', 'label', 'ietf_tag'], 'string', 'max' => 64],
+            [['is_default'], 'default', 'value' => 0],
             [['id'], 'unique'],
         ];
     }
@@ -52,5 +53,17 @@ class Lang extends \common\lib\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    protected static $_defaultLang;
+    /**
+     * Получения объекта языка по умолчанию
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    static function getDefaultLang()
+    {
+        if(isset(self::$_defaultLang))
+            return self::$_defaultLang;
+        return self::$_defaultLang = Lang::find()->where('`default` = :default', [':default' => 1])->one();
     }
 }

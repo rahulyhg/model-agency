@@ -10,6 +10,7 @@ namespace backend\widgets\crudActions;
 
 
 use yii\web\AssetBundle;
+use yii\web\JqueryAsset;
 
 class CrudActionsAsset extends AssetBundle
 {
@@ -20,6 +21,6 @@ class CrudActionsAsset extends AssetBundle
     ];
 
     public $depends = [
-        'backend\components\metronic\SweetAlertAsset',
+        JqueryAsset::class,
     ];
 }

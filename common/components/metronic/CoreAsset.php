@@ -21,6 +21,6 @@ class CoreAsset extends AssetBundle
 		'yii\web\JqueryAsset',
 	];
 	public $jsOptions = [
-		'position' => View::POS_HEAD
+		'position' => View::POS_END
 	];
 }
