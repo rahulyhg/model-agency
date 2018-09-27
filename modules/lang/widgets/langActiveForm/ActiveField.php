@@ -1,15 +1,9 @@
 <?php
-/**
- *
- */
-namespace modules\lang\widgets;
+namespace modules\lang\widgets\langActiveForm;
 
 use yii\base\BaseObject;
 use yii\base\ErrorHandler;
-/**
- * Class ActiveField
- * @package backend\widgets\langActiveForm
- */
+
 class ActiveField extends BaseObject
 {
     protected $models;

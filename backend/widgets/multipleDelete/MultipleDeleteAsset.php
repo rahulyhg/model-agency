@@ -10,7 +10,6 @@ namespace backend\widgets\multipleDelete;
 
 
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
 class MultipleDeleteAsset extends AssetBundle
 {
@@ -21,6 +20,6 @@ class MultipleDeleteAsset extends AssetBundle
     ];
 
     public $depends = [
-      JqueryAsset::class,
+        'backend\components\metronic\SweetAlertAsset',
     ];
 }

@@ -1,16 +1,9 @@
 <?php
-/**
- *
- */
+namespace modules\lang\widgets\langActiveForm;
 
-namespace modules\lang\widgets;
-
+use backend\lib\View;
 use yii\helpers\Html;
 
-/**
- * Class LangActiveForm
- * @package backend\widgets\langActiveForm
- */
 class ActiveForm extends \yii\widgets\ActiveForm
 {
     public $langSelector;
@@ -20,7 +13,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public function init()
     {
-        $this->view->on(SmBackendView::EVENT_END_PAGE, [$this, 'registerLangJs']);
+        $this->view->on(View::EVENT_END_PAGE, [$this, 'registerLangJs']);
         parent::init();
     }
 

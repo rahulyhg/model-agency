@@ -39,7 +39,6 @@ use yii\data\ActiveDataProvider;
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\Html;
 
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
@@ -87,8 +86,21 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
+     * Displays a single <?= $modelClass ?> model.
+     * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView(<?= $actionParams ?>)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel(<?= $actionParams ?>),
+        ]);
+    }
+
+    /**
      * Creates a new <?= $modelClass ?> model.
-     * If creation is successful, the browser will be redirected to the 'update' page.
+     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
@@ -96,12 +108,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = new <?= $modelClass ?>();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
-                '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
-                ['create'],
-                ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
-            ));
-            return $this->redirect(['update', <?= $urlParams ?>]);
+            return $this->redirect(['view', <?= $urlParams ?>]);
         }
 
         return $this->render('create', [
@@ -111,7 +118,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
     /**
      * Updates an existing <?= $modelClass ?> model.
-     * If update is successful, the browser will be redirected to the 'update' page.
+     * If update is successful, the browser will be redirected to the 'view' page.
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -121,8 +128,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = $this->findModel(<?= $actionParams ?>);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success','Запись успешно обновлена.');
-            return $this->redirect(['update', <?= $urlParams ?>]);
+            return $this->redirect(['view', <?= $urlParams ?>]);
         }
 
         return $this->render('update', [
@@ -140,35 +146,8 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionDelete(<?= $actionParams ?>)
     {
         $this->findModel(<?= $actionParams ?>)->delete();
-        Yii::$app->session->setFlash('success', "Запись #$id успешно удалена.");
-        return $this->redirect(['index']);
-    }
 
-    /**
-    * Deletes an existing <?= $modelClass ?> models.
-    * If deletion is successful, the browser will be redirected to the 'index' page.
-    * @return \yii\web\Response
-    * @throws \yii\web\BadRequestHttpException
-    * @throws NotFoundHttpException
-    */
-    public function actionMultipleDelete()
-    {
-        if ($ids = Yii::$app->request->post('ids')) {
-            $count = 0;
-            foreach ($this->findModels($ids) as $model) {
-                if ($model->delete() !== false) {
-                    $count++;
-                } else {
-                    Yii::$app->session->setFlash('danger', "Ошибка при удалении записи #$model->id.");
-                }
-            }
-            if ($count > 0) {
-                $message = '{n, plural, =1{Выбранная запись успешно удалена} few{Выбранные # записи успешно удалены} many{Выбранные # записей успешно удалены} other{Выбранные # записи успешно удалены}}.';
-                Yii::$app->session->setFlash('success', \MessageFormatter::formatMessage('ru', $message, ['n' => $count]));
-            }
-            return $this->redirect(['index']);
-        }
-        throw new \yii\web\BadRequestHttpException();
+        return $this->redirect(['index']);
     }
 
     /**
@@ -196,19 +175,5 @@ if (count($pks) === 1) {
         }
 
         throw new NotFoundHttpException(<?= $generator->generateString('The requested page does not exist.') ?>);
-    }
-
-    /**
-    * @param $ids
-    * @return static[]
-    * @throws NotFoundHttpException
-    */
-    protected function findModels($ids)
-    {
-        $models = Lang::findAll($ids);
-        if (!empty($models)) {
-            return $models;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

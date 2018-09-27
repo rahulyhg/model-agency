@@ -19,16 +19,16 @@ use yii\widgets\ActiveForm;
 
 class MultipleDelete extends Widget
 {
-    public $deleteConfirm = 'Вы уверены, что хотите удалить выбранные записи?';
+    public $deleteConfirm = 'Вы уверены, что хотите удалить?';
 
     /**
      * @var string|array
      */
     public $url = ['multiple-delete'];
 
-    public $btnClass = 'btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air';
+    public $btnClass = 'btn btn-danger';
 
-    public $btnText = '<span><i class="la la-trash "></i><span>Удалить</span></span>';
+    public $btnText = '<span class="fa fa-trash "></span> Удалить';
 
     public $gridId;
 
@@ -37,7 +37,7 @@ class MultipleDelete extends Widget
      */
     public function init()
     {
-        if(empty($this->gridId))
+        if(!isset($this->gridId))
             throw new InvalidConfigException('"gridId" should be set');
         parent::init();
     }

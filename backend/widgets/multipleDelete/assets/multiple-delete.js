@@ -9,22 +9,21 @@ var MultipleDelete = function () {
                 if (gridId) {
                     var ids = $('#' + gridId).yiiGridView('getSelectedRows');
                     if (ids.length > 0) {
-                        var deleteconfirm = $el.data('deleteconfirm');
+                        var confirm = $el.data('deleteconfirm');
                         var url = $el.data('url');
                         swal({
-                            title: deleteconfirm,
-                            text: '',
-                            type: 'error',
-                            allowOutsideClick: true,
-                            showConfirmButton: true,
-                            showCancelButton: true,
-                            confirmButtonClass: 'btn m-btn--pill m-btn--air btn-danger',
-                            cancelButtonClass: 'btn m-btn--pill m-btn--air btn-success',
-                            confirmButtonText: 'Да',
-                            cancelButtonText: 'Нет',
-                            dangerMode: true
-                        }).then(function (result) {
-                            if (result.value) {
+                                title: confirm,
+                                text: '',
+                                type: 'error',
+                                allowOutsideClick: true,
+                                showConfirmButton: true,
+                                showCancelButton: true,
+                                confirmButtonClass: 'btn-danger',
+                                cancelButtonClass: 'btn-success',
+                                confirmButtonText: 'Да',
+                                cancelButtonText: 'Нет'
+                            },
+                            function () {
                                 var form = $('<form action=' + url + ' method=\"POST\"></form>'),
                                     csrfParam = $('meta[name=csrf-param]').prop('content'),
                                     csrfToken = $('meta[name=csrf-token]').prop('content');
@@ -37,9 +36,7 @@ var MultipleDelete = function () {
                                 });
                                 form.hide().appendTo('body');
                                 form.submit();
-                            }
-                        });
-
+                            });
                     }
                 }
             });

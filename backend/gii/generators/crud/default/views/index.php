@@ -12,7 +12,6 @@ $nameAttribute = $generator->getNameAttribute();
 echo "<?php\n";
 ?>
 
-use yii\helpers\Url;
 use yii\helpers\Html;
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
@@ -24,51 +23,23 @@ use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\w
 $this->title = <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="m-portlet">
-  <div class="m-portlet__head">
-    <div class="m-portlet__head-caption">
-      <?= '<?php' ?> if ($title) : ?>
-        <div class="m-portlet__head-title">
-          <h3 class="m-portlet__head-text">
-            <?= '<?=' ?> $title ?>
-          </h3>
-        </div>
-      <?= '<?php' ?> endif; ?>
-    </div>
-    <div class="m-portlet__head-tools">
-      <ul class="m-portlet__nav">
-        <li class="m-portlet__nav-item">
-          <a href="<?php echo "<?= "?>Url::to(['create']) ?>"
-             class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
-						<span>
-							<i class="la la-plus"></i>
-							<span>Новая запись</span>
-						</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="m-portlet__body">
-    <div class="row">
-      <div class="col-md-6">
-        <?= '<?=' ?> \backend\widgets\multipleDelete\MultipleDelete::widget([
-          'gridId' => '<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-grid',
-        ]) ?>
-      </div>
-    </div>
-    <div class="dataTables_wrapper">
-      <div class="row">
-        <div class="col-sm-12">
-  <?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
+<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
+
+    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
+<?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
+<?php if(!empty($generator->searchModelClass)): ?>
+<?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
+<?php endif; ?>
+
+    <p>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
-        'id' => '<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-grid',
-        'options' => ['class' => 'dataTable'],
         'dataProvider' => $dataProvider,
         <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => [\n" : "'columns' => [\n"; ?>
-            ['class' => \backend\lib\CheckboxColumn::class],
+            ['class' => 'yii\grid\SerialColumn'],
 
 <?php
 $count = 0;
@@ -92,7 +63,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
 }
 ?>
 
-            ['class' => \backend\lib\ActionColumn::class],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 <?php else: ?>
@@ -105,9 +76,4 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     ]) ?>
 <?php endif; ?>
 <?= $generator->enablePjax ? "    <?php Pjax::end(); ?>\n" : '' ?>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-

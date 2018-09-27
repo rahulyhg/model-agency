@@ -4,48 +4,29 @@ namespace modules\page\backend\controllers;
 
 use Yii;
 use modules\page\common\models\Page;
-use modules\page\backend\models\PageSearch;
-use modules\page\lib\BlogController;
+use modules\page\common\models\PageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Model;
+use yii\helpers\Html;
 
 /**
  * DefaultController implements the CRUD actions for Page model.
  */
 class DefaultController extends Controller
 {
-    public function actions()
-    {
-        return [
-          'images-get' => [
-            'class' => \vova07\imperavi\actions\GetImagesAction::class,
-            'url' =>  Yii::getAlias('@web/redactor-storage'), // Directory URL address, where files are stored.
-            'path' => Yii::getAlias('@webroot/redactor-storage'), // Or absolute path to directory where files are stored.
-            'options' => ['only' => ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.ico']], // These options are by default.
-          ],
-          'image-upload' => [
-            'class' => \vova07\imperavi\actions\UploadFileAction::class,
-            'url' => Yii::getAlias('@web/redactor-storage'), // Directory URL address, where files are stored.
-            'path' => Yii::getAlias('@webroot/redactor-storage'), // Or absolute path to directory where files are stored.
-          ],
-          'file-delete' => [
-            'class' => \vova07\imperavi\actions\DeleteFileAction::class,
-            'url' => Yii::getAlias('@web/redactor-storage'), // Directory URL address, where files are stored.
-            'path' => Yii::getAlias('@webroot/redactor-storage'), // Or absolute path to directory where files are stored.
-          ],
-        ];
-    }
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::class,
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'multiple-delete' => ['POST'],
                 ],
             ],
         ];
@@ -75,18 +56,18 @@ class DefaultController extends Controller
     {
         $model = new Page();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        Yii::$app->session->setFlash(
-		        'success',
-		        'Successfully created'
-	        );
-
-	        return $this->redirect(['update', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
+            Yii::$app->session->setFlash(
+                'success',
+                'Page успешно создан. ' . Html::a('Создать еще', ['create']) . ' или ' . Html::a('перейти к списку', ['index'])
+            );
+            return $this->redirect(['update', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -94,19 +75,18 @@ class DefaultController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-	        Yii::$app->session->setFlash(
-		        'success',
-		        'Successfully updated'
-	        );
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
+            Yii::$app->session->setFlash(
+                'success',
+                'Page успешно обновлен. ' . Html::a('Перейти к списку', ['index'])
+            );
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -117,12 +97,22 @@ class DefaultController extends Controller
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $title = $model->title;
+        if( $model->delete() ) {
+            Yii::$app->session->setFlash(
+            'success',
+            'Page "'.$title.'" успешно удалена. '
+            );
+        } else {
+            Yii::$app->session->setFlash(
+            'danger',
+            'Ошибка при удалении.'
+            );
+        }
         return $this->redirect(['index']);
     }
 
@@ -137,8 +127,8 @@ class DefaultController extends Controller
     {
         if (($model = Page::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

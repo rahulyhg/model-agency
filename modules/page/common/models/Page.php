@@ -2,116 +2,68 @@
 
 namespace modules\page\common\models;
 
-use common\behaviors\UploadFileBehavior;
-use modules\page\Module;
 use Yii;
-use yii\behaviors\SluggableBehavior;
-use yii\behaviors\TimestampBehavior;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%page_page}}".
  *
- * @property int $id
- * @property string $title
+ * @property integer $id
+ * @property integer $thumb_id
  * @property string $slug
- * @property string $content
- * @property int $thumbnail_id
- * @property int $created_at
- * @property int $updated_at
+ * @property integer $created_at
+ * @property integer $updated_at
  *
- * @property string $thumbnailUrl
- * @property string $thumbnailSize
+ * @property PageLang[] $pagePageLangs
  */
-class Page extends \yii\db\ActiveRecord {
-	const THUMBNAILS_DIR = 'page\thumbnails';
-	public $deleteThumbnailFile = 0;
-	public $thumbnailFile;
+class Page extends \modules\lang\lib\TranslatableActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%page_page}}';
+    }
 
-	private $thumbnailUrl;
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['thumb_id', 'slug'], 'required'],
+            [['thumb_id', 'created_at', 'updated_at'], 'integer'],
+            [['slug'], 'string', 'max' => 255],
+        ];
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public static function tableName() {
-		return '{{%page_page}}';
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'thumb_id' => 'Миниатюра',
+            'slug' => 'URL',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата последнего обновления',
+        ];
+    }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPagePageLangs()
+    {
+        return $this->hasMany(PageLang::class, ['entity_id' => 'id']);
+    }
 
-	public function behaviors() {
-		return ArrayHelper::merge( parent::behaviors(), [
-			[
-				'class'         => SluggableBehavior::class,
-				'attribute'     => 'title',
-				'slugAttribute' => 'slug',
-				'ensureUnique'  => true,
-				'immutable'     => true
-			],
-			[
-				'class'              => TimestampBehavior::class,
-				'createdAtAttribute' => 'created_at',
-				'updatedAtAttribute' => 'updated_at'
-			],
-			[
-				'class' => UploadFileBehavior::class,
-				'files' => [
-					[
-						'fileAttribute' => 'thumbnailFile',
-						'idAttribute' => 'thumbnail_id',
-						'deleteAttribute' => 'deleteThumbnailFile',
-					],
-				],
-				'directory' => self::THUMBNAILS_DIR,
-			]
-		] );
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function rules() {
-		return [
-			[ [ 'title' ], 'required' ],
-			[ [ 'content' ], 'string' ],
-			[ [ 'thumbnail_id', 'created_at', 'updated_at' ], 'integer' ],
-			[ [ 'title', 'slug' ], 'string', 'max' => 255 ],
-		];
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function attributeLabels() {
-		return [
-      'id'           => Module::t('attributeLabels', 'id'),
-      'title'        => Module::t('attributeLabels', 'title'),
-      'slug'         => Module::t('attributeLabels', 'slug'),
-      'content'      => Module::t('attributeLabels', 'content'),
-      'thumbnail_id' => Module::t('attributeLabels', 'thumbnail_id'),
-      'thumbnailFile' => Module::t('attributeLabels', 'thumbnailFile'),
-      'created_at'   => Module::t('attributeLabels', 'created_at'),
-      'updated_at'   => Module::t('attributeLabels', 'updated_at'),
-		];
-	}
-
-	/**
- * @return mixed
- */
-	public function getThumbnailUrl() {
-		if( !$this->thumbnailUrl ) {
-			$this->thumbnailUrl = Yii::$app->filestorage->getFileUrl($this->thumbnail_id);
-			if( ! $this->thumbnailUrl ) {
-				$this->thumbnailUrl = Yii::$app->setting->get('page', 'default_thumbnail') ?: null;
-			}
-		}
-		return $this->thumbnailUrl;
-	}
-
-	public function getPermalink()
-	{
-		if($this->isNewRecord)
-			return null;
-		return Url::to(['/page/default/view', 'slug' => $this->slug]);
-	}
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getTranslations()
+    {
+        return $this->hasMany(PageLang::class, ['entity_id' => 'id']);
+    }
 }

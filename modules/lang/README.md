@@ -1,10 +1,10 @@
 Add module
-'page' => [
-  'class' => modules\page\Module::class,
+'lang' => [
+  'class' => modules\lang\Module::class,
 ],
 
 Migration
-copy migrations from page\migrations to console\migrations and do yii migrate
+copy migrations from lang\migrations to console\migrations and do yii migrate
 or
-yii migrate --migrationPath=@modules/page/migrations
+yii migrate --migrationPath=@modules/lang/migrations
 

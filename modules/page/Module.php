@@ -2,32 +2,20 @@
 
 namespace modules\page;
 
-use Yii;
-
+/**
+ * page module definition class
+ */
 class Module extends \common\lib\Module
 {
-  public $controllerNamespace = 'app\modules\page\backend\controllers';
+    const TRANSLATION_CATEGORY = 'modules/page';
 
-  public function init()
-  {
-    parent::init();
-    $this->registerTranslations();
-  }
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
 
-  public function registerTranslations()
-  {
-    Yii::$app->i18n->translations['modules/page/*'] = [
-      'class' => 'yii\i18n\PhpMessageSource',
-      'sourceLanguage' => 'en-US',
-      'basePath' => '@modules/page/messages',
-      'fileMap' => [
-        'modules/page/attributeLabels' => 'attributeLabels.php',
-      ]
-    ];
-  }
-
-  public static function t($category, $message, $params = [], $language = null)
-  {
-    return Yii::t('modules/page/' . $category, $message, $params, $language);
-  }
+        // custom initialization code goes here
+    }
 }

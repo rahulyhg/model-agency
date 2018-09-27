@@ -10,11 +10,11 @@ class CoreAsset extends AssetBundle
 	public $js = [
 		'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js',
 		'vendors/base/vendors.bundle.js',
-		'demo/demo3/base/scripts.bundle.js',
+		'demo/default/base/scripts.bundle.js',
 	];
 	public $css = [
 		'vendors/base/vendors.bundle.css',
-		'demo/demo3/base/style.bundle.css'
+		'demo/default/base/style.bundle.css'
 	];
 	public $depends = [
 		'yii\bootstrap\BootstrapPluginAsset',

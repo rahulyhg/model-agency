@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'TOTOcrm';
+$this->title = 'Консоль';
 ?>
 <div class="site-index">
   <div class="row">

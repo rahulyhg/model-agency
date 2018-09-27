@@ -1,34 +1,40 @@
 <?php
 return [
-	'controllerMap' => [
-		'file' => \common\components\filestorage\controllers\FileController::class,
-	],
+    'controllerMap' => [
+        'file' => \common\components\filestorage\controllers\FileController::class,
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-	    'view' => [
-		    'class' => \common\lib\View::class
-	    ],
-	    'setting' => [
-		    'class' => \modules\setting\components\SettingComponent::class,
-	    ],
-	    'filestorage' => [
-		    'class' => common\components\filestorage\FileStorage::className(),
-		    'fileRoute' => '/file/index',
-	    ],
-      'cache' => [
-          'class' => 'yii\caching\FileCache',
-      ],
-	    'metronic' => [
-		    'class' => \common\components\metronic\Metronic::class
-	    ],
+        'view' => [
+            'class' => \common\lib\View::class
+        ],
+        'setting' => [
+            'class' => \modules\setting\components\SettingComponent::class,
+        ],
+        'filestorage' => [
+            'class' => common\components\filestorage\FileStorage::className(),
+            'fileRoute' => '/file/index',
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'metronic' => [
+            'class' => \common\components\metronic\Metronic::class
+        ],
     ],
     'modules' => [
         'page' => [
             'class' => modules\page\Module::class
+        ],
+        'lang' => [
+            'class' => modules\lang\Module::class,
+        ],
+        'user' => [
+            'class' => modules\user\Module::class,
         ],
     ]
 ];
