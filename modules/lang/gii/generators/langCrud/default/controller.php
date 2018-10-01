@@ -99,10 +99,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         $post = Yii::$app->request->post();
         if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
-            Yii::$app->session->setFlash(
-                'success',
-                '<?= $modelClass ?> успешно создан. ' . Html::a('Создать еще', ['create']) . ' или ' . Html::a('перейти к списку', ['index'])
-            );
+            Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
+                '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
+                ['create'],
+                ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
+            ));
             return $this->redirect(['update', <?= $urlParams ?>]);
         } else {
             return $this->render('create', [
@@ -123,10 +124,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         $post = Yii::$app->request->post();
         if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
-            Yii::$app->session->setFlash(
-                'success',
-                '<?= $modelClass ?> успешно обновлен. ' . Html::a('Перейти к списку', ['index'])
-            );
+            Yii::$app->session->setFlash('success','Запись успешно обновлена.');
         }
         return $this->render('update', [
             'model' => $model,
@@ -142,19 +140,48 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionDelete(<?= $actionParams ?>)
     {
         $model = $this->findModel(<?= $actionParams ?>);
-        $title = $model->title;
-        if( $model->delete() ) {
-            Yii::$app->session->setFlash(
-            'success',
-            '<?= $modelClass ?> "'.$title.'" успешно удалена. '
-            );
-        } else {
-            Yii::$app->session->setFlash(
-            'danger',
-            'Ошибка при удалении.'
-            );
+        if($model->delete()) {
+            Yii::$app->session->setFlash('success', "Запись #$id успешно удалена.");
+        }
+        if(!empty($model->getErrors('deleteMessage'))) {
+            Yii::$app->session->setFlash('error', $model->getErrors('deleteMessage'));
         }
         return $this->redirect(['index']);
+    }
+
+    /**
+    * Deletes an existing <?= $modelClass ?> models.
+    * If deletion is successful, the browser will be redirected to the 'index' page.
+    * @return \yii\web\Response
+    * @throws \yii\web\BadRequestHttpException
+    * @throws NotFoundHttpException
+    */
+    public function actionMultipleDelete()
+    {
+        if ($ids = Yii::$app->request->post('ids')) {
+            $count = 0;
+            $errorMessages = [];
+            foreach ($this->findModels($ids) as $model) {
+                if ($model->delete() !== false) {
+                    $count++;
+                } else {
+                    if(!empty($model->getErrors('deleteMessage'))) {
+                        $errorMessages = array_merge($errorMessages, $model->getErrors('deleteMessage'));
+                    } else {
+                        $errorMessages = array_merge($errorMessages, ["Ошибка при удалении записи #$model->id."]);
+                    }
+                }
+            }
+            if(!empty($errorMessages)) {
+                Yii::$app->session->setFlash('error', $errorMessages);
+            }
+            if ($count > 0) {
+                $message = '{n, plural, =1{Выбранная запись успешно удалена} few{Выбранные # записи успешно удалены} many{Выбранные # записей успешно удалены} other{Выбранные # записи успешно удалены}}.';
+                Yii::$app->session->setFlash('success', \MessageFormatter::formatMessage('ru', $message, ['n' => $count]));
+            }
+            return $this->redirect(['index']);
+        }
+        throw new \yii\web\BadRequestHttpException();
     }
 
     /**
@@ -182,5 +209,19 @@ if (count($pks) === 1) {
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+    * @param $ids
+    * @return <?= $modelClass ?>[]
+    * @throws NotFoundHttpException
+    */
+    protected function findModels($ids)
+    {
+        $models = <?= $modelClass ?>::findAll($ids);
+        if (!empty($models)) {
+            return $models;
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

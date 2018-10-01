@@ -28,30 +28,24 @@ use <?=$languageModel?>;
 * This is the model class for table "<?= $generator->generateTableName($tableName) ?>".
 *
 <?php foreach ($tableSchema->columns as $column): ?>
-    * @property <?= "{$column->phpType} \${$column->name}\n" ?>
+* @property <?= "{$column->phpType} \${$column->name}\n" ?>
 <?php endforeach; ?>
 <?php if (!empty($relations)): ?>
-    *
-    <?php foreach ($relations as $name => $relation): ?>
-        * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
-    <?php endforeach; ?>
+*
+<?php foreach ($relations as $name => $relation): ?>
+* @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
+<?php endforeach; ?>
 <?php endif; ?>
 */
 class <?= $langClassName ?> extends <?= '\\' . ltrim($generator->baseLangClass, '\\') . "\n" ?>
 {
-    public function init()
-    {
-        parent::init();
-        $this->notEmptyAttributes[] = '<?=$langRelationField?>';
-    }
-
     /**
     * @inheritdoc
     */
     public static function tableName()
     {
-    return '<?= $generator->generateTableName($tableName) ?>';
-}
+        return '<?= $generator->generateTableName($tableName) ?>';
+    }
 <?php if ($generator->db !== 'db'): ?>
 
     /**
@@ -59,29 +53,29 @@ class <?= $langClassName ?> extends <?= '\\' . ltrim($generator->baseLangClass, 
     */
     public static function getDb()
     {
-    return Yii::$app->get('<?= $generator->db ?>');
+        return Yii::$app->get('<?= $generator->db ?>');
     }
 <?php endif; ?>
 
-/**
-* @inheritdoc
-*/
-public function rules()
-{
-return [<?= "\n            " . implode(",\n            ", $rules) . ",\n        " ?>];
-}
+    /**
+    * @inheritdoc
+    */
+    public function rules()
+    {
+        return [<?= "\n            " . implode(",\n            ", $rules) . ",\n        " ?>];
+    }
 
-/**
-* @inheritdoc
-*/
-public function attributeLabels()
-{
-return [
+    /**
+    * @inheritdoc
+    */
+    public function attributeLabels()
+    {
+        return [
 <?php foreach ($labels as $name => $label): ?>
-    <?= "'$name' => " . $generator->generateString($label) . ",\n" ?>
+            <?= "'$name' => " . $generator->generateString($label) . ",\n" ?>
 <?php endforeach; ?>
-];
-}
+        ];
+    }
 <?php foreach ($relations as $name => $relation): ?>
 
     /**
@@ -111,7 +105,7 @@ return [
     */
     public static function find()
     {
-    return new <?= $queryClassFullName ?>(get_called_class());
+        return new <?= $queryClassFullName ?>(get_called_class());
     }
 <?php endif; ?>
 }

@@ -686,16 +686,14 @@ $this->registerJs('WebFont.load({
 
             <!-- END: Subheader -->
             <div class="m-content">
+                <?= \common\widgets\Alert::widget([
+                  'options' => [
+                    'class' => 'show alert-dismissible'
+                  ],
+                  'closeButton' => ['label' => ''],
+                ]) ?>
                 <div class="m-portlet">
-                    <div class="m-portlet__body">
-                        <?= \common\widgets\Alert::widget([
-                            'options' => [
-                                'class' => 'show alert-dismissible'
-                            ],
-                            'closeButton' => ['label' => ''],
-                        ]) ?>
                         <?= $content ?>
-                    </div>
                 </div>
             </div>
         </div>

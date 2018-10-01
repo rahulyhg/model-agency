@@ -34,7 +34,7 @@ class LangActiveRecord extends ActiveRecord
     /**
      * @var array Attributes that can be not empty
      */
-    protected $notEmptyAttributes = array('id', 'lang_id');
+    protected $notEmptyAttributes = ['id', 'lang_id', 'entity_id'];
     /**
      * @var boolean
      */

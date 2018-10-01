@@ -31,7 +31,7 @@ use Yii;
 <?php if (!empty($relations)): ?>
  *
 <?php foreach ($relations as $name => $relation): ?>
- * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
+ * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . ($name == $className.'Langs' ? 'translations' : lcfirst($name)) . "\n" ?>
 <?php endforeach; ?>
 <?php endif; ?>
  */
@@ -74,7 +74,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 <?php endforeach; ?>
         ];
     }
-<?php foreach ($relations as $name => $relation): ?>
+<?php foreach ($relations as $name => $relation): if($name == $className.'Langs') continue; ?>
 
     /**
      * @return \yii\db\ActiveQuery

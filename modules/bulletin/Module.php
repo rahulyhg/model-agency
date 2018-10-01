@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\ad;
+namespace modules\bulletin;
 
 class Module extends \common\lib\Module
 {

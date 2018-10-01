@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace backend\gii\generators\langModel;
+namespace modules\lang\gii\generators\langModel;
 
 use Yii;
 use yii\db\ActiveQuery;
@@ -34,11 +34,11 @@ class Generator extends \yii\gii\Generator
     public $tableName;
     public $langTableName;
     public $modelClass;
-    public $baseClass = '\common\lib\TranslatableActiveRecord';
+    public $baseClass = 'modules\lang\lib\TranslatableActiveRecord';
     public $langClass;
-    public $langRelationField = 'lang_id';
-    public $baseLangClass = '\common\lib\LangActiveRecord';
-    public $languageModel = '\common\models\Lang';
+    public $langRelationField = 'entity_id';
+    public $baseLangClass = 'modules\lang\lib\LangActiveRecord';
+    public $languageModel = 'modules\lang\common\models\Lang';
     public $generateRelations = self::RELATIONS_ALL;
     public $generateLabelsFromComments = false;
     public $useTablePrefix = true;
@@ -402,8 +402,9 @@ class Generator extends \yii\gii\Generator
                 continue;
             }
             if (!$column->allowNull && $column->defaultValue === null) {
-                if(    $column->name !== 'date_create'
-                    && $column->name !== 'date_update'
+                if(    $column->name !== 'created_at'
+                    && $column->name !== 'updated_at'
+                    && $column->name !== 'entity_id'
                     && $column->name !== $this->langRelationField
                 ) {
                     $types['required'][] = $column->name;

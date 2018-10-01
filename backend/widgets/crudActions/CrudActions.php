@@ -1,30 +1,18 @@
 <?php
-/**
- *
- */
-
 namespace backend\widgets\crudActions;
-
-use backend\widgets\langActiveForm\LangActiveForm;
-use common\lib\SmActiveRecord;
-use ReflectionFunction;
-use yii\base\InvalidConfigException;
+use backend\lib\ActiveRecord;
 use yii\base\Widget;
 use yii\helpers\Html;
-use yii\helpers\Inflector;
-use yii\helpers\Url;
-use yii\widgets\ActiveForm;
-
 class CrudActions extends Widget
 {
     /**
-     * @var SmActiveRecord
+     * @var ActiveRecord
      */
     public $model;
     /**
      * @var string
      */
-    public $template = '{delete} {index} {save}';
+    public $template = '{delete} {save}';
     /**
      * @var array
      */
@@ -32,8 +20,7 @@ class CrudActions extends Widget
     /**
      * @var string Delete confirm text
      */
-    public $deleteConfirm = 'Вы уверены, что хотите удалить?';
-
+    public $deleteConfirm = 'Вы уверены, что хотите удалить запись?';
     /**
      * @inheritdoc
      */
@@ -42,23 +29,21 @@ class CrudActions extends Widget
         parent::init();
         $this->initDefaultButtons();
     }
-
     protected function initDefaultButtons()
     {
         if (!isset($this->buttons['index'])) {
             $this->buttons['index'] = function ($url, $model) {
-                return Html::a('<span class="fa fa-list"></span>', $url, [
-                    'class' => 'btn btn-icon-only default',
-                    'title' => 'Перейти к списку',
-                    'id' => 'js-crud-list-btn'
+                return Html::a('<span><i class="la la-arrow-left"></i><span>Назад</span></span>', $url, [
+                  'class' => 'btn btn-secondary m-btn m-btn--custom m-btn--pill m-btn--icon',
+                  'id' => 'js-crud-list-btn'
                 ]);
             };
         }
         if (!isset($this->buttons['save'])) {
             $this->buttons['save'] = function ($url, $model) {
-                return Html::submitButton('<span class="fa fa-floppy-o"></span> Сохранить', [
-                    'class' => 'btn btn-success',
-                    'id' => 'js-crud-save-btn'
+                return Html::submitButton('<span><i class="la la-check"></i><span>Сохранить</span></span>', [
+                  'class' => 'btn btn-success m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air',
+                  'id' => 'js-crud-save-btn'
                 ]);
             };
         }
@@ -67,25 +52,23 @@ class CrudActions extends Widget
                 if($model->isNewRecord)
                     return false;
                 $url['id'] = $model->id;
-                return Html::a('<span class="fa fa-trash "></span>', $url, [
-                    'id' => 'js-crud-delete-btn',
-                    'class' => 'btn btn-icon-only btn-danger link-sweetalert',
-                    'title' => 'Удалить',
-                    'data-method' => 'post',
-                    'data-title' => $this->deleteConfirm,
-                    'data-type' => 'error',
-                    'data-allow-outside-click' => 'true',
-                    'data-show-confirm-button' => 'true',
-                    'data-show-cancel-button' => 'true',
-                    'data-confirm-button-class' => 'btn-danger',
-                    'data-cancel-button-class' => 'btn-success',
-                    'data-confirm-button-text' => 'Да',
-                    'data-cancel-button-text' => 'Нет',
+                return Html::a('<span><i class="la la-trash "></i><span>Удалить</span></span>', $url, [
+                  'id' => 'js-crud-delete-btn',
+                  'class' => 'btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air link-sweetalert',
+                  'data-method' => 'post',
+                  'data-title' => $this->deleteConfirm,
+                  'data-type' => 'error',
+                  'data-allow-outside-click' => 'true',
+                  'data-show-confirm-button' => 'true',
+                  'data-show-cancel-button' => 'true',
+                  'data-confirm-button-class' => 'btn m-btn--pill m-btn--air btn-danger',
+                  'data-cancel-button-class' => 'btn m-btn--pill m-btn--air btn-success',
+                  'data-confirm-button-text' => 'Да',
+                  'data-cancel-button-text' => 'Нет',
                 ]);
             };
         }
     }
-
     /**
      * Run widget
      */
@@ -114,7 +97,6 @@ class CrudActions extends Widget
         });");
         return $buttons;
     }
-
     /**
      * @inheritdoc
      */
@@ -122,7 +104,6 @@ class CrudActions extends Widget
     {
         return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($model) {
             $name = $matches[1];
-
             if (isset($this->buttons[$name])) {
                 $url = [$name];
                 return call_user_func($this->buttons[$name], $url, $model);

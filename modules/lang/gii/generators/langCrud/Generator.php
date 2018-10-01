@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace backend\gii\generators\langCrud;
+namespace modules\lang\gii\generators\langCrud;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -78,8 +78,8 @@ class Generator extends \yii\gii\Generator
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['controllerClass', 'modelClass', 'langModelClass', 'searchModelClass', 'baseControllerClass', 'iconCssClass'], 'filter', 'filter' => 'trim'],
-            [['modelClass', 'langModelClass', 'controllerClass', 'baseControllerClass', 'indexWidgetType', 'iconCssClass', 'singularEntityName', 'createButtonText', 'indexPageTitle', 'createPageTitle', 'updatePageTitle'], 'required'],
+            [['controllerClass', 'modelClass', 'langModelClass', 'searchModelClass', 'baseControllerClass',], 'filter', 'filter' => 'trim'],
+            [['modelClass', 'langModelClass', 'controllerClass', 'baseControllerClass', 'indexWidgetType', 'singularEntityName', 'createButtonText', 'indexPageTitle'], 'required'],
             [['searchModelClass'], 'compare', 'compareAttribute' => 'modelClass', 'operator' => '!==', 'message' => 'Search Model Class must not be equal to Model Class.'],
             [['searchModelClass'], 'compare', 'compareAttribute' => 'langModelClass', 'operator' => '!==', 'message' => 'Search Model Class must not be equal to Lang Model Class.'],
             [['modelClass', 'langModelClass', 'controllerClass', 'baseControllerClass', 'searchModelClass'], 'match', 'pattern' => '/^[\w\\\\]*$/', 'message' => 'Only word characters and backslashes are allowed.'],

@@ -402,8 +402,8 @@ class Generator extends \yii\gii\Generator
                 continue;
             }
             if (!$column->allowNull && $column->defaultValue === null) {
-                if(    $column->name !== 'date_create'
-                    && $column->name !== 'date_update'
+                if(    $column->name !== 'created_at'
+                    && $column->name !== 'updated_at'
                     && $column->name !== $this->langRelationField
                 ) {
                     $types['required'][] = $column->name;

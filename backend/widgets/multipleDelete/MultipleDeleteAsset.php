@@ -20,6 +20,6 @@ class MultipleDeleteAsset extends AssetBundle
     ];
 
     public $depends = [
-        'backend\components\metronic\SweetAlertAsset',
+        'common\components\metronic\SweetAlertAsset',
     ];
 }

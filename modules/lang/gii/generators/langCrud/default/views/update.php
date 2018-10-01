@@ -2,7 +2,7 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
+/* @var $generator modules\lang\gii\generators\langCrud\Generator */
 $urlParams = $generator->generateUrlParams();
 echo "<?php\n";
 ?>
@@ -13,7 +13,7 @@ use yii\helpers\Html;
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
 
 $this->title = <?= strtr($generator->generateString('Редактировать ' .
-  Inflector::camel2words(StringHelper::basename($generator->modelClass)) .
+  ($generator->singularEntityName ? : Inflector::camel2words(StringHelper::basename($generator->modelClass))) .
   ': {nameAttribute}', ['nameAttribute' => '{nameAttribute}']), [
   '{nameAttribute}\'' => '\' . $model->' . $generator->getNameAttribute()
 ]) ?>;

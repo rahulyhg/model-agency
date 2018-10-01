@@ -36,5 +36,8 @@ return [
         'user' => [
             'class' => modules\user\Module::class,
         ],
+        'bulletin' => [
+            'class' => modules\bulletin\Module::class,
+        ],
     ]
 ];

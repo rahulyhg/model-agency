@@ -20,11 +20,6 @@ use \modules\lang\common\models\Lang;
  */
 class PageLang extends \modules\lang\lib\LangActiveRecord
 {
-    public function init()
-    {
-        parent::init();
-        $this->notEmptyAttributes[] = 'entity_id';
-    }
 
     /**
      * @inheritdoc
