@@ -1,16 +1,16 @@
 <?php
 
-namespace modules\client\backend\models;
+namespace modules\bulletin\backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use modules\bulletin\common\models\ServiceBulletin;
+use modules\bulletin\common\models\CategoryAttribute;
 
 /**
-* ServiceBulletinSearch represents the model behind the search form of `modules\bulletin\common\models\ServiceBulletin`.
+* CategoryAttributeSearch represents the model behind the search form of `modules\bulletin\common\models\CategoryAttribute`.
 */
-class ServiceBulletinSearch extends ServiceBulletin
+class CategoryAttributeSearch extends CategoryAttribute
 {
 /**
 * {@inheritdoc}
@@ -18,7 +18,7 @@ class ServiceBulletinSearch extends ServiceBulletin
 public function rules()
 {
 return [
-[['id', 'entity_id', 'service_id', 'expires_at', 'created_at', 'updated_at'], 'integer'],
+[['id', 'category_id', 'attribute_id', 'group_id', 'position'], 'integer'],
 ];
 }
 
@@ -40,7 +40,7 @@ return Model::scenarios();
 */
 public function search($params)
 {
-$query = ServiceBulletin::find();
+$query = CategoryAttribute::find();
 
 // add conditions that should always apply here
 
@@ -59,11 +59,10 @@ return $dataProvider;
 // grid filtering conditions
 $query->andFilterWhere([
             'id' => $this->id,
-            'entity_id' => $this->entity_id,
-            'service_id' => $this->service_id,
-            'expires_at' => $this->expires_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'category_id' => $this->category_id,
+            'attribute_id' => $this->attribute_id,
+            'group_id' => $this->group_id,
+            'position' => $this->position,
         ]);
 
 return $dataProvider;

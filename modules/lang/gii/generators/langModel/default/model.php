@@ -118,7 +118,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
                 self::find()
                   ->joinWith('translations tr')
                   ->orderBy('tr.<?= $generateMapTitle ?>')
-                  ->all(), 'id', 'name'
+                  ->all(), 'id', '<?= $generateMapTitle ?>'
             );
         }
         return self::$_map;

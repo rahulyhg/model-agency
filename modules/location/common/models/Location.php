@@ -47,7 +47,7 @@ class Location extends \modules\lang\lib\TranslatableActiveRecord
      */
     public function getBulletins()
     {
-        return $this->hasMany(Bulletin::className(), ['location_id' => 'id']);
+        return $this->hasMany(Bulletin::class, ['location_id' => 'id']);
     }
 
     /**
@@ -55,7 +55,7 @@ class Location extends \modules\lang\lib\TranslatableActiveRecord
      */
     public function getClients()
     {
-        return $this->hasMany(Client::className(), ['location_id' => 'id']);
+        return $this->hasMany(Client::class, ['location_id' => 'id']);
     }
 
     /**
@@ -63,6 +63,21 @@ class Location extends \modules\lang\lib\TranslatableActiveRecord
     */
     public function getTranslations()
     {
-        return $this->hasMany(LocationLang::className(), ['entity_id' => 'id']);
+        return $this->hasMany(LocationLang::class, ['entity_id' => 'id']);
+    }
+
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if(!isset(self::$_map)) {
+            self::$_map = \yii\helpers\ArrayHelper::map(
+                self::find()
+                  ->joinWith('translations tr')
+                  ->orderBy('tr.name')
+                  ->all(), 'id', 'name'
+            );
+        }
+        return self::$_map;
     }
 }

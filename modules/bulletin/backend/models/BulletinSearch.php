@@ -1,16 +1,16 @@
 <?php
 
-namespace modules\client\backend\models;
+namespace modules\bulletin\backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use modules\bulletin\common\models\CategoryAttribute;
+use modules\bulletin\common\models\Bulletin;
 
 /**
-* CategoryAttributeSearch represents the model behind the search form of `modules\bulletin\common\models\CategoryAttribute`.
+* BulletinSearch represents the model behind the search form of `modules\bulletin\common\models\Bulletin`.
 */
-class CategoryAttributeSearch extends CategoryAttribute
+class BulletinSearch extends Bulletin
 {
 /**
 * {@inheritdoc}
@@ -18,7 +18,8 @@ class CategoryAttributeSearch extends CategoryAttribute
 public function rules()
 {
 return [
-[['id', 'category_id', 'attribute_id', 'group_id', 'position'], 'integer'],
+[['id', 'location_id', 'client_id', 'category_id', 'status_id', 'created_at', 'updated_at'], 'integer'],
+            [['title', 'content'], 'safe'],
 ];
 }
 
@@ -40,7 +41,7 @@ return Model::scenarios();
 */
 public function search($params)
 {
-$query = CategoryAttribute::find();
+$query = Bulletin::find();
 
 // add conditions that should always apply here
 
@@ -59,11 +60,16 @@ return $dataProvider;
 // grid filtering conditions
 $query->andFilterWhere([
             'id' => $this->id,
+            'location_id' => $this->location_id,
+            'client_id' => $this->client_id,
             'category_id' => $this->category_id,
-            'attribute_id' => $this->attribute_id,
-            'group_id' => $this->group_id,
-            'position' => $this->position,
+            'status_id' => $this->status_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'content', $this->content]);
 
 return $dataProvider;
 }

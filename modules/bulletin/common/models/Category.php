@@ -143,4 +143,19 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         }
         return false;
     }
+
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if(!isset(self::$_map)) {
+            self::$_map = \yii\helpers\ArrayHelper::map(
+              self::find()
+                ->joinWith('translations tr')
+                ->orderBy('tr.name')
+                ->all(), 'id', 'name'
+            );
+        }
+        return self::$_map;
+    }
 }

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace backend\gii\generators\model;
+namespace backend\gii\generators\newModel;
 
 use Yii;
 use yii\db\ActiveQuery;
@@ -30,69 +30,67 @@ class Generator extends \yii\gii\Generator
     const RELATIONS_ALL_INVERSE = 'all-inverse';
 
     public $db = 'db';
-    public $ns = 'app\models';
+    public $ns = 'common\models';
     public $tableName;
-    public $langTableName;
     public $modelClass;
-    public $baseClass = '\common\lib\SmTranslatableActiveRecord';
-    public $langClass;
-    public $langRelationField;
-    public $baseLangClass = '\common\lib\SmLangActiveRecord';
-    public $languageModel = '\common\models\Lang';
+    public $generateMap = false;
+    public $generateMapTitle = 'name';
+    public $baseClass = 'common\lib\ActiveRecord';
     public $generateRelations = self::RELATIONS_ALL;
+    public $generateRelationsFromCurrentSchema = true;
     public $generateLabelsFromComments = false;
     public $useTablePrefix = true;
     public $useSchemaName = true;
     public $generateQuery = false;
-    public $queryNs = 'app\models';
+    public $queryNs = 'common\models';
     public $queryClass;
     public $queryBaseClass = 'yii\db\ActiveQuery';
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'Lang Model Generator';
+        return 'Model Generator';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDescription()
     {
-        return 'This generator generates an ActiveRecord class for the specified database table with lang relations.';
+        return 'This generator generates an ActiveRecord class for the specified database table.';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['db', 'ns', 'tableName', 'langTableName', 'modelClass', 'baseClass', 'queryNs', 'queryClass', 'queryBaseClass', 'langClass', 'baseLangClass', 'langRelationField', 'languageModel'], 'filter', 'filter' => 'trim'],
-            [['ns', 'queryNs'], 'filter', 'filter' => function($value) { return trim($value, '\\'); }],
+            [['db', 'ns', 'tableName', 'modelClass', 'baseClass', 'queryNs', 'queryClass', 'queryBaseClass'], 'filter', 'filter' => 'trim'],
+            [['ns', 'queryNs'], 'filter', 'filter' => function ($value) { return trim($value, '\\'); }],
 
-            [['db', 'ns', 'tableName', 'langTableName', 'languageModel', 'baseClass', 'queryNs', 'queryBaseClass', 'langClass', 'baseLangClass', 'langRelationField'], 'required'],
-            [['db', 'modelClass', 'queryClass', 'langClass'], 'match', 'pattern' => '/^\w+$/', 'message' => 'Only word characters are allowed.'],
-            [['ns', 'baseClass', 'queryNs', 'queryBaseClass', 'baseLangClass', 'languageModel'], 'match', 'pattern' => '/^[\w\\\\]+$/', 'message' => 'Only word characters and backslashes are allowed.'],
-            [['tableName', 'langTableName'], 'match', 'pattern' => '/^([\w ]+\.)?([\w\* ]+)$/', 'message' => 'Only word characters, and optionally spaces, an asterisk and/or a dot are allowed.'],
+            [['db', 'ns', 'tableName', 'baseClass', 'queryNs', 'queryBaseClass', 'generateMapTitle'], 'required'],
+            [['db', 'modelClass', 'queryClass'], 'match', 'pattern' => '/^\w+$/', 'message' => 'Only word characters are allowed.'],
+            [['ns', 'baseClass', 'queryNs', 'queryBaseClass'], 'match', 'pattern' => '/^[\w\\\\]+$/', 'message' => 'Only word characters and backslashes are allowed.'],
+            [['tableName'], 'match', 'pattern' => '/^([\w ]+\.)?([\w\* ]+)$/', 'message' => 'Only word characters, and optionally spaces, an asterisk and/or a dot are allowed.'],
             [['db'], 'validateDb'],
             [['ns', 'queryNs'], 'validateNamespace'],
-            [['tableName', 'langTableName'], 'validateTableName'],
-            [['modelClass', 'langClass'], 'validateModelClass', 'skipOnEmpty' => false],
-            [['baseClass', 'baseLangClass', 'languageModel'], 'validateClass', 'params' => ['extends' => ActiveRecord::className()]],
-            [['queryBaseClass'], 'validateClass', 'params' => ['extends' => ActiveQuery::className()]],
+            [['tableName'], 'validateTableName'],
+            [['modelClass'], 'validateModelClass', 'skipOnEmpty' => false],
+            [['baseClass'], 'validateClass', 'params' => ['extends' => ActiveRecord::class]],
+            [['queryBaseClass'], 'validateClass', 'params' => ['extends' => ActiveQuery::class]],
             [['generateRelations'], 'in', 'range' => [self::RELATIONS_NONE, self::RELATIONS_ALL, self::RELATIONS_ALL_INVERSE]],
-            [['generateLabelsFromComments', 'useTablePrefix', 'useSchemaName', 'generateQuery'], 'boolean'],
-            [['enableI18N'], 'boolean'],
+            [['generateLabelsFromComments', 'useTablePrefix', 'useSchemaName', 'generateQuery', 'generateRelationsFromCurrentSchema'], 'boolean'],
+            [['enableI18N', 'generateMap'], 'boolean'],
             [['messageCategory'], 'validateMessageCategory', 'skipOnEmpty' => false],
         ]);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -100,14 +98,10 @@ class Generator extends \yii\gii\Generator
             'ns' => 'Namespace',
             'db' => 'Database Connection ID',
             'tableName' => 'Table Name',
-            'langTableName' => 'Lang Table Name',
-            'modelClass' => 'Model Class',
+            'modelClass' => 'Model Class Name',
             'baseClass' => 'Base Class',
-            'langClass' => 'Lang Class',
-            'langRelationField' => 'Lang relation field',
-            'baseLangClass' => 'Base Lang Class',
-            'languageModel' => 'Language Model',
             'generateRelations' => 'Generate Relations',
+            'generateRelationsFromCurrentSchema' => 'Generate Relations from Current Schema',
             'generateLabelsFromComments' => 'Generate Labels from DB Comments',
             'generateQuery' => 'Generate ActiveQuery',
             'queryNs' => 'ActiveQuery Namespace',
@@ -118,7 +112,7 @@ class Generator extends \yii\gii\Generator
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hints()
     {
@@ -132,26 +126,14 @@ class Generator extends \yii\gii\Generator
                 will be generated, one for each matching table name; and the class names will be generated from
                 the matching characters. For example, table <code>tbl_post</code> will generate <code>Post</code>
                 class.',
-            'langTableName' => 'This is the name of the DB table that the new ActiveRecord class is associated with, e.g. <code>post_lang</code>.
-                The table name may consist of the DB schema part if needed, e.g. <code>public.post</code>.
-                The table name may end with asterisk to match multiple table names, e.g. <code>tbl_*</code>
-                will match tables who name starts with <code>tbl_</code>. In this case, multiple ActiveRecord classes
-                will be generated, one for each matching table name; and the class names will be generated from
-                the matching characters. For example, table <code>tbl_post_lang</code> will generate <code>PostLang</code>
-                class.',
             'modelClass' => 'This is the name of the ActiveRecord class to be generated. The class name should not contain
                 the namespace part as it is specified in "Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple ActiveRecord classes will be generated.',
-            'langClass' => 'This is the name of the ActiveRecord lang class to be generated. The class name should not contain
-                the namespace part as it is specified in "Namespace". You do not need to specify the class name
-                if "Table Name" ends with asterisk, in which case multiple ActiveRecord classes will be generated.',
-            'langRelationField' => 'This is the name of column in the lang table, that include id of main table row.',
             'baseClass' => 'This is the base class of the new ActiveRecord class. It should be a fully qualified namespaced class name.',
-            'baseLangClass' => 'This is the base lang class of the new ActiveRecord class. It should be a fully qualified namespaced class name.',
-            'languageModel' => 'This is the base language class of the existing ActiveRecord class. It should be a fully qualified namespaced class name.',
             'generateRelations' => 'This indicates whether the generator should generate relations based on
                 foreign key constraints it detects in the database. Note that if your database contains too many tables,
                 you may want to uncheck this option to accelerate the code generation process.',
+            'generateRelationsFromCurrentSchema' => 'This indicates whether the generator should generate relations from current schema or from all available schemas.',
             'generateLabelsFromComments' => 'This indicates whether the generator should generate attribute labels
                 by using the comments of the corresponding DB columns.',
             'useTablePrefix' => 'This indicates whether the table name returned by the generated ActiveRecord class
@@ -170,7 +152,7 @@ class Generator extends \yii\gii\Generator
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function autoCompleteData()
     {
@@ -180,30 +162,27 @@ class Generator extends \yii\gii\Generator
                 'tableName' => function () use ($db) {
                     return $db->getSchema()->getTableNames();
                 },
-                'langTableName' => function () use ($db) {
-                    return $db->getSchema()->getTableNames();
-                },
             ];
-        } else {
-            return [];
         }
+
+        return [];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function requiredTemplates()
     {
         // @todo make 'query.php' to be required before 2.1 release
-        return ['model.php'/*, 'query.php'*/, 'lang-model.php'];
+        return ['model.php'/*, 'query.php'*/];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function stickyAttributes()
     {
-        return array_merge(parent::stickyAttributes(), ['ns', 'db', 'baseClass', 'baseLangClass', 'generateRelations', 'generateLabelsFromComments', 'queryNs', 'queryBaseClass', 'languageModel']);
+        return array_merge(parent::stickyAttributes(), ['ns', 'db', 'baseClass', 'generateRelations', 'generateLabelsFromComments', 'queryNs', 'queryBaseClass', 'useTablePrefix', 'generateQuery']);
     }
 
     /**
@@ -215,83 +194,85 @@ class Generator extends \yii\gii\Generator
      */
     public function getTablePrefix()
     {
-      $db = $this->getDbConnection();
-      if ($db !== null) {
-          return $db->tablePrefix;
-      } else {
-          return '';
-      }
+        $db = $this->getDbConnection();
+        if ($db !== null) {
+            return $db->tablePrefix;
+        }
+
+        return '';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function generate()
     {
         $files = [];
         $relations = $this->generateRelations();
         $db = $this->getDbConnection();
-
-        // model :
-        $modelClassName = $this->generateClassName($this->tableName);
-        $queryClassName = ($this->generateQuery) ? $this->generateQueryClassName($modelClassName) : false;
-        $tableSchema = $db->getTableSchema($this->tableName);
-
-        // lang model :
-        $langModelClassName = $this->langClass;
-        $langQueryClassName = ($this->generateQuery) ? $this->generateQueryClassName($langModelClassName) : false;
-        $langTableSchema = $db->getTableSchema($this->langTableName);
-
-
-        // model :
-        $params = [
-            'tableName' => $this->tableName,
-            'className' => $modelClassName,
-            'langClassName' => $langModelClassName,
-            'queryClassName' => $queryClassName,
-            'langRelationField' => $this->langRelationField,
-            'tableSchema' => $tableSchema,
-            'languageModel' => $this->languageModel,
-            'labels' => $this->generateLabels($tableSchema),
-            'rules' => $this->generateRules($tableSchema),
-            'relations' => isset($relations[$this->tableName]) ? $relations[$this->tableName] : [],
-        ];
-        $files[] = new CodeFile(
-            Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $modelClassName . '.php',
-            $this->render('model.php', $params)
-        );
-
-
-        // lang model :
-        $params = [
-            'tableName' => $this->langTableName,
-            'className' => $modelClassName,
-            'langClassName' => $langModelClassName,
-            'queryClassName' => $langQueryClassName,
-            'langRelationField' => $this->langRelationField,
-            'languageModel' => $this->languageModel,
-            'tableSchema' => $langTableSchema,
-            'labels' => $this->generateLabels($langTableSchema),
-            'rules' => $this->generateRules($langTableSchema),
-            'relations' => isset($relations[$this->langTableName]) ? $relations[$this->langTableName] : [],
-        ];
-        $files[] = new CodeFile(
-            Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $langModelClassName . '.php',
-            $this->render('lang-model.php', $params)
-        );
-
-
-        // query :
-        if ($queryClassName) {
-            $params['className'] = $queryClassName;
-            $params['modelClassName'] = $modelClassName;
+        foreach ($this->getTableNames() as $tableName) {
+            // model :
+            $modelClassName = $this->generateClassName($tableName);
+            $queryClassName = ($this->generateQuery) ? $this->generateQueryClassName($modelClassName) : false;
+            $tableSchema = $db->getTableSchema($tableName);
+            $params = [
+                'tableName' => $tableName,
+                'className' => $modelClassName,
+                'queryClassName' => $queryClassName,
+                'tableSchema' => $tableSchema,
+                'properties' => $this->generateProperties($tableSchema),
+                'labels' => $this->generateLabels($tableSchema),
+                'rules' => $this->generateRules($tableSchema),
+                'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
+            ];
+            if($this->generateMap){
+                $params['generateMapTitle'] = $this->generateMapTitle;
+            }
             $files[] = new CodeFile(
-                Yii::getAlias('@' . str_replace('\\', '/', $this->queryNs)) . '/' . $queryClassName . '.php',
-                $this->render('query.php', $params)
+                Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $modelClassName . '.php',
+                $this->render('model.php', $params)
             );
+
+            // query :
+            if ($queryClassName) {
+                $params['className'] = $queryClassName;
+                $params['modelClassName'] = $modelClassName;
+                $files[] = new CodeFile(
+                    Yii::getAlias('@' . str_replace('\\', '/', $this->queryNs)) . '/' . $queryClassName . '.php',
+                    $this->render('query.php', $params)
+                );
+            }
         }
 
         return $files;
+    }
+
+    /**
+     * Generates the properties for the specified table.
+     * @param \yii\db\TableSchema $table the table schema
+     * @return array the generated properties (property => type)
+     * @since 2.0.6
+     */
+    protected function generateProperties($table)
+    {
+        $properties = [];
+        foreach ($table->columns as $column) {
+            $columnPhpType = $column->phpType;
+            if ($columnPhpType === 'integer') {
+                $type = 'int';
+            } elseif ($columnPhpType === 'boolean') {
+                $type = 'bool';
+            } else {
+                $type = $columnPhpType;
+            }
+            $properties[$column->name] = [
+                'type' => $type,
+                'name' => $column->name,
+                'comment' => $column->comment,
+            ];
+        }
+
+        return $properties;
     }
 
     /**
@@ -307,8 +288,6 @@ class Generator extends \yii\gii\Generator
                 $labels[$column->name] = $column->comment;
             } elseif (!strcasecmp($column->name, 'id')) {
                 $labels[$column->name] = 'ID';
-            } elseif($this->getLabelByColumnName($column->name)) {
-                $labels[$column->name] = $this->getLabelByColumnName($column->name);
             } else {
                 $label = Inflector::camel2words($column->name);
                 if (!empty($label) && substr_compare($label, ' id', -3, 3, true) === 0) {
@@ -319,73 +298,6 @@ class Generator extends \yii\gii\Generator
         }
 
         return $labels;
-    }
-
-    public function getLabelByColumnName($columnName) {
-        $labels = [
-            'id' => 'ID',
-            'content' => 'Контент',
-            'description' => 'Описание',
-            'short_description' => 'Краткое описание',
-            'title' => 'Заголовок',
-            'slug' => 'URL',
-            'ip_address' => 'IP адрес',
-
-            'gallery_id' => 'Галерея',
-            'gallery' => 'Галерея',
-
-            'client_id' => 'Клиент',
-            'client' => 'Клиент',
-
-            'order_id' => 'Заказ',
-            'order' => 'Заказ',
-
-            'region_id' => 'Регион',
-            'region' => 'Регион',
-
-            'icon_id' => 'Иконка',
-            'icon' => 'Иконка',
-
-            'comment_id' => 'Комментарий',
-            'comment' => 'Комментарий',
-
-            'file_id' => 'Файл',
-            'file' => 'Файл',
-
-            'image_id' => 'Изображение',
-            'image' => 'Изображение',
-
-            'user_id' => 'Пользователь',
-            'user' => 'Пользователь',
-
-            'block_id' => 'Блок',
-            'block' => 'Блок',
-
-            'thumbnail_file_id' => 'Миниатюра',
-            'thumbnail_image_id' => 'Миниатюра',
-            'thumbnail_image' => 'Миниатюра',
-            'thumbnail' => 'Миниатюра',
-
-            'header_image_id' => 'Изображение заголовка',
-            'header_image' => 'Изображение заголовка',
-            'header_file_id' => 'Изображение заголовка',
-            'header_file' => 'Изображение заголовка',
-            'header_img_file_id' => 'Изображение заголовка',
-
-            'seo_title' => 'SEO заголовок',
-            'seo_description' => 'SEO описание',
-
-            'date_create' => 'Дата создания',
-            'created_at' => 'Дата создания',
-
-            'date_update' => 'Дата последнего обновления',
-            'updated_at' => 'Дата последнего обновления',
-        ];
-        if( isset($labels[$columnName]) ) {
-            return $labels[$columnName];
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -402,24 +314,20 @@ class Generator extends \yii\gii\Generator
                 continue;
             }
             if (!$column->allowNull && $column->defaultValue === null) {
-                if(    $column->name !== 'created_at'
-                    && $column->name !== 'updated_at'
-                    && $column->name !== $this->langRelationField
-                ) {
-                    $types['required'][] = $column->name;
-                }
+                $types['required'][] = $column->name;
             }
             switch ($column->type) {
                 case Schema::TYPE_SMALLINT:
                 case Schema::TYPE_INTEGER:
                 case Schema::TYPE_BIGINT:
+                case Schema::TYPE_TINYINT:
                     $types['integer'][] = $column->name;
                     break;
                 case Schema::TYPE_BOOLEAN:
                     $types['boolean'][] = $column->name;
                     break;
                 case Schema::TYPE_FLOAT:
-                case 'double': // Schema::TYPE_DOUBLE, which is available since Yii 2.0.3
+                case Schema::TYPE_DOUBLE:
                 case Schema::TYPE_DECIMAL:
                 case Schema::TYPE_MONEY:
                     $types['number'][] = $column->name;
@@ -428,6 +336,7 @@ class Generator extends \yii\gii\Generator
                 case Schema::TYPE_TIME:
                 case Schema::TYPE_DATETIME:
                 case Schema::TYPE_TIMESTAMP:
+                case Schema::TYPE_JSON:
                     $types['safe'][] = $column->name;
                     break;
                 default: // strings
@@ -439,7 +348,11 @@ class Generator extends \yii\gii\Generator
             }
         }
         $rules = [];
+        $driverName = $this->getDbDriverName();
         foreach ($types as $type => $columns) {
+            if ($driverName === 'pgsql' && $type === 'integer') {
+                $rules[] = "[['" . implode("', '", $columns) . "'], 'default', 'value' => null]";
+            }
             $rules[] = "[['" . implode("', '", $columns) . "'], '$type']";
         }
         foreach ($lengths as $length => $columns) {
@@ -450,7 +363,8 @@ class Generator extends \yii\gii\Generator
 
         // Unique indexes rules
         try {
-            $uniqueIndexes = $db->getSchema()->findUniqueIndexes($table);
+            $uniqueIndexes = array_merge($db->getSchema()->findUniqueIndexes($table), [$table->primaryKey]);
+            $uniqueIndexes = array_unique($uniqueIndexes, SORT_REGULAR);
             foreach ($uniqueIndexes as $uniqueColumns) {
                 // Avoid validating auto incremental columns
                 if (!$this->isColumnAutoIncremental($table, $uniqueColumns)) {
@@ -459,10 +373,8 @@ class Generator extends \yii\gii\Generator
                     if ($attributesCount === 1) {
                         $rules[] = "[['" . $uniqueColumns[0] . "'], 'unique']";
                     } elseif ($attributesCount > 1) {
-                        $labels = array_intersect_key($this->generateLabels($table), array_flip($uniqueColumns));
-                        $lastLabel = array_pop($labels);
                         $columnsList = implode("', '", $uniqueColumns);
-                        $rules[] = "[['$columnsList'], 'unique', 'targetAttribute' => ['$columnsList'], 'message' => 'The combination of " . implode(', ', $labels) . " and $lastLabel has already been taken.']";
+                        $rules[] = "[['$columnsList'], 'unique', 'targetAttribute' => ['$columnsList']]";
                     }
                 }
             }
@@ -486,7 +398,7 @@ class Generator extends \yii\gii\Generator
                 $targetAttributes[] = "'$key' => '$value'";
             }
             $targetAttributes = implode(', ', $targetAttributes);
-            $rules[] = "[['$attributes'], 'exist', 'skipOnError' => true, 'targetClass' => $refClassName::className(), 'targetAttribute' => [$targetAttributes]]";
+            $rules[] = "[['$attributes'], 'exist', 'skipOnError' => true, 'targetClass' => $refClassName::class, 'targetAttribute' => [$targetAttributes]]";
         }
 
         return $rules;
@@ -513,11 +425,16 @@ class Generator extends \yii\gii\Generator
             $table0Schema = $db->getTableSchema($table0);
             $table1Schema = $db->getTableSchema($table1);
 
+            // @see https://github.com/yiisoft/yii2-gii/issues/166
+            if ($table0Schema === null || $table1Schema === null) {
+                continue;
+            }
+
             $link = $this->generateRelationLink(array_flip($secondKey));
             $viaLink = $this->generateRelationLink($firstKey);
             $relationName = $this->generateRelationName($relations, $table0Schema, key($secondKey), true);
             $relations[$table0Schema->fullName][$relationName] = [
-                "return \$this->hasMany($className1::className(), $link)->viaTable('"
+                "return \$this->hasMany($className1::class, $link)->viaTable('"
                 . $this->generateTableName($table->name) . "', $viaLink);",
                 $className1,
                 true,
@@ -527,7 +444,7 @@ class Generator extends \yii\gii\Generator
             $viaLink = $this->generateRelationLink($secondKey);
             $relationName = $this->generateRelationName($relations, $table1Schema, key($firstKey), true);
             $relations[$table1Schema->fullName][$relationName] = [
-                "return \$this->hasMany($className0::className(), $link)->viaTable('"
+                "return \$this->hasMany($className0::class, $link)->viaTable('"
                 . $this->generateTableName($table->name) . "', $viaLink);",
                 $className0,
                 true,
@@ -545,6 +462,14 @@ class Generator extends \yii\gii\Generator
     protected function getSchemaNames()
     {
         $db = $this->getDbConnection();
+
+        if ($this->generateRelationsFromCurrentSchema) {
+            if ($db->schema->defaultSchema !== null) {
+                return [$db->schema->defaultSchema];
+            }
+            return [''];
+        }
+
         $schema = $db->getSchema();
         if ($schema->hasMethod('getSchemaNames')) { // keep BC to Yii versions < 2.0.4
             try {
@@ -573,9 +498,9 @@ class Generator extends \yii\gii\Generator
         }
 
         $db = $this->getDbConnection();
-
         $relations = [];
-        foreach ($this->getSchemaNames() as $schemaName) {
+        $schemaNames = $this->getSchemaNames();
+        foreach ($schemaNames as $schemaName) {
             foreach ($db->getSchema()->getTableSchemas($schemaName) as $table) {
                 $className = $this->generateClassName($table->fullName);
                 foreach ($table->foreignKeys as $refs) {
@@ -593,7 +518,7 @@ class Generator extends \yii\gii\Generator
                     $link = $this->generateRelationLink(array_flip($refs));
                     $relationName = $this->generateRelationName($relations, $table, $fks[0], false);
                     $relations[$table->fullName][$relationName] = [
-                        "return \$this->hasOne($refClassName::className(), $link);",
+                        "return \$this->hasOne($refClassName::class, $link);",
                         $refClassName,
                         false,
                     ];
@@ -603,7 +528,7 @@ class Generator extends \yii\gii\Generator
                     $link = $this->generateRelationLink($refs);
                     $relationName = $this->generateRelationName($relations, $refTableSchema, $className, $hasMany);
                     $relations[$refTableSchema->fullName][$relationName] = [
-                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "($className::className(), $link);",
+                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "($className::class, $link);",
                         $className,
                         $hasMany,
                     ];
@@ -633,13 +558,20 @@ class Generator extends \yii\gii\Generator
      */
     protected function addInverseRelations($relations)
     {
+        $db = $this->getDbConnection();
         $relationNames = [];
-        foreach ($this->getSchemaNames() as $schemaName) {
-            foreach ($this->getDbConnection()->getSchema()->getTableSchemas($schemaName) as $table) {
+
+        $schemaNames = $this->getSchemaNames();
+        foreach ($schemaNames as $schemaName) {
+            foreach ($db->schema->getTableSchemas($schemaName) as $table) {
                 $className = $this->generateClassName($table->fullName);
                 foreach ($table->foreignKeys as $refs) {
                     $refTable = $refs[0];
-                    $refTableSchema = $this->getDbConnection()->getTableSchema($refTable);
+                    $refTableSchema = $db->getTableSchema($refTable);
+                    if ($refTableSchema === null) {
+                        // Foreign key could point to non-existing table: https://github.com/yiisoft/yii2-gii/issues/34
+                        continue;
+                    }
                     unset($refs[0]);
                     $fks = array_keys($refs);
 
@@ -671,7 +603,7 @@ class Generator extends \yii\gii\Generator
      *
      * @param TableSchema $table
      * @param array $fks
-     * @return boolean
+     * @return bool
      * @since 2.0.5
      */
     protected function isHasManyRelation($table, $fks)
@@ -708,7 +640,7 @@ class Generator extends \yii\gii\Generator
     /**
      * Checks if the given table is a junction table, that is it has at least one pair of unique foreign keys.
      * @param \yii\db\TableSchema the table being checked
-     * @return array|boolean all unique foreign key pairs if the table is a junction table,
+     * @return array|bool all unique foreign key pairs if the table is a junction table,
      * or false if the table is not a junction table.
      */
     protected function checkJunctionTable($table)
@@ -725,11 +657,13 @@ class Generator extends \yii\gii\Generator
         $result = [];
         // find all foreign key pairs that have all columns in an unique constraint
         $foreignKeys = array_values($table->foreignKeys);
-        for ($i = 0; $i < count($foreignKeys); $i++) {
+        $foreignKeysCount = count($foreignKeys);
+
+        for ($i = 0; $i < $foreignKeysCount; $i++) {
             $firstColumns = $foreignKeys[$i];
             unset($firstColumns[0]);
 
-            for ($j = $i + 1; $j < count($foreignKeys); $j++) {
+            for ($j = $i + 1; $j < $foreignKeysCount; $j++) {
                 $secondColumns = $foreignKeys[$j];
                 unset($secondColumns[0]);
 
@@ -751,19 +685,33 @@ class Generator extends \yii\gii\Generator
      * @param array $relations the relations being generated currently.
      * @param \yii\db\TableSchema $table the table schema
      * @param string $key a base name that the relation name may be generated from
-     * @param boolean $multiple whether this is a has-many relation
+     * @param bool $multiple whether this is a has-many relation
      * @return string the relation name
      */
     protected function generateRelationName($relations, $table, $key, $multiple)
     {
-        if (!empty($key) && substr_compare($key, 'id', -2, 2, true) === 0 && strcasecmp($key, 'id')) {
-            $key = rtrim(substr($key, 0, -2), '_');
+        static $baseModel;
+        /* @var $baseModel \yii\db\ActiveRecord */
+        if ($baseModel === null) {
+            $baseClass = $this->baseClass;
+            $baseModel = new $baseClass();
+            $baseModel->setAttributes([]);
+        }
+        if (!empty($key) && strcasecmp($key, 'id')) {
+            if (substr_compare($key, 'id', -2, 2, true) === 0) {
+                $key = rtrim(substr($key, 0, -2), '_');
+            } elseif (substr_compare($key, 'id', 0, 2, true) === 0) {
+                $key = ltrim(substr($key, 2, strlen($key)), '_');
+            }
         }
         if ($multiple) {
             $key = Inflector::pluralize($key);
         }
         $name = $rawName = Inflector::id2camel($key, '_');
         $i = 0;
+        while ($baseModel->hasProperty(lcfirst($name))) {
+            $name = $rawName . ($i++);
+        }
         while (isset($table->columns[lcfirst($name)])) {
             $name = $rawName . ($i++);
         }
@@ -900,7 +848,7 @@ class Generator extends \yii\gii\Generator
     /**
      * Generates a class name from the specified table name.
      * @param string $tableName the table name (which may contain schema prefix)
-     * @param boolean $useSchemaName should schema name be included in the class name, if present
+     * @param bool $useSchemaName should schema name be included in the class name, if present
      * @return string the generated class name
      */
     protected function generateClassName($tableName, $useSchemaName = null)
@@ -963,10 +911,22 @@ class Generator extends \yii\gii\Generator
     }
 
     /**
+     * @return string|null driver name of db connection.
+     * In case db is not instance of \yii\db\Connection null will be returned.
+     * @since 2.0.6
+     */
+    protected function getDbDriverName()
+    {
+        /** @var Connection $db */
+        $db = $this->getDbConnection();
+        return $db instanceof \yii\db\Connection ? $db->driverName : null;
+    }
+
+    /**
      * Checks if any of the specified columns is auto incremental.
      * @param \yii\db\TableSchema $table the table schema
      * @param array $columns columns to check for autoIncrement property
-     * @return boolean whether any of the specified columns is auto incremental.
+     * @return bool whether any of the specified columns is auto incremental.
      */
     protected function isColumnAutoIncremental($table, $columns)
     {

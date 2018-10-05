@@ -153,8 +153,8 @@ class Bulletin extends \common\lib\ActiveRecord
                     $notDeletedIds[] = $attributeVal->id;
                 }
                 if (!$this->isNewRecord) {
-                    CategoryAttribute::deleteAll(
-                      ['and', ['not in', 'id', $notDeletedIds], ['category_id' => $this->id]]
+                    AttributeVal::deleteAll(
+                      ['and', ['not in', 'id', $notDeletedIds], ['entity_id' => $this->id]]
                     );
                 }
                 $tr->commit();

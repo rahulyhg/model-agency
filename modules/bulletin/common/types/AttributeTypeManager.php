@@ -3,68 +3,57 @@
 namespace modules\bulletin\common\types;
 
 
+use modules\bulletin\common\models\Attribute;
+use modules\bulletin\common\models\AttributeVal;
+use modules\bulletin\common\models\Category;
 use yii\base\BaseObject;
 use yii\base\DynamicModel;
+use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 class AttributeTypeManager extends BaseObject
 {
-  public $fields;
-
-  public function init()
-  {
-    $types = [
-      1 => 'Квартира',
-      2 => 'Часть квартиры',
-      3 => 'Комната',
-    ];
-    $this->fields = [
-      '1' => [
-        'rules' => [
-          'number',
-          'required',
-        ],
-      ],
-      '2' => [
-        'rules' => [
-          'integer' => ['min' => 1, 'max' => 50],
-          'required',
-        ],
-      ],
-      '3' => [
-        'rules' => [
-          'in' => ['range' => $types],
-        ],
-        'items' => $types,
-      ],
-      '4' => [
-        'rules' => [
-          'boolean'
-        ]
-      ],
-    ];
-
-    foreach ($this->fields as $key => $field) {
-      $this->attsNames[$key] = 'attr_' . $key;
-    }
-    $dynamicModel = new DynamicModel($this->attsNames);
-    foreach ($this->fields as $id => $field) {
-      foreach ($field['rules'] as $key => $value)
-        if (is_array($value)) {
-          $dynamicModel->addRule($this->attsNames[$id], $key, $value);
-        } else {
-          $dynamicModel->addRule($this->attsNames[$id], $value);
-        }
-    }
-
-    $this->model = $dynamicModel;
-  }
-
-  protected $attsNames = [];
+  /**
+   * @var AttributeVal[]|null
+   */
+  public $models;
 
   /**
    * @var DynamicModel
    */
   public $model;
+
+  /**
+   * @var BaseType[]
+   */
+  public $fields = [];
+
+  public function init()
+  {
+    if ($this->models) {
+      $this->models = ArrayHelper::index($this->models, 'attribute_id');
+    }
+
+    $tempAttributes = [];
+    foreach ($this->fields as $id => $field) {
+      if ($this->models && $this->models[$id]) {
+        $tempAttributes[$this->nameById($id)] = $this->models[$id]->val;
+      } else {
+        $tempAttributes[] = $this->nameById($id);
+      }
+    }
+
+    $this->model = new DynamicModel($tempAttributes);
+    foreach ($this->fields as $id => $field) {
+      foreach ($field->rules as $key => $value) {
+        if (is_array($value)) {
+          $this->model->addRule($this->nameById($id), $key, $value);
+        } else {
+          $this->model->addRule($this->nameById($id), $value);
+        }
+      }
+    }
+  }
 
   /**
    * @param $form \yii\widgets\ActiveForm
@@ -74,40 +63,59 @@ class AttributeTypeManager extends BaseObject
   {
     $formFields = [];
     foreach ($this->fields as $id => $field) {
-      switch ($id) {
-        case '1' :
-          $formFields[] = $form->field($this->model, $this->attsNames[$id])->textInput();
-          break;
-        case '2' :
-          $formFields[] = $form->field($this->model, $this->attsNames[$id])->textInput();
-          break;
-        case '3' :
-          $formFields[] = $form->field($this->model, $this->attsNames[$id])->widget(\kartik\widgets\Select2::class, [
-            'data' => $field['items'],
-            'options' => ['placeholder' => ''],
-            'pluginOptions' => ['allowClear' => true]
-          ]);;
-          break;
-        case '4' :
-          $formFields[] = $form->field($this->model, $this->attsNames[$id])->checkbox();
-          break;
-      }
+      $formFields[] = $field->generateValueField($form, $this->model, $this->nameById($id));
     }
     return $formFields;
   }
 
-  public function getIdByName($name)
+  public function getModelsToSave()
   {
-    foreach($this->attsNames as $key => $value){
-      if($name == $value)
-        return $key;
+
+
+    $attributeValModels = [];
+    foreach ($this->model->attributes as $key => $value) {
+      $id = $this->idByName($key);
+      if ($this->models[$id]) {
+        $this->models[$id]->val = $value;
+        $attributeValModels[] = $this->models[$id];
+      } else {
+        $attributeValModels[] = new AttributeVal([
+          'attribute_id' => $id,
+          'val' => $value,
+        ]);
+      }
     }
-    throw new \HttpInvalidParamException("Attribute with name '$name' doesn't exist");
+    return $attributeValModels;
   }
 
-  public function getNameById($id)
+  protected function idByName($name)
   {
-    return $this->attsNames[$id];
+    return str_replace('attr_', '', $name);
+  }
+
+  protected function nameById($id)
+  {
+    return 'attr_' . $id;
+  }
+
+  public function loadModel($data)
+  {
+    return $this->model->load($data);
+  }
+
+  public static function createByCategory($categoryId, $models = null)
+  {
+    $fields = [];
+    foreach(Attribute::findByCategory($categoryId) as $attribute){
+      $params = \yii\helpers\Json::decode($attribute->type_settings) ? : [];
+      $typeClass = $attribute->getTypeClass();
+      $fields[$attribute->id] = new $typeClass($params);
+    }
+    $obj = new self([
+      'fields' => $fields,
+      'models' => $models,
+    ]);
+    return $obj;
   }
 
   //        $dynamicModel = new DynamicModel(compact('price', 'floor_number', 'type', 'is_commission'));

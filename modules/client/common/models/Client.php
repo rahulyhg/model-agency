@@ -2,6 +2,7 @@
 
 namespace modules\client\common\models;
 
+use modules\bulletin\common\models\Bulletin;
 use modules\location\common\models\Location;
 use Yii;
 
@@ -40,13 +41,13 @@ class Client extends \common\lib\ActiveRecord
     {
         return [
             [['avatar_id', 'location_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['email', 'phone', 'auth_key', 'password_hash'], 'required'],
+            [['email', 'phone', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
             [['email', 'phone', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['email'], 'unique'],
             [['phone'], 'unique'],
             [['password_reset_token'], 'unique'],
-            [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['location_id' => 'id']],
+            [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::class, 'targetAttribute' => ['location_id' => 'id']],
         ];
     }
 
@@ -75,7 +76,7 @@ class Client extends \common\lib\ActiveRecord
      */
     public function getBulletins()
     {
-        return $this->hasMany(Bulletin::className(), ['client_id' => 'id']);
+        return $this->hasMany(Bulletin::class, ['client_id' => 'id']);
     }
 
     /**
@@ -83,6 +84,20 @@ class Client extends \common\lib\ActiveRecord
      */
     public function getLocation()
     {
-        return $this->hasOne(Location::className(), ['id' => 'location_id']);
+        return $this->hasOne(Location::class, ['id' => 'location_id']);
+    }
+
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if(!isset(self::$_map)) {
+            self::$_map = \yii\helpers\ArrayHelper::map(
+                self::find()
+                  ->orderBy('phone')
+                  ->all(), 'id', 'phone'
+            );
+        }
+        return self::$_map;
     }
 }

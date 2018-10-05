@@ -4,7 +4,7 @@
  */
 
 /* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\model\Generator */
+/* @var $generator backend\gii\generators\newModel\Generator */
 /* @var $tableName string full table name */
 /* @var $className string class name */
 /* @var $tableSchema yii\db\TableSchema */
@@ -37,7 +37,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\
     }*/
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return <?= $modelFullClassName ?>[]|array
      */
     public function all($db = null)
@@ -46,7 +46,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return <?= $modelFullClassName ?>|array|null
      */
     public function one($db = null)

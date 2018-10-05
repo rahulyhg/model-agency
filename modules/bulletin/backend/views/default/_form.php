@@ -1,13 +1,16 @@
 <?php
 
+use modules\bulletin\common\models\Category;
+use modules\client\common\models\Client;
+use modules\location\common\models\Location;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
 
 /* @var $this yii\web\View */
 /* @var $model modules\bulletin\common\models\Bulletin */
-/* @var $attributeTypeManager modules\bulletin\common\types\AttributeTypeManager */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $attributeTypeManager modules\bulletin\common\types\AttributeTypeManager */
 ?>
 
 
@@ -40,18 +43,34 @@ use backend\widgets\crudActions\CrudActions;
         </div>
         <div class="row">
           <div class="col-md-6">
-        <?= $form->field($model, 'location_id')->textInput() ?>
+        <?= $form->field($model, 'location_id')->widget(kartik\widgets\Select2::class, [
+                      'data' => Location::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ]) ?>
           </div>
           <div class="col-md-6">
-        <?= $form->field($model, 'client_id')->textInput() ?>
+        <?= $form->field($model, 'client_id')->widget(kartik\widgets\Select2::class, [
+                      'data' => Client::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ]) ?>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-        <?= $form->field($model, 'category_id')->textInput() ?>
+        <?= $form->field($model, 'category_id')->widget(kartik\widgets\Select2::class, [
+                      'data' => Category::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ]) ?>
           </div>
           <div class="col-md-6">
-        <?= $form->field($model, 'status_id')->textInput() ?>
+        <?= $form->field($model, 'status_id')->widget(kartik\widgets\Select2::class, [
+          'data' => \modules\bulletin\common\models\BulletinStatus::getMap(),
+          'options' => ['placeholder' => ''],
+          'pluginOptions' => ['allowClear' => true],
+        ]) ?>
           </div>
         </div>
       <div class="row">

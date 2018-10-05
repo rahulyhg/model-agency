@@ -29,6 +29,18 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
     }
 
     /**
+     * @param $categoryId
+     * @return array|self[]
+     */
+    public static function findByCategory($categoryId)
+    {
+        return Attribute::find()
+          ->joinWith(['categoryAttributes ca', 'translations'])
+          ->where(['ca.category_id' => $categoryId])
+          ->all();
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -95,10 +107,15 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
             self::$_map = \yii\helpers\ArrayHelper::map(
                 self::find()
                   ->joinWith('translations tr')
-                  ->orderBy('tr.name')
+                  ->orderBy('name')
                   ->all(), 'id', 'name'
             );
         }
         return self::$_map;
+    }
+
+    public function getTypeClass()
+    {
+        return AttributeType::getProcessClass($this->type_id);
     }
 }

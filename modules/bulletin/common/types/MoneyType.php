@@ -3,6 +3,6 @@
 namespace modules\bulletin\common\types;
 
 
-class IntegerType extends BaseType
+class MoneyType extends BaseType
 {
 }

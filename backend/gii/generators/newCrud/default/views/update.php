@@ -2,7 +2,7 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
+/* @var $generator backend\gii\generators\newCrud\Generator */
 $urlParams = $generator->generateUrlParams();
 echo "<?php\n";
 ?>
@@ -13,12 +13,11 @@ use yii\helpers\Html;
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
 
 $this->title = <?= strtr($generator->generateString('Редактировать ' .
-  Inflector::camel2words(StringHelper::basename($generator->modelClass)) .
+  ($generator->singularEntityName ? : Inflector::camel2words(StringHelper::basename($generator->modelClass))) .
   ': {nameAttribute}', ['nameAttribute' => '{nameAttribute}']), [
   '{nameAttribute}\'' => '\' . $model->' . $generator->getNameAttribute()
 ]) ?>;
-$this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>, 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model-><?= $generator->getNameAttribute() ?>, 'url' => ['view', <?= $urlParams ?>]];
+$this->params['breadcrumbs'][] = ['label' => <?= $generator->indexPageTitle ? "'$generator->indexPageTitle'" : $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>, 'url' => ['index']];
 $this->params['breadcrumbs'][] = <?= $generator->generateString('Редактировать') ?>;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">

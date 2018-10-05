@@ -31,7 +31,7 @@ class AttributeVal extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['attribute_id', 'entity_id'], 'required'],
+            [['attribute_id',], 'required'],
             [['attribute_id', 'entity_id'], 'integer'],
             [['val'], 'string'],
             [['attribute_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::className(), 'targetAttribute' => ['attribute_id' => 'id']],

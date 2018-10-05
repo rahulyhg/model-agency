@@ -34,7 +34,7 @@ class BulletinStatusLang extends \modules\lang\lib\LangActiveRecord
             [['entity_id', 'lang_id'], 'integer'],
             [['lang_id', 'name'], 'required'],
             [['name'], 'string', 'max' => 255],
-            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => BulletinStatus::className(), 'targetAttribute' => ['entity_id' => 'id']],
+            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => BulletinStatus::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
     }
 
@@ -56,7 +56,7 @@ class BulletinStatusLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getEntity()
     {
-        return $this->hasOne(BulletinStatus::className(), ['id' => 'entity_id']);
+        return $this->hasOne(BulletinStatus::class, ['id' => 'entity_id']);
     }
     
     /**
@@ -64,6 +64,6 @@ class BulletinStatusLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getLang()
     {
-        return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+        return $this->hasOne(Lang::class, ['id' => 'lang_id']);
     }
 }
