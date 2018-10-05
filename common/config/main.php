@@ -39,5 +39,11 @@ return [
         'bulletin' => [
             'class' => modules\bulletin\Module::class,
         ],
+        'location' => [
+            'class' => modules\location\Module::class,
+        ],
+        'client' => [
+            'class' => modules\client\Module::class,
+        ],
     ]
 ];

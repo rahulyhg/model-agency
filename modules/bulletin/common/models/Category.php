@@ -1,0 +1,146 @@
+<?php
+
+namespace modules\bulletin\common\models;
+
+use common\models\DynamicModel;
+use Yii;
+use yii\db\Exception;
+
+/**
+ * This is the model class for table "{{%category}}".
+ *
+ * @property integer $id
+ * @property integer $parent_id
+ * @property integer $created_at
+ * @property integer $updated_at
+ *
+ * @property Bulletin[] $bulletins
+ * @property Category $parent
+ * @property Category[] $categories
+ * @property CategoryAttribute[] $categoryAttributes
+ * @property CategoryLang[] $translations
+ */
+class Category extends \modules\lang\lib\TranslatableActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%category}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['parent_id', 'created_at', 'updated_at'], 'integer'],
+            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parent_id' => 'id']],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'parent_id' => 'Parent ID',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата последнего обновления',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBulletins()
+    {
+        return $this->hasMany(Bulletin::className(), ['category_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParent()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'parent_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategories()
+    {
+        return $this->hasMany(Category::className(), ['parent_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategoryAttributes()
+    {
+        return $this->hasMany(CategoryAttribute::class, ['category_id' => 'id'])->orderBy(['position' => SORT_ASC]);
+    }
+
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getTranslations()
+    {
+        return $this->hasMany(CategoryLang::className(), ['entity_id' => 'id']);
+    }
+
+    public function beforeValidate()
+    {
+        if(parent::beforeValidate()) {
+            return self::validateMultiple($this->categoryAttributes);
+        }
+        return false;
+    }
+
+    public function load($data, $formName = null)
+    {
+        if (parent::load($data, $formName)) {
+            $categoryAttributes = DynamicModel::createMultiple(CategoryAttribute::class, $this->categoryAttributes ? : [], $data);
+            self::loadMultiple($categoryAttributes, $data);
+            $this->populateRelation('categoryAttributes', $categoryAttributes);
+            return true; //если min == 0 return true здесь и не проверять loadmultiple, если min > 1 return true выше в if блоке проверки loadmultiple
+        }
+        return false;
+    }
+
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $db = $this->getDb();
+        $tr = $db->beginTransaction();
+        try {
+            $categoryAttributes = $this->categoryAttributes;
+            if (parent::save($runValidation, $attributeNames)) {
+                $notDeletedIds = [];
+                foreach ($categoryAttributes as $index => $categoryAttribute) {
+                    $categoryAttribute->category_id = $this->id;
+                    $categoryAttribute->position = $index;
+                    if (!$categoryAttribute->save(false)) {
+                        $tr->rollBack();
+                        return false;
+                    }
+                    $notDeletedIds[] = $categoryAttribute->id;
+                }
+                if (!$this->isNewRecord) {
+                    CategoryAttribute::deleteAll(
+                      ['and', ['not in', 'id', $notDeletedIds], ['category_id' => $this->id]]
+                    );
+                }
+                $tr->commit();
+                return true;
+            }
+        } catch (Exception $ex) {
+            $tr->rollBack();
+        }
+        return false;
+    }
+}

@@ -77,6 +77,17 @@ class CrudActions extends Widget
         CrudActionsAsset::register($this->getView());
         $buttons = $this->renderButtons($this->model);
         $this->view->registerJs("
+        var form_already_submitted = false;
+        var form = $('#js-crud-save-btn').parents('form:first');
+        if(form.length > 0) {
+        form.on('beforeSubmit', function (e) {
+                if(form_already_submitted === false){
+                    form_already_submitted = true;
+                    return true;
+                }
+                return false;
+            });
+        }
         $(window).bind('keydown', function(event) {
             if (event.ctrlKey || event.metaKey) {
                 switch (String.fromCharCode(event.which).toLowerCase()) {

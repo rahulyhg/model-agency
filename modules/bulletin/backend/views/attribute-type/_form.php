@@ -9,9 +9,9 @@ use backend\widgets\crudActions\CrudActions;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-
-
 <?php $form = ActiveForm::begin(); ?>
+
+<?= $model->getHiddenFormTokenField() ?>
 
 <div class="m-portlet__head">
   <div class="m-portlet__head-caption">
@@ -30,8 +30,13 @@ use backend\widgets\crudActions\CrudActions;
   <div class="row">
     <div class="col-xl-8 offset-xl-2">
         <div class="row">
+          <?php if($model->isNewRecord) : ?>
           <div class="col-md-6">
-        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'id')->textInput(['type' => 'number', 'step' => '1']) ?>
+          </div>
+          <?php endif; ?>
+          <div class="col-md-6">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
           </div>
         </div>
     </div>

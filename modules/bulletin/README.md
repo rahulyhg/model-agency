@@ -1,10 +1,10 @@
 Add module
-'ad' => [
-  'class' => modules\ad\Module::class,
+'bulletin' => [
+  'class' => modules\bulletin\Module::class,
 ],
 
 Migration
-copy migrations from ad\migrations to console\migrations and do yii migrate
+copy migrations from bulletin\migrations to console\migrations and do yii migrate
 or
-yii migrate --migrationPath=@modules/ad/migrations
+yii migrate --migrationPath=@modules/bulletin/migrations
 

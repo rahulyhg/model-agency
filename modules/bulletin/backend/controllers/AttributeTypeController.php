@@ -4,8 +4,8 @@ namespace modules\bulletin\backend\controllers;
 
 use Yii;
 use modules\bulletin\common\models\AttributeType;
-    use modules\bulletin\backend\models\AttributeTypeSearch;
-use yii\web\Controller;
+use modules\bulletin\backend\models\AttributeTypeSearch;
+use backend\lib\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;

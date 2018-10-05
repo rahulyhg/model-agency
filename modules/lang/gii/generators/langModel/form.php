@@ -1,16 +1,18 @@
 <?php
 
-use yii\gii\generators\model\Generator;
+use modules\lang\gii\generators\langModel\Generator;
 
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
-/* @var $generator backend\gii\generators\langModel\Generator */
+/* @var $generator modules\lang\gii\generators\langModel\Generator */
 
 echo $form->field($generator, 'tableName')->textInput(['table_prefix' => $generator->getTablePrefix()]);
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'langTableName')->textInput(['table_prefix' => $generator->getTablePrefix()]);
 echo $form->field($generator, 'langRelationField');
 echo $form->field($generator, 'langClass');
+echo $form->field($generator, 'generateMap')->checkbox();
+echo $form->field($generator, 'generateMapTitle');
 echo $form->field($generator, 'ns');
 echo $form->field($generator, 'baseClass');
 echo $form->field($generator, 'baseLangClass');

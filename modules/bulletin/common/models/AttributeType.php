@@ -3,6 +3,7 @@
 namespace modules\bulletin\common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%attribute_type}}".
@@ -22,14 +23,25 @@ class AttributeType extends \common\lib\ActiveRecord
         return '{{%attribute_type}}';
     }
 
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if(!isset(self::$_map))
+            self::$_map = ArrayHelper::map(self::find()->orderBy('name')->all(), 'id', 'name');
+        return self::$_map;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['id', 'name'], 'required'],
             [['name'], 'string', 'max' => 255],
+            [['id'], 'integer'],
+            [['id'], 'unique'],
         ];
     }
 

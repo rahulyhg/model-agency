@@ -17,8 +17,7 @@ $this->title = <?= strtr($generator->generateString('Редактировать 
   ': {nameAttribute}', ['nameAttribute' => '{nameAttribute}']), [
   '{nameAttribute}\'' => '\' . $model->' . $generator->getNameAttribute()
 ]) ?>;
-$this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>, 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model-><?= $generator->getNameAttribute() ?>, 'url' => ['view', <?= $urlParams ?>]];
+$this->params['breadcrumbs'][] = ['label' => <?= $generator->indexPageTitle ? "'$generator->indexPageTitle'" : $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>, 'url' => ['index']];
 $this->params['breadcrumbs'][] = <?= $generator->generateString('Редактировать') ?>;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">

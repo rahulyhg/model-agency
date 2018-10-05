@@ -92,7 +92,7 @@ class <?= $langClassName ?> extends <?= '\\' . ltrim($generator->baseLangClass, 
     */
     public function getLang()
     {
-        return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+        return $this->hasOne(Lang::class, ['id' => 'lang_id']);
     }
 <?php if ($queryClassName): ?>
     <?php

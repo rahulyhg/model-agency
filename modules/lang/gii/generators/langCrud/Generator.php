@@ -10,6 +10,7 @@ namespace modules\lang\gii\generators\langCrud;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\BaseActiveRecord;
+use yii\db\Connection;
 use yii\db\Schema;
 use yii\gii\CodeFile;
 use yii\helpers\ArrayHelper;
@@ -112,7 +113,7 @@ class Generator extends \yii\gii\Generator
             'searchModelClass' => 'Search Model Class',
             'enablePjax' => 'Enable Pjax',
             'iconCssClass' => 'CSS-class for icon (title)',
-            'singularEntityName' => 'Singular entity name',
+            'singularEntityName' => 'Create/update entity name',
         ]);
     }
 
@@ -142,6 +143,7 @@ class Generator extends \yii\gii\Generator
             'enablePjax' => 'This indicates whether the generator should wrap the <code>GridView</code> or <code>ListView</code>
                 widget on the index page with <code>yii\widgets\Pjax</code> widget. Set this to <code>true</code> if you want to get
                 sorting, filtering and pagination without page refreshing.',
+            'singularEntityName' => 'Например, запись/услугу (создать/редактировать кого?/что?)'
         ]);
     }
 
@@ -262,6 +264,8 @@ class Generator extends \yii\gii\Generator
     public function generateActiveField($attribute)
     {
         $tableSchema = $this->getTableSchema();
+
+
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
                 return "\$form->field(\$model, '$attribute')->passwordInput()";
@@ -270,6 +274,20 @@ class Generator extends \yii\gii\Generator
             }
         }
         $column = $tableSchema->columns[$attribute];
+
+        if ($column->phpType === 'integer' && preg_match('/_id$/', $column->name)){
+            foreach($tableSchema->foreignKeys as $fkey) {
+                if(isset($fkey[$column->name])) {
+                    $dataClass = Inflector::id2camel($fkey[0], '_');
+                    return "\$form->field(\$model, '$attribute')->widget(kartik\\widgets\\Select2::class, [
+                      'data' => $dataClass::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ])";
+                }
+            }
+        }
+
         if ($column->phpType === 'boolean') {
             return "\$form->field(\$model, '$attribute')->checkbox()";
         } elseif ($column->type === 'text') {

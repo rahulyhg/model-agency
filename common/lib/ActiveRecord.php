@@ -3,6 +3,7 @@ namespace common\lib;
 
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 class ActiveRecord extends \yii\db\ActiveRecord
 {
@@ -15,5 +16,13 @@ class ActiveRecord extends \yii\db\ActiveRecord
 			}
 		} catch (\Exception $ex) {}
 		return parent::behaviors();
+	}
+
+	public function getHiddenFormTokenField() {
+		$token = \Yii::$app->getSecurity()->generateRandomString();
+		$token = str_replace('+', '.', base64_encode($token));
+
+		\Yii::$app->session->set(\Yii::$app->params['form_token_param'], $token);;
+		return Html::hiddenInput(\Yii::$app->params['form_token_param'], $token);
 	}
 }

@@ -30,7 +30,7 @@ class Generator extends \yii\gii\Generator
     const RELATIONS_ALL_INVERSE = 'all-inverse';
 
     public $db = 'db';
-    public $ns = 'app\models';
+    public $ns = 'common\models';
     public $tableName;
     public $langTableName;
     public $modelClass;
@@ -39,12 +39,14 @@ class Generator extends \yii\gii\Generator
     public $langRelationField = 'entity_id';
     public $baseLangClass = 'modules\lang\lib\LangActiveRecord';
     public $languageModel = 'modules\lang\common\models\Lang';
+    public $generateMap = false;
+    public $generateMapTitle = 'name';
     public $generateRelations = self::RELATIONS_ALL;
     public $generateLabelsFromComments = false;
     public $useTablePrefix = true;
     public $useSchemaName = true;
     public $generateQuery = false;
-    public $queryNs = 'app\models';
+    public $queryNs = 'common\models';
     public $queryClass;
     public $queryBaseClass = 'yii\db\ActiveQuery';
 
@@ -74,7 +76,7 @@ class Generator extends \yii\gii\Generator
             [['db', 'ns', 'tableName', 'langTableName', 'modelClass', 'baseClass', 'queryNs', 'queryClass', 'queryBaseClass', 'langClass', 'baseLangClass', 'langRelationField', 'languageModel'], 'filter', 'filter' => 'trim'],
             [['ns', 'queryNs'], 'filter', 'filter' => function($value) { return trim($value, '\\'); }],
 
-            [['db', 'ns', 'tableName', 'langTableName', 'languageModel', 'baseClass', 'queryNs', 'queryBaseClass', 'langClass', 'baseLangClass', 'langRelationField'], 'required'],
+            [['db', 'ns', 'tableName', 'langTableName', 'languageModel', 'baseClass', 'queryNs', 'queryBaseClass', 'langClass', 'baseLangClass', 'langRelationField', 'generateMapTitle'], 'required'],
             [['db', 'modelClass', 'queryClass', 'langClass'], 'match', 'pattern' => '/^\w+$/', 'message' => 'Only word characters are allowed.'],
             [['ns', 'baseClass', 'queryNs', 'queryBaseClass', 'baseLangClass', 'languageModel'], 'match', 'pattern' => '/^[\w\\\\]+$/', 'message' => 'Only word characters and backslashes are allowed.'],
             [['tableName', 'langTableName'], 'match', 'pattern' => '/^([\w ]+\.)?([\w\* ]+)$/', 'message' => 'Only word characters, and optionally spaces, an asterisk and/or a dot are allowed.'],
@@ -82,11 +84,11 @@ class Generator extends \yii\gii\Generator
             [['ns', 'queryNs'], 'validateNamespace'],
             [['tableName', 'langTableName'], 'validateTableName'],
             [['modelClass', 'langClass'], 'validateModelClass', 'skipOnEmpty' => false],
-            [['baseClass', 'baseLangClass', 'languageModel'], 'validateClass', 'params' => ['extends' => ActiveRecord::className()]],
-            [['queryBaseClass'], 'validateClass', 'params' => ['extends' => ActiveQuery::className()]],
+            [['baseClass', 'baseLangClass', 'languageModel'], 'validateClass', 'params' => ['extends' => ActiveRecord::class]],
+            [['queryBaseClass'], 'validateClass', 'params' => ['extends' => ActiveQuery::class]],
             [['generateRelations'], 'in', 'range' => [self::RELATIONS_NONE, self::RELATIONS_ALL, self::RELATIONS_ALL_INVERSE]],
             [['generateLabelsFromComments', 'useTablePrefix', 'useSchemaName', 'generateQuery'], 'boolean'],
-            [['enableI18N'], 'boolean'],
+            [['enableI18N', 'generateMap'], 'boolean'],
             [['messageCategory'], 'validateMessageCategory', 'skipOnEmpty' => false],
         ]);
     }
@@ -256,6 +258,9 @@ class Generator extends \yii\gii\Generator
             'rules' => $this->generateRules($tableSchema),
             'relations' => isset($relations[$this->tableName]) ? $relations[$this->tableName] : [],
         ];
+        if($this->generateMap){
+            $params['generateMapTitle'] = $this->generateMapTitle;
+        }
         $files[] = new CodeFile(
             Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $modelClassName . '.php',
             $this->render('model.php', $params)
@@ -487,7 +492,7 @@ class Generator extends \yii\gii\Generator
                 $targetAttributes[] = "'$key' => '$value'";
             }
             $targetAttributes = implode(', ', $targetAttributes);
-            $rules[] = "[['$attributes'], 'exist', 'skipOnError' => true, 'targetClass' => $refClassName::className(), 'targetAttribute' => [$targetAttributes]]";
+            $rules[] = "[['$attributes'], 'exist', 'skipOnError' => true, 'targetClass' => $refClassName::class, 'targetAttribute' => [$targetAttributes]]";
         }
 
         return $rules;
@@ -518,7 +523,7 @@ class Generator extends \yii\gii\Generator
             $viaLink = $this->generateRelationLink($firstKey);
             $relationName = $this->generateRelationName($relations, $table0Schema, key($secondKey), true);
             $relations[$table0Schema->fullName][$relationName] = [
-                "return \$this->hasMany($className1::className(), $link)->viaTable('"
+                "return \$this->hasMany($className1::class, $link)->viaTable('"
                 . $this->generateTableName($table->name) . "', $viaLink);",
                 $className1,
                 true,
@@ -528,7 +533,7 @@ class Generator extends \yii\gii\Generator
             $viaLink = $this->generateRelationLink($secondKey);
             $relationName = $this->generateRelationName($relations, $table1Schema, key($firstKey), true);
             $relations[$table1Schema->fullName][$relationName] = [
-                "return \$this->hasMany($className0::className(), $link)->viaTable('"
+                "return \$this->hasMany($className0::class, $link)->viaTable('"
                 . $this->generateTableName($table->name) . "', $viaLink);",
                 $className0,
                 true,
@@ -594,7 +599,7 @@ class Generator extends \yii\gii\Generator
                     $link = $this->generateRelationLink(array_flip($refs));
                     $relationName = $this->generateRelationName($relations, $table, $fks[0], false);
                     $relations[$table->fullName][$relationName] = [
-                        "return \$this->hasOne($refClassName::className(), $link);",
+                        "return \$this->hasOne($refClassName::class, $link);",
                         $refClassName,
                         false,
                     ];
@@ -604,7 +609,7 @@ class Generator extends \yii\gii\Generator
                     $link = $this->generateRelationLink($refs);
                     $relationName = $this->generateRelationName($relations, $refTableSchema, $className, $hasMany);
                     $relations[$refTableSchema->fullName][$relationName] = [
-                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "($className::className(), $link);",
+                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "($className::class, $link);",
                         $className,
                         $hasMany,
                     ];

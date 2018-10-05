@@ -4,11 +4,12 @@
  */
 
 /* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\model\Generator */
+/* @var $generator modules\lang\gii\generators\langModel\Generator */
 /* @var $tableName string full table name */
 /* @var $className string class name */
 /* @var $langClassName string class name */
 /* @var $langRelationField string name of relation field in lang model */
+/* @var $generateMapTitle string name of map title column */
 /* @var $queryClassName string query class name */
 /* @var $tableSchema yii\db\TableSchema */
 /* @var $labels string[] list of attribute labels (name => label) */
@@ -104,6 +105,23 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
     */
     public function getTranslations()
     {
-        return $this->hasMany(<?=$langClassName?>::className(), ['<?=$langRelationField?>' => 'id']);
+        return $this->hasMany(<?=$langClassName?>::class, ['<?=$langRelationField?>' => 'id']);
     }
+<?php if($generateMapTitle) : ?>
+
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if(!isset(self::$_map)) {
+            self::$_map = \yii\helpers\ArrayHelper::map(
+                self::find()
+                  ->joinWith('translations tr')
+                  ->orderBy('tr.<?= $generateMapTitle ?>')
+                  ->all(), 'id', 'name'
+            );
+        }
+        return self::$_map;
+    }
+<?php endif; ?>
 }

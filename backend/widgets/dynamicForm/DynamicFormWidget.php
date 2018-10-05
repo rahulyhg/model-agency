@@ -38,6 +38,10 @@ class DynamicFormWidget extends \yii\base\Widget
     /**
      * @var string
      */
+    public $sortableHandle;
+    /**
+     * @var string
+     */
     public $limit = 999;
     /**
      * @var string
@@ -97,6 +101,9 @@ class DynamicFormWidget extends \yii\base\Widget
         }
         if (empty($this->widgetItem)) {
             throw new InvalidConfigException("The 'widgetItem' property must be set.");
+        }
+        if (empty($this->sortableHandle)) {
+            throw new InvalidConfigException("The 'sortableHandle' property must be set.");
         }
         if (empty($this->model) || !$this->model instanceof \yii\base\Model) {
             throw new InvalidConfigException("The 'model' property must be set and must extend from '\\yii\\base\\Model'.");
@@ -168,8 +175,28 @@ class DynamicFormWidget extends \yii\base\Widget
     {
         $view = $this->getView();
         DynamicFormAsset::register($view);
+        SortableAsset::register($view);
         $options = Json::encode($this->_options);
         $this->registerOptions($view);
+
+        $view->registerJs(
+'jQuery(".'.$this->widgetContainer.'").sortable({
+    items: "tr",
+    cursor: "move",
+    opacity: 0.6,
+    axis: "y",
+    handle: "'.$this->sortableHandle.'",
+    helper: function(e, ui) {
+        ui.children().each(function() {
+            jQuery(this).width(jQuery(this).width());
+        });
+        return ui;
+    },
+    update: function(ev){
+        jQuery(".'.$this->widgetContainer.'").yiiDynamicForm("updateContainer");
+    }
+}).disableSelection();'
+        );
 
         $js = 'jQuery("#' . $this->formId . '").yiiDynamicForm(' . $this->_hashVar .');' . "\n";
         $view->registerJs($js, $view::POS_READY);

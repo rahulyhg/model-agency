@@ -105,11 +105,10 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
             ));
             return $this->redirect(['update', <?= $urlParams ?>]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -125,6 +124,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $post = Yii::$app->request->post();
         if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
             Yii::$app->session->setFlash('success','Запись успешно обновлена.');
+            return $this->redirect(['update', <?= $urlParams ?>]);
         }
         return $this->render('update', [
             'model' => $model,

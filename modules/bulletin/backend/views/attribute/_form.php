@@ -1,5 +1,6 @@
 <?php
 
+use kartik\widgets\Select2;
 use yii\helpers\Html;
 use modules\lang\widgets\langActiveForm\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
@@ -39,7 +40,11 @@ use backend\widgets\crudActions\CrudActions;
       <div class="col-xl-8 offset-xl-2">
           <div class="row">
             <div class="col-md-6">
-              <?= $form->field($model, 'type_id')->textInput() ?>
+              <?= $form->field($model, 'type_id')->widget(Select2::class, [
+                'data' => \modules\bulletin\common\models\AttributeType::getMap(),
+                'options' => ['placeholder' => ''],
+                'pluginOptions' => ['allowClear' => true],
+              ]) ?>
             </div>
             <div class="col-md-6">
               <?= $form->field($model, 'type_settings')->textarea(['rows' => 6]) ?>

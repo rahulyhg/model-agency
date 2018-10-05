@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model modules\bulletin\common\models\Attribute */
 
 $this->title = 'Создать атрибут';
-$this->params['breadcrumbs'][] = ['label' => 'Attributes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Атрибуты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attribute-create">
