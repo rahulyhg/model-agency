@@ -102,6 +102,11 @@ class AttributeTypeManager extends BaseObject
     return $this->model->load($data);
   }
 
+  public function validateModel($attributeNames = null, $clearErrors = true)
+  {
+    return $this->model->validate($attributeNames, $clearErrors);
+  }
+
   public static function createByCategory($categoryId, $models = null)
   {
     $fields = [];

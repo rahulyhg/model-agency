@@ -18,6 +18,7 @@ use yii\helpers\Url;
     ]
   ]); ?>
 
+
   <div class="m-portlet__head">
     <div class="m-portlet__head-caption">
       <?= CrudActions::widget(["model" => $model, "template" => "{index}"]) ?>

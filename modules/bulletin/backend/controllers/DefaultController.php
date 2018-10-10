@@ -9,9 +9,12 @@ use Yii;
 use modules\bulletin\common\models\Bulletin;
 use backend\lib\Controller;
 use yii\base\DynamicModel;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * DefaultController implements the CRUD actions for Bulletin model.
@@ -56,11 +59,15 @@ class DefaultController extends Controller
   public function actionCreate()
   {
     $model = new Bulletin();
-//    $attributeTypeManager = AttributeTypeManager::createByCategory(5, $model->attributeVals);
-
-    if ($model->load(Yii::$app->request->post())/* && $attributeTypeManager->loadModel(Yii::$app->request->post())*/) {
-//      $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
-      if ($model->save()) {
+    $attributeTypeManager = null;
+    if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
+      $validated = true;
+      $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id);
+      if ($attributeTypeManager->loadModel(Yii::$app->request->post()) && ($validated = $attributeTypeManager->validateModel())) {
+        $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
+      }
+      $validated = $model->validate() && $validated;
+      if ($validated && $model->save(false)) {
         Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
             '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
             ['create'],
@@ -72,7 +79,7 @@ class DefaultController extends Controller
 
     return $this->render('create', [
       'model' => $model,
-//      'attributeTypeManager' => $attributeTypeManager,
+      'attributeTypeManager' => $attributeTypeManager,
     ]);
   }
 
@@ -86,11 +93,19 @@ class DefaultController extends Controller
   public function actionUpdate($id)
   {
     $model = $this->findModel($id);
-    $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id, $model->attributeVals);
+    $lastCategoryId = $model->category_id;
+    $attributeTypeManager = AttributeTypeManager::createByCategory($lastCategoryId, $model->attributeVals);
 
-    if ($model->load(Yii::$app->request->post()) && $attributeTypeManager->loadModel(Yii::$app->request->post())) {
-      $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
-      if ($model->save()) {
+    if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
+      if($lastCategoryId != $model->category_id){
+        $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id);
+      }
+      $validated = true;
+      if ($attributeTypeManager->loadModel(Yii::$app->request->post()) && ($validated = $attributeTypeManager->validateModel())) {
+        $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
+      }
+      $validated = $model->validate() && $validated;
+      if ($validated && $model->save(false)) {
         Yii::$app->session->setFlash('success', 'Запись успешно обновлена.');
         return $this->redirect(['update', 'id' => $model->id]);
       }
@@ -99,6 +114,23 @@ class DefaultController extends Controller
     return $this->render('update', [
       'model' => $model,
       'attributeTypeManager' => $attributeTypeManager,
+    ]);
+  }
+
+  public function actionAttributeFields($categoryId, $id = null)
+  {
+    $attributeTypeManager = null;
+    if ($id) {
+      $model = $this->findModel($id);
+      $attributeTypeManager = AttributeTypeManager::createByCategory($categoryId, $model->attributeVals);
+    } else {
+      $attributeTypeManager = AttributeTypeManager::createByCategory($categoryId);
+    }
+    $form = ActiveForm::begin(['options' => ['id' => 'bulletin-form']]);
+    return $this->renderAjax('_attributes', [
+      'form' => $form,
+      'attributeTypeManager' => $attributeTypeManager,
+      'registerJs' => true,
     ]);
   }
 

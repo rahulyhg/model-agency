@@ -4,6 +4,7 @@ use modules\bulletin\common\models\Category;
 use modules\client\common\models\Client;
 use modules\location\common\models\Location;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
 
@@ -15,7 +16,9 @@ use backend\widgets\crudActions\CrudActions;
 
 
 
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin([
+  'options' => ['id' => 'bulletin-form']
+]); ?>
 
 <div class="m-portlet__head">
   <div class="m-portlet__head-caption">
@@ -33,57 +36,59 @@ use backend\widgets\crudActions\CrudActions;
 
   <div class="row">
     <div class="col-xl-8 offset-xl-2">
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'location_id')->widget(kartik\widgets\Select2::class, [
-                      'data' => Location::getMap(),
-                      'options' => ['placeholder' => ''],
-                      'pluginOptions' => ['allowClear' => true],
-                    ]) ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'client_id')->widget(kartik\widgets\Select2::class, [
-                      'data' => Client::getMap(),
-                      'options' => ['placeholder' => ''],
-                      'pluginOptions' => ['allowClear' => true],
-                    ]) ?>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'category_id')->widget(kartik\widgets\Select2::class, [
-                      'data' => Category::getMap(),
-                      'options' => ['placeholder' => ''],
-                      'pluginOptions' => ['allowClear' => true],
-                    ]) ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'status_id')->widget(kartik\widgets\Select2::class, [
-          'data' => \modules\bulletin\common\models\BulletinStatus::getMap(),
-          'options' => ['placeholder' => ''],
-          'pluginOptions' => ['allowClear' => true],
-        ]) ?>
-          </div>
-        </div>
-      <?php if(isset($attributeTypeManager)) : ?>
       <div class="row">
-        <?php foreach($attributeTypeManager->generateValueFields($form) as $field): ?>
-          <div class="col-md-6">
-            <?= $field ?>
-          </div>
-        <?php endforeach; ?>
+        <div class="col-md-6">
+          <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+          <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+        </div>
       </div>
-      <?php endif; ?>
+      <div class="row">
+        <div class="col-md-6">
+          <?= $form->field($model, 'location_id')->widget(kartik\widgets\Select2::class, [
+            'data' => Location::getMap(),
+            'options' => ['placeholder' => ''],
+            'pluginOptions' => ['allowClear' => true],
+          ]) ?>
+        </div>
+        <div class="col-md-6">
+          <?= $form->field($model, 'client_id')->widget(kartik\widgets\Select2::class, [
+            'data' => Client::getMap(),
+            'options' => ['placeholder' => ''],
+            'pluginOptions' => ['allowClear' => true],
+          ]) ?>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <?= $form->field($model, 'category_id')->widget(kartik\widgets\Select2::class, [
+            'data' => Category::getMap(),
+            'options' => ['placeholder' => ''],
+            'pluginOptions' => ['allowClear' => true],
+            'pluginEvents' => [
+              'change' => 'function() {
+                $.post("'.Url::to(['attribute-fields', 'id' => $model->id, 'categoryId'=>'']).'"+this.value, function(data){
+                  $("#attributes-container").html(data);
+                });
+              }'
+            ]
+          ]) ?>
+        </div>
+        <div class="col-md-6">
+          <?= $form->field($model, 'status_id')->widget(kartik\widgets\Select2::class, [
+            'data' => \modules\bulletin\common\models\BulletinStatus::getMap(),
+            'options' => ['placeholder' => ''],
+            'pluginOptions' => ['allowClear' => true],
+          ]) ?>
+        </div>
+      </div>
+      <div id="attributes-container">
+        <?php if (isset($attributeTypeManager)) : ?>
+          <?= $this->render('_attributes', ['form' => $form, 'attributeTypeManager' => $attributeTypeManager]) ?>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 </div>
 <?php ActiveForm::end(); ?>
-

@@ -142,7 +142,7 @@ class Bulletin extends \common\lib\ActiveRecord
         $tr = $db->beginTransaction();
         try {
             $attributeVals = $this->attributeVals;
-            if (parent::save($runValidation, $attributeNames)) {
+            if (parent::save($runValidation, $attributeNames) && is_array($attributeVals)) {
                 $notDeletedIds = [];
                 foreach ($attributeVals as $index => $attributeVal) {
                     $attributeVal->entity_id = $this->id;
