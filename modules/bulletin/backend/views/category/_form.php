@@ -1,6 +1,8 @@
 <?php
 
 use backend\widgets\dynamicForm\DynamicFormWidget;
+use modules\bulletin\common\models\CategoryAttributeGroup;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use modules\lang\widgets\langActiveForm\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
@@ -41,7 +43,11 @@ use backend\widgets\crudActions\CrudActions;
       <div class="col-xl-8 offset-xl-2">
         <div class="row">
           <div class="col-md-6">
-            <?= $form->field($model, 'parent_id')->textInput() ?>
+            <?= $form->field($model, 'parent_id')->widget(kartik\widgets\Select2::class, [
+              'data' => \modules\bulletin\common\models\Category::getMap(),
+              'options' => ['placeholder' => ''],
+              'pluginOptions' => ['allowClear' => true],
+            ]) ?>
           </div>
         </div>
         <div class="row">
@@ -49,78 +55,89 @@ use backend\widgets\crudActions\CrudActions;
             <?= $form->field($model->variationModels, 'name')->textInput(['maxlength' => true]) ?>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="panel-documents" class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-check-square-o"></i> Атрибуты</h3>
-              </div>
-              <?php
-              $categoryAttributes = $model->categoryAttributes;
-              if (empty($categoryAttributes)) {
-                $categoryAttributes = [new \modules\bulletin\common\models\CategoryAttribute()];
-              }
-              DynamicFormWidget::begin([
-                'widgetContainer' => 'attributes_dynamicform',
-                'widgetBody' => '.attributes_container',
-                'widgetItem' => $categoryAttributes[0]::WIDGET_ITEM,
-                'sortableHandle' => 'attributes_sortable-handle',
-                'min' => 0,
-                'insertButton' => '.attributes_add',
-                'deleteButton' => '.attributes_delete',
-                'model' => $categoryAttributes[0],
-                'formId' => 'category-form',
-                'formFields' => [
-                  'attribute_id',
-                ],
-              ]); ?>
-
-              <table class="table table-condensed table-striped">
-                <thead>
-                <tr>
-                  <th></th>
-                  <th style="width: 100%;"><?= $categoryAttributes[0]->getAttributeLabel('attribute_id') ?></th>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody class="attributes_container">
-                <?php foreach ($categoryAttributes as $index => $categoryAttribute): ?>
-                  <tr class="<?= preg_replace('/^\./', '', $categoryAttribute::WIDGET_ITEM) ?>">
-                    <td class="attributes_sortable-handle">
-                      <span class="m-btn m-btn--icon m-btn--icon-only" style="cursor: move;"><i class="fa fa-arrows-alt"></i></span>
-                    </td>
-                    <td>
-                      <?= $form->field($categoryAttribute, "[$index]attribute_id")->label(false)
-                        ->widget(kartik\widgets\Select2::class, [
-                          'data' => \modules\bulletin\common\models\Attribute::getMap(),
-                          'options' => ['placeholder' => ''],
-                          'pluginOptions' => ['allowClear' => true]
-                        ]); ?>
-                    </td>
-                    <td class="text-center vcenter">
-                      <button type="button" class="attributes_delete btn btn-danger m-btn m-btn--icon m-btn--icon-only">
-                        <i
-                          class="la la-minus"></i></button>
-                    </td>
-                  </tr>
-                <?php endforeach; ?>
-                </tbody>
-                <tfoot>
-                <tr>
-                  <td colspan="3" class="text-right">
-                    <button type="button" class="attributes_add btn btn-primary m-btn m-btn--icon"><span><i
-                          class="la la-plus"></i><span>Добавить</span></span>
-                    </button>
-                  </td>
-                </tr>
-                </tfoot>
-              </table>
-              <?php DynamicFormWidget::end(); ?>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xl-12">
+            <div class="row">
+              <?php
+              $presetGroups = CategoryAttributeGroup::getPresets();
+              $groupedCategoryAttributes = $model->getGroupedCategoryAttributes(ArrayHelper::getColumn(CategoryAttributeGroup::getPresets(), 'id'));
+              foreach ($groupedCategoryAttributes as $group => $categoryAttributes) : ?>
+                <div class="col-md-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><?= CategoryAttributeGroup::getPresetName($group) ?></h3>
+                    </div>
+                    <div class="panel-body">
+                  <?php DynamicFormWidget::begin([
+                    'widgetContainer' => 'attributes_dynamicform' . $group,
+                    'widgetBody' => '.attributes_container' . $group,
+                    'widgetItem' => '.attributes_item' . $group,
+                    'sortableHandle' => '.attributes_sortable-handle' . $group,
+                    'min' => 0,
+                    'insertButton' => '.attributes_add' . $group,
+                    'deleteButton' => '.attributes_delete' . $group,
+                    'model' => $categoryAttributes[0],
+                    'formId' => 'category-form',
+                    'formFields' => [
+                      'attribute_id', 'group_id'
+                    ],
+                  ]); ?>
+
+                  <table class="table table-condensed table-striped">
+                    <thead>
+                    <tr>
+                      <th></th>
+                      <th style="width: 100%;"><?= $categoryAttributes[0]->getAttributeLabel('attribute_id') ?></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="attributes_container<?= $group ?>">
+                    <?php foreach ($categoryAttributes as $index => $categoryAttribute): ?>
+                      <tr class="attributes_item<?= $group ?>">
+                        <td class="attributes_sortable-handle<?= $group ?>">
+                      <span class="m-btn m-btn--icon m-btn--icon-only" style="cursor: move;"><i
+                          class="fa fa-arrows-alt"></i></span>
+                        </td>
+                        <td>
+                          <?= $form->field($categoryAttribute, "[$index]attribute_id")->label(false)
+                            ->widget(kartik\widgets\Select2::class, [
+                              'data' => \modules\bulletin\common\models\Attribute::getMap(),
+                              'options' => ['placeholder' => ''],
+                              'pluginOptions' => ['allowClear' => true]
+                            ]); ?>
+                        </td>
+                        <td class="text-center vcenter">
+                          <button type="button"
+                                  class="attributes_delete<?= $group ?> btn btn-danger m-btn m-btn--icon m-btn--icon-only">
+                            <i
+                              class="la la-minus"></i></button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                      <td colspan="3" class="text-right">
+                        <button type="button"
+                                class="attributes_add<?= $group ?> btn btn-primary m-btn m-btn--icon"><span><i
+                              class="la la-plus"></i><span>Добавить</span></span>
+                        </button>
+                      </td>
+                    </tr>
+                    </tfoot>
+                  </table>
+                  <?php DynamicFormWidget::end(); ?>
+                </div>
+            </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+
+      </div>
+    </div>
+
     <?php ActiveForm::end(); ?>
   </div>
 </div>

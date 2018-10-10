@@ -1,7 +1,7 @@
 <?php
 namespace modules\lang\lib;
 
-use common\models\Lang;
+use modules\lang\common\models\Lang;
 use yii\db\BaseActiveRecord;
 
 class VariationBehavior extends \yii2tech\ar\variation\VariationBehavior

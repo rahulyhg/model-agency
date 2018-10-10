@@ -56,10 +56,10 @@ class DefaultController extends Controller
   public function actionCreate()
   {
     $model = new Bulletin();
-    $attributeTypeManager = AttributeTypeManager::createByCategory(5, $model->attributeVals);
+//    $attributeTypeManager = AttributeTypeManager::createByCategory(5, $model->attributeVals);
 
-    if ($model->load(Yii::$app->request->post()) && $attributeTypeManager->loadModel(Yii::$app->request->post())) {
-      $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
+    if ($model->load(Yii::$app->request->post())/* && $attributeTypeManager->loadModel(Yii::$app->request->post())*/) {
+//      $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
       if ($model->save()) {
         Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
             '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
@@ -72,7 +72,7 @@ class DefaultController extends Controller
 
     return $this->render('create', [
       'model' => $model,
-      'attributeTypeManager' => $attributeTypeManager,
+//      'attributeTypeManager' => $attributeTypeManager,
     ]);
   }
 

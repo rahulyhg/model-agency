@@ -21,7 +21,7 @@ class CategoryAttributeGroupSearch extends CategoryAttributeGroup
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'created_at', 'updated_at', 'id', 'entity_id', 'lang_id'], 'integer'],
+            [['id', 'parent_id', 'created_at', 'updated_at', 'uid', 'id', 'entity_id', 'lang_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -64,6 +64,7 @@ class CategoryAttributeGroupSearch extends CategoryAttributeGroup
             'parent_id' => $this->parent_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'uid' => $this->uid,
             'entity_id' => $this->entity_id,
             'lang_id' => $this->lang_id,
         ]);

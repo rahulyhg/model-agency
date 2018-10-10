@@ -3,8 +3,8 @@
 namespace modules\bulletin\backend\controllers;
 
 use Yii;
-use modules\bulletin\common\models\CategoryAttributeGroup;
-use modules\bulletin\backend\models\CategoryAttributeGroupSearch;
+use modules\bulletin\common\models\TypeSetting;
+use modules\bulletin\backend\models\TypeSettingSearch;
 use backend\lib\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,9 +12,9 @@ use yii\base\Model;
 use yii\helpers\Html;
 
 /**
- * CategoryAttributeGroupController implements the CRUD actions for CategoryAttributeGroup model.
+ * TypeSettingController implements the CRUD actions for TypeSetting model.
  */
-class CategoryAttributeGroupController extends Controller
+class TypeSettingController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,12 +33,12 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-     * Lists all CategoryAttributeGroup models.
+     * Lists all TypeSetting models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategoryAttributeGroupSearch();
+        $searchModel = new TypeSettingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,13 +48,13 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-     * Creates a new CategoryAttributeGroup model.
+     * Creates a new TypeSetting model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CategoryAttributeGroup();
+        $model = new TypeSetting();
 
         $post = Yii::$app->request->post();
         if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
@@ -71,7 +71,7 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-     * Updates an existing CategoryAttributeGroup model.
+     * Updates an existing TypeSetting model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-     * Deletes an existing CategoryAttributeGroup model.
+     * Deletes an existing TypeSetting model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,7 +109,7 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-    * Deletes an existing CategoryAttributeGroup models.
+    * Deletes an existing TypeSetting models.
     * If deletion is successful, the browser will be redirected to the 'index' page.
     * @return \yii\web\Response
     * @throws \yii\web\BadRequestHttpException
@@ -144,15 +144,15 @@ class CategoryAttributeGroupController extends Controller
     }
 
     /**
-     * Finds the CategoryAttributeGroup model based on its primary key value.
+     * Finds the TypeSetting model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CategoryAttributeGroup the loaded model
+     * @return TypeSetting the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CategoryAttributeGroup::findOne($id)) !== null) {
+        if (($model = TypeSetting::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -161,12 +161,12 @@ class CategoryAttributeGroupController extends Controller
 
     /**
     * @param $ids
-    * @return CategoryAttributeGroup[]
+    * @return TypeSetting[]
     * @throws NotFoundHttpException
     */
     protected function findModels($ids)
     {
-        $models = CategoryAttributeGroup::findAll($ids);
+        $models = TypeSetting::findAll($ids);
         if (!empty($models)) {
             return $models;
         }

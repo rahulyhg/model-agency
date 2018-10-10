@@ -84,12 +84,32 @@ class AttributeType extends \common\lib\ActiveRecord
         return \modules\bulletin\common\types\MoneyType::class;
       case 2:
         return \modules\bulletin\common\types\IntegerType::class;
-      case 6:
-        return \modules\bulletin\common\types\SelectType::class;
-      case 4:
+      case 3:
         return \modules\bulletin\common\types\CheckboxType::class;
+      case 4:
+        return \modules\bulletin\common\types\CheckboxListType::class;
+      case 5:
+        return \modules\bulletin\common\types\SelectType::class;
       default:
         return \modules\bulletin\common\types\BaseType::class;
+    }
+  }
+
+  public static function getFormClass($id)
+  {
+    switch ($id) {
+      case 1:
+        return \modules\bulletin\common\types\forms\MoneyForm::class;
+      case 2:
+        return \modules\bulletin\common\types\forms\IntegerForm::class;
+      case 3:
+        return null;
+      case 4:
+        return \modules\bulletin\common\types\forms\CheckboxListForm::class;
+      case 5:
+        return \modules\bulletin\common\types\forms\SelectForm::class;
+      default:
+        return null;
     }
   }
 }

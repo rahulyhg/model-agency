@@ -47,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'parent_id',
             'created_at',
             'updated_at',
+            'uid',
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

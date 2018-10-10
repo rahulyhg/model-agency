@@ -3,7 +3,7 @@
 namespace modules\bulletin\common\types;
 
 
-class SelectType extends BaseType
+class CheckboxListType extends BaseType
 {
   public $items = [];
 
@@ -17,10 +17,6 @@ class SelectType extends BaseType
 
   public function generateValueField($form, $model, $name)
   {
-    return parent::generateValueField($form, $model, $name)->widget(\kartik\widgets\Select2::class, [
-      'data' => $this->items,
-      'options' => ['placeholder' => ''],
-      'pluginOptions' => ['allowClear' => true]
-    ]);
+    return parent::generateValueField($form, $model, $name)->checkboxList($this->items);
   }
 }

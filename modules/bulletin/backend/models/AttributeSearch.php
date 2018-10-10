@@ -14,6 +14,7 @@ class AttributeSearch extends Attribute
 {
     public $entity_id;
     public $name;
+    public $tr_type_settings;
     
     /**
      * @inheritdoc
@@ -22,7 +23,7 @@ class AttributeSearch extends Attribute
     {
         return [
             [['id', 'type_id', 'created_at', 'updated_at', 'id', 'entity_id', 'lang_id'], 'integer'],
-            [['type_settings', 'name'], 'safe'],
+            [['type_settings', 'name', 'tr_type_settings'], 'safe'],
         ];
     }
 
@@ -69,7 +70,8 @@ class AttributeSearch extends Attribute
         ]);
 
         $query->andFilterWhere(['like', 'type_settings', $this->type_settings])
-            ->andFilterWhere(['like', 'name', $this->name]);
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'tr_type_settings', $this->tr_type_settings]);
 
         return $dataProvider;
     }

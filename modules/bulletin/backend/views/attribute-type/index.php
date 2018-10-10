@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel modules\bulletin\backend\models\AttributeTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Attribute Types';
+$this->title = 'Типы атрибутов';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="m-portlet__head">
@@ -43,8 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
-                      'id',
-            'name',
+                      'name',
+            'id',
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

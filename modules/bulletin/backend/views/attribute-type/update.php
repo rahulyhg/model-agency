@@ -5,9 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model modules\bulletin\common\models\AttributeType */
 
-$this->title = 'Редактировать Attribute Type: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Attribute Types', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->title = 'Редактировать тип: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Типы атрибутов', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="attribute-type-update">

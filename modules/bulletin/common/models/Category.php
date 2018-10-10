@@ -5,6 +5,7 @@ namespace modules\bulletin\common\models;
 use common\models\DynamicModel;
 use Yii;
 use yii\db\Exception;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%category}}".
@@ -86,6 +87,26 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         return $this->hasMany(CategoryAttribute::class, ['category_id' => 'id'])->orderBy(['position' => SORT_ASC]);
     }
 
+    protected $_groupedCategoryAttributes;
+
+    /**
+     * @return CategoryAttribute[][]
+     */
+    public function getGroupedCategoryAttributes($groupIds)
+    {
+        if($this->_groupedCategoryAttributes) {
+            return $this->_groupedCategoryAttributes;
+        }
+        $groupedCategoryAttributes = ArrayHelper::index($this->categoryAttributes, null, 'group_id');
+        foreach($groupIds as $groupId) {
+            if(empty($groupedCategoryAttributes[$groupId])) {
+                $groupedCategoryAttributes[$groupId] = [new CategoryAttribute(['group_id' => $groupId])];
+            }
+        }
+        return $this->_groupedCategoryAttributes = $groupedCategoryAttributes;
+    }
+
+
     /**
     * @return \yii\db\ActiveQuery
     */
@@ -105,8 +126,9 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
     public function load($data, $formName = null)
     {
         if (parent::load($data, $formName)) {
-            $categoryAttributes = DynamicModel::createMultiple(CategoryAttribute::class, $this->categoryAttributes ? : [], $data);
-            self::loadMultiple($categoryAttributes, $data);
+            $categoryAttributeData = (new CategoryAttribute())->parsePostData($data);
+            $categoryAttributes = DynamicModel::createMultiple(CategoryAttribute::class, $this->categoryAttributes ? : [], $categoryAttributeData);
+            self::loadMultiple($categoryAttributes, $categoryAttributeData);
             $this->populateRelation('categoryAttributes', $categoryAttributes);
             return true; //если min == 0 return true здесь и не проверять loadmultiple, если min > 1 return true выше в if блоке проверки loadmultiple
         }

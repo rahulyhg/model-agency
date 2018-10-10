@@ -46,6 +46,9 @@ use backend\widgets\crudActions\CrudActions;
                       'pluginOptions' => ['allowClear' => true],
                     ]) ?>
             </div>
+            <div class="col-md-6">
+              <?= $form->field($model, 'uid')->textInput() ?>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-6">

@@ -11,8 +11,9 @@ $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="attribute-update">
 
-    <?= $this->render('_form', [
+  <?= $this->render('_form', [
     'model' => $model,
-    ]) ?>
+    'typeModel' => $typeModel,
+  ]) ?>
 
 </div>

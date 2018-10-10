@@ -12,6 +12,7 @@ use modules\lang\common\models\Lang;
 * @property integer $entity_id
 * @property integer $lang_id
 * @property string $name
+* @property string $tr_type_settings
 *
 * @property Attribute $entity
 */
@@ -33,10 +34,21 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
         return [
             [['entity_id', 'lang_id'], 'integer'],
             [['lang_id', 'name'], 'required'],
+            [['tr_type_settings'], 'string'],
             [['name'], 'string', 'max' => 255],
-            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::className(), 'targetAttribute' => ['entity_id' => 'id']],
+            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
     }
+
+//    public function behaviors()
+//    {
+//        return array_merge(parent::behaviors(), [
+//          [
+//            'class' => \common\behaviors\JsonBehavior::class,
+//            'property' => 'tr_type_settings',
+//          ]
+//        ]);
+//    }
 
     /**
     * @inheritdoc
@@ -48,6 +60,7 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
             'entity_id' => 'Entity ID',
             'lang_id' => 'Lang ID',
             'name' => 'Name',
+            'tr_type_settings' => 'Tr Type Settings',
         ];
     }
 
@@ -56,7 +69,7 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getEntity()
     {
-        return $this->hasOne(Attribute::className(), ['id' => 'entity_id']);
+        return $this->hasOne(Attribute::class, ['id' => 'entity_id']);
     }
     
     /**
@@ -64,6 +77,6 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getLang()
     {
-        return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+        return $this->hasOne(Lang::class, ['id' => 'lang_id']);
     }
 }

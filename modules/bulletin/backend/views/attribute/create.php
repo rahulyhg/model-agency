@@ -12,8 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="attribute-create">
 
-    <?= $this->render('_form', [
+  <?= $this->render('_form', [
     'model' => $model,
-    ]) ?>
+    'typeModel' => $typeModel,
+  ]) ?>
 
 </div>

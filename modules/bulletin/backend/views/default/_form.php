@@ -73,13 +73,15 @@ use backend\widgets\crudActions\CrudActions;
         ]) ?>
           </div>
         </div>
+      <?php if(isset($attributeTypeManager)) : ?>
       <div class="row">
-        <?php foreach($attributeTypeManager->generateFields($form) as $field): ?>
+        <?php foreach($attributeTypeManager->generateValueFields($form) as $field): ?>
           <div class="col-md-6">
             <?= $field ?>
           </div>
         <?php endforeach; ?>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

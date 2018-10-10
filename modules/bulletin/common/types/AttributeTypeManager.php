@@ -5,11 +5,9 @@ namespace modules\bulletin\common\types;
 
 use modules\bulletin\common\models\Attribute;
 use modules\bulletin\common\models\AttributeVal;
-use modules\bulletin\common\models\Category;
 use yii\base\BaseObject;
-use yii\base\DynamicModel;
-use yii\base\Model;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 class AttributeTypeManager extends BaseObject
 {
@@ -19,7 +17,7 @@ class AttributeTypeManager extends BaseObject
   public $models;
 
   /**
-   * @var DynamicModel
+   * @var DynamicForm
    */
   public $model;
 
@@ -35,7 +33,9 @@ class AttributeTypeManager extends BaseObject
     }
 
     $tempAttributes = [];
+    $tempLabels = [];
     foreach ($this->fields as $id => $field) {
+      $tempLabels[$this->nameById($id)] = $field->name;
       if ($this->models && $this->models[$id]) {
         $tempAttributes[$this->nameById($id)] = $this->models[$id]->val;
       } else {
@@ -43,7 +43,8 @@ class AttributeTypeManager extends BaseObject
       }
     }
 
-    $this->model = new DynamicModel($tempAttributes);
+    $this->model = new DynamicForm($tempAttributes);
+    $this->model->setAttributeLabels($tempLabels);
     foreach ($this->fields as $id => $field) {
       foreach ($field->rules as $key => $value) {
         if (is_array($value)) {
@@ -59,7 +60,7 @@ class AttributeTypeManager extends BaseObject
    * @param $form \yii\widgets\ActiveForm
    * @return array
    */
-  public function generateFields($form)
+  public function generateValueFields($form)
   {
     $formFields = [];
     foreach ($this->fields as $id => $field) {
@@ -70,8 +71,6 @@ class AttributeTypeManager extends BaseObject
 
   public function getModelsToSave()
   {
-
-
     $attributeValModels = [];
     foreach ($this->model->attributes as $key => $value) {
       $id = $this->idByName($key);
@@ -107,7 +106,12 @@ class AttributeTypeManager extends BaseObject
   {
     $fields = [];
     foreach(Attribute::findByCategory($categoryId) as $attribute){
-      $params = \yii\helpers\Json::decode($attribute->type_settings) ? : [];
+      $params = ['name' => $attribute->name];
+      $type_settings = ArrayHelper::merge(
+        Json::decode($attribute->type_settings) ? : [],
+        Json::decode($attribute->tr_type_settings) ? : []
+      );
+      $params = ArrayHelper::merge($params, $type_settings);
       $typeClass = $attribute->getTypeClass();
       $fields[$attribute->id] = new $typeClass($params);
     }
@@ -117,12 +121,4 @@ class AttributeTypeManager extends BaseObject
     ]);
     return $obj;
   }
-
-  //        $dynamicModel = new DynamicModel(compact('price', 'floor_number', 'type', 'is_commission'));
-//        $dynamicModel->addRule('price', 'number');
-//        $dynamicModel->addRule('price', 'required');
-//        $dynamicModel->addRule('floor_number', 'integer', ['min' => 1, 'max' => 50]);
-//        $dynamicModel->addRule('floor_number', 'required');
-//        $dynamicModel->addRule('type', 'in', ['range' => $types]);
-//        $dynamicModel->addRule('is_commission', 'boolean');
 }

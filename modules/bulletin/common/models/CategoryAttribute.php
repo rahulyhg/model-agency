@@ -3,6 +3,7 @@
 namespace modules\bulletin\common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
@@ -36,12 +37,31 @@ class CategoryAttribute extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['attribute_id'], 'required'],
+            [['attribute_id','group_id'], 'required'],
             [['category_id', 'attribute_id', 'group_id', 'position'], 'integer'],
             [['attribute_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::className(), 'targetAttribute' => ['attribute_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryAttributeGroup::className(), 'targetAttribute' => ['group_id' => 'id']],
         ];
+    }
+
+    public function formName()
+    {
+        return ($this->group_id ?:'') . parent::formName();
+    }
+
+    public function parsePostData($data)
+    {
+        $tmpData = [];
+        foreach($data as $name => $value) {
+            if(preg_match('/(\d)'.$this->formName().'/', $name, $matches)) {
+                foreach(array_keys($value) as $key) {
+                    $value[$key]['group_id'] = $matches[1];
+                }
+                $tmpData = ArrayHelper::merge($tmpData, $value);
+            }
+        }
+        return [$this->formName() => $tmpData];
     }
 
     /**
