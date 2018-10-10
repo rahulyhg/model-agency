@@ -142,9 +142,15 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         try {
             $categoryAttributes = $this->categoryAttributes;
             if (parent::save($runValidation, $attributeNames)) {
-                $notDeletedIds = [];
                 foreach ($categoryAttributes as $index => $categoryAttribute) {
                     $categoryAttribute->category_id = $this->id;
+                }
+                if(!CategoryAttribute::validateUniqueAttribute($categoryAttributes)) {
+                    $tr->rollBack();
+                    return false;
+                }
+                $notDeletedIds = [];
+                foreach ($categoryAttributes as $index => $categoryAttribute) {
                     $categoryAttribute->position = $index;
                     if (!$categoryAttribute->save(false)) {
                         $tr->rollBack();

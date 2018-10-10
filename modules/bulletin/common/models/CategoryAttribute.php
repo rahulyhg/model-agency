@@ -32,12 +32,32 @@ class CategoryAttribute extends \common\lib\ActiveRecord
     }
 
     /**
+     * @param $categoryAttributes self[]
+     * @return bool
+     */
+    public static function validateUniqueAttribute($categoryAttributes)
+    {
+        $hasError = false;
+        $attributeIds = [];
+        foreach($categoryAttributes as $categoryAttribute){
+            if(in_array($categoryAttribute->attribute_id, $attributeIds)){
+                $categoryAttribute->addError('attribute_id', 'Атрибут повторяется');
+                $hasError = true;
+            } else {
+                $attributeIds[] = $categoryAttribute->attribute_id;
+            }
+        }
+        return !$hasError;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['attribute_id','group_id'], 'required'],
+          ['attribute_id', 'unique', 'targetAttribute' => ['attribute_id', 'category_id']],
+          [['attribute_id','group_id'], 'required'],
             [['category_id', 'attribute_id', 'group_id', 'position'], 'integer'],
             [['attribute_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::className(), 'targetAttribute' => ['attribute_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
