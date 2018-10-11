@@ -92,8 +92,8 @@ class CategoryAttribute extends \common\lib\ActiveRecord
         return [
             'id' => 'ID',
             'category_id' => 'Category ID',
-            'attribute_id' => 'Attribute ID',
-            'group_id' => 'Group ID',
+            'attribute_id' => 'Атрибут',
+            'group_id' => 'Группа полей',
             'position' => 'Position',
         ];
     }

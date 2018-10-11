@@ -5,16 +5,16 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel modules\bulletin\backend\models\AttributeSearch */
+/* @var $searchModel modules\bulletin\backend\models\ComplaintSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Атрибуты';
+$this->title = 'Жалобы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="m-portlet__head">
   <div class="m-portlet__head-caption">
     <?= \backend\widgets\multipleDelete\MultipleDelete::widget([
-      'gridId' => 'attribute-grid',
+      'gridId' => 'complaint-grid',
     ]) ?>
   </div>
   <div class="m-portlet__head-tools">
@@ -37,16 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="col-sm-12">
             <?php Pjax::begin(); ?>
                   <?= GridView::widget([
-          'id' => 'attribute-grid',
+          'id' => 'complaint-grid',
           'options' => ['class' => 'dataTable'],
           'dataProvider' => $dataProvider,
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
                       'id',
-            'type_id',
+            'entity_id',
+            'subject',
+            'content:ntext',
             'created_at',
-            'updated_at',
+            //'updated_at',
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

@@ -68,9 +68,13 @@ use backend\widgets\crudActions\CrudActions;
             'pluginOptions' => ['allowClear' => true],
             'pluginEvents' => [
               'change' => 'function() {
-                $.post("'.Url::to(['attribute-fields', 'id' => $model->id, 'categoryId'=>'']).'"+this.value, function(data){
-                  $("#attributes-container").html(data);
-                });
+                if(this.value) {
+                  $.post("'.Url::to(['attribute-fields', 'id' => $model->id, 'categoryId'=>'']).'"+this.value, function(data){
+                    $("#attributes-container").html(data);
+                  });
+                } else {
+                  $("#attributes-container").html("");
+                }
               }'
             ]
           ]) ?>

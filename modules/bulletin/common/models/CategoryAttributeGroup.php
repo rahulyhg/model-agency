@@ -50,7 +50,7 @@ class CategoryAttributeGroup extends \modules\lang\lib\TranslatableActiveRecord
             'parent_id' => 'Parent ID',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата последнего обновления',
-            'uid' => 'Uid',
+            'uid' => 'Уникальный ID',
         ];
     }
 

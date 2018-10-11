@@ -25,6 +25,14 @@ class MoneyForm extends BaseForm
     ];
   }
 
+  public function attributeLabels()
+  {
+    return array_merge(parent::attributeLabels(), [
+      'numberMin' => 'Минимальное значение',
+      'numberMax' => 'Максимальное значение',
+    ]);
+  }
+
   public static function createFromTypeArray($arr, $trArr)
   {
     $params = [

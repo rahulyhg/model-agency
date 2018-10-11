@@ -9,8 +9,8 @@ class CheckboxListType extends BaseType
 
   public function init()
   {
-    if(empty($this->rules['in']) && !empty($this->items)) {
-      $this->rules['in'] = ['range' => array_keys($this->items)];
+    if(empty($this->rules['each']) && !empty($this->items)) {
+      $this->rules['each'] = ['rule' => ['in', 'range' => array_keys($this->items)]];
     }
     parent::init();
   }

@@ -6,6 +6,7 @@ use modules\client\common\models\Client;
 use modules\location\common\models\Location;
 use Yii;
 use yii\db\Exception;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%bulletin}}".
@@ -38,6 +39,17 @@ class Bulletin extends \common\lib\ActiveRecord
         return '{{%bulletin}}';
     }
 
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if (!isset(self::$_map))
+            self::$_map = ArrayHelper::map(self::find()->orderBy('id')->all(), 'id', function($model){
+                return "#".$model->id;
+            });
+        return self::$_map;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -61,14 +73,14 @@ class Bulletin extends \common\lib\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'location_id' => 'Location ID',
-            'client_id' => 'Client ID',
-            'category_id' => 'Category ID',
-            'status_id' => 'Status ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => 'Заголовок',
+            'content' => 'Содержание',
+            'location_id' => 'Место положения',
+            'client_id' => 'Пользователь',
+            'category_id' => 'Категория',
+            'status_id' => 'Статус',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата последнего обновления',
         ];
     }
 

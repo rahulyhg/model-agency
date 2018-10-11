@@ -80,7 +80,7 @@ class AttributeController extends Controller
        * @var $typeModel BaseForm
        */
       if(($typeModel && $typeModel->load($post) && ($validated = $typeModel->validate()))) {
-        $model->type_settings = Json::encode($typeModel->toTypeArray());
+        $model->type_settings = $typeModel->toTypeArray();//Json::encode($typeModel->toTypeArray());
         $model->setTrTypeSettingsFromArray($typeModel->toTrTypeArray());
       }
       $validated = $model->validate() && $validated;
@@ -110,7 +110,7 @@ class AttributeController extends Controller
   public function actionUpdate($id)
   {
     $model = $this->findModel($id);
-    $typeModel = $this->attributeService->getTypeModel($model->type_id, Json::decode($model->type_settings), $model->getTrTypeSettingsArray());
+    $typeModel = $this->attributeService->getTypeModel($model->type_id, $model->type_settings/*Json::decode($model->type_settings)*/, $model->getTrTypeSettingsArray());
     if(($typeId = Yii::$app->request->get('typeId')) && $typeId != $model->type_id) {
       $model->type_id = $typeId;
       $typeModel = $this->attributeService->getTypeModel($typeId);
@@ -122,7 +122,7 @@ class AttributeController extends Controller
        * @var $typeModel BaseForm
        */
       if(($typeModel && $typeModel->load($post) && ($validated = $typeModel->validate()))) {
-        $model->type_settings = Json::encode($typeModel->toTypeArray());
+        $model->type_settings = $typeModel->toTypeArray();//Json::encode($typeModel->toTypeArray());
         $model->setTrTypeSettingsFromArray($typeModel->toTrTypeArray());
       }
       $validated = $model->validate() && $validated;

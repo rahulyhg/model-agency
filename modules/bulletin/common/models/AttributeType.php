@@ -52,7 +52,7 @@ class AttributeType extends \common\lib\ActiveRecord
   {
     return [
       'id' => 'ID',
-      'name' => 'Name',
+      'name' => 'Название',
     ];
   }
 

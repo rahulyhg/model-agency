@@ -19,6 +19,20 @@ class ItemsForm extends Model
     ];
   }
 
+  public function attributeLabels()
+  {
+    return [
+      'val' => 'Варианты'
+    ];
+  }
+
+  public function attributeHints()
+  {
+    return [
+      'val' => 'Введите каждый вариант выбора c новой строки.'
+    ];
+  }
+
   public function valToArray()
   {
     $list = $this->val;

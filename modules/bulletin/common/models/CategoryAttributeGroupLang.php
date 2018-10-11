@@ -47,7 +47,7 @@ class CategoryAttributeGroupLang extends \modules\lang\lib\LangActiveRecord
             'id' => 'ID',
             'entity_id' => 'Entity ID',
             'lang_id' => 'Lang ID',
-            'name' => 'Name',
+            'name' => 'Название',
         ];
     }
 

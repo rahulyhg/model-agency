@@ -47,11 +47,11 @@ class Complaint extends \common\lib\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'entity_id' => 'Entity ID',
-            'subject' => 'Subject',
-            'content' => 'Content',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'entity_id' => 'Объявление',
+            'subject' => 'Тема',
+            'content' => 'Содерждание',
+          'created_at' => 'Дата создания',
+          'updated_at' => 'Дата последнего обновления',
         ];
     }
 

@@ -8,12 +8,9 @@ use modules\bulletin\common\types\AttributeTypeManager;
 use Yii;
 use modules\bulletin\common\models\Bulletin;
 use backend\lib\Controller;
-use yii\base\DynamicModel;
-use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
-use yii\web\Response;
 use yii\widgets\ActiveForm;
 
 /**

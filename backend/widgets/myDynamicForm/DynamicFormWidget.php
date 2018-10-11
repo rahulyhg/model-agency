@@ -5,14 +5,17 @@
  * @copyright Copyright (c) 2014 Wanderson Bragança
  * @license   https://github.com/wbraganca/yii2-dynamicform/blob/master/LICENSE
  */
-namespace backend\components\dynamicform;
+namespace backend\widgets\myDynamicForm;
 
 use Yii;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
+use yii\base\Model;
+use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\Html;
 use yii\base\InvalidConfigException;
+use yii\web\View;
 
 /**
  * yii2-dynamicform is widget to yii2 framework to clone form elements in a nested manner, maintaining accessibility.
@@ -39,6 +42,10 @@ class DynamicFormWidget extends \yii\base\Widget
      * @var string widget item
      */
     public $widgetItem;
+    /**
+     * @var string
+     */
+    public $sortableHandle;
     /**
      * @var string limit
      */
@@ -146,10 +153,24 @@ class DynamicFormWidget extends \yii\base\Widget
         $this->_options['fields']          = [];
 
         foreach ($this->formFields as $field) {
-             $this->_options['fields'][] = [
-                'id' => Html::getInputId($this->model, '[{}]' . $field),
-                'name' => Html::getInputName($this->model, '[{}]' . $field)
-            ];
+            if(is_array($field)){
+                if (empty($field['models']) || !$field['models'][0] instanceof \yii\base\Model) {
+                    throw new InvalidConfigException("The 'model' of field must be set and must extend from '\\yii\\base\\Model'.");
+                }
+                foreach ($field['models'] as $index=>$model) {
+                    foreach ($field['fields'] as $f) {
+                        $this->_options['fields'][] = [
+                          'id' => Html::getInputId($model, '[{}]' . "[$index]".$f),
+                          'name' => Html::getInputName($model, '[{}]' . "[$index]".$f)
+                        ];
+                    }
+                }
+            }else {
+                $this->_options['fields'][] = [
+                  'id' => Html::getInputId($this->model, '[{}]' . $field),
+                  'name' => Html::getInputName($this->model, '[{}]' . $field)
+                ];
+            }
         }
 
         ob_start();
@@ -207,7 +228,7 @@ class DynamicFormWidget extends \yii\base\Widget
     /**
      * Registers the needed assets.
      *
-     * @param View $view The View object
+     * @param \yii\web\View $view The View object
      */
     public function registerAssets($view)
     {
@@ -230,6 +251,32 @@ class DynamicFormWidget extends \yii\base\Widget
 
         $js = 'jQuery("#' . $this->formId . '").yiiDynamicForm(' . $this->_hashVar .');' . "\n";
         $view->registerJs($js, $view::POS_LOAD);
+
+        $js = '$(".'.$this->widgetContainer.'").on("afterInsert", function(e, item) { $(item).find(".kv-plugin-loading").remove();});';
+        $view->registerJs($js);
+
+        if(!empty($this->sortableHandle)) {
+            SortableAsset::register($view);
+            $view->registerJs(
+              'jQuery(".'.$this->widgetContainer.'").sortable({
+    items: "'.$this->widgetItem.'",
+    cursor: "move",
+    opacity: 0.6,
+    axis: "y",
+    handle: "'.$this->sortableHandle.'",
+    helper: function(e, ui) {
+        ui.children().each(function() {
+            jQuery(this).width(jQuery(this).width());
+        });
+        return ui;
+    },
+    update: function(ev){
+        jQuery(".'.$this->widgetContainer.'").yiiDynamicForm("updateContainer");
+    }
+}).disableSelection();'
+            );
+        }
+
     }
 
     /**
@@ -246,7 +293,11 @@ class DynamicFormWidget extends \yii\base\Widget
         $document->appendChild($document->importNode($results->first()->getNode(0), true));
         $this->_options['template'] = trim($document->saveHTML());
 
-        if (isset($this->_options['min']) && $this->_options['min'] === 0 && $this->model->isNewRecord) {
+        $dirtyAttributeNames = array_filter($this->formFields, function($v, $k){
+            return !is_array($v);
+        }, ARRAY_FILTER_USE_BOTH);
+        if (isset($this->_options['min']) && $this->_options['min'] === 0 && $this->model->isNewRecord
+          && empty($this->model->getDirtyAttributes($dirtyAttributeNames))) {
             $content = $this->removeItems($content);
         }
 

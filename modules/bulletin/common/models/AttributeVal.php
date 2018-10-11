@@ -33,7 +33,8 @@ class AttributeVal extends \common\lib\ActiveRecord
         return [
             [['attribute_id',], 'required'],
             [['attribute_id', 'entity_id'], 'integer'],
-            [['val'], 'string'],
+//            [['val'], 'string'],
+            [['val'], 'safe'],
             [['attribute_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::className(), 'targetAttribute' => ['attribute_id' => 'id']],
             [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bulletin::className(), 'targetAttribute' => ['entity_id' => 'id']],
         ];
@@ -48,7 +49,7 @@ class AttributeVal extends \common\lib\ActiveRecord
             'id' => 'ID',
             'attribute_id' => 'Attribute ID',
             'entity_id' => 'Entity ID',
-            'val' => 'Val',
+            'val' => 'Значение',
         ];
     }
 
@@ -61,6 +62,16 @@ class AttributeVal extends \common\lib\ActiveRecord
 //    {
 //        return json_decode($this->val);
 //    }
+
+  public function behaviors()
+  {
+    return array_merge(parent::behaviors(), [
+      [
+        'class' => \common\behaviors\JsonBehavior::class,
+        'property' => 'val',
+      ]
+    ]);
+  }
 
     /**
      * @return \yii\db\ActiveQuery

@@ -49,7 +49,7 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
+            'parent_id' => 'Родительская категория',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата последнего обновления',
         ];
@@ -142,6 +142,7 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         try {
             $categoryAttributes = $this->categoryAttributes;
             if (parent::save($runValidation, $attributeNames)) {
+                $this->populateRelation('categoryAttributes', $categoryAttributes);
                 foreach ($categoryAttributes as $index => $categoryAttribute) {
                     $categoryAttribute->category_id = $this->id;
                 }
@@ -170,6 +171,23 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
             $tr->rollBack();
         }
         return false;
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+        $flag = true;
+        if ($this->getCategories()->count() > 0) {
+            $this->addError('deleteMessage', 'Нельзя удалить категорию #' . $this->id . ', т.к. она имеет подкатегории.');
+            $flag = false;
+        }
+        if ($this->getBulletins()->count() > 0) {
+            $this->addError('deleteMessage', 'Нельзя удалить категорию #' . $this->id . ', т.к. она связана с объявлениями.');
+            $flag = false;
+        }
+        return $flag;
     }
 
     protected static $_map;

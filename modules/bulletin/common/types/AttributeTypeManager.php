@@ -113,8 +113,8 @@ class AttributeTypeManager extends BaseObject
     foreach(Attribute::findByCategory($categoryId) as $attribute){
       $params = ['name' => $attribute->name];
       $type_settings = ArrayHelper::merge(
-        Json::decode($attribute->type_settings) ? : [],
-        Json::decode($attribute->tr_type_settings) ? : []
+        /*Json::decode*/($attribute->type_settings) ? : [],
+        /*Json::decode*/($attribute->tr_type_settings) ? : []
       );
       $params = ArrayHelper::merge($params, $type_settings);
       $typeClass = $attribute->getTypeClass();
