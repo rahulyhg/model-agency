@@ -16,7 +16,18 @@ class ItemsForm extends Model
     return [
       [['lang_id'], 'integer'],
       [['val'], 'string'],
+      [['val'], 'required'],
+      [['val'], 'validateValArray'],
     ];
+  }
+
+  public $arrayCount;
+
+  public function validateValArray($attribute, $params)
+  {
+    if(is_numeric($this->arrayCount) && count($this->valToArray()) != $this->arrayCount) {
+      $this->addError($attribute, 'Варианты различаются количественно');
+    }
   }
 
   public function attributeLabels()
@@ -40,6 +51,11 @@ class ItemsForm extends Model
       $list = array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $list)));
     }
     return $list;
+  }
+
+  public function isEmpty()
+  {
+    return count(array_filter($this->attributes)) <= 1;
   }
 
   public static function createFromArray($langId, $valArr)

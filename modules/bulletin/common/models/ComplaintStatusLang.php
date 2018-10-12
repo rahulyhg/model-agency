@@ -6,23 +6,23 @@ use Yii;
 use modules\lang\common\models\Lang;
 
 /**
-* This is the model class for table "{{%category_lang}}".
+* This is the model class for table "{{%complaint_status_lang}}".
 *
 * @property integer $id
 * @property integer $entity_id
 * @property integer $lang_id
 * @property string $name
 *
-* @property Category $entity
+* @property ComplaintStatus $entity
 */
-class CategoryLang extends \modules\lang\lib\LangActiveRecord
+class ComplaintStatusLang extends \modules\lang\lib\LangActiveRecord
 {
     /**
     * @inheritdoc
     */
     public static function tableName()
     {
-        return '{{%category_lang}}';
+        return '{{%complaint_status_lang}}';
     }
 
     /**
@@ -34,7 +34,7 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
             [['entity_id', 'lang_id'], 'integer'],
             [['lang_id', 'name'], 'required'],
             [['name'], 'string', 'max' => 255],
-            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['entity_id' => 'id']],
+            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => ComplaintStatus::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
     }
 
@@ -47,7 +47,7 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
             'id' => 'ID',
             'entity_id' => 'Entity ID',
             'lang_id' => 'Lang ID',
-            'name' => 'Название',
+            'name' => 'Name',
         ];
     }
 
@@ -56,7 +56,7 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getEntity()
     {
-        return $this->hasOne(Category::className(), ['id' => 'entity_id']);
+        return $this->hasOne(ComplaintStatus::class, ['id' => 'entity_id']);
     }
     
     /**
@@ -64,8 +64,6 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getLang()
     {
-        return $this->hasOne(Lang::className(), ['id' => 'lang_id'])->alias(self::$counter++);
+        return $this->hasOne(Lang::class, ['id' => 'lang_id']);
     }
-
-    public static $counter = 1;
 }

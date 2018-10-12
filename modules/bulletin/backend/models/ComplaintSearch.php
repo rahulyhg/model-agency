@@ -18,8 +18,8 @@ class ComplaintSearch extends Complaint
     public function rules()
     {
         return [
-            [['id', 'entity_id', 'created_at', 'updated_at'], 'integer'],
-            [['subject', 'content'], 'safe'],
+            [['id', 'created_at', 'status_id'], 'integer'],
+            [['subject'], 'safe'],
         ];
     }
 
@@ -62,11 +62,10 @@ class ComplaintSearch extends Complaint
             'id' => $this->id,
             'entity_id' => $this->entity_id,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'status_id' => $this->status_id,
         ]);
 
-        $query->andFilterWhere(['like', 'subject', $this->subject])
-            ->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'subject', $this->subject]);
 
         return $dataProvider;
     }

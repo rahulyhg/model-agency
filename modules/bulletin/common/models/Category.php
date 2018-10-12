@@ -31,6 +31,7 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         return '{{%category}}';
     }
 
+
     /**
      * @inheritdoc
      */
@@ -203,5 +204,21 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
             );
         }
         return self::$_map;
+    }
+
+    protected static $_parentMap;
+
+    public static function getParentMap()
+    {
+        if(!isset(self::$_parentMap)) {
+            self::$_parentMap = \yii\helpers\ArrayHelper::map(
+              self::find()->alias('c')
+                ->joinWith('translations tr')
+                ->where(['not', ['c.parent_id' => null]])
+                ->orderBy('tr.name')
+                ->all(), 'parent.id', 'parent.name'
+            );
+        }
+        return self::$_parentMap;
     }
 }

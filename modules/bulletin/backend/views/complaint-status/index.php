@@ -5,16 +5,16 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel modules\bulletin\backend\models\AttributeSearch */
+/* @var $searchModel modules\bulletin\backend\models\ComplaintStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Атрибуты';
+$this->title = 'Статусы жалоб';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="m-portlet__head">
   <div class="m-portlet__head-caption">
     <?= \backend\widgets\multipleDelete\MultipleDelete::widget([
-      'gridId' => 'attribute-grid',
+      'gridId' => 'complaint-status-grid',
     ]) ?>
   </div>
   <div class="m-portlet__head-tools">
@@ -37,31 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="col-sm-12">
             <?php Pjax::begin(); ?>
                   <?= GridView::widget([
-          'id' => 'attribute-grid',
+          'id' => 'complaint-status-grid',
           'options' => ['class' => 'dataTable'],
           'dataProvider' => $dataProvider,
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
-          [
-            'attribute' => 'id',
-            'filterOptions' => ['style' => 'width: 100px;']
-          ],
-          [
-            'class' => \backend\lib\UpdateLinkColumn::class,
-            'attribute' => 'name',
-          ],
-          [
-            'attribute' => 'type_id',
-            'filter' => \kartik\widgets\Select2::widget([
-              'model' => $searchModel,
-              'attribute' => 'type_id',
-              'data' => \modules\bulletin\common\models\AttributeType::getMap(),
-              'options' => ['placeholder' => ''],
-              'pluginOptions' => ['allowClear' => true],
-            ]),
-            'value' => 'type.name'
-          ],
+                      'id',
+            'created_at',
+            'updated_at',
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

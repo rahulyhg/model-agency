@@ -60,14 +60,14 @@ class Client extends \common\lib\ActiveRecord
             'id' => 'ID',
             'avatar_id' => 'Avatar ID',
             'email' => 'Email',
-            'phone' => 'Phone',
+            'phone' => 'Телефон',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
-            'location_id' => 'Location ID',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'location_id' => 'Место положения',
+            'status' => 'Статус',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата последнего обновления',
         ];
     }
 
@@ -87,6 +87,11 @@ class Client extends \common\lib\ActiveRecord
         return $this->hasOne(Location::class, ['id' => 'location_id']);
     }
 
+    public function getTitle()
+    {
+        return "#".$this->id." - ".$this->phone;
+    }
+
     protected static $_map;
 
     public static function getMap()
@@ -95,7 +100,7 @@ class Client extends \common\lib\ActiveRecord
             self::$_map = \yii\helpers\ArrayHelper::map(
                 self::find()
                   ->orderBy('phone')
-                  ->all(), 'id', 'phone'
+                  ->all(), 'id', 'title'
             );
         }
         return self::$_map;

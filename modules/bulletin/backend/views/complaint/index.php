@@ -20,13 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="m-portlet__head-tools">
     <ul class="m-portlet__nav">
       <li class="m-portlet__nav-item">
-        <a href="<?= Url::to(['create']) ?>"
-           class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
-						<span>
-							<i class="la la-plus"></i>
-							<span>Создать</span>
-						</span>
-        </a>
+<!--        <a href="--><?//= Url::to(['create']) ?><!--"-->
+<!--           class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">-->
+<!--						<span>-->
+<!--							<i class="la la-plus"></i>-->
+<!--							<span>Создать</span>-->
+<!--						</span>-->
+<!--        </a>-->
       </li>
     </ul>
   </div>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="dataTables_wrapper">
     <div class="row">
       <div class="col-sm-12">
-            <?php Pjax::begin(); ?>
+            <?php Pjax::begin(['timeout' => 5000]); ?>
                   <?= GridView::widget([
           'id' => 'complaint-grid',
           'options' => ['class' => 'dataTable'],
@@ -43,12 +43,39 @@ $this->params['breadcrumbs'][] = $this->title;
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
-                      'id',
-            'entity_id',
-            'subject',
-            'content:ntext',
-            'created_at',
-            //'updated_at',
+          [
+            'attribute' => 'id',
+            'filterOptions' => ['style' => 'width: 100px;']
+          ],
+          [
+            'class' => \backend\lib\UpdateLinkColumn::class,
+            'attribute' => 'subject',
+          ],
+          [
+            'class' => \backend\lib\UpdateLinkColumn::class,
+            'updateRoute' => '/bulletin/default/update',
+            'attribute' => 'entity_id',
+            'filter' => \kartik\widgets\Select2::widget([
+              'model' => $searchModel,
+              'attribute' => 'entity_id',
+              'data' => \modules\bulletin\common\models\Bulletin::getMap(),
+              'options' => ['placeholder' => ''],
+              'pluginOptions' => ['allowClear' => true],
+            ]),
+            'value' => 'entity.shortTitle'
+          ],
+          [
+            'attribute' => 'status_id',
+            'filter' => \kartik\widgets\Select2::widget([
+              'model' => $searchModel,
+              'attribute' => 'status_id',
+              'data' => \modules\bulletin\common\models\Bulletin::getMap(),
+              'options' => ['placeholder' => ''],
+              'pluginOptions' => ['allowClear' => true],
+            ]),
+            'value' => 'status.name'
+          ],
+          ['attribute' => 'created_at', 'format' => 'datetime', 'filterOptions' => ['class' => 'hide-filter-input']],
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>
@@ -57,3 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
   </div>
 </div>
+<?php
+$this->registerCss('.hide-filter-input input{ display:none; }')
+?>

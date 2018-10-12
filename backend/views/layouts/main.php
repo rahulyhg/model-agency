@@ -873,7 +873,7 @@ $this->registerJs('WebFont.load({
                   <li class="m-menu__item " aria-haspopup="true"><a href="<?= Url::to(['/bulletin/service']) ?>"
                                                                     class="m-menu__link "><i
                         class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Сервисы</span></a></li>
+                        class="m-menu__link-text">Услуги</span></a></li>
                   <li class="m-menu__item " aria-haspopup="true"><a href="<?= Url::to(['/bulletin/complaint']) ?>"
                                                                     class="m-menu__link "><i
                         class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span

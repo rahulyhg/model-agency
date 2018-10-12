@@ -3,21 +3,22 @@
 namespace modules\bulletin\backend\controllers;
 
 use Yii;
-use modules\bulletin\common\models\Complaint;
-    use modules\bulletin\backend\models\ComplaintSearch;
+use modules\bulletin\common\models\ComplaintStatus;
+use modules\bulletin\backend\models\ComplaintStatusSearch;
 use backend\lib\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Model;
 use yii\helpers\Html;
 
 /**
-* ComplaintController implements the CRUD actions for Complaint model.
-*/
-class ComplaintController extends Controller
+ * ComplaintStatusController implements the CRUD actions for ComplaintStatus model.
+ */
+class ComplaintStatusController extends Controller
 {
     /**
-    * {@inheritdoc}
-    */
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -25,43 +26,38 @@ class ComplaintController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'multiple-delete' => ['POST'],
                 ],
             ],
         ];
     }
 
     /**
-    * Lists all Complaint models.
-    * @return mixed
-    */
+     * Lists all ComplaintStatus models.
+     * @return mixed
+     */
     public function actionIndex()
     {
-        $searchModel = new ComplaintSearch();
+        $searchModel = new ComplaintStatusSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-        'searchModel' => $searchModel,
-        'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-    * Creates a new Complaint model.
-    * If creation is successful, the browser will be redirected to the 'update' page.
-    * @return mixed
-    */
+     * Creates a new ComplaintStatus model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
     public function actionCreate()
     {
-        $model = new Complaint();
+        $model = new ComplaintStatus();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
                 '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
                 ['create'],
@@ -69,44 +65,37 @@ class ComplaintController extends Controller
             ));
             return $this->redirect(['update', 'id' => $model->id]);
         }
-
-        $model->loadDefaultValues();
-
         return $this->render('create', [
-        'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
-    * Updates an existing Complaint model.
-    * If update is successful, the browser will be redirected to the 'update' page.
-    * @param integer $id
-    * @return mixed
-    * @throws NotFoundHttpException if the model cannot be found
-    */
+     * Updates an existing ComplaintStatus model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
             Yii::$app->session->setFlash('success','Запись успешно обновлена.');
             return $this->redirect(['update', 'id' => $model->id]);
         }
-
-        $model->loadDefaultValues();
-
         return $this->render('update', [
-        'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
-    * Deletes an existing Complaint model.
-    * If deletion is successful, the browser will be redirected to the 'index' page.
-    * @param integer $id
-    * @return mixed
-    * @throws NotFoundHttpException if the model cannot be found
-    */
+     * Deletes an existing ComplaintStatus model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
@@ -120,7 +109,7 @@ class ComplaintController extends Controller
     }
 
     /**
-    * Deletes an existing Complaint models.
+    * Deletes an existing ComplaintStatus models.
     * If deletion is successful, the browser will be redirected to the 'index' page.
     * @return \yii\web\Response
     * @throws \yii\web\BadRequestHttpException
@@ -155,29 +144,29 @@ class ComplaintController extends Controller
     }
 
     /**
-    * Finds the Complaint model based on its primary key value.
-    * If the model is not found, a 404 HTTP exception will be thrown.
-    * @param integer $id
-    * @return Complaint the loaded model
-    * @throws NotFoundHttpException if the model cannot be found
-    */
+     * Finds the ComplaintStatus model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return ComplaintStatus the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     protected function findModel($id)
     {
-        if (($model = Complaint::findOne($id)) !== null) {
+        if (($model = ComplaintStatus::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     /**
     * @param $ids
-    * @return Complaint[]
+    * @return ComplaintStatus[]
     * @throws NotFoundHttpException
     */
     protected function findModels($ids)
     {
-        $models = Complaint::findAll($ids);
+        $models = ComplaintStatus::findAll($ids);
         if (!empty($models)) {
             return $models;
         }

@@ -74,6 +74,8 @@ class DefaultController extends Controller
       }
     }
 
+    $model->loadDefaultValues();
+
     return $this->render('create', [
       'model' => $model,
       'attributeTypeManager' => $attributeTypeManager,
@@ -107,6 +109,8 @@ class DefaultController extends Controller
         return $this->redirect(['update', 'id' => $model->id]);
       }
     }
+
+    $model->loadDefaultValues();
 
     return $this->render('update', [
       'model' => $model,

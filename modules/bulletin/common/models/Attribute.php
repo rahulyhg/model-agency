@@ -74,7 +74,7 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
   {
     foreach ($this->variationModels as $translation) {
       foreach ($trArr as $langId => $val) {
-        if ($translation->lang_id == $langId && !empty(array_filter($val))) {
+        if ($translation->lang_id == $langId) {
           $translation->tr_type_settings = $val;//Json::encode($val);
           break;
         }
@@ -149,8 +149,9 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
         self::find()
           ->joinWith('translations tr')
           ->orderBy('tr.name')
-          ->all(), 'id', 'name'
-      );
+          ->all(), 'id', function ($model) {
+        return "#" . $model->id . " " . $model->name;
+      });
     }
     return self::$_map;
   }

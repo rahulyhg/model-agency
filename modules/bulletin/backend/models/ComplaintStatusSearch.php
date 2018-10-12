@@ -5,22 +5,23 @@ namespace modules\bulletin\backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use modules\bulletin\common\models\Attribute;
+use modules\bulletin\common\models\ComplaintStatus;
 
 /**
- * AttributeSearch represents the model behind the search form about `modules\bulletin\common\models\Attribute`.
+ * ComplaintStatusSearch represents the model behind the search form about `modules\bulletin\common\models\ComplaintStatus`.
  */
-class AttributeSearch extends Attribute
+class ComplaintStatusSearch extends ComplaintStatus
 {
+    public $entity_id;
     public $name;
-
+    
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'type_id',], 'integer'],
+            [['id', 'created_at', 'updated_at', 'id', 'entity_id', 'lang_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -43,18 +44,13 @@ class AttributeSearch extends Attribute
      */
     public function search($params)
     {
-        $query = Attribute::find()->alias('a')->joinWith('defaultTranslation dtr');
+        $query = ComplaintStatus::find()->joinWith('defaultTranslation');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
-        $dataProvider->sort->attributes['name'] = [
-          'asc' => ['dtr.name' => SORT_ASC],
-          'desc' => ['dtr.name' => SORT_DESC],
-        ];
 
         if (!$this->load($params) || !$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -64,11 +60,14 @@ class AttributeSearch extends Attribute
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'a.id' => $this->id,
-            'a.type_id' => $this->type_id,
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'entity_id' => $this->entity_id,
+            'lang_id' => $this->lang_id,
         ]);
 
-        $query->andFilterWhere(['like', 'dtr.name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
