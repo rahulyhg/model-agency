@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = 'Редактировать';
   <?= $this->render('_form', [
     'model' => $model,
     'attributeTypeManager' => $attributeTypeManager,
+    'galleryForm' => $galleryForm,
   ]) ?>
 
 </div>

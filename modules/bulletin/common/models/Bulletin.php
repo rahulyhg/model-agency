@@ -2,6 +2,7 @@
 
 namespace modules\bulletin\common\models;
 
+use common\models\DynamicModel;
 use modules\client\common\models\Client;
 use modules\location\common\models\Location;
 use Yii;
@@ -154,6 +155,39 @@ class Bulletin extends \common\lib\ActiveRecord
     return $this->hasMany(ServiceBulletin::className(), ['entity_id' => 'id']);
   }
 
+  protected $_images = [];
+
+  public function addImages($value)
+  {
+    $this->_images = ArrayHelper::merge($this->_images, $value);
+  }
+
+  public function getImages()
+  {
+
+  }
+
+//  public function load($data, $formName = null)
+//  {
+//    parent::load($data, $formName);
+//    $models = DynamicModel::createMultiple(
+//      BulletinImage::class,
+//      empty($this->bulletinImages) ? [] : $this->bulletinImages,
+//      $data
+//    );
+//    $flag = true;
+//    if (!empty($models)) {
+//      DynamicModel::loadMultiple($models, $data);
+//      foreach($models as $i => $model) {
+//        if(!$model->uploadFile($i)) {
+//          $flag = false;
+//        }
+//      }
+//    }
+//    $this->populateRelation('documentDatas', $models);
+//    return $flag;
+//  }
+
   public function beforeValidate()
   {
     if (parent::beforeValidate()) {
@@ -162,26 +196,56 @@ class Bulletin extends \common\lib\ActiveRecord
     return false;
   }
 
+//  public function validate($attributeNames = null, $clearErrors = true)
+//  {
+//    return parent::validate($attributeNames, $clearErrors) &&
+//    DynamicModel::validateMultiple($this->bulletinImages);
+//  }
+
   public function save($runValidation = true, $attributeNames = null)
   {
     $db = $this->getDb();
     $tr = $db->beginTransaction();
     try {
       $attributeVals = $this->attributeVals;
-      if (parent::save($runValidation, $attributeNames) && is_array($attributeVals)) {
-        $notDeletedIds = [];
-        foreach ($attributeVals as $index => $attributeVal) {
-          $attributeVal->entity_id = $this->id;
-          if (!$attributeVal->save(false)) {
-            $tr->rollBack();
-            return false;
+      $bulletinImages = $this->bulletinImages;
+      if (parent::save($runValidation, $attributeNames)) {
+        //images
+        if (is_array($bulletinImages)) {
+          $notDeletedImageIds = [];
+          foreach ($bulletinImages as $bulletinImage) {
+            $bulletinImage->entity_id = $this->id;
+            if (!$bulletinImage->save(false)) {
+              $tr->rollBack();
+              return false;
+            }
+            $notDeletedImageIds[] = $bulletinImage->id;
           }
-          $notDeletedIds[] = $attributeVal->id;
+          if (!$this->isNewRecord) {
+            $deleteModels = BulletinImage::find()
+              ->andWhere(['not in', 'id', $notDeletedImageIds])
+              ->all();
+            foreach ($deleteModels as $deleteModel) {
+              $deleteModel->delete();
+            }
+          }
         }
-        if (!$this->isNewRecord) {
-          AttributeVal::deleteAll(
-            ['and', ['not in', 'id', $notDeletedIds], ['entity_id' => $this->id]]
-          );
+        //attributeVals
+        if (is_array($attributeVals)) {
+          $notDeletedIds = [];
+          foreach ($attributeVals as $index => $attributeVal) {
+            $attributeVal->entity_id = $this->id;
+            if (!$attributeVal->save(false)) {
+              $tr->rollBack();
+              return false;
+            }
+            $notDeletedIds[] = $attributeVal->id;
+          }
+          if (!$this->isNewRecord) {
+            AttributeVal::deleteAll(
+              ['and', ['not in', 'id', $notDeletedIds], ['entity_id' => $this->id]]
+            );
+          }
         }
         $tr->commit();
         return true;
@@ -191,4 +255,6 @@ class Bulletin extends \common\lib\ActiveRecord
     }
     return false;
   }
+
+
 }
