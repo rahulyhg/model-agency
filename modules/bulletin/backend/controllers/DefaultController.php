@@ -113,7 +113,7 @@ class DefaultController extends Controller
     $model = $this->findModel($id);
     $lastCategoryId = $model->category_id;
     $attributeTypeManager = AttributeTypeManager::createByCategory($lastCategoryId, $model->attributeVals);
-    $galleryForm = new GalleryForm();
+    $galleryForm = new GalleryForm(['maxFiles' => $model->getMaxFilesLeft(), 'isRequired' => empty($model->bulletinImages)]);
 
     if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
       if ($lastCategoryId != $model->category_id) {
@@ -126,14 +126,14 @@ class DefaultController extends Controller
       $validated = $model->validate() && $validated;
       if ($validated && $galleryForm->load(Yii::$app->request->post())) {
         $bulletinImages = $model->bulletinImages ?: [];
-        $images = $galleryForm->upload();
-        if (is_array($images)) {
-          foreach ($images as $imageId) {
+        $result = $galleryForm->upload();
+        if (is_array($result)) {
+          foreach ($result as $imageId) {
             $bulletinImages[] = new BulletinImage(['image_id' => $imageId]);
           }
           $model->populateRelation('bulletinImages', $bulletinImages);
         } else {
-          $validated = false;
+          $validated = $result;
         }
       }
       if ($validated && $model->save(false)) {

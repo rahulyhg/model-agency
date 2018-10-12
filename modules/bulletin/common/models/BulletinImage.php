@@ -16,6 +16,7 @@ use Yii;
  */
 class BulletinImage extends \common\lib\ActiveRecord
 {
+  const MAX_FILES = 8;
   /**
    * {@inheritdoc}
    */

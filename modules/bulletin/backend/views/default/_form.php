@@ -116,6 +116,7 @@ use backend\widgets\crudActions\CrudActions;
       <?= $form->field($galleryForm, 'images[]')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*', 'multiple' => true,],
         'pluginOptions' => [
+          'fileActionSettings' => ['showZoom' => false],
           'deleteUrl' => Url::to(['delete-image']),
           'initialPreview' => $initialPreview,
           'initialPreviewAsData' => true,
@@ -123,6 +124,7 @@ use backend\widgets\crudActions\CrudActions;
           'overwriteInitial' => false,
         ]
       ]); ?>
+      <?php $this->registerJs('$(".input-group-btn.input-group-append").removeClass("input-group-btn");', $this::POS_LOAD); ?>
     </div>
   </div>
 </div>

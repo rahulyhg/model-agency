@@ -55,6 +55,11 @@ class Bulletin extends \common\lib\ActiveRecord
     return "#" . $this->id . " " . StringHelper::truncateWords($this->title, 3);
   }
 
+  public function getMaxFilesLeft()
+  {
+    return BulletinImage::MAX_FILES - count($this->bulletinImages);
+  }
+
   /**
    * {@inheritdoc}
    */
