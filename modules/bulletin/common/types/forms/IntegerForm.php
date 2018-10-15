@@ -25,6 +25,14 @@ class IntegerForm extends BaseForm
     ];
   }
 
+  public function attributeLabels()
+  {
+    return array_merge(parent::attributeLabels(), [
+      'integerMin' => 'Минимальное значение',
+      'integerMax' => 'Максимальное значение',
+    ]);
+  }
+
   public static function createFromTypeArray($arr, $trArr)
   {
     $params = [

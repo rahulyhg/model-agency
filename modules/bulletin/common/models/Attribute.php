@@ -38,20 +38,20 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
     return [
       [['type_id'], 'required'],
       [['type_id', 'created_at', 'updated_at'], 'integer'],
-      [['type_settings'], 'string'],
+      [['type_settings'], 'safe'],
       [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AttributeType::class, 'targetAttribute' => ['type_id' => 'id']],
     ];
   }
 
-//  public function behaviors()
-//  {
-//    return array_merge(parent::behaviors(), [
-//      [
-//        'class' => \common\behaviors\JsonBehavior::class,
-//        'property' => 'type_settings',
-//      ]
-//    ]);
-//  }
+  public function behaviors()
+  {
+    return array_merge(parent::behaviors(), [
+      [
+        'class' => \common\behaviors\JsonBehavior::class,
+        'property' => 'type_settings',
+      ]
+    ]);
+  }
 
   /**
    * @inheritdoc
@@ -60,7 +60,7 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
   {
     return [
       'id' => 'ID',
-      'type_id' => 'Type ID',
+      'type_id' => 'Тип',
       'type_settings' => 'Type Settings',
       'created_at' => 'Дата создания',
       'updated_at' => 'Дата последнего обновления',
@@ -74,8 +74,8 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
   {
     foreach ($this->variationModels as $translation) {
       foreach ($trArr as $langId => $val) {
-        if ($translation->lang_id == $langId && !empty(array_filter($val))) {
-          $translation->tr_type_settings = Json::encode($val);
+        if ($translation->lang_id == $langId) {
+          $translation->tr_type_settings = $val;//Json::encode($val);
           break;
         }
       }
@@ -87,7 +87,7 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
     $trTypeArr = [];
     foreach ($this->variationModels as $translation) {
       if ($translation->tr_type_settings) {
-        $trTypeArr[$translation->lang_id] = Json::decode($translation->tr_type_settings);
+        $trTypeArr[$translation->lang_id] = $translation->tr_type_settings;//Json::decode($translation->tr_type_settings);
       } else {
         $trTypeArr[$translation->lang_id] = [];
       }
@@ -127,6 +127,19 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
     return $this->hasMany(AttributeLang::class, ['entity_id' => 'id']);
   }
 
+  public function beforeDelete()
+  {
+    if (!parent::beforeDelete()) {
+      return false;
+    }
+    $flag = true;
+    if ($this->getAttributeVals()->count() > 0) {
+      $this->addError('deleteMessage', 'Нельзя удалить атрибут #' . $this->id . ', т.к. он связан с объявлениями.');
+      $flag = false;
+    }
+    return $flag;
+  }
+
   protected static $_map;
 
   public static function getMap()
@@ -136,8 +149,9 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
         self::find()
           ->joinWith('translations tr')
           ->orderBy('tr.name')
-          ->all(), 'id', 'name'
-      );
+          ->all(), 'id', function ($model) {
+        return "#" . $model->id . " " . $model->name;
+      });
     }
     return self::$_map;
   }

@@ -1,5 +1,5 @@
 <?php
-namespace backend\widgets\dynamicForm;
+namespace backend\widgets\myDynamicForm;
 
 use yii\web\AssetBundle;
 

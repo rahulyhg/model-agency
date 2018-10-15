@@ -34,21 +34,21 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
         return [
             [['entity_id', 'lang_id'], 'integer'],
             [['lang_id', 'name'], 'required'],
-            [['tr_type_settings'], 'string'],
+            [['tr_type_settings'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attribute::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
     }
 
-//    public function behaviors()
-//    {
-//        return array_merge(parent::behaviors(), [
-//          [
-//            'class' => \common\behaviors\JsonBehavior::class,
-//            'property' => 'tr_type_settings',
-//          ]
-//        ]);
-//    }
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+          [
+            'class' => \common\behaviors\JsonBehavior::class,
+            'property' => 'tr_type_settings',
+          ]
+        ]);
+    }
 
     /**
     * @inheritdoc
@@ -59,7 +59,7 @@ class AttributeLang extends \modules\lang\lib\LangActiveRecord
             'id' => 'ID',
             'entity_id' => 'Entity ID',
             'lang_id' => 'Lang ID',
-            'name' => 'Name',
+            'name' => 'Название',
             'tr_type_settings' => 'Tr Type Settings',
         ];
     }

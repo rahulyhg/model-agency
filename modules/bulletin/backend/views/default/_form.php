@@ -1,5 +1,6 @@
 <?php
 
+use kartik\widgets\FileInput;
 use modules\bulletin\common\models\Category;
 use modules\client\common\models\Client;
 use modules\location\common\models\Location;
@@ -41,6 +42,15 @@ use backend\widgets\crudActions\CrudActions;
           <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-6">
+          <?= $form->field($model, 'status_id')->widget(kartik\widgets\Select2::class, [
+            'data' => \modules\bulletin\common\models\BulletinStatus::getMap(),
+            'options' => ['placeholder' => ''],
+            'pluginOptions' => ['allowClear' => true],
+          ]) ?>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
           <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
         </div>
       </div>
@@ -68,19 +78,19 @@ use backend\widgets\crudActions\CrudActions;
             'pluginOptions' => ['allowClear' => true],
             'pluginEvents' => [
               'change' => 'function() {
-                $.post("'.Url::to(['attribute-fields', 'id' => $model->id, 'categoryId'=>'']).'"+this.value, function(data){
-                  $("#attributes-container").html(data);
-                });
+                if(this.value) {
+                  $.post("'.Url::to(['attribute-fields', 'id' => $model->id, 'categoryId'=>'']).'"+this.value, function(data){
+                    $("#attributes-container").html(data);
+                  });
+                } else {
+                  $("#attributes-container").html("");
+                }
               }'
             ]
           ]) ?>
         </div>
         <div class="col-md-6">
-          <?= $form->field($model, 'status_id')->widget(kartik\widgets\Select2::class, [
-            'data' => \modules\bulletin\common\models\BulletinStatus::getMap(),
-            'options' => ['placeholder' => ''],
-            'pluginOptions' => ['allowClear' => true],
-          ]) ?>
+
         </div>
       </div>
       <div id="attributes-container">
@@ -88,6 +98,33 @@ use backend\widgets\crudActions\CrudActions;
           <?= $this->render('_attributes', ['form' => $form, 'attributeTypeManager' => $attributeTypeManager]) ?>
         <?php endif; ?>
       </div>
+    </div>
+  </div>
+  <div class="row">
+<!--    <div class="col-xl-10 offset-xl-1">-->
+    <div class="col-xl-12">
+      <?php
+      $initialPreview = [];
+      $initialPreviewConfig = [];
+      if(!empty($model->bulletinImages)) {
+        $initialPreview = \yii\helpers\ArrayHelper::getColumn($model->bulletinImages, 'imageUrl');
+        foreach ($model->bulletinImages as $bulletinImage) {
+          $initialPreviewConfig[] = ['caption' => $bulletinImage->imageCaption, 'size' => $bulletinImage->imageSize, 'key' => $bulletinImage->id];
+        }
+      }
+      ?>
+      <?= $form->field($galleryForm, 'images[]')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*', 'multiple' => true,],
+        'pluginOptions' => [
+          'fileActionSettings' => ['showZoom' => false],
+          'deleteUrl' => Url::to(['delete-image']),
+          'initialPreview' => $initialPreview,
+          'initialPreviewAsData' => true,
+          'initialPreviewConfig' => $initialPreviewConfig,
+          'overwriteInitial' => false,
+        ]
+      ]); ?>
+      <?php $this->registerJs('$(".input-group-btn.input-group-append").removeClass("input-group-btn");', $this::POS_LOAD); ?>
     </div>
   </div>
 </div>

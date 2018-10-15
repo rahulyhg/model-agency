@@ -43,10 +43,26 @@ $this->params['breadcrumbs'][] = $this->title;
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
-                      'id',
-            'parent_id',
-            'created_at',
-            'updated_at',
+          [
+            'attribute' => 'id',
+            'filterOptions' => ['style' => 'width: 100px;']
+          ],
+          [
+            'class' => \backend\lib\UpdateLinkColumn::class,
+            'attribute' => 'name',
+          ],
+          [
+            'class' => \backend\lib\UpdateLinkColumn::class,
+            'attribute' => 'parent_id',
+            'filter' => \kartik\widgets\Select2::widget([
+              'model' => $searchModel,
+              'attribute' => 'parent_id',
+              'data' => \modules\bulletin\common\models\Category::getParentMap(),
+              'options' => ['placeholder' => ''],
+              'pluginOptions' => ['allowClear' => true],
+            ]),
+            'value' => 'parent.name'
+          ],
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

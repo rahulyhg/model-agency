@@ -53,17 +53,11 @@ use yii\helpers\Url;
               ]
             ]) ?>
           </div>
+          <?php if($model->type_id) : ?>
           <div class="col-md-6">
             <?= $form->field($model->variationModels, 'name')->textInput(['maxlength' => true]) ?>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <?= $form->field($model, 'type_settings')->textarea(['rows' => 6]) ?>
-          </div>
-          <div class="col-md-6">
-            <?= $form->field($model->variationModels, 'tr_type_settings')->textarea(['rows' => 6]) ?>
-          </div>
+          <?php endif; ?>
         </div>
         <?php if($typeModel && $typeModel->viewName) : ?>
           <?= $this->render('types/'.$typeModel->viewName, ['form' => $form, 'model' => $typeModel]) ?>

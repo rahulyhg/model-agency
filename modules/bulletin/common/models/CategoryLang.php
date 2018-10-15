@@ -47,7 +47,7 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
             'id' => 'ID',
             'entity_id' => 'Entity ID',
             'lang_id' => 'Lang ID',
-            'name' => 'Name',
+            'name' => 'Название',
         ];
     }
 
@@ -64,6 +64,8 @@ class CategoryLang extends \modules\lang\lib\LangActiveRecord
     */
     public function getLang()
     {
-        return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+        return $this->hasOne(Lang::className(), ['id' => 'lang_id'])->alias(self::$counter++);
     }
+
+    public static $counter = 1;
 }

@@ -106,6 +106,19 @@ class Lang extends \common\lib\ActiveRecord
         return self::$_defaultLang = Lang::find()->where('`is_default` = :default', [':default' => 1])->one();
     }
 
+    protected static $_defaultLangId;
+    /**
+     * Получения объекта языка по умолчанию
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    static function getDefaultLangId()
+    {
+        if(isset(self::$_defaultLangId)){
+            return self::$_defaultLangId;
+        }
+        return self::$_defaultLangId = self::getDefaultLang()->id;
+    }
+
     /**
      * Получения объекта языка по буквенному идентификатору
      * @param null|string $url

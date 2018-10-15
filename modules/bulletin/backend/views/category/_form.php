@@ -1,6 +1,6 @@
 <?php
 
-use backend\widgets\dynamicForm\DynamicFormWidget;
+use backend\widgets\myDynamicForm\DynamicFormWidget;
 use modules\bulletin\common\models\CategoryAttributeGroup;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -81,7 +81,8 @@ use backend\widgets\crudActions\CrudActions;
                     'model' => $categoryAttributes[0],
                     'formId' => 'category-form',
                     'formFields' => [
-                      'attribute_id', 'group_id'
+                      'attribute_id',
+                      ['models'=> [new \yii\base\Model()], 'fields' => ['lol']]
                     ],
                   ]); ?>
 

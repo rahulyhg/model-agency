@@ -45,8 +45,8 @@ class Service extends \modules\lang\lib\TranslatableActiveRecord
     {
         return [
             'id' => 'ID',
-            'duration' => 'Duration',
-            'price' => 'Price',
+            'duration' => 'Продолжительность',
+            'price' => 'Цена',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата последнего обновления',
         ];

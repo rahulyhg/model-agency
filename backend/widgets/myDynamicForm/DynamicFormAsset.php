@@ -6,7 +6,7 @@
  * @license   https://github.com/wbraganca/yii2-dynamicform/blob/master/LICENSE
  */
 
-namespace backend\components\dynamicform;
+namespace backend\widgets\myDynamicForm;
 
 /**
  * Asset bundle for dynamicform Widget

@@ -42,4 +42,13 @@ abstract class BaseForm extends \yii\base\Model
     $reflector = new ReflectionClass($this);
     return $this->_viewName = strtolower(str_replace('Form', '', $reflector->getShortName()));
   }
+
+  public function attributeLabels()
+  {
+    $attributeLabels = [];
+    if($this->hasProperty('isRequired')){
+      $attributeLabels['isRequired'] = 'Обязательное поле';
+    }
+    return $attributeLabels;
+  }
 }

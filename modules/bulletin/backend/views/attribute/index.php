@@ -43,11 +43,25 @@ $this->params['breadcrumbs'][] = $this->title;
           'filterModel' => $searchModel,
         'columns' => [
           ['class' => \backend\lib\CheckboxColumn::class],
-                      'id',
-            'type_id',
-            'type_settings:ntext',
-            'created_at',
-            'updated_at',
+          [
+            'attribute' => 'id',
+            'filterOptions' => ['style' => 'width: 100px;']
+          ],
+          [
+            'class' => \backend\lib\UpdateLinkColumn::class,
+            'attribute' => 'name',
+          ],
+          [
+            'attribute' => 'type_id',
+            'filter' => \kartik\widgets\Select2::widget([
+              'model' => $searchModel,
+              'attribute' => 'type_id',
+              'data' => \modules\bulletin\common\models\AttributeType::getMap(),
+              'options' => ['placeholder' => ''],
+              'pluginOptions' => ['allowClear' => true],
+            ]),
+            'value' => 'type.name'
+          ],
           ['class' => \backend\lib\ActionColumn::class],
           ],
           ]); ?>

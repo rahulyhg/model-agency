@@ -12,18 +12,16 @@ use modules\bulletin\common\models\Attribute;
  */
 class AttributeSearch extends Attribute
 {
-    public $entity_id;
     public $name;
-    public $tr_type_settings;
-    
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'type_id', 'created_at', 'updated_at', 'id', 'entity_id', 'lang_id'], 'integer'],
-            [['type_settings', 'name', 'tr_type_settings'], 'safe'],
+            [['id', 'type_id',], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -45,13 +43,18 @@ class AttributeSearch extends Attribute
      */
     public function search($params)
     {
-        $query = Attribute::find()->joinWith('defaultTranslation');
+        $query = Attribute::find()->alias('a')->joinWith('defaultTranslation dtr');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['name'] = [
+          'asc' => ['dtr.name' => SORT_ASC],
+          'desc' => ['dtr.name' => SORT_DESC],
+        ];
 
         if (!$this->load($params) || !$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -61,17 +64,11 @@ class AttributeSearch extends Attribute
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'type_id' => $this->type_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'entity_id' => $this->entity_id,
-            'lang_id' => $this->lang_id,
+            'a.id' => $this->id,
+            'a.type_id' => $this->type_id,
         ]);
 
-        $query->andFilterWhere(['like', 'type_settings', $this->type_settings])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'tr_type_settings', $this->tr_type_settings]);
+        $query->andFilterWhere(['like', 'dtr.name', $this->name]);
 
         return $dataProvider;
     }

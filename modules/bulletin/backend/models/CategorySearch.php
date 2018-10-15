@@ -12,16 +12,15 @@ use modules\bulletin\common\models\Category;
  */
 class CategorySearch extends Category
 {
-    public $entity_id;
     public $name;
-    
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'created_at', 'updated_at', 'id', 'entity_id', 'lang_id'], 'integer'],
+            [['id', 'parent_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -44,13 +43,18 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find()->joinWith('defaultTranslation');
+        $query = Category::find()->alias('c')->joinWith(['defaultTranslation dtr']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['name'] = [
+          'asc' => ['dtr.name' => SORT_ASC],
+          'desc' => ['dtr.name' => SORT_DESC],
+        ];
 
         if (!$this->load($params) || !$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -60,15 +64,11 @@ class CategorySearch extends Category
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'parent_id' => $this->parent_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'entity_id' => $this->entity_id,
-            'lang_id' => $this->lang_id,
+            'c.id' => $this->id,
+            'c.parent_id' => $this->parent_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'dtr.name', $this->name]);
 
         return $dataProvider;
     }

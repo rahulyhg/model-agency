@@ -2,18 +2,18 @@
 
 namespace modules\bulletin\backend\controllers;
 
+use modules\bulletin\backend\forms\GalleryForm;
 use modules\bulletin\backend\models\BulletinSearch;
 use modules\bulletin\common\models\AttributeVal;
+use modules\bulletin\common\models\BulletinImage;
 use modules\bulletin\common\types\AttributeTypeManager;
 use Yii;
 use modules\bulletin\common\models\Bulletin;
 use backend\lib\Controller;
-use yii\base\DynamicModel;
-use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
-use yii\web\Response;
+use yii\web\UploadedFile;
 use yii\widgets\ActiveForm;
 
 /**
@@ -59,7 +59,10 @@ class DefaultController extends Controller
   public function actionCreate()
   {
     $model = new Bulletin();
+    $galleryForm = new GalleryForm();
     $attributeTypeManager = null;
+//    $bulletinImages = [];
+
     if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
       $validated = true;
       $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id);
@@ -67,6 +70,18 @@ class DefaultController extends Controller
         $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
       }
       $validated = $model->validate() && $validated;
+      if ($validated && $galleryForm->load(Yii::$app->request->post())) {
+        $bulletinImages = [];
+        $images = $galleryForm->upload();
+        if (is_array($images)) {
+          foreach ($images as $imageId) {
+            $bulletinImages[] = new BulletinImage(['image_id' => $imageId]);
+          }
+          $model->populateRelation('bulletinImages', $bulletinImages);
+        } else {
+          $validated = false;
+        }
+      }
       if ($validated && $model->save(false)) {
         Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
             '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
@@ -77,9 +92,12 @@ class DefaultController extends Controller
       }
     }
 
+    $model->loadDefaultValues();
+
     return $this->render('create', [
       'model' => $model,
       'attributeTypeManager' => $attributeTypeManager,
+      'galleryForm' => $galleryForm,
     ]);
   }
 
@@ -95,9 +113,10 @@ class DefaultController extends Controller
     $model = $this->findModel($id);
     $lastCategoryId = $model->category_id;
     $attributeTypeManager = AttributeTypeManager::createByCategory($lastCategoryId, $model->attributeVals);
+    $galleryForm = new GalleryForm(['maxFiles' => $model->getMaxFilesLeft(), 'isRequired' => empty($model->bulletinImages)]);
 
     if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
-      if($lastCategoryId != $model->category_id){
+      if ($lastCategoryId != $model->category_id) {
         $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id);
       }
       $validated = true;
@@ -105,16 +124,46 @@ class DefaultController extends Controller
         $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
       }
       $validated = $model->validate() && $validated;
+      if ($validated && $galleryForm->load(Yii::$app->request->post())) {
+        $bulletinImages = $model->bulletinImages ?: [];
+        $result = $galleryForm->upload();
+        if (is_array($result)) {
+          foreach ($result as $imageId) {
+            $bulletinImages[] = new BulletinImage(['image_id' => $imageId]);
+          }
+          $model->populateRelation('bulletinImages', $bulletinImages);
+        } else {
+          $validated = $result;
+        }
+      }
       if ($validated && $model->save(false)) {
         Yii::$app->session->setFlash('success', 'Запись успешно обновлена.');
         return $this->redirect(['update', 'id' => $model->id]);
       }
     }
 
+    $model->loadDefaultValues();
+
     return $this->render('update', [
       'model' => $model,
       'attributeTypeManager' => $attributeTypeManager,
+      'galleryForm' => $galleryForm,
     ]);
+  }
+
+  public function actionDeleteImage()
+  {
+    $id = Yii::$app->request->post('key');
+    if(is_numeric($id)){
+      /**
+       * @var $model BulletinImage
+       */
+      $model = BulletinImage::findOne($id);
+      if($model) {
+        return $model->delete();
+      }
+    }
+    return false;
   }
 
   public function actionAttributeFields($categoryId, $id = null)

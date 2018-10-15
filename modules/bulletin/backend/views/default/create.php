@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
   <?= $this->render('_form', [
     'model' => $model,
-//    'attributeTypeManager' => $attributeTypeManager,
+    'attributeTypeManager' => $attributeTypeManager,
+    'galleryForm' => $galleryForm,
   ]) ?>
 
 </div>
