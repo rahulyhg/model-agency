@@ -10,31 +10,47 @@ use yii\helpers\Url;
 
 $this->title = "Страницы";
 $this->params['breadcrumbs'][] = $this->title;
-$this->params['actions'] = [
-    [
-        'label' => 'Создать',
-        'url' => Url::to(['create']),
-        'type' => 'success',
-        'icon' => 'la la-plus'
-    ]
-];
 ?>
-<div class="page-index">
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            [
-                'attribute' => 'title',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return Html::a($model->title, ['update', 'id' => $model->id]);
-                }
-            ],
-            [
-                'class' => yii\grid\ActionColumn::class,
-                'template' => '{update} {delete}'
-            ],
-        ],
-    ]); ?>
+<div class="m-portlet__head">
+    <div class="m-portlet__head-caption">
+    </div>
+    <div class="m-portlet__head-tools">
+        <ul class="m-portlet__nav">
+            <li class="m-portlet__nav-item">
+                <a href="<?= Url::to(['create']) ?>"
+                   class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+						<span>
+							<i class="la la-plus"></i>
+							<span>Создать</span>
+						</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="m-portlet__body">
+    <div class="dataTables_wrapper">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        [
+                            'attribute' => 'title',
+                            'format' => 'raw',
+                            'value' => function($model) {
+                                return Html::a($model->title, ['update', 'id' => $model->id]);
+                            }
+                        ],
+                        [
+                            'class' => yii\grid\ActionColumn::class,
+                            'template' => '{update} {delete}'
+                        ],
+                    ],
+                ]); ?>
+            </div>
+        </div>
+    </div>
 </div>

@@ -15,6 +15,9 @@ return [
         'setting' => [
             'class' => \modules\setting\components\SettingComponent::class,
         ],
+        'banner' => [
+            'class' => \modules\banner\components\BannerComponent::class,
+        ],
         'filestorage' => [
             'class' => common\components\filestorage\FileStorage::className(),
             'fileRoute' => '/file/index',

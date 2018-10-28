@@ -11,6 +11,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+Yii::$app->theme->registerThemeAsset($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,63 +20,39 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
+    <link rel="icon" href="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/favicon.ico" type="image/x-icon" />
     <title><?= Html::encode($this->title) ?></title>
+    <meta name="description" content="<?= $this->params['meta_description'] ?>">
+    <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+<!-- b-page -->
+<section class="b-page" data-tracking-place>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+    <!-- .b-header -->
+    <?= $this->render('_header'); ?>
+    <!-- b-header -->
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+    <!-- b-main -->
+    <main class="b-main b-page__main">
+        <div class="b-main__row">
+
+            <?= $content ?>
+
+        </div>
+    </main>
+    <!-- b-main end -->
+
+    <!-- b-footer -->
+    <?= $this->render('_footer'); ?>
+    <!-- b-footer end -->
+
+</section>
+<!-- b-page end -->
 
 <?php $this->endBody() ?>
 </body>

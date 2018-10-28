@@ -12,6 +12,9 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'theme' => [
+            'class' => \frontend\components\theme\AdvTheme::class,
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -36,14 +39,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
+                '/<slug:\w+>' => 'page/default/view'
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

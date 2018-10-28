@@ -2,52 +2,439 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Доска объявлений';
+$this->params['showSearchForm'] = true;
+$this->params['showCategories'] = true;
 ?>
-<div class="site-index">
+<!-- b-content -->
+<div class="b-content b-main__content">
+    <!-- b-recent-announcements -->
+    <section class="b-recent-announcements b-content__item">
+        <header class="b-recent-announcements__header">
+            <h2 class="b-title b-recent-announcements__title">
+                Последние объявления
+            </h2>
+        </header>
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <main class="b-recent-announcements__main">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Велосипед горный">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/1.jpg"
+                             alt="Велосипед горный">
+                    </a>
+                </header>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Велосипед горный</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Спорт / Отдых » Вело</p>
 
-    <div class="body-content">
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="7599.00">7599</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Мужская рубашка">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/2.jpg"
+                             alt="Мужская рубашка">
+                    </a>
+                </header>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Мужская рубашка</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Одежда » Мужская
+                        одежда</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="489.00">489</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
 
-    </div>
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Автомобиль Mazda">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/3.jpg"
+                             alt="Автомобиль Mazda">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Автомобиль Mazda</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Транспорт » Легковые
+                        автомобили</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                                        <span class="b-second-announcement__price" itemprop="price" content="84300.00">84
+                                            300</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Веревка для сушки белья">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/4.jpg"
+                             alt="Веревка для сушки белья">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Веревка для сушки
+                            белья</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Дом / Сад »
+                        Хозяйственный
+                        инвентарь</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="65.00">65</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Автомобиль Mazda">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/3.jpg"
+                             alt="Автомобиль Mazda">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Автомобиль Mazda</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Транспорт » Легковые
+                        автомобили</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                                        <span class="b-second-announcement__price" itemprop="price" content="84300.00">84
+                                            300</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Веревка для сушки белья">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/4.jpg"
+                             alt="Веревка для сушки белья">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Веревка для сушки
+                            белья</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Дом / Сад »
+                        Хозяйственный
+                        инвентарь</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="65.00">65</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Велосипед горный">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/1.jpg"
+                             alt="Велосипед горный">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Велосипед горный</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Спорт / Отдых » Вело</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="7599.00">7599</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Мужская рубашка">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/2.jpg"
+                             alt="Мужская рубашка">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Мужская рубашка</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Одежда » Мужская
+                        одежда</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="489.00">489</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <?= Yii::$app->banner->get('home_inside_recent_ads') ?>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Велосипед горный">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/1.jpg"
+                             alt="Велосипед горный">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Велосипед горный</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Спорт / Отдых » Вело</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="7599.00">7599</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Мужская рубашка">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/2.jpg"
+                             alt="Мужская рубашка">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Мужская рубашка</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Одежда » Мужская
+                        одежда</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="489.00">489</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Автомобиль Mazda">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/3.jpg"
+                             alt="Автомобиль Mazda">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Автомобиль Mazda</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Транспорт » Легковые
+                        автомобили</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                                        <span class="b-second-announcement__price" itemprop="price" content="84300.00">84
+                                            300</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+
+            <article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+                <header class="b-second-announcement__header">
+                    <a class="b-second-announcement__img-link" href="single.html" title="Веревка для сушки белья">
+                        <img class="b-second-announcement__img" itemprop="image" src="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/tmp/recent-announcements/4.jpg"
+                             alt="Веревка для сушки белья">
+                    </a>
+                </header>
+
+                <main class="b-second-announcement__main">
+                    <a class="b-second-announcement__title-link" href="single.html">
+                        <h3 class="b-second-announcement__title" itemprop="name">Веревка для сушки
+                            белья</h3>
+                    </a>
+                    <p class="b-second-announcement__category" itemprop="category">Дом / Сад »
+                        Хозяйственный
+                        инвентарь</p>
+
+                    <p class="b-second-announcement__offer" itemprop="offers">
+                        <span class="b-second-announcement__price" itemprop="price" content="65.00">65</span>
+                        <span class="b-second-announcement__currency" itemprop="priceCurrency" content="UAH">грн</span>
+                    </p>
+                </main>
+
+                <footer class="b-second-announcement__footer">
+                                    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+                                        <i class="b-second-announcement__icon pe-7s-map-marker"></i>
+                                        Киев, Киевская об...
+                                    </span>
+
+                    <time class="b-second-announcement__date" datetime="2018-10-09">
+                        <i class="b-second-announcement__icon pe-7s-clock"></i>
+                        Вчера 18:34
+                    </time>
+                </footer>
+            </article>
+        </main>
+    </section>
+    <!-- b-recent-announcements -->
 </div>
+<!-- b-content end -->
