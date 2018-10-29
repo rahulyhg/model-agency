@@ -2,6 +2,8 @@
 
 namespace modules\banner\backend\controllers;
 
+use kartik\helpers\Html;
+use modules\banner\Module;
 use Yii;
 use modules\banner\common\models\Banner;
 use modules\banner\backend\models\BannerSearch;
@@ -45,19 +47,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Banner model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
      * Creates a new Banner model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -67,7 +56,12 @@ class DefaultController extends Controller
         $model = new Banner();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Module::t('crud', 'Banner created successfully!') . ' ' . Html::a(
+                '<span><i class="la la-plus"></i><span>' . Module::t('crud', 'New banner') . '</span></span>',
+                ['create'],
+                ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
+            ));
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -87,7 +81,11 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Module::t('crud', 'Banner updated successfully!') . ' ' . Html::a(
+                '<span><i class="la la-plus"></i><span>' . Module::t('crud', 'New banner') . '</span></span>',
+                ['create'],
+                ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
+            ));
         }
 
         return $this->render('update', [

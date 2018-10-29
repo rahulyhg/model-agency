@@ -22,7 +22,7 @@ class Module extends \common\lib\Module
   public static function getBanner($position)
   {
     if ($model = Banner::findOne(['position' => $position])) {
-      return $model->content;
+      return $model->text;
     }
     return null;
   }
@@ -35,6 +35,7 @@ class Module extends \common\lib\Module
       'basePath' => '@modules/banner/messages',
       'fileMap' => [
         'modules/banner/attributeLabels' => 'attributeLabels.php',
+        'modules/banner/crud' => 'crud.php'
       ]
     ];
   }

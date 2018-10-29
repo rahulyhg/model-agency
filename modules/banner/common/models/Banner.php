@@ -54,12 +54,12 @@ class Banner extends \yii\db\ActiveRecord
   public function attributeLabels()
   {
     return [
-      'id' => Module::t('attributeLabels', 'id'),
-      'name' => Module::t('attributeLabels', 'name'),
-      'text' => Module::t('attributeLabels', 'text'),
-      'position' => Module::t('attributeLabels', 'position'),
-      'created_at' => Module::t('attributeLabels', 'created_at'),
-      'updated_at' => Module::t('attributeLabels', 'updated_at'),
+      'id' => Module::t('attributeLabels', 'ID'),
+      'name' => Module::t('attributeLabels', 'Name'),
+      'text' => Module::t('attributeLabels', 'HTML-code'),
+      'position' => Module::t('attributeLabels', 'Position'),
+      'created_at' => Module::t('attributeLabels', 'Created at'),
+      'updated_at' => Module::t('attributeLabels', 'Updated at'),
     ];
   }
 }

@@ -1,6 +1,8 @@
 <?php
 
+use kartik\widgets\FileInput;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -11,6 +13,31 @@ use yii\widgets\ActiveForm;
 <div class="user-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'photoFile')->widget(FileInput::class, [
+        'options' => [
+            'accept' => 'image/*',
+            'multiple' => false,
+        ],
+        'pluginOptions' => [
+            'previewFileType' => 'image',
+            'showCaption' => false,
+            'showUpload' => false,
+            'showClose' => false,
+            'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
+            'removeLabel' => '',
+            'initialPreview' => [
+                $model->photoUrl ? Html::img($model->photoUrl, ['class' => 'file-preview-image', 'style' => 'max-width: 100%']) : null,
+            ],
+            'layoutTemplates' => ['footer' => '']
+        ],
+        'pluginEvents' => [
+            'filecleared' => 'function(e) {
+                  $("#' . Html::getInputId($model, "deletePhotoFile") . '").val(1);
+              }',
+        ]
+    ]);
+    ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
@@ -27,8 +54,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'photo_file_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

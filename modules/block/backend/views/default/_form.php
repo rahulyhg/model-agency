@@ -1,6 +1,5 @@
 <?php
 
-use backend\widgets\crudButtons\CrudButtons;
 use conquer\codemirror\CodemirrorAsset;
 use conquer\codemirror\CodemirrorWidget;
 use yii\helpers\Html;
@@ -100,7 +99,7 @@ $codeMirrorOptions = [
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <?= CrudButtons::widget( [
+                        <?= \backend\widgets\crudActions\CrudActions::widget( [
                           'model' => $model
                         ] ) ?>
                     </li>

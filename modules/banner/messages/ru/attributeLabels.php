@@ -1,9 +1,9 @@
 <?php
 return Array (
-  'id' => 'ID',
-  'name' => 'Имя',
-  'text' => 'Текст',
-  'position' => 'Позиция',
-  'created_at' => 'Дата создания',
-  'updated_at' => 'Дата последнего обновления',
+  'ID' => 'ID',
+  'Name' => 'Имя',
+  'HTML-code' => 'HTML-код',
+  'Position' => 'Позиция',
+  'Created at' => 'Дата создания',
+  'Updated at' => 'Дата последнего обновления',
 );
