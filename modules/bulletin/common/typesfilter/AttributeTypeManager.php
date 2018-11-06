@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\bulletin\common\types;
+namespace modules\bulletin\common\typesfilter;
 
 
 use modules\bulletin\common\models\Attribute;
@@ -113,8 +113,8 @@ class AttributeTypeManager extends BaseObject
     foreach(Attribute::findByCategory($categoryId) as $attribute){
       $params = ['name' => $attribute->name];
       $type_settings = ArrayHelper::merge(
-        ($attribute->type_settings) ? : [],
-        ($attribute->tr_type_settings) ? : []
+        /*Json::decode*/($attribute->type_settings) ? : [],
+        /*Json::decode*/($attribute->tr_type_settings) ? : []
       );
       $params = ArrayHelper::merge($params, $type_settings);
       $typeClass = $attribute->getTypeClass();

@@ -78,8 +78,6 @@ class DefaultController extends Controller
             $bulletinImages[] = new BulletinImage(['image_id' => $imageId]);
           }
           $model->populateRelation('bulletinImages', $bulletinImages);
-        } else {
-          $validated = false;
         }
       }
       if ($validated && $model->save(false)) {

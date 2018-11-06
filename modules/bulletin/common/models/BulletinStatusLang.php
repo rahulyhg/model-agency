@@ -34,7 +34,7 @@ class BulletinStatusLang extends \modules\lang\lib\LangActiveRecord
             [['entity_id', 'lang_id'], 'integer'],
             [['lang_id', 'name'], 'required'],
             [['name'], 'string', 'max' => 255],
-            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => BulletinStatus::class, 'targetAttribute' => ['entity_id' => 'id']],
+//            [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => BulletinStatus::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
     }
 

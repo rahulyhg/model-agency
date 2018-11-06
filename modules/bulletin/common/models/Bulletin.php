@@ -3,6 +3,7 @@
 namespace modules\bulletin\common\models;
 
 use common\models\DynamicModel;
+use DateTime;
 use modules\client\common\models\Client;
 use modules\location\common\models\Location;
 use Yii;
@@ -30,6 +31,10 @@ use yii\helpers\StringHelper;
  * @property BulletinImage[] $bulletinImages
  * @property Complaint[] $complaints
  * @property ServiceBulletin[] $serviceBulletins
+ *
+ * @property string $thumbnailUrl
+ * @property mixed $formattedCreatedAt
+ * @property mixed $price
  */
 class Bulletin extends \common\lib\ActiveRecord
 {
@@ -94,6 +99,20 @@ class Bulletin extends \common\lib\ActiveRecord
       'created_at' => 'Дата создания',
       'updated_at' => 'Дата последнего обновления',
     ];
+  }
+
+  protected $_price;
+  public function getPrice()
+  {
+    if(isset($this->_price))
+      return $this->_price;
+    $attributeVal = AttributeVal::find()->alias('av')
+      ->joinWith(['attribute0 a'])
+      ->where(['av.entity_id' => $this->id, 'a.type_id' => AttributeType::MONEY])
+      ->one();
+    if($attributeVal)
+      return $this->_price = $attributeVal->val;
+    return $this->_price = false;
   }
 
   /**
@@ -172,6 +191,28 @@ class Bulletin extends \common\lib\ActiveRecord
 
   }
 
+  public function getThumbnailUrl()
+  {
+    if(!empty($this->bulletinImages)){
+      return $this->bulletinImages[0]->getImageUrl();
+    }
+    return null;
+  }
+
+  public function getFormattedCreatedAt()
+  {
+    $today = new DateTime(date('Y-m-d'));
+    $yesterday = new DateTime(date('Y-m-d', strtotime('-1 days')));
+    $createdAt = new DateTime('@'.$this->created_at);
+    if($createdAt >= $today) {
+      return 'Сегодня' . ' ' . date('h:i', $this->created_at);
+    }
+    if($createdAt >= $yesterday) {
+      return 'Вчера' . ' ' . date('h:i', $this->created_at);
+    }
+    return Yii::$app->formatter->asDate($this->created_at, 'php:d M');
+  }
+
 //  public function load($data, $formName = null)
 //  {
 //    parent::load($data, $formName);
@@ -218,22 +259,24 @@ class Bulletin extends \common\lib\ActiveRecord
         //images
         if (is_array($bulletinImages)) {
           $notDeletedImageIds = [];
-          foreach ($bulletinImages as $bulletinImage) {
+          foreach ($bulletinImages as $imgInd => $bulletinImage) {
             $bulletinImage->entity_id = $this->id;
+            $bulletinImage->position = $imgInd;
             if (!$bulletinImage->save(false)) {
               $tr->rollBack();
               return false;
             }
-            $notDeletedImageIds[] = $bulletinImage->id;
+//            $notDeletedImageIds[] = $bulletinImage->id;
           }
-          if (!$this->isNewRecord) {
+          /*if (!$this->isNewRecord) {
             $deleteModels = BulletinImage::find()
               ->andWhere(['not in', 'id', $notDeletedImageIds])
+              ->andWhere(['entity_id' => $this->id])
               ->all();
             foreach ($deleteModels as $deleteModel) {
               $deleteModel->delete();
             }
-          }
+          }/**/
         }
         //attributeVals
         if (is_array($attributeVals)) {
@@ -260,6 +303,4 @@ class Bulletin extends \common\lib\ActiveRecord
     }
     return false;
   }
-
-
 }

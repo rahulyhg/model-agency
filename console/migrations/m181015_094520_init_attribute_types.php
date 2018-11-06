@@ -1,5 +1,6 @@
 <?php
 
+use modules\bulletin\common\models\AttributeType;
 use yii\db\Migration;
 
 /**
@@ -13,29 +14,29 @@ class m181015_094520_init_attribute_types extends Migration
     public function safeUp()
     {
         try {
-            $this->insert('{{%attribute_type}}', ['id' => 1, 'name' => 'Денежные суммы']);
+            $this->insert('{{%attribute_type}}', ['id' => AttributeType::MONEY, 'name' => 'Денежные суммы']);
         } catch(Exception $e) {
-            $this->update('{{%attribute_type}}', ['name' => 'Денежные суммы'], ['id' => 1]);
+            $this->update('{{%attribute_type}}', ['name' => 'Денежные суммы'], ['id' => AttributeType::MONEY]);
         }
         try {
-            $this->insert('{{%attribute_type}}', ['id' => 2, 'name' => 'Целое число']);
+            $this->insert('{{%attribute_type}}', ['id' => AttributeType::INTEGER, 'name' => 'Целое число']);
         } catch(Exception $e) {
-            $this->update('{{%attribute_type}}', ['name' => 'Целое число'], ['id' => 2]);
+            $this->update('{{%attribute_type}}', ['name' => 'Целое число'], ['id' => AttributeType::INTEGER]);
         }
         try {
-            $this->insert('{{%attribute_type}}', ['id' => 3, 'name' => 'Флажок']);
+            $this->insert('{{%attribute_type}}', ['id' => AttributeType::CHECKBOX, 'name' => 'Флажок']);
         } catch(Exception $e) {
-            $this->update('{{%attribute_type}}', ['name' => 'Флажок'], ['id' => 3]);
+            $this->update('{{%attribute_type}}', ['name' => 'Флажок'], ['id' => AttributeType::CHECKBOX]);
         }
         try {
-            $this->insert('{{%attribute_type}}', ['id' => 4, 'name' => 'Множественный выбор вариантов']);
+            $this->insert('{{%attribute_type}}', ['id' => AttributeType::CHECKBOX_LIST, 'name' => 'Множественный выбор вариантов']);
         } catch(Exception $e) {
-            $this->update('{{%attribute_type}}', ['name' => 'Множественный выбор вариантов'], ['id' => 4]);
+            $this->update('{{%attribute_type}}', ['name' => 'Множественный выбор вариантов'], ['id' => AttributeType::CHECKBOX_LIST]);
         }
         try {
-            $this->insert('{{%attribute_type}}', ['id' => 5, 'name' => 'Выбор варианта']);
+            $this->insert('{{%attribute_type}}', ['id' => AttributeType::SELECT, 'name' => 'Выбор варианта']);
         } catch(Exception $e) {
-            $this->update('{{%attribute_type}}', ['name' => 'Выбор варианта'], ['id' => 5]);
+            $this->update('{{%attribute_type}}', ['name' => 'Выбор варианта'], ['id' => AttributeType::SELECT]);
         }
 //        $this->batchInsert('{{%attribute_type}}', ['id', 'name'], [
 //          [1, 'Денежные суммы'],
