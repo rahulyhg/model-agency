@@ -29,38 +29,47 @@ use backend\widgets\crudActions\CrudActions;
 
   <div class="row">
     <div class="col-xl-8 offset-xl-2">
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'avatar_id')->textInput() ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+          <?= $form->errorSummary($model) ?>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <?= $form->field($model, 'avatarFile')->widget(\kartik\widgets\FileInput::class, [
+            'options' => [
+              'accept' => 'image/*',
+              'multiple' => false,
+            ],
+            'pluginOptions' => [
+              'previewFileType' => 'image',
+              'showCaption' => false,
+              'showUpload' => false,
+              'showClose' => false,
+              'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
+              'removeLabel' => '',
+              'initialPreview' => [
+                $model->avatarUrl ? Html::img($model->avatarUrl, ['class' => 'file-preview-image', 'style' => 'max-width: 100%']) : null,
+              ],
+              'layoutTemplates' => ['footer' => '']
+            ],
+            'pluginEvents' => [
+              'filecleared' => 'function(e) {
+                  $("#' . Html::getInputId($model, "deleteAvatarFile") . '").val(1);
+              }',
+            ]
+          ]);
+          ?>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
-          </div>
+        <div class="col-md-6">
+          <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+          <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+          <?= $form->field($model, 'newPassword')->passwordInput(['maxlength' => true]) ?>
+          <?= $form->field($model, 'location_id')->widget(\kartik\widgets\Select2::class, [
+              'data' => \modules\location\common\models\Location::getMap()
+          ]) ?>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-        <?= $form->field($model, 'location_id')->textInput() ?>
-          </div>
-          <div class="col-md-6">
-        <?= $form->field($model, 'status')->textInput() ?>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>

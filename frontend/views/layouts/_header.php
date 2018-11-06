@@ -4,6 +4,7 @@
  */
 
 use frontend\widgets\Breadcrumbs;
+use \yii\helpers\Url;
 
 if(isset($this->params['showSearchForm'])) {
     $this->registerJs('
@@ -75,19 +76,19 @@ if(isset($this->params['showCategories'])) {
 
                         <ul class="b-drop-list b-user__drop-list">
                             <li class="b-drop-list__item">
-                                <a href="profile.html#myProfile" class="b-drop-list__item-link">Мой профиль</a>
+                                <a href="<?= Url::to(['/client/profile/index']) ?>#myProfile" class="b-drop-list__item-link">Мой профиль</a>
                             </li>
 
                             <li class="b-drop-list__item">
-                                <a href="profile.html#myAds" class="b-drop-list__item-link">Мои обьявления</a>
+                                <a href="<?= Url::to(['/client/profile/index']) ?>#myAds" class="b-drop-list__item-link">Мои обьявления</a>
                             </li>
 
                             <li class="b-drop-list__item">
-                                <a href="profile.html#myPay" class="b-drop-list__item-link">Мои платежи</a>
+                                <a href="<?= Url::to(['/client/profile/index']) ?>#myPay" class="b-drop-list__item-link">Мои платежи</a>
                             </li>
 
                             <li class="b-drop-list__item">
-                                <a href="profile.html" class="b-drop-list__item-link">Выйти</a>
+                                <a href="#" class="b-drop-list__item-link">Выйти</a>
                             </li>
                         </ul>
                     </div>

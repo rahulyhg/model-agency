@@ -3,8 +3,8 @@
 namespace modules\bulletin\backend\controllers;
 
 use Yii;
+use modules\bulletin\backend\models\CategoryAttributeSearch;
 use modules\bulletin\common\models\CategoryAttribute;
-    use modules\client\backend\models\CategoryAttributeSearch;
 use backend\lib\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
