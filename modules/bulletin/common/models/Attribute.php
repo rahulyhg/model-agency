@@ -173,4 +173,16 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
     return AttributeType::getProcessClass($this->type_id);
   }
 
+  protected static $_moneyId;
+  public static function moneyId()
+  {
+    if(self::$_moneyId)
+      return self::$_moneyId;
+    $attribute = self::findOne(['type_id' => AttributeType::MONEY]);
+    if($attribute){
+      return self::$_moneyId = $attribute->id;
+    }
+    return null;
+  }
+
 }

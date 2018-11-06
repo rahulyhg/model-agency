@@ -4,7 +4,9 @@ namespace common\components\filestorage\models;
 
 use common\lib\SmActiveRecord;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "filestorage".
@@ -36,6 +38,16 @@ class File extends ActiveRecord
             [['path', 'original_name'], 'string', 'max' => 255],
         ];
     }
+  public function behaviors()
+  {
+    return ArrayHelper::merge(parent::behaviors(), [
+      [
+        'class' => TimestampBehavior::class,
+        'createdAtAttribute' => 'date_create',
+        'updatedAtAttribute' => 'date_update',
+      ]
+    ]);
+  }
 
     /**
      * @inheritdoc

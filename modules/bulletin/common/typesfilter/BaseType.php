@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\bulletin\common\types;
+namespace modules\bulletin\common\typesfilter;
 
 use yii\base\BaseObject;
 use yii\helpers\ArrayHelper;

@@ -18,7 +18,7 @@ class AdvThemeAsset extends AssetBundle
         'css/main.css'
     ];
     public $js = [
-        'lib/jquery-3.3.1.min.js',
+        //'lib/jquery-3.3.1.min.js',
         'lib/jquery.maskedinput.min.js',
         'lib/jquery.fancybox/jquery.fancybox.min.js',
         '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',

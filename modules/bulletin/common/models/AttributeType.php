@@ -32,6 +32,8 @@ class AttributeType extends \common\lib\ActiveRecord
     return self::$_map;
   }
 
+
+
   /**
    * {@inheritdoc}
    */
@@ -77,18 +79,24 @@ class AttributeType extends \common\lib\ActiveRecord
     return $flag;
   }
 
+  const MONEY = 1;
+  const INTEGER = 2;
+  const CHECKBOX = 3;
+  const CHECKBOX_LIST = 4;
+  const SELECT = 5;
+
   public static function getProcessClass($id)
   {
     switch ($id) {
-      case 1:
+      case self::MONEY:
         return \modules\bulletin\common\types\MoneyType::class;
-      case 2:
+      case self::INTEGER:
         return \modules\bulletin\common\types\IntegerType::class;
-      case 3:
+      case self::CHECKBOX:
         return \modules\bulletin\common\types\CheckboxType::class;
-      case 4:
+      case self::CHECKBOX_LIST:
         return \modules\bulletin\common\types\CheckboxListType::class;
-      case 5:
+      case self::SELECT:
         return \modules\bulletin\common\types\SelectType::class;
       default:
         return \modules\bulletin\common\types\BaseType::class;
@@ -98,15 +106,15 @@ class AttributeType extends \common\lib\ActiveRecord
   public static function getFormClass($id)
   {
     switch ($id) {
-      case 1:
+      case self::MONEY:
         return \modules\bulletin\common\types\forms\MoneyForm::class;
-      case 2:
+      case self::INTEGER:
         return \modules\bulletin\common\types\forms\IntegerForm::class;
-      case 3:
+      case self::CHECKBOX:
         return null;
-      case 4:
+      case self::CHECKBOX_LIST:
         return \modules\bulletin\common\types\forms\CheckboxListForm::class;
-      case 5:
+      case self::SELECT:
         return \modules\bulletin\common\types\forms\SelectForm::class;
       default:
         return null;

@@ -191,6 +191,24 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
         return $flag;
     }
 
+    protected $_parents;
+
+    public function getParents()
+    {
+        if(!$this->_parents){
+            $parents = [];
+            $category = $this;
+            do {
+                if($category->parent) {
+                    $parents[] = $category->parent;
+                }
+                $category = $category->parent;
+            } while ($category);
+            $this->_parents = array_reverse($parents);
+        }
+        return $this->_parents;
+    }
+
     protected static $_map;
 
     public static function getMap()

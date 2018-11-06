@@ -30,7 +30,7 @@ class GalleryForm extends Model
     ];
   }
 
-  const FILE_DIR = 'test/gallery';
+  const FILE_DIR = 'bulletin/gallery';
   /**
    * @return bool|int[]
    */
