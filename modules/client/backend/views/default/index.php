@@ -46,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => \backend\lib\CheckboxColumn::class],
             'email',
             'phone',
+            'name',
             'id',
             ['class' => \backend\lib\ActionColumn::class],
           ],

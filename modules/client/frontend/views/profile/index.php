@@ -1,6 +1,8 @@
 <?php
 /**
  * @var $this \yii\web\View
+ * @var $client \modules\client\common\models\Client
+ * @var $bulletins \modules\bulletin\common\models\Bulletin
  */
 $this->registerJs('
 $(document).ready(function() {
@@ -56,13 +58,15 @@ $(document).ready(function() {
       <ul class="b-profile__body-tabs">
         <li id="myProfile" class="b-profile__body-tab">
           <?= $this->render('_client-form', [
-              'elementClass' => 'b-profile__my-profile'
+            'elementClass' => 'b-profile__my-profile',
+            'model' => $client
           ]) ?>
         </li>
 
         <li id="myAds" class="b-profile__body-tab">
           <?= $this->render('_client-ads', [
-            'elementClass' => 'b-profile__my-ads'
+            'elementClass' => 'b-profile__my-ads',
+            'models' => $bulletins
           ]) ?>
         </li>
 

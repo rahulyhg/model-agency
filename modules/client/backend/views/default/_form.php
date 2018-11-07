@@ -62,6 +62,7 @@ use backend\widgets\crudActions\CrudActions;
           ?>
         </div>
         <div class="col-md-6">
+          <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
           <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
           <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
           <?= $form->field($model, 'newPassword')->passwordInput(['maxlength' => true]) ?>

@@ -1,0 +1,15 @@
+.form-group input, .form-group textarea {
+    width: 100%;
+    display: block;
+}
+.help-block {
+    margin: 0;
+}
+
+.b-bs-alert {
+    width: 100%;
+}
+.b-bs-alert .alert {
+    display: block;
+    width: 100%;
+}

@@ -6,6 +6,8 @@ use common\behaviors\UploadFileBehavior;
 use modules\bulletin\common\models\Bulletin;
 use modules\location\common\models\Location;
 use Yii;
+use yii\base\NotSupportedException;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "{{%client}}".
@@ -16,6 +18,7 @@ use Yii;
  * @property string $phone
  * @property string $auth_key
  * @property string $password_hash
+ * @property string $name
  * @property string $password_reset_token
  * @property int $location_id
  * @property int $status
@@ -28,13 +31,14 @@ use Yii;
  * @property string $avatarUrl
  * @property string $avatarSize
  */
-class Client extends \common\lib\ActiveRecord
+class Client extends \common\lib\ActiveRecord implements IdentityInterface
 {
   const STATUS_DELETED = 0;
   const STATUS_ACTIVE = 10;
   const AVATARS_DIR = 'client\avatar';
 
   public $newPassword;
+  public $newPasswordRepeat;
   public $deleteAvatarFile = 0;
   public $avatarFile;
 
@@ -103,9 +107,10 @@ class Client extends \common\lib\ActiveRecord
   {
     return [
       [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::class, 'targetAttribute' => ['location_id' => 'id']],
-      [['email', 'phone'], 'required'],
-      [['email', 'phone', 'password_hash'], 'string', 'max' => 255],
-      [['newPassword'], 'string', 'max' => 255, 'min' => 6],
+      [['email', 'phone', 'name'], 'required'],
+      [['email', 'phone', 'password_hash', 'name'], 'string', 'max' => 255],
+      [['newPassword', 'newPasswordRepeat'], 'string', 'max' => 255, 'min' => 6],
+      [['newPasswordRepeat'], 'compare', 'compareAttribute' => 'newPassword', 'message' => "Пароли не совпадают"],
       [['avatar_id', 'location_id', 'status', 'created_at', 'updated_at'], 'integer'],
       [['phone'], 'unique'],
       [['email'], 'unique'],
@@ -142,6 +147,8 @@ class Client extends \common\lib\ActiveRecord
       'created_at' => 'Дата создания',
       'updated_at' => 'Дата последнего обновления',
       'newPassword' => 'Новый пароль',
+      'name' => 'Контактное лицо',
+      'newPasswordRepeat' => 'Повторите пароль',
     ];
   }
 
@@ -209,13 +216,13 @@ class Client extends \common\lib\ActiveRecord
   /**
    * Finds user by username
    *
-   * @param string $username
+   * @param string $phone
    *
    * @return static|null
    */
-  public static function findByUsername($username)
+  public static function findByPhone($phone)
   {
-    return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    return static::findOne(['phone' => $phone, 'status' => self::STATUS_ACTIVE]);
   }
 
   /**

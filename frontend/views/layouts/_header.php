@@ -66,14 +66,17 @@ if (isset($this->params['showCategories'])) {
 
         <div class="b-multilanguage b-header__multilanguage">
           <a class="b-multilanguage__item b-multilanguage__item_active" href="javascript:void(0)"
-             title="Сайт уже на Русском языке!">Язык</a>
+             title="Нажмите для перехода на русский язык">Язык</a>
           <a class="b-multilanguage__item" href="index.html"
-             title="Натисніть для переходу на Україньську мову!">Мова</a>
+             title="Натисніть для переходу на україньську мову!">Мова</a>
         </div>
 
         <div class="b-header__first-right">
           <div class="b-user b-header__user">
-            <div class="b-user__name">Иван Васильевич</div>
+            <?php if( Yii::$app->user->isGuest ) : ?>
+              <a href="<?= \yii\helpers\Url::to(['/client/default/login']) ?>">Войти</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= \yii\helpers\Url::to(['/client/default/signup']) ?>">Зарегистрироваться</a>
+            <?php else : ?>
+            <div class="b-user__name"><?= Yii::$app->user->identity->name ?></div>
 
             <span class="b-user__drop-arrow">
                                     <i class="b-user__drop-arrow-up pe-7s-angle-up"></i>
@@ -82,21 +85,22 @@ if (isset($this->params['showCategories'])) {
 
             <ul class="b-drop-list b-user__drop-list">
               <li class="b-drop-list__item">
-                <a href="profile.html#myProfile" class="b-drop-list__item-link">Мой профиль</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myProfile" class="b-drop-list__item-link">Мой профиль</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html#myAds" class="b-drop-list__item-link">Мои обьявления</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myAds" class="b-drop-list__item-link">Мои обьявления</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html#myPay" class="b-drop-list__item-link">Мои платежи</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myPay" class="b-drop-list__item-link">Мои платежи</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html" class="b-drop-list__item-link">Выйти</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/default/logout']) ?>" class="b-drop-list__item-link">Выйти</a>
               </li>
             </ul>
+            <?php endif; ?>
           </div>
 
           <a href="place-an-ad-1.html" class="b-button-first b-header__button-first">
@@ -121,7 +125,6 @@ if (isset($this->params['showCategories'])) {
             </label>
 
             <label class="b-field-select b-search__field-select">
-
               <select id="search-location" class="b-field-select__select2" for="search-location" name="state">
                 <option selected value="0">Вся Украина</option>
 
