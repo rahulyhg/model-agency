@@ -15,6 +15,10 @@ $(document).ready(function () {
         prevArrow: $(\'.b-single-announcemen__slider-arrow_left\'),
         nextArrow: $(\'.b-single-announcemen__slider-arrow_right\')
     });
+    
+    $("#showNumberBtn").click(function(e) {
+      alert("send ajax request get-phone(userID)")
+    });
 });
 ');
 ?>
@@ -176,8 +180,7 @@ $(document).ready(function () {
         <span class="b-seller-info__number-continuation">****</span>
       </p>
 
-      <a class="b-seller-info__number-request" href="#" title="Нажмите что бы увидеть весь номер продавца!">Показать
-        номер</a>
+      <a class="b-seller-info__number-request" id="showNumberBtn" href="javascript:void(0);" title="Нажмите что бы увидеть полный номер продавца!">Показать номер</a>
     </div>
   </div>
 
