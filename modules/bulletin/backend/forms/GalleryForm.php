@@ -18,7 +18,7 @@ class GalleryForm extends Model
   public function rules()
   {
     return [
-      [['images'], 'required', 'when' => function($model) { return $model->isRequired; }, 'whenClient' => 'function(){ return !$(".file-preview-frame").length; }'],
+      //[['images'], 'required', 'when' => function($model) { return $model->isRequired; }, 'whenClient' => 'function(){ return !$(".file-preview-frame").length; }'],
       [['images'], 'file', 'maxFiles' => $this->maxFiles],
     ];
   }

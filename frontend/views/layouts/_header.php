@@ -103,7 +103,7 @@ if (isset($this->params['showCategories'])) {
             <?php endif; ?>
           </div>
 
-          <a href="place-an-ad-1.html" class="b-button-first b-header__button-first">
+          <a href="<?= \yii\helpers\Url::to(['/bulletin/default/create']) ?>" class="b-button-first b-header__button-first">
                                 <span class="b-button-first__icon-wrp">
                                     <i class="b-button-first__icon pe-7s-plus"></i>
                                 </span>

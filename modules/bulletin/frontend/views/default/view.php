@@ -30,6 +30,7 @@ $(document).ready(function () {
   <!-- b-single-announcemen -->
   <section class="b-single-announcement b-content__item">
     <header class="b-single-announcemen__header">
+      <?php if( $model->bulletinImages ) : ?>
       <div class="b-single-announcemen__slider">
         <div class="b-single-announcemen__slides">
           <?php foreach ($model->bulletinImages as $bulletinImage) : ?>
@@ -49,6 +50,7 @@ $(document).ready(function () {
           <i class="b-single-announcemen__slider-arrow-icon pe-7s-angle-right"></i>
         </div>
       </div>
+      <?php endif; ?>
 
       <div class="b-single-announcemen__header-inner">
         <div class="b-single-announcemen__top-line">
