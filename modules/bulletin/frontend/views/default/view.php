@@ -17,7 +17,7 @@ $(document).ready(function () {
     });
     
     $("#showNumberBtn").click(function(e) {
-      alert("send ajax request get-phone(userID)")
+      alert("send ajax request get-phone(bulletinID)")
     });
 });
 ');

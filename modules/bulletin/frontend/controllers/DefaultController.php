@@ -36,7 +36,7 @@ class DefaultController extends Controller
 
   /**
    * Action for ajax requests only
-   * @param $id client ID
+   * @param $id Bulletin ID
    * @return string
    * @throws BadRequestHttpException
    * @throws NotFoundHttpException
@@ -47,12 +47,16 @@ class DefaultController extends Controller
       throw new BadRequestHttpException('Only ajax requests are enabled!');
     }
 
-    $client = Client::findOne($id);
-    if(!$client) {
-      throw new NotFoundHttpException('Client not found!');
+    $bulletin = Bulletin::findOne($id);
+    if(!$bulletin) {
+      throw new NotFoundHttpException('Bulletin not found!');
     }
 
-    return $client->phone;
+    $stat = BulletinStat::findOne(['bulletin_id' => $bulletin->id]);
+    $stat->phoneViews = $stat->phoneViews + 1;
+    $stat->save();
+
+    return $bulletin->client->phone;
   }
 
   public function actionCategory($id)
