@@ -1,25 +1,19 @@
 <?php
+namespace modules\client\frontend\controllers;
 
-namespace frontend\controllers;
-
-use modules\bulletin\common\models\Bulletin;
+use modules\client\common\models\Client;
+use modules\client\frontend\forms\LoginForm;
+use modules\client\frontend\forms\SignupForm;
 use Yii;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 
-/**
- * Site controller
- */
-class SiteController extends Controller
+class DefaultController extends Controller
 {
+
   /**
    * {@inheritdoc}
    */
@@ -41,13 +35,7 @@ class SiteController extends Controller
             'roles' => ['@'],
           ],
         ],
-      ],
-      'verbs' => [
-        'class' => VerbFilter::className(),
-        'actions' => [
-          'logout' => ['post'],
-        ],
-      ],
+      ]
     ];
   }
 
@@ -65,19 +53,6 @@ class SiteController extends Controller
         'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
       ],
     ];
-  }
-
-  /**
-   * Displays homepage.
-   *
-   * @return mixed
-   */
-  public function actionIndex()
-  {
-    $lastBulletins = Bulletin::find()->limit(12)->orderBy('created_at DESC')->all();
-    return $this->render('index', [
-      'lastBulletins' => $lastBulletins
-    ]);
   }
 
   /**
@@ -113,39 +88,6 @@ class SiteController extends Controller
     Yii::$app->user->logout();
 
     return $this->goHome();
-  }
-
-  /**
-   * Displays contact page.
-   *
-   * @return mixed
-   */
-  public function actionContact()
-  {
-    $model = new ContactForm();
-    if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-      if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-        Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-      } else {
-        Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-      }
-
-      return $this->refresh();
-    } else {
-      return $this->render('contact', [
-        'model' => $model,
-      ]);
-    }
-  }
-
-  /**
-   * Displays about page.
-   *
-   * @return mixed
-   */
-  public function actionAbout()
-  {
-    return $this->render('about');
   }
 
   /**
@@ -203,7 +145,7 @@ class SiteController extends Controller
   {
     try {
       $model = new ResetPasswordForm($token);
-    } catch (InvalidParamException $e) {
+    } catch (InvalidArgumentException $e) {
       throw new BadRequestHttpException($e->getMessage());
     }
 

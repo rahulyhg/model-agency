@@ -66,40 +66,44 @@ if (isset($this->params['showCategories'])) {
 
         <div class="b-multilanguage b-header__multilanguage">
           <a class="b-multilanguage__item b-multilanguage__item_active" href="javascript:void(0)"
-             title="Сайт уже на Русском языке!">Язык</a>
+             title="Нажмите для перехода на русский язык">Язык</a>
           <a class="b-multilanguage__item" href="index.html"
-             title="Натисніть для переходу на Україньську мову!">Мова</a>
+             title="Натисніть для переходу на україньську мову!">Мова</a>
         </div>
 
         <div class="b-header__first-right">
           <div class="b-user b-header__user">
-            <div class="b-user__name">Иван Васильевич</div>
+            <?php if( Yii::$app->user->isGuest ) : ?>
+              <a href="<?= \yii\helpers\Url::to(['/client/default/login']) ?>">Войти</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= \yii\helpers\Url::to(['/client/default/signup']) ?>">Зарегистрироваться</a>
+            <?php else : ?>
+            <div class="b-user__name"><?= Yii::$app->user->identity->name ?></div>
 
-                        <span class="b-user__drop-arrow">
+            <span class="b-user__drop-arrow">
                                     <i class="b-user__drop-arrow-up pe-7s-angle-up"></i>
                                     <i class="b-user__drop-arrow-down pe-7s-angle-down"></i>
                                 </span>
 
             <ul class="b-drop-list b-user__drop-list">
               <li class="b-drop-list__item">
-                <a href="profile.html#myProfile" class="b-drop-list__item-link">Мой профиль</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myProfile" class="b-drop-list__item-link">Мой профиль</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html#myAds" class="b-drop-list__item-link">Мои обьявления</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myAds" class="b-drop-list__item-link">Мои обьявления</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html#myPay" class="b-drop-list__item-link">Мои платежи</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/profile/index']) ?>#myPay" class="b-drop-list__item-link">Мои платежи</a>
               </li>
 
               <li class="b-drop-list__item">
-                <a href="profile.html" class="b-drop-list__item-link">Выйти</a>
+                <a href="<?= \yii\helpers\Url::to(['/client/default/logout']) ?>" class="b-drop-list__item-link">Выйти</a>
               </li>
             </ul>
+            <?php endif; ?>
           </div>
 
-          <a href="place-an-ad-1.html" class="b-button-first b-header__button-first">
+          <a href="<?= \yii\helpers\Url::to(['/bulletin/default/create']) ?>" class="b-button-first b-header__button-first">
                                 <span class="b-button-first__icon-wrp">
                                     <i class="b-button-first__icon pe-7s-plus"></i>
                                 </span>
@@ -121,7 +125,6 @@ if (isset($this->params['showCategories'])) {
             </label>
 
             <label class="b-field-select b-search__field-select">
-
               <select id="search-location" class="b-field-select__select2" for="search-location" name="state">
                 <option selected value="0">Вся Украина</option>
 
@@ -757,7 +760,7 @@ if (isset($this->params['showCategories'])) {
 
             <button type="submit" class="b-button-second b-search__button">
               <span
-                class="b-button-second__value b-button-second__value_bold b-button-second__value_lighten">Найти</span>
+                  class="b-button-second__value b-button-second__value_bold b-button-second__value_lighten">Найти</span>
             </button>
           </form>
         <?php endif; ?>
@@ -797,7 +800,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -806,7 +809,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -815,7 +818,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -824,7 +827,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -833,7 +836,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -842,7 +845,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -851,7 +854,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -860,7 +863,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -869,7 +872,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -878,7 +881,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -912,7 +915,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -921,7 +924,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -930,7 +933,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -939,7 +942,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -948,7 +951,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -957,7 +960,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -966,7 +969,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -975,7 +978,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -984,7 +987,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -993,7 +996,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1027,7 +1030,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1036,7 +1039,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1045,7 +1048,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1054,7 +1057,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1063,7 +1066,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1072,7 +1075,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1081,7 +1084,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1090,7 +1093,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1099,7 +1102,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1108,7 +1111,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1142,7 +1145,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1151,7 +1154,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1160,7 +1163,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1169,7 +1172,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1178,7 +1181,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1187,7 +1190,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1196,7 +1199,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1205,7 +1208,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1214,7 +1217,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1223,7 +1226,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1257,7 +1260,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1266,7 +1269,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1275,7 +1278,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1284,7 +1287,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1293,7 +1296,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1302,7 +1305,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1311,7 +1314,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1320,7 +1323,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1329,7 +1332,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1338,7 +1341,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1372,7 +1375,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1381,7 +1384,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1390,7 +1393,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1399,7 +1402,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1408,7 +1411,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1417,7 +1420,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1426,7 +1429,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1435,7 +1438,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1444,7 +1447,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1453,7 +1456,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1487,7 +1490,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1496,7 +1499,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1505,7 +1508,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1514,7 +1517,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1523,7 +1526,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1532,7 +1535,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1541,7 +1544,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1550,7 +1553,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1559,7 +1562,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1568,7 +1571,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1602,7 +1605,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1611,7 +1614,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1620,7 +1623,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1629,7 +1632,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1638,7 +1641,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1647,7 +1650,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1656,7 +1659,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1665,7 +1668,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1674,7 +1677,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1683,7 +1686,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1717,7 +1720,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1726,7 +1729,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1735,7 +1738,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1744,7 +1747,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1753,7 +1756,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1762,7 +1765,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1771,7 +1774,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1780,7 +1783,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1789,7 +1792,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1798,7 +1801,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>
@@ -1832,7 +1835,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская одежда
                                             </span>
                     </a>
@@ -1841,7 +1844,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская обувь
                                             </span>
                     </a>
@@ -1850,7 +1853,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские коляски
                                             </span>
                     </a>
@@ -1859,7 +1862,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детские автокресла
                                             </span>
                     </a>
@@ -1868,7 +1871,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детская мебель
                                             </span>
                     </a>
@@ -1877,7 +1880,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Игрушки
                                             </span>
                     </a>
@@ -1886,7 +1889,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Детский транспорт
                                             </span>
                     </a>
@@ -1895,7 +1898,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для кормления
                                             </span>
                     </a>
@@ -1904,7 +1907,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Товары для школьников
                                             </span>
                     </a>
@@ -1913,7 +1916,7 @@ if (isset($this->params['showCategories'])) {
                   <li class="b-subcategory b-subcategories__subcategory">
                     <a class="b-subcategory__link" href="categories.html">
                       <i class="b-subcategory__arrow pe-7s-angle-right"></i>
-                                    <span class="b-subcategory__name" title="name">
+                      <span class="b-subcategory__name" title="name">
                                                 Прочие детские товары
                                             </span>
                     </a>

@@ -59,17 +59,17 @@ use backend\widgets\crudActions\CrudActions;
     </div>
     <div class="row">
       <div class="col-xl-12">
-            <div class="row">
-              <?php
-              $presetGroups = CategoryAttributeGroup::getPresets();
-              $groupedCategoryAttributes = $model->getGroupedCategoryAttributes(ArrayHelper::getColumn(CategoryAttributeGroup::getPresets(), 'id'));
-              foreach ($groupedCategoryAttributes as $group => $categoryAttributes) : ?>
-                <div class="col-md-6">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title"><?= CategoryAttributeGroup::getPresetName($group) ?></h3>
-                    </div>
-                    <div class="panel-body">
+        <div class="row">
+          <?php
+          $presetGroups = CategoryAttributeGroup::getPresets();
+          $groupedCategoryAttributes = $model->getGroupedCategoryAttributes(ArrayHelper::getColumn(CategoryAttributeGroup::getPresets(), 'id'));
+          foreach ($groupedCategoryAttributes as $group => $categoryAttributes) : ?>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><?= CategoryAttributeGroup::getPresetName($group) ?></h3>
+                </div>
+                <div class="panel-body">
                   <?php DynamicFormWidget::begin([
                     'widgetContainer' => 'attributes_dynamicform' . $group,
                     'widgetBody' => '.attributes_container' . $group,
@@ -82,7 +82,7 @@ use backend\widgets\crudActions\CrudActions;
                     'formId' => 'category-form',
                     'formFields' => [
                       'attribute_id',
-                      ['models'=> [new \yii\base\Model()], 'fields' => ['lol']]
+                      ['models' => [new \yii\base\Model()], 'fields' => ['lol']]
                     ],
                   ]); ?>
 
@@ -99,7 +99,7 @@ use backend\widgets\crudActions\CrudActions;
                       <tr class="attributes_item<?= $group ?>">
                         <td class="attributes_sortable-handle<?= $group ?>">
                       <span class="m-btn m-btn--icon m-btn--icon-only" style="cursor: move;"><i
-                          class="fa fa-arrows-alt"></i></span>
+                            class="fa fa-arrows-alt"></i></span>
                         </td>
                         <td>
                           <?= $form->field($categoryAttribute, "[$index]attribute_id")->label(false)
@@ -113,7 +113,7 @@ use backend\widgets\crudActions\CrudActions;
                           <button type="button"
                                   class="attributes_delete<?= $group ?> btn btn-danger m-btn m-btn--icon m-btn--icon-only">
                             <i
-                              class="la la-minus"></i></button>
+                                class="la la-minus"></i></button>
                         </td>
                       </tr>
                     <?php endforeach; ?>
@@ -123,7 +123,7 @@ use backend\widgets\crudActions\CrudActions;
                       <td colspan="3" class="text-right">
                         <button type="button"
                                 class="attributes_add<?= $group ?> btn btn-primary m-btn m-btn--icon"><span><i
-                              class="la la-plus"></i><span>Добавить</span></span>
+                                class="la la-plus"></i><span>Добавить</span></span>
                         </button>
                       </td>
                     </tr>
@@ -131,10 +131,10 @@ use backend\widgets\crudActions\CrudActions;
                   </table>
                   <?php DynamicFormWidget::end(); ?>
                 </div>
+              </div>
             </div>
-                </div>
-              <?php endforeach; ?>
-            </div>
+          <?php endforeach; ?>
+        </div>
 
       </div>
     </div>

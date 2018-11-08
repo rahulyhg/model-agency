@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -17,14 +18,14 @@ Yii::$app->theme->registerThemeAsset($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/favicon.ico" type="image/x-icon" />
-    <title><?= Html::encode($this->title) ?></title>
-    <meta name="description" content="<?= $this->params['meta_description'] ?>">
-    <?= Html::csrfMetaTags() ?>
-    <?php $this->head() ?>
+  <meta charset="<?= Yii::$app->charset ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="<?= Yii::$app->theme->getAssetsUrl($this) ?>/img/favicon.ico" type="image/x-icon"/>
+  <title><?= Html::encode($this->title) ?></title>
+  <meta name="description" content="<?= $this->params['meta_description'] ?>">
+  <?= Html::csrfMetaTags() ?>
+  <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -33,23 +34,32 @@ Yii::$app->theme->registerThemeAsset($this);
 <!-- b-page -->
 <section class="b-page" data-tracking-place>
 
-    <!-- .b-header -->
-    <?= $this->render('_header'); ?>
-    <!-- b-header -->
+  <!-- .b-header -->
+  <?= $this->render('_header'); ?>
+  <!-- b-header -->
 
-    <!-- b-main -->
-    <main class="b-main b-page__main">
-        <div class="b-main__row">
+  <!-- b-main -->
+  <main class="b-main b-page__main">
+    <div class="b-main__row">
 
-            <?= $content ?>
+      <div class="b-bs-alert b-main__top-alert">
+        <?= \common\widgets\Alert::widget([
+          'options' => [
+            'class' => 'show alert-dismissible'
+          ],
+          'closeButton' => ['label' => 'закрыть'],
+        ]) ?>
+      </div>
 
-        </div>
-    </main>
-    <!-- b-main end -->
+      <?= $content ?>
 
-    <!-- b-footer -->
-    <?= $this->render('_footer'); ?>
-    <!-- b-footer end -->
+    </div>
+  </main>
+  <!-- b-main end -->
+
+  <!-- b-footer -->
+  <?= $this->render('_footer'); ?>
+  <!-- b-footer end -->
 
 </section>
 <!-- b-page end -->

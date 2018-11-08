@@ -1,0 +1,27 @@
+/*** Bootstrap forms ***/
+.form-group input, .form-group textarea {
+    width: 100%;
+    display: block;
+}
+.help-block {
+    margin: 0;
+}
+
+
+/*** Bootstrap alert ***/
+.b-bs-alert {
+    width: 100%;
+}
+.b-bs-alert .alert {
+    display: block;
+    width: 100%;
+}
+
+
+/*** Slick fix ***/
+.slick-slide img {
+    display: inline-block;
+}
+.b-single-announcemen__slider .slick-slide {
+    text-align: center;
+}

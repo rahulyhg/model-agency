@@ -4,11 +4,12 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel modules\client\backend\models\ClientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Clients';
+$this->title = 'Клиенты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="m-portlet__head">
@@ -35,29 +36,22 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="dataTables_wrapper">
     <div class="row">
       <div class="col-sm-12">
-            <?php Pjax::begin(); ?>
-                  <?= GridView::widget([
+        <?php Pjax::begin(); ?>
+        <?= GridView::widget([
           'id' => 'client-grid',
           'options' => ['class' => 'dataTable'],
           'dataProvider' => $dataProvider,
           'filterModel' => $searchModel,
-        'columns' => [
-          ['class' => \backend\lib\CheckboxColumn::class],
-                      'id',
-            'avatar_id',
-            'email:email',
+          'columns' => [
+            ['class' => \backend\lib\CheckboxColumn::class],
+            'email',
             'phone',
-            'auth_key',
-            //'password_hash',
-            //'password_reset_token',
-            //'location_id',
-            //'status',
-            //'created_at',
-            //'updated_at',
-          ['class' => \backend\lib\ActionColumn::class],
+            'name',
+            'id',
+            ['class' => \backend\lib\ActionColumn::class],
           ],
-          ]); ?>
-                    <?php Pjax::end(); ?>
+        ]); ?>
+        <?php Pjax::end(); ?>
       </div>
     </div>
   </div>

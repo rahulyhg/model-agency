@@ -295,6 +295,7 @@ class Bulletin extends \common\lib\ActiveRecord
             );
           }
         }
+
         $tr->commit();
         return true;
       }
@@ -303,4 +304,17 @@ class Bulletin extends \common\lib\ActiveRecord
     }
     return false;
   }
+
+  // SERGEY CODE START ^_^
+  public function afterSave($insert, $changedAttributes)
+  {
+    // Create Stat row after insert new bulletin
+    if($insert === true) {
+      $stat = new BulletinStat();
+      $stat->bulletin_id = $this->id;
+      $stat->save();
+    }
+    parent::afterSave($insert, $changedAttributes);
+  }
+  // SERGEY CODE END ^_^
 }
