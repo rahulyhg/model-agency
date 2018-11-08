@@ -38,7 +38,27 @@ class SelectForm extends BaseForm
   public function validate($attributeNames = null, $clearErrors = true)
   {
     $validated = parent::validate($attributeNames, $clearErrors);
-    $validated = self::validateMultiple($this->items) && $validated;
+    $validated = $this->validateLang() && $validated;
+    return $validated;
+  }
+
+  protected function validateLang()
+  {
+    $validated = true;
+    $itemKey = array_keys($this->items)[0];
+    foreach($this->items as $key => $item) {
+      if($item->lang_id == Lang::getDefaultLangId()){
+        $itemKey = $key;
+        break;
+      }
+    }
+    $arrayCount = count($this->items[$itemKey]->valToArray());
+    foreach($this->items as $item) {
+      if(!$item->isEmpty()){
+        $item->arrayCount = $arrayCount;
+        $validated = $item->validate() && $validated;
+      }
+    }
     return $validated;
   }
 
@@ -95,7 +115,11 @@ class SelectForm extends BaseForm
   {
     $arr = [];
     foreach($this->items as $item) {
-      $arr[$item->lang_id]['items'] = $item->valToArray();
+      if($item->isEmpty()) {
+        $arr[$item->lang_id] = null;
+      } else {
+        $arr[$item->lang_id]['items'] = $item->valToArray();
+      }
     }
     return $arr;
   }

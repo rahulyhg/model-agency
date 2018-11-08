@@ -30,7 +30,8 @@
         "yii2tech/ar-variation": "^1.0",
         "symfony/dom-crawler": "2.8",
         "symfony/css-selector": "2.8",
-        "conquer/codemirror": "^2.0"
+        "conquer/codemirror": "^2.0",
+        "herroffizier/yii2-translit-validator": "@stable"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -2,6 +2,7 @@
 
 namespace modules\bulletin\common\models;
 
+use backend\lib\SlugValidator;
 use Yii;
 use yii\helpers\Json;
 
@@ -36,6 +37,7 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
   public function rules()
   {
     return [
+      ['slug', SlugValidator::class, 'sourceAttribute' => 'name', 'invalidReplacement' => '_'],
       [['type_id'], 'required'],
       [['type_id', 'created_at', 'updated_at'], 'integer'],
       [['type_settings'], 'safe'],
@@ -163,9 +165,21 @@ class Attribute extends \modules\lang\lib\TranslatableActiveRecord
   public static function findByCategory($categoryId)
   {
     return Attribute::find()
-      ->joinWith(['categoryAttributes ca', 'translations'])
+      ->alias('attr')
+      ->joinWith(['categoryAttributes ca', 'translations tr'])
       ->where(['ca.category_id' => $categoryId])
+      ->orderBy('ca.group_id, ca.position')
       ->all();
+  }
+
+  public function getGroup($category)
+  {
+    foreach($this->categoryAttributes as $categoryAttribute) {
+      if($categoryAttribute->category_id == $category) {
+        return $categoryAttribute->group_id;
+      }
+    }
+    return 1;
   }
 
   public function getTypeClass()

@@ -5,6 +5,7 @@ namespace modules\bulletin\frontend\controllers;
 
 use modules\bulletin\common\models\Bulletin;
 use modules\bulletin\common\models\Category;
+use modules\bulletin\common\types\AttributeTypeFilterManager;
 use modules\bulletin\frontend\forms\FilterForm;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -16,10 +17,13 @@ class DefaultController extends Controller
   public function actionCategory($id)
   {
     $category = $this->findCategory($id);
-    $filterForm = new FilterForm();
-    $dataProvider = $filterForm->search($this->findCategoriesIds($id), \Yii::$app->request->queryParams);
+    //$filterForm = new FilterForm();
+    //$dataProvider = $filterForm->search($this->findCategoriesIds($id), \Yii::$app->request->queryParams);
+    $filterManager = AttributeTypeFilterManager::createByCategory($category->id);
+    $dataProvider = $filterManager->search($this->findCategoriesIds($id), \Yii::$app->request->queryParams);
     return $this->render('category', [
-      'filterForm' => $filterForm,
+      //'filterForm' => $filterForm,
+      'filterManager' => $filterManager,
       'category' => $category,
       'dataProvider' => $dataProvider
     ]);

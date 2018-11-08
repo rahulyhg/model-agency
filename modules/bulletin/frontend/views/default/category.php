@@ -2,6 +2,7 @@
 /**
  * @var $this yii\web\View
  * @var $filterForm
+ * @var $filterManager
  * @var $dataProvider yii\data\ActiveDataProvider
  * @var $category modules\bulletin\common\models\Category
  */
@@ -15,7 +16,7 @@ foreach($category->parents as $parent){
   $this->params['breadcrumbs'][] = '<span class="b-bread-crumbs__item-name">'.$parent->name.'</span>';
 }
 $this->params['breadcrumbs'][] = '<span class="b-bread-crumbs__item-name">'.$category->name.'</span>';
-$this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $filterForm, 'category' => $category->id]);
+$this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $filterForm, 'category' => $category->id, 'filterManager' => $filterManager]);
 ?>
 <!-- b-content -->
 <div class="b-content b-main__content b-main__content_sidebar">

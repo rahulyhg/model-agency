@@ -7,7 +7,9 @@ use yii\helpers\ArrayHelper;
 
 abstract class BaseType extends BaseObject
 {
+  public $id;
   public $name;
+  public $slug;
 
   public $rules = [];
 
@@ -30,5 +32,33 @@ abstract class BaseType extends BaseObject
   public function generateValueField($form, $model, $name)
   {
     return $form->field($model, $name);
+  }
+
+  /**
+   * @return array
+   */
+  public function getFilterAttributes()
+  {
+    return [$this->slug];
+  }
+
+  /**
+   * @return array
+   */
+  public function getFilterLabels()
+  {
+    return [$this->slug => $this->name];
+  }
+
+  /**
+   * @return array
+   */
+  public function getFilterRules()
+  {
+    return [];
+  }
+
+  public function addFilterFieldWhere($query, $model)
+  {
   }
 }
