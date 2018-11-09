@@ -6,6 +6,8 @@ namespace modules\bulletin\common\types;
 use modules\bulletin\common\models\Attribute;
 use modules\bulletin\common\models\AttributeVal;
 use modules\bulletin\common\models\Bulletin;
+use modules\bulletin\common\models\Service;
+use modules\bulletin\common\models\ServiceBulletin;
 use yii\base\BaseObject;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
@@ -75,6 +77,14 @@ class AttributeTypeFilterManager extends BaseObject
       $query->addSelect('av.val price');
       $query->leftJoin(AttributeVal::tableName() . ' av', 'b.id = av.entity_id AND av.attribute_id=' . Attribute::moneyId());
     }
+
+    //service start
+    foreach(Service::orderChangingIds() as $serviceId) {
+      $alias = "sb$serviceId";
+      $query->leftJoin(ServiceBulletin::tableName() . " $alias", "b.id = $alias.entity_id AND $alias.service_id=$serviceId");
+      $query->addOrderBy("ISNULL($alias.id)");
+    }
+    //service end
 
     $dataProvider = new ActiveDataProvider([
       'query' => $query,
