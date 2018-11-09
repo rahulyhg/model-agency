@@ -40,7 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <label class="b-field b-field_icon b-authorization__field">
           <?= $form->field($model, 'password')->label(false)->passwordInput([
             'autofocus' => true,
-            'type' => 'tel',
             'class' => 'b-field__input',
             'placeholder' => 'Пароль'
           ]) ?>

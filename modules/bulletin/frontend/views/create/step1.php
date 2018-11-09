@@ -9,12 +9,8 @@ $this->title = 'Добавить объявление';
 $this->params['breadcrumbs'][] = ['label' => 'Объявления', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="bulletin-create">
-
-  <?= $this->render('_form', [
-    'model' => $model,
-    'attributeTypeManager' => $attributeTypeManager,
-    'galleryForm' => $galleryForm,
-  ]) ?>
-
-</div>
+<?= $this->render('_form', [
+  'model' => $model,
+  'attributeTypeManager' => $attributeTypeManager,
+  'galleryForm' => $galleryForm,
+]) ?>

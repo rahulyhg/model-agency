@@ -17,7 +17,13 @@ $(document).ready(function () {
     });
     
     $("#showNumberBtn").click(function(e) {
-      alert("send ajax request get-phone(bulletinID)")
+      $.ajax({
+        method: "GET",
+        url: "'.\yii\helpers\Url::to(['/bulletin/default/get-phone']).'",
+        data: { id: '.$model->id.' }
+      }).done(function( response ) {
+        $("#phone-container").html(response)
+      });
     });
 });
 ');
@@ -54,23 +60,24 @@ $(document).ready(function () {
 
       <div class="b-single-announcemen__header-inner">
         <div class="b-single-announcemen__top-line">
-                                    <span class="b-single-announcemen__location" title="Киев, Киевская область, Украина">
+                                    <span class="b-single-announcemen__location" title="<?= $model->location->name ?>">
                                         <i class="b-single-announcemen__top-line-icon pe-7s-map-marker"></i>
-                                        Киев, Киевская область
+                                        <?= $model->location->name ?>
                                     </span>
 
-          <time class="b-single-announcemen__date" datetime="2018-10-09">
+          <time class="b-single-announcemen__date" datetime="<?= Yii::$app->formatter->asDate($model->created_at, 'Y-m-d') ?>">
             <i class="b-single-announcemen__top-line-icon pe-7s-clock"></i>
-            Вчера 18:34
+            <?= $model->formattedCreatedAt ?>
           </time>
         </div>
 
         <h1 class="b-single-announcemen__title"><?= $model->title ?></h1>
 
         <h2 class="b-single-announcemen__category">
-          <span class="b-single-announcemen__category-item">Спорт / Отдых</span>
-
-          <span class="b-single-announcemen__category-item">Вело</span>
+          <span class="b-single-announcemen__category-item"><?= $model->category->name ?></span>
+          <?php foreach ($model->category->parents as $index => $parent) : ?>
+            <span class="b-single-announcemen__category-item"><?= $parent->name ?></span>
+          <?php endforeach; ?>
         </h2>
 
         <ul class="b-single-announcemen__params">
@@ -178,8 +185,7 @@ $(document).ready(function () {
       </p>
 
       <p class="b-seller-info__number">
-        <span class="b-seller-info__number-beginning">+38 (067) 614</span>
-        <span class="b-seller-info__number-continuation">****</span>
+        <span class="b-seller-info__number-beginning" id="phone-container">+38 (067) 614 ****</span>
       </p>
 
       <a class="b-seller-info__number-request" id="showNumberBtn" href="javascript:void(0);" title="Нажмите что бы увидеть полный номер продавца!">Показать номер</a>

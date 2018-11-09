@@ -16,6 +16,19 @@ class SignupForm extends Model
   public $password;
   public $passwordRepeat;
 
+  /**
+   * {@inheritdoc}
+   */
+  public function attributeLabels()
+  {
+    return [
+      'email' => 'Email',
+      'phone' => 'Телефон',
+      'name' => 'Имя',
+      'password' => 'Новый пароль',
+      'passwordRepeat' => 'Повторите пароль',
+    ];
+  }
 
   /**
    * {@inheritdoc}

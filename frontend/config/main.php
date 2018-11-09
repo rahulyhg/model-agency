@@ -17,6 +17,7 @@ return [
       'class' => \frontend\components\theme\AdvTheme::class,
     ],
     'request' => [
+      'class' => \modules\lang\components\LangRequest::class,
       'csrfParam' => '_csrf-frontend',
     ],
     'user' => [
@@ -43,6 +44,7 @@ return [
     'urlManager' => [
       'enablePrettyUrl' => true,
       'showScriptName' => false,
+      'class' => \modules\lang\components\LangUrlManager::class,
       'rules' => [
         '/' => 'site/index',
         '/<slug:\w+>' => 'page/default/view'

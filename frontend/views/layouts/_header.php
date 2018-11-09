@@ -64,12 +64,9 @@ if (isset($this->params['showCategories'])) {
           </a>
         </div>
 
-        <div class="b-multilanguage b-header__multilanguage">
-          <a class="b-multilanguage__item b-multilanguage__item_active" href="javascript:void(0)"
-             title="Нажмите для перехода на русский язык">Язык</a>
-          <a class="b-multilanguage__item" href="index.html"
-             title="Натисніть для переходу на україньську мову!">Мова</a>
-        </div>
+        <?= \modules\lang\widgets\frontendLangSwitcher\LangSwitcher::widget([
+          'elementClass' => 'b-header__multilanguage'
+        ]) ?>
 
         <div class="b-header__first-right">
           <div class="b-user b-header__user">
@@ -103,7 +100,7 @@ if (isset($this->params['showCategories'])) {
             <?php endif; ?>
           </div>
 
-          <a href="<?= \yii\helpers\Url::to(['/bulletin/default/create']) ?>" class="b-button-first b-header__button-first">
+          <a href="<?= \yii\helpers\Url::to(['/bulletin/create/step1']) ?>" class="b-button-first b-header__button-first">
                                 <span class="b-button-first__icon-wrp">
                                     <i class="b-button-first__icon pe-7s-plus"></i>
                                 </span>

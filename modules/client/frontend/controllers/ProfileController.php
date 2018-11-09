@@ -15,7 +15,8 @@ class ProfileController extends Controller
     }
     return $this->render('index', [
       'client' => $client,
-      'bulletins' => Bulletin::find()->all()
+      'activeBulletins' => Bulletin::find()->where(['client_id' => \Yii::$app->user->id])->all(),
+      'noActiveBulletins' => Bulletin::find()->where(['client_id' => \Yii::$app->user->id])->all()
     ]);
   }
 }

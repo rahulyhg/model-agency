@@ -15,6 +15,9 @@ use Yii;
  */
 class BulletinStatus extends \modules\lang\lib\TranslatableActiveRecord
 {
+  const STATUS_DRAFT = 2;
+  const STATUS_PUBLISH = 1;
+
     /**
      * @inheritdoc
      */

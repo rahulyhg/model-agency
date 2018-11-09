@@ -16,12 +16,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="m-login__container">
       <div class="m-login__logo">
         <a href="#">
-          <img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/demo/demo3/media/img/logo/logo.png">
+          <!--<img src="<?= Yii::$app->metronic->getAssetsUrl($this) ?>/demo/demo3/media/img/logo/logo.png">-->
         </a>
       </div>
       <div class="m-login__signin">
         <div class="m-login__head">
-          <h3 class="m-login__title">Вход в CRM-систему</h3>
+          <h3 class="m-login__title">Вход</h3>
         </div>
 	        <?php $form = ActiveForm::begin([
 	            'options' => [

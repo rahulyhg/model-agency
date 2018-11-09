@@ -88,10 +88,10 @@ class Lang extends \common\lib\ActiveRecord
     {
         $language = self::getLangByUrl($url);
         self::$current = ($language === null) ? self::getDefaultLang() : $language;
-        Yii::$app->language = self::$current->locale;
-        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_DATE] = self::$current->date_format;
-        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_DATETIME] = self::$current->datetime_format;
-        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_TIME] = self::$current->time_format;
+        Yii::$app->language = self::$current->ietf_tag;
+//        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_DATE] = self::$current->date_format;
+//        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_DATETIME] = self::$current->datetime_format;
+//        Yii::$app->params['dateControlDisplay'][\kartik\datecontrol\Module::FORMAT_TIME] = self::$current->time_format;
     }
 
     protected static $_defaultLang;
@@ -129,7 +129,7 @@ class Lang extends \common\lib\ActiveRecord
         if ($url === null) {
             return null;
         } else {
-            $language = Lang::find()->where('url = :url', [':url' => $url])->one();
+            $language = Lang::find()->where('ietf_tag = :url', [':url' => $url])->one();
             if ($language === null) {
                 return null;
             } else {

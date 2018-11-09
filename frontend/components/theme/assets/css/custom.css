@@ -25,3 +25,14 @@
 .b-single-announcemen__slider .slick-slide {
     text-align: center;
 }
+
+
+/*** Theme fix ***/
+.b-field__icon {
+    bottom: auto;
+    top: 0;
+}
+.b-field__characters {
+    bottom: auto;
+    top: 0;
+}
