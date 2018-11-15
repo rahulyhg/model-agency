@@ -47,7 +47,7 @@ Yii::$app->theme->registerThemeAsset($this);
           'options' => [
             'class' => 'show alert-dismissible'
           ],
-          'closeButton' => ['label' => 'закрыть'],
+          'closeButton' => ['label' => Yii::t('common', 'закрыть')],
         ]) ?>
       </div>
 

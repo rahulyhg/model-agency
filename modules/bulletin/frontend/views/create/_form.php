@@ -14,6 +14,8 @@ use backend\widgets\crudActions\CrudActions;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $attributeTypeManager modules\bulletin\common\types\AttributeTypeManager */
 
+use modules\bulletin\Module;
+
 $this->registerJs('
 $(document).ready(function () {
     $(\'#rubric\').select2({
@@ -51,7 +53,7 @@ $(document).ready(function () {
   ]); ?>
   <section class="b-place-an-ad b-content__place-an-ad">
     <header class="b-place-an-ad__header">
-      <h2 class="b-place-an-ad__title">Подать обьявление - шаг 1</h2>
+      <h2 class="b-place-an-ad__title"><?= Module::t('adv-form', 'Подать обьявление - шаг 1') ?></h2>
     </header>
 
     <main class="b-place-an-ad__main">

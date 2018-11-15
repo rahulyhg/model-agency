@@ -8,13 +8,7 @@ class Module extends \common\lib\Module
 {
   public $controllerNamespace = 'app\modules\lang\backend\controllers';
 
-  public function init()
-  {
-    parent::init();
-    $this->registerTranslations();
-  }
-
-  public function registerTranslations()
+  public static function registerTranslations()
   {
     Yii::$app->i18n->translations['modules/lang/*'] = [
       'class' => 'yii\i18n\PhpMessageSource',

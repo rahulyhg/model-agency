@@ -11,12 +11,6 @@ class Module extends \common\lib\Module
   public $app = 'backend';
   public $controllerNamespace = 'app\modules\setting\backend\controllers';
 
-  public function init()
-  {
-    parent::init();
-    $this->registerTranslations();
-  }
-
   /**
    * Set setting value by section and key
    * @param $section
@@ -47,7 +41,7 @@ class Module extends \common\lib\Module
     return false;
   }
 
-  public function registerTranslations()
+  public static function registerTranslations()
   {
     Yii::$app->i18n->translations['modules/setting/*'] = [
       'class' => 'yii\i18n\PhpMessageSource',

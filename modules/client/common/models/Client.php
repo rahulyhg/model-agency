@@ -4,6 +4,7 @@ namespace modules\client\common\models;
 
 use common\behaviors\UploadFileBehavior;
 use modules\bulletin\common\models\Bulletin;
+use modules\bulletin\Module;
 use modules\location\common\models\Location;
 use Yii;
 use yii\base\NotSupportedException;
@@ -110,7 +111,7 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
       [['email', 'phone', 'name'], 'required'],
       [['email', 'phone', 'password_hash', 'name'], 'string', 'max' => 255],
       [['newPassword', 'newPasswordRepeat'], 'string', 'max' => 255, 'min' => 6],
-      [['newPasswordRepeat'], 'compare', 'compareAttribute' => 'newPassword', 'message' => "Пароли не совпадают"],
+      [['newPasswordRepeat'], 'compare', 'compareAttribute' => 'newPassword', 'message' => Module::t('client', 'Пароли не совпадают')],
       [['avatar_id', 'location_id', 'status', 'created_at', 'updated_at'], 'integer'],
       [['phone'], 'unique'],
       [['email'], 'unique'],
@@ -121,9 +122,9 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
         'file',
         'maxSize' => 300000 /* 300 кб */,
         'skipOnEmpty' => true,
-        'tooBig' => 'Это фото слишком большое. Максимальный размер: 300kb.',
+        'tooBig' => Module::t('client', 'Это фото слишком большое. Максимальный размер: 300kb.'),
         'extensions' => ['jpg', 'png', 'gif', 'jpeg'],
-        'wrongExtension' => 'Не правильный формат фото. Разрешенные форматы: jpg, jpeg, png, gif.',
+        'wrongExtension' => Module::t('client', 'Не правильный формат фото. Разрешенные форматы: jpg, jpeg, png, gif.'),
       ],
     ];
   }
@@ -135,20 +136,20 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
   {
     return [
       'id' => 'ID',
-      'avatar_id' => 'Avatar ID',
-      'avatarFile' => 'Фото',
-      'email' => 'Email',
-      'phone' => 'Телефон',
-      'auth_key' => 'Auth Key',
-      'password_hash' => 'Password Hash',
-      'password_reset_token' => 'Password Reset Token',
-      'location_id' => 'Место положения',
-      'status' => 'Статус',
-      'created_at' => 'Дата создания',
-      'updated_at' => 'Дата последнего обновления',
-      'newPassword' => 'Новый пароль',
-      'name' => 'Контактное лицо',
-      'newPasswordRepeat' => 'Повторите пароль',
+      'avatar_id' => Module::t('client', 'Аватар'),
+      'avatarFile' => Module::t('client', 'Фото'),
+      'email' => Module::t('client', 'Email'),
+      'phone' => Module::t('client', 'Телефон'),
+      'auth_key' => Module::t('client', 'Ключ авторизации'),
+      'password_hash' => Module::t('client', 'Хеш пароля'),
+      'password_reset_token' => Module::t('client', 'Токен сброса пароля'),
+      'location_id' => Module::t('client', 'Место положения'),
+      'status' => Module::t('client', 'Статус'),
+      'created_at' => Module::t('client', 'Дата создания'),
+      'updated_at' => Module::t('client', 'Дата последнего обновления'),
+      'newPassword' => Module::t('client', 'Новый пароль'),
+      'name' => Module::t('client', 'Контактное лицо'),
+      'newPasswordRepeat' => Module::t('client', 'Повторите пароль'),
     ];
   }
 

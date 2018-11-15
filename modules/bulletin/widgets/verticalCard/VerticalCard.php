@@ -12,6 +12,11 @@ class VerticalCard extends Widget
    */
   public $model;
 
+  /**
+   * @var string
+   */
+  public $elementClass= '';
+
   public function init()
   {
     if( !$this->model instanceof Bulletin ) {
@@ -23,7 +28,8 @@ class VerticalCard extends Widget
   public function run()
   {
     return $this->render('index', [
-      'model' => $this->model
+      'model' => $this->model,
+      'elementClass' => $this->elementClass
     ]);
   }
 }

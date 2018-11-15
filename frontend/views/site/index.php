@@ -7,7 +7,7 @@
 use \modules\bulletin\widgets\verticalCard\VerticalCard;
 use \modules\bulletin\common\models\Bulletin;
 
-$this->title = 'Доска объявлений';
+$this->title = Yii::t('home-page', 'Доска объявлений');
 $this->params['showSearchForm'] = true;
 $this->params['showCategories'] = true;
 ?>
@@ -17,13 +17,14 @@ $this->params['showCategories'] = true;
   <section class="b-recent-announcements b-content__item">
     <header class="b-recent-announcements__header">
       <h2 class="b-title b-recent-announcements__title">
-        Последние объявления
+        <?= Yii::t('home-page', 'Последние объявления') ?>
       </h2>
     </header>
     <main class="b-recent-announcements__main">
       <?php foreach ($lastBulletins as $lastBulletin) : ?>
         <?= VerticalCard::widget([
-          'model' => $lastBulletin
+          'model' => $lastBulletin,
+          'elementClass' => 'b-recent-announcements__item'
         ]) ?>
       <?php endforeach; ?>
 

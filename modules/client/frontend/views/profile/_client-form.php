@@ -6,6 +6,7 @@
  */
 
 use yii\widgets\ActiveForm;
+use modules\client\Module;
 
 ?>
 <?php $form = ActiveForm::begin([
@@ -16,10 +17,10 @@ use yii\widgets\ActiveForm;
 $form->errorSummary($model);
 ?>
 <div class="b-my-profile__login-details">
-  <div class="b-my-profile__title">Данные для входа</div>
+  <div class="b-my-profile__title"><?= Module::t('profile', 'Данные для входа') ?></div>
 
   <label class="b-field b-my-profile__field">
-    <span class="b-field-name b-field__name">Ваш email:</span>
+    <span class="b-field-name b-field__name"><?= Module::t('profile', 'Ваш email:') ?></span>
     <?= $form->field($model, 'email')->label(false)->textInput([
       'maxlength' => true,
       'type' => 'email',
@@ -28,7 +29,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field b-my-profile__field">
-    <span class="b-field-name b-field__name">Ваш номер телефона:</span>
+    <span class="b-field-name b-field__name"><?= Module::t('profile', 'Ваш номер телефона:') ?></span>
     <?= $form->field($model, 'phone')->label(false)->textInput([
       'maxlength' => true,
       'type' => 'tel',
@@ -37,7 +38,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field b-my-profile__field">
-    <span class="b-field-name b-field__name">Новый пароль:</span>
+    <span class="b-field-name b-field__name"><?= Module::t('profile', 'Новый пароль:') ?></span>
     <?= $form->field($model, 'newPassword')->label(false)->passwordInput([
       'maxlength' => true,
       'class' => 'b-field__input'
@@ -45,7 +46,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field b-my-profile__field">
-    <span class="b-field-name b-field__name">Повторить пароль:</span>
+    <span class="b-field-name b-field__name"><?= Module::t('profile', 'Повторить пароль:') ?></span>
     <?= $form->field($model, 'newPasswordRepeat')->label(false)->passwordInput([
       'maxlength' => true,
       'class' => 'b-field__input'
@@ -54,10 +55,10 @@ $form->errorSummary($model);
 </div>
 
 <div class="b-my-profile__additional-information">
-  <div class="b-my-profile__title">Дополнительные данные</div>
+  <div class="b-my-profile__title"><?= Module::t('profile', 'Дополнительные данные') ?></div>
 
   <label class="b-field b-my-profile__field">
-    <span class="b-field-name b-field__name">Контактное лицо:</span>
+    <span class="b-field-name b-field__name"><?= Module::t('profile', 'Контактное лицо:') ?></span>
     <?= $form->field($model, 'name')->label(false)->textInput([
       'maxlength' => true,
       'class' => 'b-field__input'
@@ -65,7 +66,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field-select b-my-profile__field">
-    <span class="b-field-name b-field-select__name">Страна:</span>
+    <span class="b-field-name b-field-select__name"><?= Module::t('profile', 'Страна:') ?></span>
     <select class="b-select2 b-field-select__select2" data-select2-search
             disabled name="country">
       <option value="1" selected>Украина</option>
@@ -74,7 +75,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field-select b-my-profile__field">
-    <span class="b-field-name b-field-select__name">Область:</span>
+    <span class="b-field-name b-field-select__name"><?= Module::t('profile', 'Область:') ?></span>
     <select class="b-select2 b-field-select__select2" data-select2-search
             name="region">
       <option value="1">Винницкая область</option>
@@ -106,7 +107,7 @@ $form->errorSummary($model);
   </label>
 
   <label class="b-field-select b-my-profile__field">
-    <span class="b-field-name b-field-select__name">Город:</span>
+    <span class="b-field-name b-field-select__name"><?= Module::t('profile', 'Город:') ?></span>
     <select class="b-select2 b-field-select__select2" data-select2-search
             name="sity">
       <option value="9.19">Киев</option>
@@ -149,7 +150,7 @@ $form->errorSummary($model);
   </label>
 
   <button type="submit" class="b-button-second b-my-profile__save">
-    <span class="b-button-second__value">Сохранить</span>
+    <span class="b-button-second__value"><?= Module::t('profile', 'Сохранить') ?></span>
   </button>
 </div>
 <?php ActiveForm::end(); ?>

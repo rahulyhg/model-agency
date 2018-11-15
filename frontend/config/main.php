@@ -8,11 +8,23 @@ $params = array_merge(
 
 return [
   'id' => 'app-frontend',
-  'language' => 'ru',
+  'language' => 'ru-RU',
   'basePath' => dirname(__DIR__),
   'bootstrap' => ['log'],
   'controllerNamespace' => 'frontend\controllers',
   'components' => [
+    'i18n' => [
+      'translations' => [
+        '*' => [
+          'class' => 'yii\i18n\PhpMessageSource',
+          'basePath' => '@frontend/messages',
+          'sourceLanguage' => 'ru-RU',
+          'fileMap' => [
+            'header' => 'header.php',
+          ],
+        ],
+      ],
+    ],
     'theme' => [
       'class' => \frontend\components\theme\AdvTheme::class,
     ],

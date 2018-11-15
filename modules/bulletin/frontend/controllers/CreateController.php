@@ -8,6 +8,7 @@ use modules\bulletin\common\models\BulletinStatus;
 use modules\bulletin\common\types\AttributeTypeManager;
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\widgets\ActiveForm;
 
 class CreateController extends Controller
@@ -56,7 +57,7 @@ class CreateController extends Controller
     ]);
   }
 
-  public function actionStep2()
+  public function actionStep2($id)
   {
     return $this->render('step2', []);
   }
@@ -97,4 +98,62 @@ class CreateController extends Controller
       'registerJs' => true,
     ]);
   }
+
+  public function actionUpdateStep1($id)
+  {
+    $model = $this->findModel($id);
+    $model->status_id = BulletinStatus::STATUS_DRAFT;
+    $lastCategoryId = $model->category_id;
+    $attributeTypeManager = AttributeTypeManager::createByCategory($lastCategoryId, $model->attributeVals);
+    $galleryForm = new GalleryForm(['maxFiles' => $model->getMaxFilesLeft(), 'isRequired' => empty($model->bulletinImages)]);
+
+    if ($model->load(Yii::$app->request->post()) && $model->validate('category_id')) {
+      if ($lastCategoryId != $model->category_id) {
+        $attributeTypeManager = AttributeTypeManager::createByCategory($model->category_id);
+      }
+      $validated = true;
+      if ($attributeTypeManager->loadModel(Yii::$app->request->post()) && ($validated = $attributeTypeManager->validateModel())) {
+        $model->populateRelation('attributeVals', $attributeTypeManager->getModelsToSave());
+      }
+      $validated = $model->validate() && $validated;
+      if ($validated && $galleryForm->load(Yii::$app->request->post())) {
+        $bulletinImages = $model->bulletinImages ?: [];
+        $result = $galleryForm->upload();
+        if (is_array($result)) {
+          foreach ($result as $imageId) {
+            $bulletinImages[] = new BulletinImage(['image_id' => $imageId]);
+          }
+          $model->populateRelation('bulletinImages', $bulletinImages);
+        } else {
+          $validated = $result;
+        }
+      }
+      if ($validated && $model->save(false)) {
+        return $this->redirect(['update-step2', 'id' => $model->id]);
+      }
+    }
+
+    $model->loadDefaultValues();
+
+    return $this->render('update-step1', [
+      'model' => $model,
+      'attributeTypeManager' => $attributeTypeManager,
+      'galleryForm' => $galleryForm,
+    ]);
+  }
+
+  public function actionUpdateStep2($id)
+  {
+    return $this->render('update-step2', []);
+  }
+
+  protected function findModel($id)
+  {
+    if (($model = Bulletin::findOne($id)) !== null) {
+      return $model;
+    }
+
+    throw new NotFoundHttpException('The requested page does not exist.');
+  }
+
 }

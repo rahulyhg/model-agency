@@ -33,7 +33,7 @@ class ServiceBulletin extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['entity_id', 'service_id', 'expires_at', 'created_at', 'updated_at'], 'required'],
+            [['entity_id', 'service_id', 'expires_at'], 'required'],
             [['entity_id', 'service_id', 'expires_at', 'created_at', 'updated_at'], 'integer'],
             [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bulletin::className(), 'targetAttribute' => ['entity_id' => 'id']],
             [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::className(), 'targetAttribute' => ['service_id' => 'id']],

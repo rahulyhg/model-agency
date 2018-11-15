@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel modules\client\backend\models\ServiceBulletinSearch */
+/* @var $searchModel modules\bulletin\backend\models\ServiceBulletinSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Service Bulletins';

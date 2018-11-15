@@ -7,8 +7,9 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use modules\client\Module;
 
-$this->title = 'Авторизация';
+$this->title = Module::t('auth', 'Авторизация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="b-content b-main__content">
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <header class="b-authorization__header">
       <h2 class="b-authorization__title">
-        Авторизоваться
+        <?= Module::t('auth', 'Авторизоваться') ?>
       </h2>
     </header>
 
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'autofocus' => true,
             'type' => 'tel',
             'class' => 'b-field__input',
-            'placeholder' => 'Ваш номер телефона'
+            'placeholder' => Module::t('auth', 'Ваш номер телефона')
           ]) ?>
           <i class="b-field__icon b-field__icon_second-color fas fa-user-alt"></i>
         </label>
@@ -41,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $form->field($model, 'password')->label(false)->passwordInput([
             'autofocus' => true,
             'class' => 'b-field__input',
-            'placeholder' => 'Пароль'
+            'placeholder' => Module::t('auth', 'Пароль')
           ]) ?>
           <i class="b-field__icon b-field__icon_second-color fas fa-key"></i>
         </label>
@@ -50,9 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <footer class="b-authorization__footer">
       <div class="b-authorization__action">
-        <a class="b-authorization__action-link" href="<?= \yii\helpers\Url::to(['signup']) ?>">Зарегистрироваться</a>
+        <a class="b-authorization__action-link" href="<?= \yii\helpers\Url::to(['signup']) ?>"><?= Module::t('auth', 'Зарегистрироваться') ?></a>
         <button type="submit" class="b-button-second b-authorization__action-submit">
-          <span class="b-button-second__value">Войти</span>
+          <span class="b-button-second__value"><?= Module::t('auth', 'Войти') ?></span>
         </button>
       </div>
     </footer>

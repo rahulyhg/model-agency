@@ -1,4 +1,5 @@
 <?php
+
 namespace common\lib;
 
 use ReflectionClass;
@@ -6,25 +7,29 @@ use ReflectionClass;
 // //
 class Module extends \yii\base\Module
 {
-    const TRANSLATION_CATEGORY = 'modules';
+  const TRANSLATION_CATEGORY = 'modules';
 
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        $childClassInfo = new ReflectionClass($this);
-        $dirPath = dirname($childClassInfo->getFileName());
-        $dirName = basename($dirPath);
-        if (\Yii::$app->id === 'app-backend') {
-            $this->viewPath = $dirPath . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'views';
-            $this->controllerNamespace = 'modules\\' . $dirName . '\\backend\\controllers';
-        }
-        if (\Yii::$app->id === 'app-frontend') {
-            $this->viewPath = $dirPath . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . 'views';
-            $this->controllerNamespace = 'modules\\' . $dirName . '\\frontend\\controllers';
-        }
-        parent::init();
+  /**
+   * @inheritdoc
+   */
+  public function init()
+  {
+    $childClassInfo = new ReflectionClass($this);
+    $dirPath = dirname($childClassInfo->getFileName());
+    $dirName = basename($dirPath);
+    if (\Yii::$app->id === 'app-backend') {
+      $this->viewPath = $dirPath . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'views';
+      $this->controllerNamespace = 'modules\\' . $dirName . '\\backend\\controllers';
     }
+    if (\Yii::$app->id === 'app-frontend') {
+      $this->viewPath = $dirPath . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . 'views';
+      $this->controllerNamespace = 'modules\\' . $dirName . '\\frontend\\controllers';
+    }
+    parent::init();
+    static::registerTranslations();
+  }
 
+  public static function registerTranslations()
+  {
+  }
 }

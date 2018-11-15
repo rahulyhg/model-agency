@@ -2,6 +2,7 @@
 namespace modules\client\frontend\forms;
 
 use modules\client\common\models\Client;
+use modules\client\Module;
 use Yii;
 use yii\base\Model;
 
@@ -23,8 +24,8 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['phone'], 'required', 'message' => 'Укажите номер телефона'],
-            [['password'], 'required', 'message' => 'Укажите пароль'],
+            [['phone'], 'required', 'message' => Module::t('auth', 'Укажите номер телефона')],
+            [['password'], 'required', 'message' => Module::t('auth', 'Укажите пароль')],
             ['rememberMe', 'boolean'],
             ['password', 'validatePassword'],
         ];

@@ -4,6 +4,11 @@
  * @var $model \modules\bulletin\common\models\Bulletin
  * @var $stat \modules\bulletin\common\models\BulletinStat
  */
+
+use yii\helpers\ArrayHelper;
+
+$this->title = $model->title;
+
 $this->registerJs('
 $(document).ready(function () {
     $(\'.b-single-announcemen__slides\').slick({
@@ -79,25 +84,9 @@ $(document).ready(function () {
             <span class="b-single-announcemen__category-item"><?= $parent->name ?></span>
           <?php endforeach; ?>
         </h2>
-
-        <ul class="b-single-announcemen__params">
-          <li class="b-single-announcemen__params-item">
-            <span class="b-single-announcemen__params-name">Объявление от</span>
-            <span class="b-single-announcemen__params-value">Частного лица</span>
-          </li>
-          <li class="b-single-announcemen__params-item">
-            <span class="b-single-announcemen__params-name">Вид товара</span>
-            <span class="b-single-announcemen__params-value">Вело</span>
-          </li>
-          <li class="b-single-announcemen__params-item">
-            <span class="b-single-announcemen__params-name">Подкатегории</span>
-            <span class="b-single-announcemen__params-value">Велосипеды</span>
-          </li>
-          <li class="b-single-announcemen__params-item">
-            <span class="b-single-announcemen__params-name">Состояние</span>
-            <span class="b-single-announcemen__params-value">Б/У</span>
-          </li>
-        </ul>
+        <?= \modules\bulletin\widgets\attributeList\AttributeList::widget([
+            'model' => $model
+        ]) ?>
       </div>
 
     </header>

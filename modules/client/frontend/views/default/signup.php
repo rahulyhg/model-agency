@@ -6,8 +6,9 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use modules\client\Module;
 
-$this->title = 'Signup';
+$this->title = Module::t('registration', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- b-content -->
@@ -20,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <header class="b-registration__header">
       <h2 class="b-registration__title">
-        Регистрация
+        <?= Module::t('registration', 'Регистрация') ?>
       </h2>
     </header>
 
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'autofocus' => true,
             'type' => 'email',
             'class' => 'b-field__input',
-            'placeholder' => 'Ваш email'
+            'placeholder' => Module::t('registration', 'Ваш email')
           ]) ?>
           <i class="b-field__icon b-field__icon_first-color fas fa-envelope"></i>
         </label>
@@ -41,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'autofocus' => true,
             'type' => 'tel',
             'class' => 'b-field__input',
-            'placeholder' => 'Ваш номер телефона'
+            'placeholder' => Module::t('registration', 'Ваш номер телефона')
           ]) ?>
           <i class="b-field__icon b-field__icon_first-color fas fa-phone"></i>
         </label>
@@ -50,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $form->field($model, 'name')->label(false)->textInput([
             'autofocus' => true,
             'class' => 'b-field__input',
-            'placeholder' => 'Ваше имя'
+            'placeholder' => Module::t('registration', 'Ваше имя')
           ]) ?>
           <i class="b-field__icon b-field__icon_first-color fas fa-user"></i>
         </label>
@@ -59,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $form->field($model, 'password')->label(false)->passwordInput([
             'autofocus' => true,
             'class' => 'b-field__input',
-            'placeholder' => 'Пароль'
+            'placeholder' => Module::t('registration', 'Пароль')
           ]) ?>
           <i class="b-field__icon b-field__icon_first-color fas fa-key"></i>
         </label>
@@ -68,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $form->field($model, 'passwordRepeat')->label(false)->passwordInput([
             'autofocus' => true,
             'class' => 'b-field__input',
-            'placeholder' => 'Повторите пароль'
+            'placeholder' => Module::t('registration', 'Повторите пароль')
           ]) ?>
           <i class="b-field__icon b-field__icon_first-color fas fa-key"></i>
         </label>
@@ -77,9 +78,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <footer class="b-registration__footer">
       <div class="b-registration__action">
-        <a class="b-registration__action-link" href="authorization.html">Войти</a>
+        <a class="b-registration__action-link" href="<?= \yii\helpers\Url::to(['login']) ?>"><?= Module::t('registration', 'Войти') ?></a>
         <button type="submit" class="b-button-first b-registration__action-submit">
-          <span class="b-button-first__value">Зарегистрироваться</span>
+          <span class="b-button-first__value"><?= Module::t('registration', 'Зарегистрироваться') ?></span>
         </button>
       </div>
     </footer>

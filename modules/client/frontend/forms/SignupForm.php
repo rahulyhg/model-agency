@@ -3,6 +3,7 @@
 namespace modules\client\frontend\forms;
 
 use modules\client\common\models\Client;
+use modules\client\Module;
 use yii\base\Model;
 
 /**
@@ -22,11 +23,11 @@ class SignupForm extends Model
   public function attributeLabels()
   {
     return [
-      'email' => 'Email',
-      'phone' => 'Телефон',
-      'name' => 'Имя',
-      'password' => 'Новый пароль',
-      'passwordRepeat' => 'Повторите пароль',
+      'email' => Module::t('registration', 'Email'),
+      'phone' => Module::t('registration', 'Телефон'),
+      'name' => Module::t('registration', 'Имя'),
+      'password' => Module::t('registration', 'Новый пароль'),
+      'passwordRepeat' => Module::t('registration', 'Повторите пароль'),
     ];
   }
 
@@ -41,12 +42,12 @@ class SignupForm extends Model
       ['email', 'required'],
       ['email', 'email'],
       ['email', 'string', 'max' => 255],
-      ['email', 'unique', 'targetClass' => Client::class, 'message' => 'Этот email уже используется другим пользователем'],
+      ['email', 'unique', 'targetClass' => Client::class, 'message' => Module::t('registration', 'Этот email уже используется другим пользователем')],
 
       ['phone', 'trim'],
       ['phone', 'required'],
       ['phone', 'string', 'max' => 255],
-      ['phone', 'unique', 'targetClass' => Client::class, 'message' => 'Этот номер уже используется другим пользователем'],
+      ['phone', 'unique', 'targetClass' => Client::class, 'message' => Module::t('registration', 'Этот номер уже используется другим пользователем')],
 
       ['name', 'trim'],
       ['name', 'required'],
@@ -57,7 +58,7 @@ class SignupForm extends Model
 
       ['passwordRepeat', 'required'],
       ['passwordRepeat', 'string', 'min' => 6],
-      [['passwordRepeat'], 'compare', 'compareAttribute' => 'password', 'message' => "Пароли не совпадают"],
+      [['passwordRepeat'], 'compare', 'compareAttribute' => 'password', 'message' => Module::t('registration', 'Пароли не совпадают')],
     ];
   }
 

@@ -7,7 +7,6 @@ use yii\helpers\Html;
 
 $this->title = 'Редактировать Service Bulletin: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Service Bulletins', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="service-bulletin-update">

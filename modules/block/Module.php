@@ -8,12 +8,6 @@ use Yii;
 class Module extends \common\lib\Module
 {
   public $controllerNamespace = 'app\modules\block\backend\controllers';
-
-  public function init()
-  {
-    parent::init();
-    $this->registerTranslations();
-  }
   
   /**
    * @param $key
@@ -27,7 +21,7 @@ class Module extends \common\lib\Module
     return null;
   }
 
-  public function registerTranslations()
+  public static function registerTranslations()
   {
     Yii::$app->i18n->translations['modules/block/*'] = [
       'class' => 'yii\i18n\PhpMessageSource',

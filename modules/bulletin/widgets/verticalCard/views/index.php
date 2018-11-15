@@ -2,14 +2,15 @@
 /**
  * @var $this \yii\web\View
  * @var $model \modules\bulletin\common\models\Bulletin
+ * @var $elementClass string
  */
 
 use yii\helpers\Url;
 
 ?>
-<article class="b-second-announcement b-recent-announcements__item" itemscope itemtype="http://schema.org/Product">
+<article class="b-second-announcement <?= $elementClass ?>" itemscope itemtype="http://schema.org/Product">
   <header class="b-second-announcement__header">
-    <a class="b-second-announcement__img-link" href="<?= Url::to(['/bulletin/default/view', 'id' => $model->id]) ?>" title="Велосипед горный">
+    <a class="b-second-announcement__img-link" href="<?= Url::to(['/bulletin/default/view', 'id' => $model->id]) ?>" title="<?= $model->title ?>">
       <img class="b-second-announcement__img" itemprop="image" src="<?= $model->thumbnailUrl ?>" alt="<?= $model->title ?>">
     </a>
   </header>
@@ -33,7 +34,7 @@ use yii\helpers\Url;
     <?php endif; ?>
   </main>
   <footer class="b-second-announcement__footer">
-    <span class="b-second-announcement__location" title="Киев, Киевская область, Украина">
+    <span class="b-second-announcement__location" title="<?= $model->location->name ?>">
       <i class="b-second-announcement__icon pe-7s-map-marker"></i>
       <?= $model->location->name ?>
     </span>

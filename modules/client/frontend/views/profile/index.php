@@ -2,8 +2,12 @@
 /**
  * @var $this \yii\web\View
  * @var $client \modules\client\common\models\Client
- * @var $bulletins \modules\bulletin\common\models\Bulletin
+ * @var $activeBulletins \modules\bulletin\common\models\Bulletin[]
+ * @var $notActiveBulletins \modules\bulletin\common\models\Bulletin[]
  */
+
+use modules\client\Module;
+
 $this->registerJs('
 $(document).ready(function() {
     new Tabs({
@@ -41,15 +45,15 @@ $(document).ready(function() {
     <header class="b-profile__header">
       <ul class="b-profile__toggle-tabs">
         <li class="b-profile__toggle-tab">
-          <a class="b-profile__toggle-tab-link" href="#myProfile">Мой профиль</a>
+          <a class="b-profile__toggle-tab-link" href="#myProfile"><?= Module::t('profile', 'Мой профиль') ?></a>
         </li>
 
         <li class="b-profile__toggle-tab">
-          <a class="b-profile__toggle-tab-link" href="#myAds">Мои объявления</a>
+          <a class="b-profile__toggle-tab-link" href="#myAds"><?= Module::t('profile', 'Мои объявления') ?></a>
         </li>
 
         <li class="b-profile__toggle-tab">
-          <a class="b-profile__toggle-tab-link" href="#myPay">Мои платежи</a>
+          <a class="b-profile__toggle-tab-link" href="#myPay"><?= Module::t('profile', 'Мои платежи') ?></a>
         </li>
       </ul>
     </header>
@@ -66,7 +70,8 @@ $(document).ready(function() {
         <li id="myAds" class="b-profile__body-tab">
           <?= $this->render('_client-ads', [
             'elementClass' => 'b-profile__my-ads',
-            'models' => $bulletins
+            'activeBulletins' => $activeBulletins,
+            'notActiveBulletins' => $notActiveBulletins
           ]) ?>
         </li>
 

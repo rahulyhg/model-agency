@@ -1,5 +1,7 @@
 <?php
 
+use modules\bulletin\common\models\Bulletin;
+use modules\bulletin\common\models\Service;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
@@ -31,10 +33,18 @@ use backend\widgets\crudActions\CrudActions;
     <div class="col-xl-8 offset-xl-2">
         <div class="row">
           <div class="col-md-6">
-        <?= $form->field($model, 'entity_id')->textInput() ?>
+        <?= $form->field($model, 'entity_id')->widget(kartik\widgets\Select2::class, [
+                      'data' => Bulletin::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ]) ?>
           </div>
           <div class="col-md-6">
-        <?= $form->field($model, 'service_id')->textInput() ?>
+        <?= $form->field($model, 'service_id')->widget(kartik\widgets\Select2::class, [
+                      'data' => Service::getMap(),
+                      'options' => ['placeholder' => ''],
+                      'pluginOptions' => ['allowClear' => true],
+                    ]) ?>
           </div>
         </div>
         <div class="row">

@@ -3,6 +3,7 @@
 namespace modules\bulletin\common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%service}}".
@@ -24,6 +25,11 @@ class Service extends \modules\lang\lib\TranslatableActiveRecord
     public static function tableName()
     {
         return '{{%service}}';
+    }
+
+    public static function orderChangingIds()
+    {
+        return [2];
     }
 
     /**
@@ -50,6 +56,15 @@ class Service extends \modules\lang\lib\TranslatableActiveRecord
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата последнего обновления',
         ];
+    }
+
+    protected static $_map;
+
+    public static function getMap()
+    {
+        if (!isset(self::$_map))
+            self::$_map = ArrayHelper::map(self::find()->joinWith('defaultTranslation')->orderBy('name')->all(), 'id', 'name');
+        return self::$_map;
     }
 
     /**

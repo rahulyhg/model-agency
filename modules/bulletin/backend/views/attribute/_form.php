@@ -53,10 +53,15 @@ use yii\helpers\Url;
               ]
             ]) ?>
           </div>
+        </div>
+        <div class="row">
           <?php if($model->type_id) : ?>
-          <div class="col-md-6">
-            <?= $form->field($model->variationModels, 'name')->textInput(['maxlength' => true]) ?>
-          </div>
+            <div class="col-md-6">
+              <?= $form->field($model->variationModels, 'name')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-md-6">
+              <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+            </div>
           <?php endif; ?>
         </div>
         <?php if($typeModel && $typeModel->viewName) : ?>

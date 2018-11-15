@@ -37,7 +37,6 @@ class FilterForm extends Model
   public function rules()
   {
     return [
-      ['price', 'safe'],
       [['priceFrom', 'priceTo'], 'integer'],
       [['floorFrom', 'floorTo'], 'integer'],
       ['withCommission', 'boolean'],

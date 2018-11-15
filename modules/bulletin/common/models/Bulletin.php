@@ -4,6 +4,7 @@ namespace modules\bulletin\common\models;
 
 use common\models\DynamicModel;
 use DateTime;
+use modules\bulletin\Module;
 use modules\client\common\models\Client;
 use modules\location\common\models\Location;
 use Yii;
@@ -166,6 +167,14 @@ class Bulletin extends \common\lib\ActiveRecord
   /**
    * @return \yii\db\ActiveQuery
    */
+  public function getBulletinStats()
+  {
+    return $this->hasMany(BulletinStat::className(), ['bulletin_id' => 'id']);
+  }
+
+  /**
+   * @return \yii\db\ActiveQuery
+   */
   public function getComplaints()
   {
     return $this->hasMany(Complaint::className(), ['entity_id' => 'id']);
@@ -205,10 +214,10 @@ class Bulletin extends \common\lib\ActiveRecord
     $yesterday = new DateTime(date('Y-m-d', strtotime('-1 days')));
     $createdAt = new DateTime('@'.$this->created_at);
     if($createdAt >= $today) {
-      return 'Сегодня' . ' ' . date('h:i', $this->created_at);
+      return Module::t('common', 'Сегодня'). ' ' . date('h:i', $this->created_at);
     }
     if($createdAt >= $yesterday) {
-      return 'Вчера' . ' ' . date('h:i', $this->created_at);
+      return Module::t('common', 'Вчера') . ' ' . date('h:i', $this->created_at);
     }
     return Yii::$app->formatter->asDate($this->created_at, 'php:d M');
   }

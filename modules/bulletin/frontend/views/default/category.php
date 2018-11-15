@@ -2,6 +2,7 @@
 /**
  * @var $this yii\web\View
  * @var $filterForm
+ * @var $filterManager
  * @var $dataProvider yii\data\ActiveDataProvider
  * @var $category modules\bulletin\common\models\Category
  */
@@ -10,12 +11,16 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
+$this->title = $category->name . ' - Объявления';
+
 $this->params['showSearchForm'] = true;
 foreach($category->parents as $parent){
   $this->params['breadcrumbs'][] = '<span class="b-bread-crumbs__item-name">'.$parent->name.'</span>';
 }
 $this->params['breadcrumbs'][] = '<span class="b-bread-crumbs__item-name">'.$category->name.'</span>';
-$this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $filterForm, 'category' => $category->id]);
+if($category->categoryAttributes) {
+  $this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $filterForm, 'category' => $category->id, 'filterManager' => $filterManager]);
+}
 ?>
 <!-- b-content -->
 <div class="b-content b-main__content b-main__content_sidebar">
@@ -45,9 +50,13 @@ $this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $fil
     </header>
 
     <main class="b-category-announcemen__main">
-      <?php foreach($dataProvider->getModels() as $model) : ?>
-        <?= $this->render('_card', ['model' => $model]) ?>
-      <?php endforeach ?>
+      <?php if(count($dataProvider->getModels()) > 0) : ?>
+        <?php foreach($dataProvider->getModels() as $model) : ?>
+          <?= $this->render('_card', ['model' => $model]) ?>
+        <?php endforeach; ?>
+      <?php else : ?>
+        <p class="b-category-announcemen__not-found">Объявлений не найдено.</p>
+      <?php endif; ?>
     </main>
 
     <footer class="b-category-announcemen__footer">
@@ -63,16 +72,6 @@ $this->params['filterForm'] = $this->render('_filterform', ['filterForm' => $fil
 
 <!-- b-sidebar -->
 <div class="b-sidebar b-main__sidebar">
-  <a class="b-place-for-ads b-sidebar__place-for-ads" href="#" title="Рекламное объявление">
-    <div class="b-place-for-ads__text">Баннер</div>
-
-    <div class="b-place-for-ads__size">270 Х 475</div>
-  </a>
-
-  <a class="b-place-for-ads b-sidebar__place-for-ads" href="#" title="Рекламное объявление">
-    <div class="b-place-for-ads__text">Баннер</div>
-
-    <div class="b-place-for-ads__size">270 Х 475</div>
-  </a>
+  <?= Yii::$app->banner->get('category_sidebar') ?>
 </div>
 <!-- b-sidebar end -->

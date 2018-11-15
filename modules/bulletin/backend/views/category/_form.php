@@ -48,11 +48,33 @@ use backend\widgets\crudActions\CrudActions;
               'options' => ['placeholder' => ''],
               'pluginOptions' => ['allowClear' => true],
             ]) ?>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
             <?= $form->field($model->variationModels, 'name')->textInput(['maxlength' => true]) ?>
+          </div>
+          <div class="col-md-6">
+            <?= $form->field($model, 'iconFile')->widget(\kartik\widgets\FileInput::class, [
+              'options' => [
+                'accept' => 'image/*',
+                'multiple' => false,
+              ],
+              'pluginOptions' => [
+                'previewFileType' => 'image',
+                'showCaption' => false,
+                'showUpload' => false,
+                'showClose' => false,
+                'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
+                'removeLabel' => '',
+                'initialPreview' => [
+                  $model->iconUrl ? Html::img($model->iconUrl, ['class' => 'file-preview-image', 'style' => 'max-width: 100%']) : null,
+                ],
+                'layoutTemplates' => ['footer' => '']
+              ],
+              'pluginEvents' => [
+                'filecleared' => 'function(e) {
+                  $("#' . Html::getInputId($model, "deleteIconFile") . '").val(1);
+              }',
+              ]
+            ]);
+            ?>
           </div>
         </div>
       </div>
