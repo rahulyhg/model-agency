@@ -300,36 +300,36 @@ class Category extends \modules\lang\lib\TranslatableActiveRecord
     return self::$_map;
   }
 
-  protected static $_treeMap;
-
-  public static function getTreeMap()
-  {
-    if (!isset(self::$_map)) {
-      self::$_groupedMap = self::getTree();
-    }
-    return self::$_groupedMap;
-  }
-
-  private static function getTree(Category $category = null)
-  {
-    if($category === null) {
-      $categories = self::find()
-        ->where(['parent_id' => null])
-        ->joinWith('translations tr')
-        ->orderBy('tr.name')
-        ->all();
-    } else {
-      $categories = self::find()
-        ->where(['parent_id' => $category->id])
-        ->joinWith('translations tr')
-        ->orderBy('tr.name')
-        ->all();
-    }
-    foreach ($categories as $category) {
-      $result[$category->id] = $category->name;
-    }
-    return $tree;
-  }
+//  protected static $_treeMap;
+//
+//  public static function getTreeMap()
+//  {
+//    if (!isset(self::$_map)) {
+//      self::$_treeMap = self::getTree();
+//    }
+//    return self::$_treeMap;
+//  }
+//
+//  private static function getTree(Category $category = null)
+//  {
+//    if($category === null) {
+//      $categories = self::find()
+//        ->where(['parent_id' => null])
+//        ->joinWith('translations tr')
+//        ->orderBy('tr.name')
+//        ->all();
+//    } else {
+//      $categories = self::find()
+//        ->where(['parent_id' => $category->id])
+//        ->joinWith('translations tr')
+//        ->orderBy('tr.name')
+//        ->all();
+//    }
+//    foreach ($categories as $category) {
+//      $result[$category->id] = $category->name;
+//    }
+//    return $tree;
+//  }
 
   protected static $_parentMap;
 
