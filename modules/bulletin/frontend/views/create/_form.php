@@ -245,7 +245,7 @@ $(document).ready(function () {
           <label class="b-field b-field_characters b-place-an-ad__item">
             <span class="b-field-name b-field__name">Email:</span>
 
-            <input class="b-field__input" disabled value="ivanov.ivan@gmail.com" type="email"
+            <input class="b-field__input" disabled value="<?= Yii::$app->user->identity->email ?>" type="email"
                    name="email" required>
           </label>
 

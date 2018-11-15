@@ -24,7 +24,7 @@ $(document).ready(function() {
     </header>
 
     <main class="b-place-an-ad__main">
-      <form class="b-promotions b-place-an-ad__promotions" action="publication">
+      <form class="b-promotions b-place-an-ad__promotions">
         <ul class="b-promotions__items">
 
           <li class="b-promotion b-promotions__item">
