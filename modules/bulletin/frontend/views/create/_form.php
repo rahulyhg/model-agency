@@ -57,6 +57,9 @@ $(document).ready(function () {
     </header>
 
     <main class="b-place-an-ad__main">
+      <p>
+        <?= $form->errorSummary($model); ?>
+      </p>
       <form class="b-place-an-ad__items">
         <div class="b-place-an-ad__goup">
           <label class="b-field b-field_characters b-place-an-ad__item">
@@ -249,7 +252,7 @@ $(document).ready(function () {
           <label class="b-field b-field_characters b-place-an-ad__item">
             <span class="b-field-name b-field__name">Контактное лицо:</span>
 
-            <input class="b-field__input" disabled value="Иванов Иван" type="text" name="title" required>
+            <input class="b-field__input" disabled value="<?= Yii::$app->user->identity->name ?>" type="text" name="title" required>
           </label>
 
           <!-- <button type="submit" class="b-button-second b-place-an-ad__next">
