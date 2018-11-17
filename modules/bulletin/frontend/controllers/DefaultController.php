@@ -10,6 +10,7 @@ use modules\bulletin\common\models\BulletinStat;
 use modules\bulletin\common\models\Category;
 use modules\bulletin\common\types\AttributeTypeFilterManager;
 use modules\bulletin\common\types\AttributeTypeManager;
+use modules\bulletin\widgets\search\models\SearchForm;
 use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -100,5 +101,15 @@ class DefaultController extends Controller
     }
 
     throw new NotFoundHttpException('The requested page does not exist.');
+  }
+
+  public function actionSearch()
+  {
+    $searchModel = new SearchForm();
+    $dataProvider = $searchModel->search(Yii::$app->request->get());
+    return $this->render('search', [
+      'searchModel' => $searchModel,
+      'dataProvider' => $dataProvider
+    ]);
   }
 }

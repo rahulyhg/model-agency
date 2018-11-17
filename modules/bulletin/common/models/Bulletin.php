@@ -34,11 +34,15 @@ use yii\helpers\StringHelper;
  * @property ServiceBulletin[] $serviceBulletins
  *
  * @property string $thumbnailUrl
+ * @property string $thumbnailSize
  * @property mixed $formattedCreatedAt
  * @property mixed $price
  */
 class Bulletin extends \common\lib\ActiveRecord
 {
+  const THUMBNAIL_WIDTH = 270;
+  const THUMBNAIL_HEIGHT = 191;
+
   /**
    * {@inheritdoc}
    */
