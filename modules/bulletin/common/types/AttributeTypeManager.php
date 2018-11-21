@@ -64,7 +64,11 @@ class AttributeTypeManager extends BaseObject
   {
     $formFields = [];
     foreach ($this->fields as $id => $field) {
-      $formFields[] = $field->generateValueField($form, $this->model, $this->nameById($id));
+//      if( \Yii::$app->id === 'app-frontend' ) {
+//        $formFields[] = $field->generateValueFieldFrontend($form, $this->model, $this->nameById($id));
+//      } else {
+        $formFields[] = $field->generateValueField($form, $this->model, $this->nameById($id));
+//      }
     }
     return $formFields;
   }

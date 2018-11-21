@@ -30,10 +30,16 @@ $form->errorSummary($model);
 
   <label class="b-field b-my-profile__field">
     <span class="b-field-name b-field__name"><?= Module::t('profile', 'Ваш номер телефона:') ?></span>
-    <?= $form->field($model, 'phone')->label(false)->textInput([
-      'maxlength' => true,
-      'type' => 'tel',
-      'class' => 'b-field__input'
+    <?= $form->field($model, 'phone')->label(false)->widget(\borales\extensions\phoneInput\PhoneInput::class, [
+      'jsOptions' => [
+        'allowExtensions' => true,
+        'onlyCountries' => ['ua'],
+      ],
+      'options' => [
+        'maxlength' => true,
+        'class' => 'b-field__input',
+        'placeholder' => 'Например: 097 7776797'
+      ]
     ]) ?>
   </label>
 

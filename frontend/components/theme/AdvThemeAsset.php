@@ -28,6 +28,7 @@ class AdvThemeAsset extends AssetBundle
     'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js',
     'lib/jquery.scrollbar/jquery.scrollbar.min.js',
     'lib/select2-searchInputPlaceholder.js',
+    'lib/autosize.min.js',
 
     'js/main.js'
   ];

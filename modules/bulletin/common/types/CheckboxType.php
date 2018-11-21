@@ -11,7 +11,7 @@ class CheckboxType extends BaseType
     'boolean'
   ];
 
-  public function generateValueField($form, $model, $name)
+  public function generateValueField($form, $model, $name, $options = [])
   {
     return parent::generateValueField($form, $model, $name)->checkbox(/*['label' => $this->name]*/);
   }

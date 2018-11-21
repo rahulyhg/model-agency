@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <section class="b-authorization b-content__authorization">
 
     <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => [
-        'class' => ''
+      'class' => ''
     ]]); ?>
 
     <header class="b-authorization__header">
@@ -28,14 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <main class="b-authorization__main">
       <div class="b-authorization__form" action="authorization">
-        <label class="b-field b-field_icon b-authorization__field">
-          <?= $form->field($model, 'phone')->label(false)->textInput([
-            'autofocus' => true,
-            'type' => 'tel',
-            'class' => 'b-field__input',
-            'placeholder' => Module::t('auth', 'Ваш номер телефона')
+        <label class="b-field b-authorization__field">
+          <?= $form->field($model, 'phone')->label(false)->widget(\borales\extensions\phoneInput\PhoneInput::class, [
+            'jsOptions' => [
+              'allowExtensions' => true,
+              'onlyCountries' => ['ua'],
+            ],
+            'options' => [
+              'autofocus' => true,
+              'class' => 'b-field__input',
+              'placeholder' => Module::t('auth', 'Ваш номер телефона')
+            ]
           ]) ?>
-          <i class="b-field__icon b-field__icon_second-color fas fa-user-alt"></i>
         </label>
 
         <label class="b-field b-field_icon b-authorization__field">
@@ -51,7 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <footer class="b-authorization__footer">
       <div class="b-authorization__action">
-        <a class="b-authorization__action-link" href="<?= \yii\helpers\Url::to(['signup']) ?>"><?= Module::t('auth', 'Зарегистрироваться') ?></a>
+        <a class="b-authorization__action-link"
+           href="<?= \yii\helpers\Url::to(['signup']) ?>"><?= Module::t('auth', 'Зарегистрироваться') ?></a>
         <button type="submit" class="b-button-second b-authorization__action-submit">
           <span class="b-button-second__value"><?= Module::t('auth', 'Войти') ?></span>
         </button>

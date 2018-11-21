@@ -41,6 +41,32 @@ $(document).ready(function () {
     $("#phone").mask("+38 (099) 999-9999");
 
     autosize(document.getElementById(\'description-input\'));
+    
+    
+    new FileInput({
+        selector: \'#images_1\'
+    })
+    new FileInput({
+        selector: \'#images_2\'
+    })
+    new FileInput({
+        selector: \'#images_3\'
+    })
+    new FileInput({
+        selector: \'#images_4\'
+    })
+    new FileInput({
+        selector: \'#images_5\'
+    })
+    new FileInput({
+        selector: \'#images_6\'
+    })
+    new FileInput({
+        selector: \'#images_7\'
+    })
+    new FileInput({
+        selector: \'#images_8\'
+    })
 });
 ');
 ?>
@@ -63,7 +89,7 @@ $(document).ready(function () {
       <form class="b-place-an-ad__items">
         <div class="b-place-an-ad__goup">
           <label class="b-field b-field_characters b-place-an-ad__item">
-            <span class="b-field-name b-field__name">Заголовок:</span>
+            <span class="b-field-name b-field__name"><?= Module::t('adv-form', 'Заголовок') ?>:</span>
             <?= $form->field($model, 'title')->label(false)->textInput([
               'autofocus' => true,
               'class' => 'b-field__input',
@@ -74,7 +100,7 @@ $(document).ready(function () {
           </label>
 
           <label class="b-field-select b-place-an-ad__item">
-            <span class="b-field-name b-field-select__name">Рубрика:</span>
+            <span class="b-field-name b-field-select__name"><?= Module::t('adv-form', 'Рубрика') ?>:</span>
             <?= $form->field($model, 'category_id')->label(false)->widget(kartik\widgets\Select2::class, [
               'data' => Category::getMap(),
               'options' => [
@@ -86,24 +112,28 @@ $(document).ready(function () {
                 'change' => 'function() {
                 if(this.value) {
                   $.post("' . Url::to(['attribute-fields', 'id' => $model->id, 'categoryId' => '']) . '"+this.value, function(data){
-                    $("#attributes-container").html(data);
+                    if(data.length > 0) {
+                      $("#attributes-container").html(data).show();
+                    } else {
+                      $("#attributes-container").hide();
+                    }
                   });
                 } else {
-                  $("#attributes-container").html("");
+                  $("#attributes-container").html("").hide();
                 }
               }'
               ]
             ]) ?>
           </label>
 
-          <div id="attributes-container">
+          <div id="attributes-container" class="attributes-wrapper">
             <?php if (isset($attributeTypeManager)) : ?>
               <?= $this->render('_attributes', ['form' => $form, 'attributeTypeManager' => $attributeTypeManager]) ?>
             <?php endif; ?>
           </div>
 
           <label class="b-field-textarea b-field-textarea_characters b-place-an-ad__item" data-field-characters-item>
-            <span class="b-field-name b-field-textarea__name">Описание:</span>
+            <span class="b-field-name b-field-textarea__name"><?= Module::t('adv-form', 'Текст объявления') ?>:</span>
             <?= $form->field($model, 'content')->label(false)->textarea([
               'rows' => 10,
               'cols' => 30,
@@ -134,43 +164,38 @@ $(document).ready(function () {
               <li class="b-field-img__item-empty"></li>
             </ul>
           </div>-->
-          <?php
-          $initialPreview = [];
-          $initialPreviewConfig = [];
-          if (!empty($model->bulletinImages)) {
-            $initialPreview = \yii\helpers\ArrayHelper::getColumn($model->bulletinImages, 'imageUrl');
-            foreach ($model->bulletinImages as $bulletinImage) {
-              $initialPreviewConfig[] = ['caption' => $bulletinImage->imageCaption, 'size' => $bulletinImage->imageSize, 'key' => $bulletinImage->id];
-            }
-          }
-          ?>
-          <?= $form->field($galleryForm, 'images[]')->widget(FileInput::classname(), [
-            'options' => ['accept' => 'image/*', 'multiple' => true,],
-            'pluginOptions' => [
-              'fileActionSettings' => ['showZoom' => false],
-              'deleteUrl' => Url::to(['delete-image']),
-              'initialPreview' => $initialPreview,
-              'initialPreviewAsData' => true,
-              'initialPreviewConfig' => $initialPreviewConfig,
-              'overwriteInitial' => false,
-            ]
-          ]); ?>
-          <?php $this->registerJs('$(".input-group-btn.input-group-append").removeClass("input-group-btn");', $this::POS_LOAD); ?>
+
+
+
+          <span class="b-field-name"><?= Module::t('adv-form', 'Фотографии') ?>:</span>
+          <div class="b-field-img__items">
+            <?php for($i = 1; $i < 9; $i++) : ?>
+              <label class="b-field-img__item-empty" id="images_<?= $i ?>">
+                <?= $form->field($galleryForm, 'images[]')->label(false)->fileInput([
+                  'id' => 'image_input_' . $i,
+                  'class' => 'b-field-img__input'
+                ]) ?>
+              </label>
+            <?php endfor; ?>
+            </label>
+          </div>
+
+
         </div>
 
         <div class="b-place-an-ad__goup b-place-an-ad__goup_darkened">
-          <h3 class="b-place-an-ad__subtitle">Ваши контакты:</h3>
+          <h3 class="b-place-an-ad__subtitle"><?= Module::t('adv-form', 'Ваши контакты') ?>:</h3>
 
           <label class="b-field-select b-place-an-ad__item">
-            <span class="b-field-name b-field-select__name">Страна:</span>
+            <span class="b-field-name b-field-select__name"><?= Module::t('adv-form', 'Страна') ?>:</span>
             <select class="b-select2 b-field-select__select2" data-select2-search disabled
                     name="country" required>
-              <option value="1" selected>Украина</option>
+              <option value="1" selected><?= Module::t('adv-form', 'Украина') ?></option>
             </select>
           </label>
 
           <label class="b-field-select b-place-an-ad__item">
-            <span class="b-field-name b-field-select__name">Область:</span>
+            <span class="b-field-name b-field-select__name"><?= Module::t('adv-form', 'Область') ?>:</span>
             <select class="b-select2 b-field-select__select2" data-select2-search name="region" required>
               <option value="1">Винницкая область</option>
               <option value="2">Волынская область</option>
@@ -201,7 +226,7 @@ $(document).ready(function () {
           </label>
 
           <label class="b-field-select b-place-an-ad__item">
-            <span class="b-field-name b-field-select__name">Город:</span>
+            <span class="b-field-name b-field-select__name"><?= Module::t('adv-form', 'Город') ?>:</span>
             <select class="b-select2 b-field-select__select2" data-select2-search name="sity" required>
               <option value="9.19">Киев</option>
               <option value="9.1">Барышевка</option>
@@ -243,14 +268,14 @@ $(document).ready(function () {
           </label>
 
           <label class="b-field b-field_characters b-place-an-ad__item">
-            <span class="b-field-name b-field__name">Email:</span>
+            <span class="b-field-name b-field__name"><?= Module::t('adv-form', 'Email') ?>:</span>
 
             <input class="b-field__input" disabled value="<?= Yii::$app->user->identity->email ?>" type="email"
                    name="email" required>
           </label>
 
           <label class="b-field b-field_characters b-place-an-ad__item">
-            <span class="b-field-name b-field__name">Контактное лицо:</span>
+            <span class="b-field-name b-field__name"><?= Module::t('adv-form', 'Контактное лицо') ?>:</span>
 
             <input class="b-field__input" disabled value="<?= Yii::$app->user->identity->name ?>" type="text" name="title" required>
           </label>
@@ -259,7 +284,7 @@ $(document).ready(function () {
               <span class="b-button-second__value">Далее</span>
           </button> -->
           <button type="submit" class="b-button-second b-place-an-ad__next">
-            <span class="b-button-second__value">Далее</span>
+            <span class="b-button-second__value"><?= Module::t('adv-form', 'Далее') ?></span>
           </button>
         </div>
       </form>

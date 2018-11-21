@@ -37,6 +37,7 @@ use yii\helpers\StringHelper;
  * @property string $thumbnailSize
  * @property mixed $formattedCreatedAt
  * @property mixed $price
+ * @property mixed $partialPhone
  */
 class Bulletin extends \common\lib\ActiveRecord
 {
@@ -94,15 +95,15 @@ class Bulletin extends \common\lib\ActiveRecord
   {
     return [
       'id' => 'ID',
-      'title' => 'Заголовок',
-      'content' => 'Содержание',
-      'location_id' => 'Место положения',
-      'client_id' => 'Пользователь',
-      'client' => 'Пользователь',
-      'category_id' => 'Категория',
-      'status_id' => 'Статус',
-      'created_at' => 'Дата создания',
-      'updated_at' => 'Дата последнего обновления',
+      'title' => Module::t('crud', 'Заголовок'),
+      'content' => Module::t('crud', 'Содержание'),
+      'location_id' => Module::t('crud', 'Местоположения'),
+      'client_id' => Module::t('crud', 'Пользователь'),
+      'client' => Module::t('crud', 'Пользователь'),
+      'category_id' => Module::t('crud', 'Категория'),
+      'status_id' => Module::t('crud', 'Статус'),
+      'created_at' => Module::t('crud', 'Дата создания'),
+      'updated_at' => Module::t('crud', 'Дата последнего обновления'),
     ];
   }
 

@@ -6,9 +6,9 @@
  * @var $registerJs boolean|null
  */
 ?>
-<div class="row">
+<div>
   <?php foreach($attributeTypeManager->generateValueFields($form) as $field): ?>
-    <div class="col-md-6">
+    <div class="attribute-box">
       <?= $field ?>
     </div>
   <?php endforeach; ?>

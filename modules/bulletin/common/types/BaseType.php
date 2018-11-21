@@ -28,9 +28,21 @@ abstract class BaseType extends BaseObject
    * @param $form \yii\widgets\ActiveForm
    * @param $model \yii\base\DynamicModel
    * @param $name string
+   * @param array $options array
+   * @return mixed \yii\widgets\ActiveField
+   */
+  public function generateValueField($form, $model, $name, $options = [])
+  {
+    return $form->field($model, $name, $options);
+  }
+
+  /**
+   * @param $form \yii\widgets\ActiveForm
+   * @param $model \yii\base\DynamicModel
+   * @param $name string
    * @return \yii\widgets\ActiveField
    */
-  public function generateValueField($form, $model, $name)
+  public function generateValueFieldFrontend($form, $model, $name)
   {
     return $form->field($model, $name);
   }

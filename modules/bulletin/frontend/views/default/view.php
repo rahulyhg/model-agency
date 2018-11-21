@@ -114,7 +114,7 @@ $(document).ready(function () {
     <div class="b-seller-info__top">
       <p class="b-seller-info__offer">
                                 <span class="b-seller-info__price" itemprop="price" content="7599.00">
-                                    7 599
+                                    <?= $model->price ?>
                                 </span>
         <span class="b-seller-info__currency" itemprop="priceCurrency" content="UAH">
                                     грн
@@ -174,7 +174,7 @@ $(document).ready(function () {
       </p>
 
       <p class="b-seller-info__number">
-        <span class="b-seller-info__number-beginning" id="phone-container">+38 (067) 614 ****</span>
+        <span class="b-seller-info__number-beginning" id="phone-container"><?= $model->client->partialPhone ?></span>
       </p>
 
       <a class="b-seller-info__number-request" id="showNumberBtn" href="javascript:void(0);" title="Нажмите что бы увидеть полный номер продавца!">Показать номер</a>

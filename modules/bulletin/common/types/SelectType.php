@@ -17,9 +17,13 @@ class SelectType extends BaseType
     parent::init();
   }
 
-  public function generateValueField($form, $model, $name)
+  public function generateValueField($form, $model, $name, $options = [])
   {
-    return parent::generateValueField($form, $model, $name)->widget(\kartik\widgets\Select2::class, [
+    return parent::generateValueField($form, $model, $name, [
+      'options' => [
+        'class' => 'b-field-select'
+      ]
+    ])->widget(\kartik\widgets\Select2::class, [
       'data' => $this->items,
       'options' => ['placeholder' => ''],
       'pluginOptions' => ['allowClear' => true]

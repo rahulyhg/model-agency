@@ -38,13 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
         </label>
 
         <label class="b-field b-field_icon b-registration__field">
-          <?= $form->field($model, 'phone')->label(false)->textInput([
-            'autofocus' => true,
-            'type' => 'tel',
-            'class' => 'b-field__input',
-            'placeholder' => Module::t('registration', 'Ваш номер телефона')
+          <?= $form->field($model, 'phone')->label(false)->widget(\borales\extensions\phoneInput\PhoneInput::class, [
+            'jsOptions' => [
+              'allowExtensions' => true,
+              'onlyCountries' => ['ua'],
+            ],
+            'options' => [
+              'autofocus' => true,
+              'class' => 'b-field__input',
+              'placeholder' => Module::t('auth', 'Ваш номер телефона')
+            ]
           ]) ?>
-          <i class="b-field__icon b-field__icon_first-color fas fa-phone"></i>
         </label>
 
         <label class="b-field b-field_icon b-registration__field">

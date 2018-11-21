@@ -2,6 +2,8 @@
 
 namespace modules\client\common\models;
 
+use borales\extensions\phoneInput\PhoneInputBehavior;
+use borales\extensions\phoneInput\PhoneInputValidator;
 use common\behaviors\UploadFileBehavior;
 use modules\bulletin\common\models\Bulletin;
 use modules\bulletin\Module;
@@ -89,6 +91,9 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
           ],
         ],
         'directory' => self::AVATARS_DIR,
+      ],
+      [
+        'class' => PhoneInputBehavior::class
       ]
     ];
   }
@@ -110,6 +115,7 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
       [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::class, 'targetAttribute' => ['location_id' => 'id']],
       [['email', 'phone', 'name'], 'required'],
       [['email', 'phone', 'password_hash', 'name'], 'string', 'max' => 255],
+      [['phone'], PhoneInputValidator::class, 'region' => ['UA']],
       [['newPassword', 'newPasswordRepeat'], 'string', 'max' => 255, 'min' => 6],
       [['newPasswordRepeat'], 'compare', 'compareAttribute' => 'newPassword', 'message' => Module::t('client', 'Пароли не совпадают')],
       [['avatar_id', 'location_id', 'status', 'created_at', 'updated_at'], 'integer'],
@@ -334,4 +340,8 @@ class Client extends \common\lib\ActiveRecord implements IdentityInterface
     $this->password_reset_token = null;
   }
 
+  public function getPartialPhone()
+  {
+    return substr($this->phone, 0, -4) . '****';
+  }
 }

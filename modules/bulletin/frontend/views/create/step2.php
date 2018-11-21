@@ -2,6 +2,9 @@
 /**
  * @var $this \yii\web\View
  */
+
+use modules\bulletin\Module;
+
 $this->registerJs('
 $(document).ready(function() {
     new Promotions({
@@ -19,8 +22,8 @@ $(document).ready(function() {
   <!-- b-place-an-ad -->
   <section class="b-place-an-ad b-content__place-an-ad">
     <header class="b-place-an-ad__header">
-      <h2 class="b-place-an-ad__title">Подать обьявление - шаг 2</h2>
-      <h3 class="b-place-an-ad__subtitle">Запустите рекламу, что бы получить больше кликов</h3>
+      <h2 class="b-place-an-ad__title"><?= Module::t('adv-form', 'Подать обьявление - шаг 2') ?></h2>
+      <h3 class="b-place-an-ad__subtitle"><?= Module::t('adv-form', 'Запустите рекламу, что бы получить больше кликов') ?></h3>
     </header>
 
     <main class="b-place-an-ad__main">
@@ -45,11 +48,11 @@ $(document).ready(function() {
                      data-promotion-price="35 грн">
 
               <span class="b-button-first b-substitution-select__not-selected">
-                                                <span class="b-button-first__value">Выбрать</span>
+                                                <span class="b-button-first__value"><?= Module::t('adv-form', 'Выбрать') ?></span>
                                             </span>
 
               <span class="b-button-success b-substitution-select__selected">
-                                                <span class="b-button-success__value">Выбрано</span>
+                                                <span class="b-button-success__value"><?= Module::t('adv-form', 'Выбрано') ?></span>
                                             </span>
             </label>
           </li>
@@ -71,11 +74,11 @@ $(document).ready(function() {
                      data-promotion-price="65 грн">
 
               <span class="b-button-first b-substitution-select__not-selected">
-                                                <span class="b-button-first__value">Выбрать</span>
+                                                <span class="b-button-first__value"><?= Module::t('adv-form', 'Выбрать') ?></span>
                                             </span>
 
               <span class="b-button-success b-substitution-select__selected">
-                                                <span class="b-button-success__value">Выбрано</span>
+                                                <span class="b-button-success__value"><?= Module::t('adv-form', 'Выбрано') ?></span>
                                             </span>
             </label>
           </li>
@@ -96,27 +99,27 @@ $(document).ready(function() {
                      data-promotion-price="95 грн">
 
               <span class="b-button-first b-substitution-select__not-selected">
-                                                <span class="b-button-first__value">Выбрать</span>
+                                                <span class="b-button-first__value"><?= Module::t('adv-form', 'Выбрать') ?></span>
                                             </span>
 
               <span class="b-button-success b-substitution-select__selected">
-                                                <span class="b-button-success__value">Выбрано</span>
+                                                <span class="b-button-success__value"><?= Module::t('adv-form', 'Выбрано') ?></span>
                                             </span>
             </label>
           </li>
         </ul>
 
-        <div class="b-promotions__total">Всего к оплате:
+        <div class="b-promotions__total"><?= Module::t('adv-form', 'Всего к оплате') ?>:
           <span class="b-promotions__total-value">0 грн</span>
         </div>
 
         <div class="b-promotions__actions">
           <a class="b-button-empty b-promotions__actions-item" href="<?= \yii\helpers\Url::to(['/bulletin/create/step3']) ?>">
-            <span class="b-button-empty__value b-button-empty__value_bold">Не рекламировать</span>
+            <span class="b-button-empty__value b-button-empty__value_bold"><?= Module::t('adv-form', 'Не рекламировать') ?></span>
           </a>
 
           <button type="submit" class="b-button-second b-promotions__actions-item">
-            <span class="b-button-second__value b-button-second__value_bold">Оплатить</span>
+            <span class="b-button-second__value b-button-second__value_bold"><?= Module::t('adv-form', 'Оплатить') ?></span>
           </button>
         </div>
       </form>

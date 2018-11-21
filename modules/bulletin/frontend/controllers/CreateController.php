@@ -6,6 +6,7 @@ use modules\bulletin\common\models\Bulletin;
 use modules\bulletin\common\models\BulletinImage;
 use modules\bulletin\common\models\BulletinStatus;
 use modules\bulletin\common\types\AttributeTypeManager;
+use modules\bulletin\Module;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,10 @@ class CreateController extends Controller
 {
   public function actionStep1()
   {
+    if(Yii::$app->user->isGuest) {
+      Yii::$app->session->setFlash('success', Module::t('adv-form', 'Публиковать объявления могут только авторизованные пользователи.'));
+      $this->redirect(['/client/default/login']);
+    }
     $model = new Bulletin();
     $galleryForm = new GalleryForm();
     $attributeTypeManager = null;

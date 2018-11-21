@@ -19,9 +19,14 @@ class CheckboxListType extends BaseType
     parent::init();
   }
 
-  public function generateValueField($form, $model, $name)
+  public function generateValueField($form, $model, $name, $options = [])
   {
     return parent::generateValueField($form, $model, $name)->checkboxList($this->items);
+  }
+
+  public function generateValueFieldFrontend($form, $model, $name)
+  {
+    return parent::generateValueFieldFrontend($form, $model, $name)->checkboxList($this->items);
   }
 
   public function getFilterRules()
