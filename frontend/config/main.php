@@ -32,11 +32,12 @@ return [
       'class' => \modules\lang\components\LangRequest::class,
       'csrfParam' => '_csrf-frontend',
     ],
-    'user' => [
-      'identityClass' => \modules\client\common\models\Client::class,
+    // todo: plug in module user instead
+    /*'user' => [
+      'identityClass' => ,
       'enableAutoLogin' => true,
       'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-    ],
+    ],*/
     'session' => [
       // this is the name of the session cookie used for login on the frontend
       'name' => 'advanced-frontend',

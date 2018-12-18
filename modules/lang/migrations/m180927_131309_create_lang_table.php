@@ -32,8 +32,8 @@ class m180927_131309_create_lang_table extends Migration
         ], $tableOptions);
         $this->addPrimaryKey('pk-lang-id', '{{%lang}}', 'id');
         $this->batchInsert('{{%lang}}', ['id', 'name', 'label', 'ietf_tag', 'is_default', 'created_at', 'updated_at'], [
-            [1, 'Русский', 'язык', 'ru', 1, time(), time()],
-            [2, 'Украинский', 'мова', 'uk', 0, time(), time()],
+            [1, 'Русский', 'язык', 'ru', 0, time(), time()],
+            [2, 'English', 'language', 'en-US', 1, time(), time()],
         ]);
     }
 

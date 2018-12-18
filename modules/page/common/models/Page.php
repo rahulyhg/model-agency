@@ -50,7 +50,7 @@ class Page extends \modules\lang\lib\TranslatableActiveRecord
      */
     public static function tableName()
     {
-        return '{{%page_page}}';
+        return '{{%page}}';
     }
 
     /**

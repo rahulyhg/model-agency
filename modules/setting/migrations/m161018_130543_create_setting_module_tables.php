@@ -10,7 +10,7 @@ class m161018_130543_create_setting_module_tables extends Migration
 {
   public function safeUp()
   {
-    $this->createTable('{{%setting_setting}}', [
+    $this->createTable('{{%setting}}', [
       'id' => $this->primaryKey(),
       'key' => $this->string(255)->notNull(),
       'value' => $this->text()->notNull(),
@@ -23,6 +23,6 @@ class m161018_130543_create_setting_module_tables extends Migration
 
   public function safeDown()
   {
-    $this->dropTable('{{%setting_setting}}');
+    $this->dropTable('{{%setting}}');
   }
 }

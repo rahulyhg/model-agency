@@ -21,6 +21,8 @@ class m180710_131804_create_banner_table extends Migration
       'created_at' => $this->integer(11)->notNull(),
       'updated_at' => $this->integer(11)->notNull(),
     ]);
+
+    $this->createIndex('position_index', '{{%banner}}', 'position', $unique = true);
   }
 
   /**
@@ -28,6 +30,8 @@ class m180710_131804_create_banner_table extends Migration
    */
   public function safeDown()
   {
+    $this->dropIndex('position_index', '{{%banner}}');
+
     $this->dropTable('{{%banner}}');
   }
 }

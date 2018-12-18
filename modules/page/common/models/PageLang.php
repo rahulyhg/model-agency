@@ -26,7 +26,7 @@ class PageLang extends \modules\lang\lib\LangActiveRecord
      */
     public static function tableName()
     {
-        return '{{%page_page_lang}}';
+        return '{{%page_lang}}';
     }
 
     /**

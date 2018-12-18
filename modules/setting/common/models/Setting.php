@@ -25,7 +25,7 @@ class Setting extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%setting_setting}}';
+        return '{{%setting}}';
     }
 
     public function behaviors()

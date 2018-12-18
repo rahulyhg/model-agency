@@ -4,7 +4,6 @@ namespace common\lib;
 
 use ReflectionClass;
 
-// //
 class Module extends \yii\base\Module
 {
   const TRANSLATION_CATEGORY = 'modules';

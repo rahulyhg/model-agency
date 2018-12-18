@@ -43,22 +43,6 @@ class Location extends \modules\lang\lib\TranslatableActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBulletins()
-    {
-        return $this->hasMany(Bulletin::class, ['location_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getClients()
-    {
-        return $this->hasMany(Client::class, ['location_id' => 'id']);
-    }
-
-    /**
     * @return \yii\db\ActiveQuery
     */
     public function getTranslations()

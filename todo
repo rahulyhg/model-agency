@@ -1,0 +1,9 @@
+_____________later_____________
+make translatable session messages in controllers
+look at @backend/rbac and delete if it needs
+
+_____________current_____________
+create module Models
+    finish write migrations (with foreign keys...)
+    gii generate models
+    crud models
