@@ -6,6 +6,9 @@
  * Time: 15:33
  */
 
+namespace modules\mod;
+
+
 class Module extends \common\lib\Module
 {
 

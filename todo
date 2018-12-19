@@ -3,7 +3,16 @@ make translatable session messages in controllers
 look at @backend/rbac and delete if it needs
 
 _____________current_____________
-create module Models
-    finish write migrations (with foreign keys...)
-    gii generate models
-    crud models
+fix views
+    mod index - remove field id
+    mod index - add filestorage for image download
+    hair-color
+        remove field id
+        format created_at and updated_at
+        add HairColor->color (name)
+    eyes-color
+        remove field id
+        format created_at and updated_at
+        add HairColor->color (name)
+Change HairColor->color to name
+Change EyesColor->color to name

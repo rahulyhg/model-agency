@@ -200,37 +200,35 @@ $this->registerJs('WebFont.load({
                                 <span class="m-menu__link-text">Консоль</span>
                             </a>
                         </li>
-                        <!--<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a
-                href="javascript:;" class="m-menu__link m-menu__toggle"><i
-                  class="m-menu__link-icon flaticon-notes"></i><span class="m-menu__link-text">Объявления</span><i
-                  class="m-menu__ver-arrow la la-angle-right"></i></a>
+                        <li class="m-menu__item m-menu__item--submenu" aria-haspopup="true"
+                            m-menu-submenu-toggle="hover"><a
+                                    href="javascript:;" class="m-menu__link m-menu__toggle"><i
+                                        class="m-menu__link-icon flaticon-user"></i><span class="m-menu__link-text">Модели</span><i
+                                        class="m-menu__ver-arrow la la-angle-right"></i></a>
 
-              <div class="m-menu__submenu " style="display: none; overflow: hidden;" m-hidden-height="840"><span
-                  class="m-menu__arrow"></span>
-                <ul class="m-menu__subnav">
-                  <li class="m-menu__item " aria-haspopup="true"><a href="<? /*= Url::to(['/bulletin']) */ ?>"
-                                                                    class="m-menu__link "><i
-                        class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Объявления</span></a></li>
-                  <li class="m-menu__item " aria-haspopup="true"><a href="<? /*= Url::to(['/bulletin/category']) */ ?>"
-                                                                    class="m-menu__link "><i
-                        class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Категории</span></a></li>
-                  <li class="m-menu__item " aria-haspopup="true"><a
-                      href="<? /*= Url::to(['/bulletin/attribute']) */ ?>" class="m-menu__link "><i
-                        class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Атрибуты</span></a></li>
-                  <li class="m-menu__item " aria-haspopup="true"><a href="<? /*= Url::to(['/bulletin/service']) */ ?>"
-                                                                    class="m-menu__link "><i
-                        class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Услуги</span></a></li>
-                  <li class="m-menu__item " aria-haspopup="true"><a href="<? /*= Url::to(['/bulletin/complaint']) */ ?>"
-                                                                    class="m-menu__link "><i
-                        class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
-                        class="m-menu__link-text">Жалобы</span></a></li>
-                </ul>
-              </div>
-            </li>-->
+                            <div class="m-menu__submenu " style="display: none; overflow: hidden;"
+                                 m-hidden-height="840"><span
+                                        class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item " aria-haspopup="true"><a
+                                                href="<?= Url::to(['/mod']) ?>"
+                                                class="m-menu__link "><i
+                                                    class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
+                                                    class="m-menu__link-text">Модели</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a
+                                                href="<?= Url::to(['/mod/hair-color/index']) ?>"
+                                                class="m-menu__link "><i
+                                                    class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
+                                                    class="m-menu__link-text">Цвет волос</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a
+                                                href="<?= Url::to(['/mod/eyes-color/index']) ?>"
+                                                class="m-menu__link "><i
+                                                    class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span
+                                                    class="m-menu__link-text">Цвет глаз</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"
                             m-menu-submenu-toggle="hover">
                             <a href="<?= Url::to(['/setting']) ?>" class="m-menu__link m-menu__toggle">

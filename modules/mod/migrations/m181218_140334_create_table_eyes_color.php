@@ -23,6 +23,8 @@ class m181218_140334_create_table_eyes_color extends Migration
         'lang_id' => $this->integer(11),
         'color' => $this->string(15),
       ]);
+
+      $this->addForeignKey('fk-eyes_color_lang-eyes_color', '{{%eyes_color_lang}}', 'entity_id', '{{%eyes_color}}', 'id', 'CASCADE');
     }
 
     /**
@@ -30,6 +32,9 @@ class m181218_140334_create_table_eyes_color extends Migration
      */
     public function safeDown()
     {
+      $this->dropForeignKey('fk-eyes_color_lang-eyes_color', '{{%eyes_color_lang}}');
+
+      $this->dropTable('{{%eyes_color_lang}}');
       $this->dropTable('{{%eyes_color}}');
     }
 }

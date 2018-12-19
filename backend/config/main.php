@@ -41,6 +41,9 @@ return [
     'banner' => [
       'class' => modules\banner\Module::class,
     ],
+    'mod' => [
+      'class' => modules\mod\Module::class,
+    ],
   ],
   'components' => [
     'i18n' => [

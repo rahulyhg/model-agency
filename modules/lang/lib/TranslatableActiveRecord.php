@@ -1,4 +1,5 @@
 <?php
+
 namespace modules\lang\lib;
 
 use common\lib\ActiveRecord;
@@ -17,130 +18,154 @@ use yii\db\BaseActiveRecord;
  */
 abstract class TranslatableActiveRecord extends ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
+  /**
+   * @inheritdoc
+   */
+  public function behaviors()
+  {
+    $behaviors = parent::behaviors();
 
-        $behaviors['translations'] = [
-            'class' => VariationBehavior::className(),
-            'variationsRelation' => 'translations',
-            'defaultVariationRelation' => 'defaultTranslation',
-            'variationOptionReferenceAttribute' => 'lang_id',
-            'optionModelClass' => Lang::className(),
-            'optionQueryFilter' => function($query) {
-                if($query->hasProperty('isCacheLangs'))
-                    $query->isCacheLangs = true;
-            },
-            'defaultVariationOptionReference' => Lang::getCurrent()->id,
-            'variationSaveFilter' => function ($model) {
-                if ($model instanceof LangActiveRecord && $model->isEmpty()) {
-                    if ($model->lang_id !== Lang::getDefaultLang()->id)
-                        return false;
-                }
-                return true;
-            },
-        ];
-
-        return $behaviors;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function langTableName()
-    {
-        return preg_replace('/(\W*)(\w+)(\W*)/i', '$1$2_lang$3', static::tableName());
-    }
-
-    /**
-     * Language map of model
-     * @return array
-     */
-    public function getLangMap()
-    {
-        $map = [];
-        foreach ($this->variationModels as $index => $variationModel) {
-            $map[$index] = $variationModel->lang->name;
+    $behaviors['translations'] = [
+      'class' => VariationBehavior::className(),
+      'variationsRelation' => 'translations',
+      'defaultVariationRelation' => 'defaultTranslation',
+      'variationOptionReferenceAttribute' => 'lang_id',
+      'optionModelClass' => Lang::className(),
+      'optionQueryFilter' => function ($query) {
+        if ($query->hasProperty('isCacheLangs'))
+          $query->isCacheLangs = true;
+      },
+      'defaultVariationOptionReference' => Lang::getCurrent()->id,
+      'variationSaveFilter' => function ($model) {
+        if ($model instanceof LangActiveRecord && $model->isEmpty()) {
+          if ($model->lang_id !== Lang::getDefaultLang()->id)
+            return false;
         }
-        return $map;
+        return true;
+      },
+    ];
+
+    return $behaviors;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public static function langTableName()
+  {
+    return preg_replace('/(\W*)(\w+)(\W*)/i', '$1$2_lang$3', static::tableName());
+  }
+
+  /**
+   * Language map of model
+   * @return array
+   */
+  public function getLangMap()
+  {
+    $map = [];
+    foreach ($this->variationModels as $index => $variationModel) {
+      $map[$index] = $variationModel->lang->name;
+    }
+    return $map;
+  }
+
+  /**
+   * @return int|string
+   */
+  public function getDefaultLangInd()
+  {
+    $defaultLangId = Lang::getDefaultLang()->id;
+    foreach ($this->variationModels as $index => $variationModel) {
+      if ($variationModel->lang->id === $defaultLangId)
+        return $index;
+    }
+    return 0;
+  }
+
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getDefaultTranslation()
+  {
+    return $this->hasDefaultVariationRelation(); // convert "has many translations" into "has one defaultTranslation"
+  }
+
+  /**
+   * Select only posts, that have translation on current language
+   * @return \yii\db\ActiveQuery
+   */
+  public static function findWithCurrentLangTranslation()
+  {
+    $find = parent::find();
+
+    $langTableName = static::langTableName();
+
+    if (!$langTableName) {
+      $tableName = static::tableName();
+      if (strpos($tableName, '%') !== false) {
+        $tableName = str_replace(['{{', '%', '}}'], '', $tableName);
+        $langTableName = '{{%' . $tableName . '_lang}}';
+      } else {
+        $langTableName = $tableName . '_lang';
+      }
     }
 
-    /**
-     * @return int|string
-     */
-    public function getDefaultLangInd()
-    {
-        $defaultLangId = Lang::getDefaultLang()->id;
-        foreach ($this->variationModels as $index => $variationModel) {
-            if ($variationModel->lang->id === $defaultLangId)
-                return $index;
-        }
-        return 0;
+    $langTableSchema = Yii::$app->db->schema->getTableSchema($langTableName);
+    if ($langTableSchema === null) {
+      return $find;
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDefaultTranslation()
-    {
-        return $this->hasDefaultVariationRelation(); // convert "has many translations" into "has one defaultTranslation"
+    $fkColumnName = strtolower(substr(strrchr(self::className(), "\\"), 1)) . '_id';
+    $langTable = Yii::$app->db->schema->getTableSchema($langTableName);
+    if (!isset($langTable->columns[$fkColumnName])) {
+      return $find;
     }
 
-    /**
-     * Select only posts, that have translation on current language
-     * @return \yii\db\ActiveQuery
-     */
-    public static function findWithCurrentLangTranslation()
-    {
-        $find = parent::find();
+    $find
+      ->innerJoin($langTableName, static::tableName() . '.id = ' . $langTableName . '.' . $fkColumnName)
+      ->where(['lang_id' => Lang::findOne(['locale' => Yii::$app->language])->id]);
 
-        $langTableName = static::langTableName();
+    return $find;
+  }
 
-        if( ! $langTableName ) {
-            $tableName = static::tableName();
-            if( strpos($tableName, '%') !== false ) {
-                $tableName = str_replace(['{{', '%', '}}'], '', $tableName);
-                $langTableName = '{{%' . $tableName . '_lang}}';
-            } else {
-                $langTableName = $tableName . '_lang';
-            }
-        }
+  /**
+   * @return array
+   */
+  public function getTranslatedLangs()
+  {
+    $langs = [];
+    foreach ($this->getTranslations()->all() as $translation) {
+      $langs[] = Lang::findOne($translation->lang_id);
+    }
+    return $langs;
+  }
 
-        $langTableSchema = Yii::$app->db->schema->getTableSchema($langTableName);
-        if( $langTableSchema === null ) {
-            return $find;
-        }
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  abstract public function getTranslations();
 
-        $fkColumnName = strtolower(substr(strrchr(self::className(), "\\"), 1)) . '_id';
-        $langTable = Yii::$app->db->schema->getTableSchema($langTableName);
-        if( !isset($langTable->columns[$fkColumnName]) ) {
-            return $find;
-        }
+  /**
+   * if model has not own attributes (only in lang model)
+   *
+   * @param array $data
+   * @param null $formName
+   * @return bool
+   */
+  public function load($data, $formName = null)
+  {
+    $scope = $formName === null ? $scope = $this->formName() : $formName;
 
-        $find
-            ->innerJoin($langTableName, static::tableName().'.id = '.$langTableName.'.'.$fkColumnName)
-            ->where(['lang_id' => Lang::findOne(['locale' => Yii::$app->language])->id]);
+    if ($scope === '' && !empty($data)) {
+      $this->setAttributes($data);
 
-        return $find;
+      return true;
+    } elseif (isset($data[$scope]) || !empty($data[$scope . 'Lang'])) { // WARNING - CRUTCH!
+      $this->setAttributes($data[$scope]);
+
+      return true;
     }
 
-    /**
-     * @return array
-     */
-    public function getTranslatedLangs()
-    {
-        $langs = [];
-        foreach ($this->getTranslations()->all() as $translation) {
-            $langs[] = Lang::findOne($translation->lang_id);
-        }
-        return $langs;
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    abstract public function getTranslations();
+    return false;
+  }
 }
