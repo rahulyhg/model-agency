@@ -4,8 +4,12 @@ look at @backend/rbac and delete if it needs
 
 _____________current_____________
 fix views
-    mod index - remove field id
-    mod index - add filestorage for image download
+        mod index - remove field id
+    mod create - add filestorage for image download
+        add to form field fileInput by kartik
+        add new Mod field images[]
+            create migration add_column_images_to_table_mod
+            add rule to Mod model
     hair-color
         remove field id
         format created_at and updated_at
