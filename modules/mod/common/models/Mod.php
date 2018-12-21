@@ -24,80 +24,103 @@ use yii\helpers\ArrayHelper;
  */
 class Mod extends \modules\lang\lib\TranslatableActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%mod}}';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'created_at', 'updated_at'], 'integer'],
-            [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
-            [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
-        ];
-    }
+  /**
+   * images to images_basket
+   * @var $images
+   */
+  public $images;
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'bust' => 'Bust',
-            'waist' => 'Waist',
-            'hips' => 'Hips',
-            'eyes_color_id' => 'Eyes Color ID',
-            'hair_color_id' => 'Hair Color ID',
-            'shoes' => 'Shoes',
-            'created_at' => 'Дата создания',
-            'updated_at' => 'Дата последнего обновления',
-        ];
-    }
+  /**
+   * id of basket with images for this model from table images_basket
+   * @var $images_basket_id
+   */
+  public $images_basket_id;
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEyesColor()
-    {
-        return $this->hasOne(EyesColor::class, ['id' => 'eyes_color_id']);
-    }
+  /**
+   * @inheritdoc
+   */
+  public static function tableName()
+  {
+    return '{{%mod}}';
+  }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getHairColor()
-    {
-        return $this->hasOne(HairColor::class, ['id' => 'hair_color_id']);
-    }
+  /**
+   * @inheritdoc
+   */
+  public function rules()
+  {
+    return [
+      [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'images_basket_id', 'created_at', 'updated_at'], 'integer'],
+      [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'maxFiles' => 10],
+      [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
+      [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
+    ];
+  }
 
-    /**
-    * @return \yii\db\ActiveQuery
-    */
-    public function getTranslations()
-    {
-        return $this->hasMany(ModLang::class, ['entity_id' => 'id']);
-    }
+  /**
+   * @inheritdoc
+   */
+  public function attributeLabels()
+  {
+    return [
+      'id' => 'ID',
+      'bust' => 'Bust',
+      'waist' => 'Waist',
+      'hips' => 'Hips',
+      'eyes_color_id' => 'Eyes Color ID',
+      'hair_color_id' => 'Hair Color ID',
+      'shoes' => 'Shoes',
+      'created_at' => 'Дата создания',
+      'updated_at' => 'Дата последнего обновления',
+    ];
+  }
 
-    protected static $_map;
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getEyesColor()
+  {
+    return $this->hasOne(EyesColor::class, ['id' => 'eyes_color_id']);
+  }
 
-    public static function getMap()
-    {
-        if(!isset(self::$_map)) {
-            self::$_map = \yii\helpers\ArrayHelper::map(
-                self::find()
-                  ->joinWith('translations tr')
-                  ->orderBy('tr.first_name')
-                  ->all(), 'id', 'first_name'
-            );
-        }
-        return self::$_map;
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getHairColor()
+  {
+    return $this->hasOne(HairColor::class, ['id' => 'hair_color_id']);
+  }
+
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getTranslations()
+  {
+    return $this->hasMany(ModLang::class, ['entity_id' => 'id']);
+  }
+
+  /**
+   * to get the images for this model
+   * @return \yii\db\ActiveQuery
+   */
+  public function getImagesBasket()
+  {
+    return $this->hasMany(ImagesBasket::class, ['basket_id' => 'images_basket_id']);
+  }
+
+  protected static $_map;
+
+  public static function getMap()
+  {
+    if (!isset(self::$_map)) {
+      self::$_map = \yii\helpers\ArrayHelper::map(
+        self::find()
+          ->joinWith('translations tr')
+          ->orderBy('tr.first_name')
+          ->all(), 'id', 'first_name'
+      );
     }
+    return self::$_map;
+  }
 }
