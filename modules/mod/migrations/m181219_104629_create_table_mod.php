@@ -20,7 +20,6 @@ class m181219_104629_create_table_mod extends Migration
       'eyes_color_id' => $this->integer(11),
       'hair_color_id' => $this->integer(11),
       'shoes' => $this->integer(11),
-      'images_basket_id' => $this->integer(11),
       'created_at' => $this->integer(11),
       'updated_at' => $this->integer(11),
     ]);

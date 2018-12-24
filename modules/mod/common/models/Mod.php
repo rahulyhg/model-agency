@@ -2,8 +2,9 @@
 
 namespace modules\mod\common\models;
 
+use modules\mod\backend\models\ModImage;
 use Yii;
-use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "{{%mod}}".
@@ -32,12 +33,6 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   public $images;
 
   /**
-   * id of basket with images for this model from table images_basket
-   * @var $images_basket_id
-   */
-  public $images_basket_id;
-
-  /**
    * @inheritdoc
    */
   public static function tableName()
@@ -51,7 +46,7 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   public function rules()
   {
     return [
-      [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'images_basket_id', 'created_at', 'updated_at'], 'integer'],
+      [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'created_at', 'updated_at'], 'integer'],
       [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'maxFiles' => 10],
       [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
       [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
@@ -68,15 +63,16 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
       'bust' => 'Bust',
       'waist' => 'Waist',
       'hips' => 'Hips',
-      'eyes_color_id' => 'Eyes Color ID',
-      'hair_color_id' => 'Hair Color ID',
+      'eyes_color_id' => 'Eyes Color',
+      'hair_color_id' => 'Hair Color',
       'shoes' => 'Shoes',
-      'created_at' => 'Дата создания',
-      'updated_at' => 'Дата последнего обновления',
+      'created_at' => 'Creating date',
+      'updated_at' => 'Last updating date',
     ];
   }
 
   /**
+   * returns id of eyes color
    * @return \yii\db\ActiveQuery
    */
   public function getEyesColor()
@@ -85,6 +81,7 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   }
 
   /**
+   * returns id of hair color
    * @return \yii\db\ActiveQuery
    */
   public function getHairColor()
@@ -101,12 +98,13 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   }
 
   /**
-   * to get the images for this model
+   * to get this model images
+   * returns images ids
    * @return \yii\db\ActiveQuery
    */
-  public function getImagesBasket()
+  public function getImages()
   {
-    return $this->hasMany(ImagesBasket::class, ['basket_id' => 'images_basket_id']);
+    return $this->hasMany(ModImage::class, ['id' => 'imagesIds']);
   }
 
   protected static $_map;
@@ -122,5 +120,20 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
       );
     }
     return self::$_map;
+  }
+
+  const IMAGES_DIR = 'models/images';
+
+  public function upload()
+  {
+    $this->images = UploadedFile::getInstances($this, 'images');
+    if ($this->validate('images')) {
+      if(empty($this->images)){
+        return true;
+      }
+      return Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR);
+    }
+
+    return false;
   }
 }

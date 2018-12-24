@@ -3,27 +3,20 @@ make translatable session messages in controllers
 look at @backend/rbac and delete if it needs
 
 _____________current_____________
-mod create - add filestorage for image download
-        add to form field fileInput by kartik
-        add new Mod field images[]
-        add new Mod field images_basket_id
-        create migration create_table_images_basket - for saving more then one image for mod
-            id
-            basket_id - Mod->images_basket_id
-            image_id - filestorage file->id
-            created_at
-            updated_at
-            foreign key for image_id
-        create migration add_column_images_basket_id_to_table_mod
-            add foreign key to images_basket table
-        add rule for images_basket_id to Mod model
-    see what else could be changed by reason adding new field (images_basket_id) - maybe controller, search model etc
+    new migration create_table_mod_image
+        id
+        entity_id Mod->id
+        image_id filestorate->image_id
+        foreignKeys
+            entity_id
+            image_id
+    generate model ModImage
+    define Mod getImages method through hasMany
     add function upload to model
-        getInstance for every file
-        save this through fileStorage
-        save id of every uploaded to new imagesBasket object
-        save images basket object id to images_basket_id attribute
-    see what else could be needed for images (maybe get images in views...) - create new todo_list
+            getInstance for every file
+            save this through fileStorage
+            create new ModImage object for every image
+check uploading images and fix
 fix views
     hair-color
         remove field id

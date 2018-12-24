@@ -21,7 +21,7 @@ return [
     'filestorage' => [
       'class' => common\components\filestorage\FileStorage::className(),
       'fileRoute' => '/file/index',
-      'storagePath' => '@app/public_html/filestorage'
+      'storagePath' => '/../filestorage'
     ],
     'cache' => [
       'class' => 'yii\caching\FileCache',
