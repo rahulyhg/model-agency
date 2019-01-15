@@ -3,6 +3,7 @@
 namespace modules\mod\common\models;
 
 use modules\mod\backend\models\ModImage;
+use modules\mod\common\services\ModService;
 use Yii;
 use yii\web\UploadedFile;
 
@@ -18,6 +19,12 @@ use yii\web\UploadedFile;
  * @property integer $shoes
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $images_order_json
+ *
+ * properties from lang model
+ * @property string first_name
+ * @property string last_name
+ * @property string middle_name
  *
  * @property EyesColor $eyesColor
  * @property HairColor $hairColor
@@ -27,7 +34,6 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
 {
 
   /**
-   * images to images_basket
    * @var $images
    */
   public $images;
@@ -47,6 +53,7 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   {
     return [
       [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'created_at', 'updated_at'], 'integer'],
+      [['images_order_json'], 'string'],
       [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'maxFiles' => 10],
       [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
       [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
@@ -98,13 +105,22 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   }
 
   /**
-   * to get this model images
-   * returns images ids
-   * @return \yii\db\ActiveQuery
+   * @return array of images ids
    */
-  public function getImages()
+  public function getImagesIds()
   {
-    return $this->hasMany(ModImage::class, ['id' => 'imagesIds']);
+    $modImages = ModImage::find()->where(['entity_id' => $this->id])->all();
+    $imageIds = [];
+    foreach ($modImages as $modImage) {
+      /**
+       * @var $modImage ModImage
+       */
+      $imageIds[] = $modImage->image_id;
+    }
+
+    return $imageIds;
+
+//    return $this->hasMany(ModImage::class, ['id' => 'imagesIds']);
   }
 
   protected static $_map;
@@ -128,10 +144,24 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   {
     $this->images = UploadedFile::getInstances($this, 'images');
     if ($this->validate('images')) {
-      if(empty($this->images)){
+      if (empty($this->images)) {
         return true;
       }
-      return Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR);
+
+      $oldImagesOrder = json_decode($this->images_order_json);
+
+      if ($imagesIds = Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR)) {
+        $modImagesData = ModService::generateModImageObjects($imagesIds, $this->id);
+
+        if($oldImagesOrder) ModService::deleteExcessImages($oldImagesOrder, $modImagesData['imagesOrder']);
+
+        $this->images_order_json = json_encode($modImagesData['imagesOrder']);
+        $this->save(true, ['images_order_json']);
+
+        $this->populateRelation('modImages', $modImagesData['modImages']);
+
+        return true;
+      }
     }
 
     return false;

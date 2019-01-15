@@ -1,23 +1,24 @@
 _____________later_____________
 make translatable session messages in controllers
 look at @backend/rbac and delete if it needs
+refactor modImages file input
+    during updating, delete images only after submitting form
+    during selecting new images, don't delete existing images
+    zoom
 
 _____________current_____________
-    new migration create_table_mod_image
-        id
-        entity_id Mod->id
-        image_id filestorate->image_id
-        foreignKeys
-            entity_id
-            image_id
-    generate model ModImage
-    define Mod getImages method through hasMany
-    add function upload to model
-            getInstance for every file
-            save this through fileStorage
-            create new ModImage object for every image
-check uploading images and fix
+create model
+    create migration add_identity_to_mod_table
+        table mod
+            phone_number
+            country_id
+            age
+            password_hash
+    mod model implement IdentityInterface
+    create ModSignupForm extends Model
+        phoneNumber
 fix views
+    mod form - hair color and eyes color are shown in default language despite different translations
     hair-color
         remove field id
         format created_at and updated_at
@@ -34,3 +35,14 @@ filestorage:
     1. active form saves file from field to __FILE__
     2. UploadedFile::getInstance - create object of the file
     3. FileStorage saves UploadedFile object to server and about information to db (through activeRecord File) - returns id
+
+users
+    parent class User extends ActiveRecord implements IdentityInterface
+        modelProfile extends User
+            country
+            age
+            model_entity - Mod class with personal characteristics
+        managerProfile extends User
+            company_name todo: check - maybe better way, to have here company_id and in other place Company entity separately
+
+TODO: find out for what I need User module

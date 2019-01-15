@@ -3,6 +3,7 @@
 namespace modules\mod\backend\controllers;
 
 use modules\mod\backend\models\ModImage;
+use modules\mod\common\services\ModService;
 use Yii;
 use modules\mod\common\models\Mod;
 use modules\mod\common\models\ModSearch;
@@ -59,34 +60,14 @@ class DefaultController extends Controller
 
     $post = Yii::$app->request->post();
     if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
-      if ($imagesIds = $model->upload()) {
-        if (is_array($imagesIds)) {
-          $modImages = [];
-          foreach ($imagesIds as $imageId) {
-            $modImages[] = new ModImage([
-              'entity_id' => $model->id,
-              'image_id' => $imageId
-            ]);
-          }
-          $transaction = Yii::$app->db->beginTransaction();
-          foreach ($modImages as $modImage) {
-            if (!$modImage->save()) {
-              $transaction->rollBack();
-              Yii::$app->session->setFlash('danger', 'При загрузке изображений произошла ошибка.');
-              return false;
-            }
-          }
-          $model->populateRelation('modImages', $modImages);
-          $transaction->commit();
-        }
+      if ($model->upload()) {
+        Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
+            '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
+            ['create'],
+            ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
+          ));
+        return $this->redirect(['update', 'id' => $model->id]);
       }
-
-      Yii::$app->session->setFlash('success', 'Запись успешно создана. ' . Html::a(
-          '<span><i class="la la-plus"></i><span>Новая запись</span></span>',
-          ['create'],
-          ['class' => 'btn btn-sm btn-accent m-btn--pill m-btn--icon m-btn--air']
-        ));
-      return $this->redirect(['update', 'id' => $model->id]);
     }
     return $this->render('create', [
       'model' => $model,
@@ -105,8 +86,10 @@ class DefaultController extends Controller
 
     $post = Yii::$app->request->post();
     if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
-      Yii::$app->session->setFlash('success', 'Запись успешно обновлена.');
-      return $this->redirect(['update', 'id' => $model->id]);
+      if ($model->upload()) {
+        Yii::$app->session->setFlash('success', 'Запись успешно обновлена.');
+        return $this->redirect(['update', 'id' => $model->id]);
+      }
     }
     return $this->render('update', [
       'model' => $model,
@@ -122,12 +105,15 @@ class DefaultController extends Controller
   public function actionDelete($id)
   {
     $model = $this->findModel($id);
-    if ($model->delete()) {
+
+    if (ModService::deleteImages($model) && $model->delete()) {
       Yii::$app->session->setFlash('success', "Запись #$id успешно удалена.");
     }
+
     if (!empty($model->getErrors('deleteMessage'))) {
       Yii::$app->session->setFlash('error', $model->getErrors('deleteMessage'));
     }
+
     return $this->redirect(['index']);
   }
 
@@ -144,7 +130,7 @@ class DefaultController extends Controller
       $count = 0;
       $errorMessages = [];
       foreach ($this->findModels($ids) as $model) {
-        if ($model->delete() !== false) {
+        if (ModService::deleteImages($model) && $model->delete() !== false) {
           $count++;
         } else {
           if (!empty($model->getErrors('deleteMessage'))) {
@@ -158,8 +144,10 @@ class DefaultController extends Controller
         Yii::$app->session->setFlash('error', $errorMessages);
       }
       if ($count > 0) {
-        $message = '{n, plural, =1{Выбранная запись успешно удалена} few{Выбранные # записи успешно удалены} many{Выбранные # записей успешно удалены} other{Выбранные # записи успешно удалены}}.';
-        Yii::$app->session->setFlash('success', \MessageFormatter::formatMessage('ru', $message, ['n' => $count]));
+//        $message = '{n, plural, =1{Выбранная запись успешно удалена} few{Выбранные # записи успешно удалены} many{Выбранные # записей успешно удалены} other{Выбранные # записи успешно удалены}}.';
+//        Yii::$app->session->setFlash('success', \MessageFormatter::formatMessage('ru', $message, ['n' => $count]));
+        $message = 'Выбранные записи успешно удалены'; // todo: uncomment code above and make it working
+        Yii::$app->session->setFlash('success', $message);
       }
       return $this->redirect(['index']);
     }

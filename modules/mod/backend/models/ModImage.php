@@ -19,6 +19,7 @@ use Yii;
  */
 class ModImage extends \common\lib\ActiveRecord
 {
+
   /**
    * {@inheritdoc}
    */

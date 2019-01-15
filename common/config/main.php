@@ -21,7 +21,6 @@ return [
     'filestorage' => [
       'class' => common\components\filestorage\FileStorage::className(),
       'fileRoute' => '/file/index',
-      'storagePath' => '/../filestorage'
     ],
     'cache' => [
       'class' => 'yii\caching\FileCache',
@@ -29,6 +28,10 @@ return [
     'metronic' => [
       'class' => \common\components\metronic\Metronic::class
     ],
+    /*'user' => [
+      'identityClass' => \modules\mod\common\models\Mod::class,
+      'enableAutoLogin' => true,
+    ],*/
   ],
   'modules' => [
     'page' => [

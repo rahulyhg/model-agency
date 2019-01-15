@@ -1,5 +1,9 @@
 <?php
 
+use modules\mod\common\models\EyesColorLang;
+use modules\mod\common\services\EyesColorLangService;
+use modules\mod\common\services\HairColorLangService;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -42,12 +46,32 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterModel' => $searchModel,
                 'columns' => [
                   ['class' => \backend\lib\CheckboxColumn::class],
+//                  'phone_number',
+//                  'email',
+//                  'country',
+//                  'age',
+                  'first_name',
+                  'last_name',
                   'bust',
                   'waist',
                   'hips',
-                  'eyes_color_id',
-                  //'hair_color_id',
-                  //'shoes',
+                  [
+                    'attribute' => 'eyes_color_id',
+                    'filter' => EyesColorLangService::getMap('entity_id', 'color'),
+                    'filterInputOptions' => [
+                      'prompt' => 'Eyes color...',
+                      'class' => 'form-control',
+                    ],
+                  ],
+                  [
+                    'attribute' => 'hair_color_id',
+                    'filter' => HairColorLangService::getMap('entity_id', 'color'),
+                    'filterInputOptions' => [
+                      'prompt' => 'Hair color...',
+                      'class' => 'form-control'
+                    ],
+                  ],
+                  'shoes',
                   //'created_at',
                   //'updated_at',
                   ['class' => \backend\lib\ActionColumn::class],

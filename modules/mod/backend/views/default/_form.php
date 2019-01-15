@@ -3,9 +3,11 @@
 use kartik\widgets\FileInput;
 use modules\mod\common\models\EyesColor;
 use modules\mod\common\models\HairColor;
+use modules\mod\common\services\ModService;
 use yii\helpers\Html;
 use modules\lang\widgets\langActiveForm\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model modules\mod\common\models\Mod */
@@ -87,12 +89,43 @@ use backend\widgets\crudActions\CrudActions;
                 </div>
             </div>
             <div class="col-cl-4">
-              <?= $form->field($model, 'images')->widget(FileInput::class, [
+              <?php
+              $fileInputData = ModService::getFileInputData($model);
+
+              echo $form->field($model, 'images[]')->widget(FileInput::class, [
                 'options' => [
                   'accept' => 'image/*',
                   'multiple' => true,
-                ]
-              ]) ?>
+                ],
+                'pluginOptions' => [
+                  'previewFileType' => 'image',
+                  'showCaption' => false,
+                  'showUpload' => false,
+                  'showClose' => false,
+                  'removeLabel' => '',
+                  'initialPreview' => $fileInputData['imagesUrls'],
+                  'initialPreviewAsData' => true,
+                  'overwriteInitial' => true,
+                  'maxFileSize' => 2800,
+                  'initialPreviewConfig' => $fileInputData['initialPreviewConfig']
+                ],
+                'pluginEvents' => [
+                  'filesorted' => "function (event, params) {
+                        var orderArr = params.stack;                        
+                        var order = [];
+                        orderArr.forEach(function(element){
+                            order.push(element.key);
+                        });
+                        order = JSON.stringify(order);
+                        
+                        $('#modImageId').val(order);                        
+                    }
+                      "
+                ],
+              ])
+              ?>
+
+              <?= $form->field($model, 'images_order_json')->hiddenInput(['id' => 'modImageId'])->label(false) ?>
             </div>
         </div>
       <?php ActiveForm::end(); ?>
