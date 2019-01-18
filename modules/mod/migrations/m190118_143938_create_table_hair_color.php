@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m181218_140345_create_table_hair_color
+ * Class m190118_143938_create_table_hair_color
  */
-class m181218_140345_create_table_hair_color extends Migration
+class m190118_143938_create_table_hair_color extends Migration
 {
   /**
    * {@inheritdoc}

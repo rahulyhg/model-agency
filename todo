@@ -1,38 +1,34 @@
 _____________later_____________
 make translatable session messages in controllers
 look at @backend/rbac and delete if it needs
-refactor modImages file input
-    during updating, delete images only after submitting form
-    during selecting new images, don't delete existing images
-    zoom
 
 _____________current_____________
-create model
-    create migration add_identity_to_mod_table
-        table mod
-            phone_number
-            country_id
-            age
-            password_hash
-    mod model implement IdentityInterface
-    create ModSignupForm extends Model
-        phoneNumber
-fix views
-    mod form - hair color and eyes color are shown in default language despite different translations
-    hair-color
-        remove field id
-        format created_at and updated_at
-        add HairColor->color (name)
-    eyes-color
-        remove field id
-        format created_at and updated_at
-        add HairColor->color (name)
-Change HairColor->color to name
-Change EyesColor->color to name
+create class language to module mod
+    migrations
+        create_table_language
+            id
+            tel_code
+        create_table_language_lang
+            id
+            entity_id
+
+fix
+    views
+        hair-color
+        eyes-color
+        user
+        mod
+            refactor modImages file input
+                during updating, delete images only after submitting form
+                during selecting new images, don't delete existing images
+                zoom
+    models
+        Change HairColor->color to name
+        Change EyesColor->color to name
 
 
 filestorage:
-    1. active form saves file from field to __FILE__
+    1. Active form saves file from field to __FILE__
     2. UploadedFile::getInstance - create object of the file
     3. FileStorage saves UploadedFile object to server and about information to db (through activeRecord File) - returns id
 
@@ -43,6 +39,4 @@ users
             age
             model_entity - Mod class with personal characteristics
         managerProfile extends User
-            company_name todo: check - maybe better way, to have here company_id and in other place Company entity separately
-
-TODO: find out for what I need User module
+            company_name
