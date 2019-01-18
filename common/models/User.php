@@ -22,7 +22,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
- * @property integer $photo_file_id
+ * @property integer $photo_id
  *
  * @property string $photoFile
  * @property string $photoUrl
@@ -55,7 +55,7 @@ class User extends ActiveRecord implements IdentityInterface {
 				'files'     => [
 					[
 						'fileAttribute'   => 'photoFile',
-						'idAttribute'     => 'photo_file_id',
+						'idAttribute'     => 'photo_id',
 						'deleteAttribute' => 'deletePhotoFile',
 					],
 				],
@@ -225,7 +225,7 @@ class User extends ActiveRecord implements IdentityInterface {
 	 */
 	public function getPhotoUrl() {
 		if ( ! $this->photoUrl ) {
-			$this->photoUrl = Yii::$app->filestorage->getFileUrl( $this->photo_file_id );
+			$this->photoUrl = Yii::$app->filestorage->getFileUrl( $this->photo_id );
 			if ( ! $this->photoUrl ) {
 				$this->photoUrl = Yii::$app->setting->get( 'user', 'default_photo' ) ?: null;
 			}
@@ -239,7 +239,7 @@ class User extends ActiveRecord implements IdentityInterface {
 	 */
 	public function getPhotoSize() {
 		if ( ! $this->photoSize ) {
-			$path = Yii::$app->filestorage->getFilePath( $this->photo_file_id );
+			$path = Yii::$app->filestorage->getFilePath( $this->photo_id );
 
 			return $this->photoSize = $path ? filesize( $path ) : 0;
 		}

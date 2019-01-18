@@ -33,7 +33,6 @@ class m181219_104629_create_table_mod extends Migration
     ]);
 
     $this->addForeignKey('fk-mod_lang-mod', '{{%mod_lang}}', 'entity_id', '{{%mod}}', 'id', 'CASCADE');
-    $this->addForeignKey('fk-mod_lang-lang', '{{%mod_lang}}', 'lang_id', '{{%lang}}', 'id', 'CASCADE');
     $this->addForeignKey('fk-mod-eyes_color', '{{%mod}}', 'eyes_color_id', '{{%eyes_color}}', 'id', 'CASCADE');
     $this->addForeignKey('fk-mod-hair_color', '{{%mod}}', 'hair_color_id', '{{%hair_color}}', 'id', 'CASCADE');
   }

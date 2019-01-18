@@ -1,0 +1,45 @@
+.b-page
+    width: 100%
+    min-width: 320px
+    max-width: 100vw
+    display: flex
+    flex-direction: row
+    position: relative
+    overflow: hidden
+
+
+.b-page__sidebar
+    height: 100%
+    width: 320px
+    z-index: 10
+    transition: all 100ms linear
+
+    +lg(width, 260px)
+
+    +sm-block()
+        width: calc(100vw - 60px)
+        +fixed(0, auto, auto, 0)
+        transition: all .2s ease-in-out
+        transform: translate3d(-100%, 0, 0)
+        
+
+
+.b-page__sidebar_sm-open
+    +sm-block()
+        transform: translate3d(0, 0, 0)
+        transition: all .4s ease-in-out
+
+
+.b-page__content
+    width: calc(100% - 320px)
+    
+    +lg(width, calc(100% - 260px))
+
+    +sm-block()
+        transition: all .2s ease-in-out
+        width: 100%
+
+.b-page__content_sm-shift
+    +sm-block()
+        transform: translateX(calc(100vw - 60px))
+        transition: all .4s ease-in-out

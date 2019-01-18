@@ -1,0 +1,98 @@
+//
+    ----------------------------------------------------------------------
+    Starter markup template miliday - "Made with love, especially for you"
+    ----------------------------------------------------------------------
+    nickname: "Michael Holiday"
+    email: "mr.michael.holiday@gmail.com"
+    ----------------------------------------------------------------------
+
+// Position
+=fixed($top, $right, $bottom, $left)
+    position: fixed
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+
+=absolute($top, $right, $bottom, $left)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+
+=absolute-offset($top, $right, $bottom, $left, $offsetTop, $offsetLeft)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+    transform: translate($offsetLeft, $offsetTop)
+
+=absolute-offset-plus($top, $right, $bottom, $left, $offsetTop, $offsetLeft, $transform)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+    transform: $transform translate($offsetLeft, $offsetTop)
+
+
+=translate($top, $left)
+    transform: translate($left, $top)
+
+
+=gradient-text($direction, $gradiendColorStart, $gradiendColorEnd)
+    background: linear-gradient($direction, $gradiendColorStart, $gradiendColorEnd)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+// Typography
+=text($color, $fontSize, $fontWeight, $lineHeight) 
+    color:  $color
+    font-size: $fontSize 
+    font-weight: $fontWeight
+    line-height: $lineHeight
+
+
+// Interactive
+=hover($property, $value, $speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:hover
+        #{$property}: $value
+
+
+=hover-block($speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:hover 
+        @content
+
+
+=focus($property, $value, $speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:focus 
+        #{$property}: $value
+
+
+=focus-block($speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:hover 
+        @content
+
+
+=active($property, $value, $speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:active 
+        #{$property}: $value
+
+    
+=active-block($speed, $function) 
+    cursor: pointer
+    transition: all $speed $function
+    &:active 
+        @content

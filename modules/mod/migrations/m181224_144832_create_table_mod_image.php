@@ -21,7 +21,6 @@ class m181224_144832_create_table_mod_image extends Migration
     ]);
 
     $this->addForeignKey('fk-mod_image-mod', '{{%mod_image}}', 'entity_id', '{{%mod}}', 'id', 'CASCADE');
-    $this->addForeignKey('fk-mod_filestorage', '{{%mod_image}}', 'image_id', '{{%filestorage}}', 'id', 'CASCADE');
   }
 
   /**

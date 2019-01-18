@@ -1,0 +1,85 @@
+.b-pagination-model
+.b-pagination-model__items
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    margin: -15px 0
+
+    +md-block()
+        flex-direction: column
+        justify-content: center
+        flex-wrap: wrap
+
+    +xs(margin, -10px)
+
+
+.b-pagination-model__item
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    position: relative
+    margin: 15px 0
+
+    +lg(font-size, 14px)
+    +xs(margin, 10px)
+
+.b-pagination-model__item-line
+    content: ''
+    height: 8px
+    width: 40%
+    +absolute(auto, auto, 2px, 15px)
+    background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+
+    +to(1200px)
+        height: 6px
+        bottom: 1px
+
+    +lg-block()
+        left: 10px
+
+    +md-block()
+        height: 8px
+        bottom: 2px
+
+    +sm(height, 6px)
+    +xs(bottom, 1px)
+
+.b-pagination-model__item-icon
+    font-size: 36px
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+    +to(1600px)
+        font-size: 28px
+    
+    +to(1400px)
+        font-size: 22px
+
+    +to(1200px)
+        font-size: 16px
+
+    +md(font-size, 28px)
+    +sm(font-size, 24px)
+    +xs(font-size, 20px)
+
+.b-pagination-model__item-text
+    position: relative
+    +text($darkColor, 36px, 900, 1)
+    margin: 0 15px
+
+    +to(1600px)
+        font-size: 28px
+    
+    +to(1400px)
+        font-size: 22px
+
+    +to(1200px)
+        font-size: 16px
+
+    +lg-block()
+        margin: 0 10px
+
+    +md(font-size, 28px)
+    +sm(font-size, 24px)
+    +xs(font-size, 20px)

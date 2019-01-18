@@ -1,0 +1,62 @@
+.b-nav-line
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 0 30px
+    background-color: $lightColor
+
+    +sm(padding, 0 15px)
+
+
+.b-nav-line__left
+    margin: 0 -15px
+    +sm(margin, 0 -10px)
+
+.b-nav-line__bread-crumbs
+    margin: 0 15px
+    position: relative
+
+    +sm(margin, 0 10px)
+
+.b-nav-line__bread-crumbs:after
+    content: '\f105'
+    display: inline-block
+    +absolute-offset(auto, -15px, 4px, auto, 0, 50%)
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    font-family: "Font Awesome 5 Free"
+    font-size: 14px
+    font-weight: 900
+    font-style: normal
+    font-variant: normal
+    text-rendering: auto
+    line-height: 1
+
+    +sm-block()
+        right: -10px
+        bottom: 2px
+        font-size: 12px
+
+.b-nav-line__bread-crumbs:last-child:after
+    display: none
+
+    
+.b-nav-line__right
+    display: flex
+    flex-direction: row
+    margin: 0 -15px
+
+    +lg(margin, 0 -10px)
+
+    +md(margin, 0 -7.5px)
+
+
+.b-nav-line__login
+    margin: 0 15px
+
+    +lg(margin, 0 10px)
+
+    +md(margin, 0 7.5px)
+
+    +sm(display, none)

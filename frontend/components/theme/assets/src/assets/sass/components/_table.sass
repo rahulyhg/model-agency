@@ -1,0 +1,35 @@
+.b-table
+    margin: 0
+
+    thead
+        +text($lightColor, 24px, 900, 1)
+        letter-spacing: 1px
+        text-shadow: 2px 2px 5px rgba(0,0,0,.1)
+        background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+
+        +lg(font-size, 18px)
+        +xs(font-size, 16px)
+
+    th[scope='col']
+        padding: 15px 30px
+        border: none
+
+    tbody
+        tr
+            box-shadow: inset 0 10px 5px -5px rgba(0,0,0,.05)
+
+    th[scope='row']
+        +text($darkColor, 18px, 900, 1)
+        padding: 15px 30px
+        border: none
+
+        +lg(font-size, 16px)
+        +xs(font-size, 14px)
+
+    td
+        +text($darkColor, 16px, 600, 1)
+        padding: 15px 30px
+        border: none
+
+        +lg(font-size, 14px)
+        +xs(font-size, 12px)

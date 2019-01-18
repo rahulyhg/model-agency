@@ -1,0 +1,322 @@
+extends ../layouts/page.pug
+
+block head
+    title Celeb Cloud - model agency
+
+    +style('./assets/lib/jquery.fancybox/jquery.fancybox.min.css')
+    +style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css')
+    +style('./assets/lib/jquery.scrollbar/jquery.scrollbar.css')
+
+block body
+
+    .b-page
+        aside.b-sidebar.b-page__sidebar
+            .b-sidebar__inner
+                header.b-sidebar__header
+                    .b-logo.b-sidebar__logo
+                        a.b-logo__link(href='index.html')
+                            +logo-svg('sidebar-logo')
+
+                nav.b-menu.b-sidebar__menu
+                    ul.b-menu__items
+                        li.b-menu__item.b-menu__item_active
+                            a.b-menu__item-link(href='index.html') Home
+                        li.b-menu__item
+                            a.b-menu__item-link(href='our-models.html') Our models
+                        li.b-menu__item
+                            a.b-menu__item-link(href='contacts.html') Contacts
+
+                footer.b-sidebar__footer
+                    .b-social.b-sidebar__social
+                        ul.b-social__items
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our vk')
+                                    i.b-social__item-icon.fab.fa-vk
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our facebook')
+                                    i.b-social__item-icon.fab.fa-facebook-f
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our twitter')
+                                    i.b-social__item-icon.fab.fa-twitter
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our instagram')
+                                    i.b-social__item-icon.fab.fa-instagram
+                        
+
+                    p.b-sidebar__copyright © Model Agency "Celeb Cloud", 2018
+        
+        
+        .b-content.b-page__content
+            header.b-header.b-content__header
+                .b-header__inner
+                    .b-header__left
+                        .b-toggle.b-header__sidebar-toggle
+                            .b-toggle__items
+                                i.b-toggle__item.b-toggle__item_active.b-link__icon_lg.fas.fa-bars
+                                i.b-toggle__item.b-link__icon_lg.fas.fa-times
+
+                    .b-header__middle
+                        .b-logo-sm.b-header__logo-sm
+                            a.b-logo-sm__link(href='index.html')
+                                +logo-sm-svg('header-logo-sm')
+
+
+                    .b-header__right
+                        a.b-link.b-header__login(href='login-model.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-ninja
+
+                        a.b-link.b-header__login(href='login-user.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-tie
+
+
+
+
+            main.b-main.b-content__main
+
+                nav.b-nav-line.b-main__nav-line
+                    .b-nav-line__left
+                        a.b-link.b-nav-line__bread-crumbs(href='index.html')
+                            i.b-link__icon.fas.fa-home
+                            span.b-link__texts
+                                span.b-link__text-first Home
+
+                        a.b-link.b-nav-line__bread-crumbs(href='cabinet-model-basic.html')
+                            span.b-link__texts
+                                span.b-link__text-first Cabinet
+
+                        a.b-link.b-nav-line__bread-crumbs(href='cabinet-model-basic.html')
+                            span.b-link__texts
+                                span.b-link__text-first Basic
+                                    
+                    .b-nav-line__right
+                        a.b-link.b-nav-line__login(href='login-model.html')
+                            i.b-link__icon.fas.fa-user-ninja
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first.b-link__text-first_uppercase Models 
+                                span.b-link__text-second.b-link__text-first_uppercase sign in
+
+                        a.b-link.b-nav-line__login(href='login-user.html')
+                            i.b-link__icon.fas.fa-user-tie
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first User 
+                                span.b-link__text-second sign in
+
+
+                .b-main__inner
+                    .b-main__items
+                        section.b-section.b-main__item
+                            header.b-section__header
+                                h1.b-title.b-section__header-title
+                                    span.b-title__texts.b-title__texts_line-first
+                                        span.b-title__text-first Julia
+                                        span.b-title__text-second Bogdanova
+
+                                .b-tabs.b-section__header-tabs
+                                    ul.b-tabs__items
+                                        li.b-tabs__item.b-tabs__item_line-first
+                                            a.b-tabs__item-link(href='cabinet-model-basic.html')
+                                                span.b-tabs__texts
+                                                    span.b-tabs__text-first Basic
+                                                    span.b-tabs__text-second data
+
+                                        li.b-tabs__item
+                                            a.b-tabs__item-link(href='cabinet-model-photos.html')
+                                                span.b-tabs__texts
+                                                    span.b-tabs__text-second My
+                                                    span.b-tabs__text-first photos
+
+                                        li.b-tabs__item
+                                            a.b-tabs__item-link(href='cabinet-model-payments.html')
+                                                span.b-tabs__texts
+                                                    span.b-tabs__text-second My
+                                                    span.b-tabs__text-first payments
+                            
+                            .b-cabinet.b-section__main
+                                form.b-cabinet__form(action='login-model')
+                                    .b-cabinet__form-inner
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title First name
+                                            input.b-field__input.b-field__input_icon(type="text" name="first-name" required value='Julia')
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-user-ninja
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Phone number
+                                            input.b-field__input.b-field__input_icon(type="text" name="phone" required value="+7 (999) 777-87-97")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-mobile-alt
+ 
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Middle name
+                                            input.b-field__input.b-field__input_icon(type="text" name="middle-name")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-user-ninja
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Email
+                                            input.b-field__input.b-field__input_icon(type="email" name="email" required value="bogdanova@gmail.com")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-envelope
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Last name
+                                            input.b-field__input.b-field__input_icon(type="text" name="last-name" required value="Bogdanova")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-user-ninja
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Nickname
+                                            input.b-field__input.b-field__input_icon(type="text" name="nickname" required value="Jula")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-user-secret
+
+                                        label.b-field-select.b-field-select_icon.b-cabinet__form-field
+                                            span.b-field-select__title Country
+                                            select#country.b-field-select__select2(required)
+                                                option New York
+                                                option(selected) Los Angeles
+                                                option Chicago
+                                                option Houston
+                                                option Phoenix
+                                                option Philadelphia
+                                                option San Antonio
+                                                option San Antonio
+                                                option San Diego
+                                                option Dallas
+                                                option San Jose
+                                                option Austin
+                                                option Jacksonville
+                                                option San Francisco
+                                                option Columbus
+
+                                            i.b-field-select__icon.b-field-select__icon_focus-first.fas.fa-map-marker-alt
+
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title New password
+                                            input.b-field__input.b-field__input_icon(type="password" name="new-password")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-key
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Age
+                                            input.b-field__input.b-field__input_icon(type="number" name="age" required value="28")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-birthday-cake
+                                        
+                                        label.b-field.b-cabinet__form-field
+                                            span.b-field__title Confirm password
+                                            input.b-field__input.b-field__input_icon(type="password" name="confirm-password")
+                                            i.b-field__icon.b-field__icon_focus-first.fas.fa-key
+
+                                    .b-upload.b-cabinet__form-upload
+                                        .b-upload__header
+                                            span.b-upload__title Main photo
+                                            label.b-upload__label
+                                                .b-link.b-upload__link
+                                                    i.b-link__icon.fas.fa-upload
+                                                    span.b-link__texts.b-link__texts_underline
+                                                        span.b-link__text-first Upload 
+                                                        span.b-link__text-second new
+
+                                                input.b-upload__input(type="file" name='photo' accept=".png, .jpg, .jpeg" required)
+
+                                        a.b-upload__preview(href="./assets/img/tmp/single-model/1.jpg" style="background-image: url('./assets/img/tmp/single-model/1.jpg'" data-fancybox="gallery")
+
+                                    .b-cabinet__form-footer
+                                        label.b-checkbox.b-cabinet__form-remember
+                                            input.b-checkbox__input(type="checkbox" checked name="remember")
+                                            .b-checkbox__box
+                                                .b-checkbox__checked.b-checkbox__checked_first
+
+                                            .b-checkbox__texts
+                                                .b-checkbox__text Sravat real name
+
+                                        button.b-button.b-button_first.b-cabinet__form-submit(type='submit')
+                                            span.b-button__texts
+                                                span.b-button__text-first Save changes
+
+
+block script                                    
+
+    +script('./assets/lib/autosize.min.js')
+    +script('./assets/lib/jquery.fancybox/jquery.fancybox.min.js')
+    +script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js')
+    +script('./assets/lib/jquery.scrollbar/jquery.scrollbar.min.js')
+    +script('./assets/lib/select2-searchInputPlaceholder.js')
+    
+    script.
+
+        $(document).ready(function () {
+            $('#country').select2({
+                "searchInputPlaceholder": 'Enter the name of the settlement',
+                'language': {
+                    'noResults': function () {
+                        return "No results to search";
+                    }
+                }
+            });
+
+            $('select').on('select2:open', function (e) {
+                $('.select2-results__options').scrollbar().parent().addClass('scrollbar-outer');
+                $('.select2-search input').prop('focus', false);
+            });
+
+            $('[data-select2-non-search]').select2({
+                'minimumResultsForSearch': -1
+            });
+            
+            $('[data-select2-search]').select2();
+        });
+    
+        $(document).ready(e => {
+
+            $('#search-location').select2({
+                "searchInputPlaceholder": 'Введите название населенного пункта',
+                "language": {
+                    "noResults": function () {
+                        return "Ничего не найдено";
+                    }
+                }
+            });
+
+            $('select').on('select2:open', function (e) {
+                $('.select2-results__options').scrollbar().parent().addClass('scrollbar-outer');
+                $('.select2-search input').prop('focus', false);
+            });
+
+            $('[data-select2-non-search]').select2({
+                "minimumResultsForSearch": -1
+            });
+            
+            $('[data-select2-search]').select2();
+
+            new PrevUploadImg({
+                parent: '.b-upload',
+                input: '.b-upload__input',
+                preview: '.b-upload__preview',
+                maxSize: 2,
+                extensions: ['png', 'jpg', 'jpeg']
+            }, () => {
+                console.log('example callBack')
+            })
+
+            new ActiveInHover({
+                items: '.b-menu__items',
+                item: '.b-menu__item',
+                activeClass: 'b-menu__item_active'
+            })
+
+            new ActiveInHover({
+                items: '.b-tabs__items',
+                item: '.b-tabs__item',
+                activeClass: 'b-tabs__item_line-first'
+            })
+
+            new ToggleTrigger({
+                items: '.b-toggle__items',
+                item: '.b-toggle__item',
+                activeClass: 'b-toggle__item_active'
+            }, () => {
+                $('.b-main').toggleClass('b-main_sm-scroll-lock')
+                $('.b-main').toggleClass('b-main_sm-transparent')
+                $('.b-content').toggleClass('b-content_sm-blackout')
+                $('.b-page__sidebar').toggleClass('b-page__sidebar_sm-open')
+                $('.b-page__content').toggleClass('b-page__content_sm-shift')                
+            })
+
+            autosize(document.querySelectorAll('[data-textarea-autosize]'))
+
+        })

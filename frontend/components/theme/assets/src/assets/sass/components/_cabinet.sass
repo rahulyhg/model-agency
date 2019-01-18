@@ -1,0 +1,113 @@
+.b-cabinet
+.b-cabinet__form
+    +row-flex()
+
+.b-cabinet__form-inner
+    +col()
+    +size(8)
+    +row-flex()
+    margin-top: -15px
+    margin-bottom: -15px
+    margin-left: 0
+    margin-right: 0
+
+    +to(1400px)
+        +size(6)
+
+    +lg-block()
+        width: 100%
+    
+    +sm-block()
+        margin-top: -10px
+        margin-bottom: -10px
+
+
+.b-cabinet__form-upload
+    +col()
+    width: calc(100% / 3)
+    
+    +to(1400px)
+        width: calc(100% / 2)
+
+    +lg-block()
+        order: -1
+        width: 100%
+        margin-bottom: 30px
+
+.b-cabinet__form-field
+    +col()
+    +size(6)
+    margin-top: 15px
+    margin-bottom: 15px
+        
+    +to(1400px)
+        +size(12)
+
+    +sm-block()
+        margin-top: 10px
+        margin-bottom: 10px
+
+    +xs-block()
+        margin-top: 10px
+        margin-bottom: 10px
+
+
+.b-cabinet__form-footer
+    +col()
+    +size(12)
+    +size-lg(12)
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    margin-top: 15px
+    margin-bottom: 15px
+
+.b-cabinet__form-redirect-link
+    margin-left: 10px
+
+.b-cabinet__form-remember
+    margin-left: auto
+
+    +to(1200px)
+        order: -1
+        margin-left: initial
+
+.b-cabinet__form-submit
+    margin-left: 30px
+
+    +to(1200px)
+        margin: 15px 0 30px 0
+        width: 100%
+
+.b-cabinet__photos
+    +row-flex()
+    margin-top: -15px
+    margin-bottom: -15px
+
+.b-cabinet__photo
+    margin-top: 15px
+    margin-bottom: 15px
+    +col()
+    +size(4)
+
+    +from-to($break-md, 1400px)
+        +size(6)
+
+    +size-md(12)
+
+    +size-sm(6)
+
+    +size-xs(12)
+
+.b-cabinet__add-photo
+    margin-top: 30px
+
+.b-cabinet__table
+    width: 100%
+    max-width: 100%
+    overflow-y: auto
+    box-shadow: 0 5px 10px rgba(0,0,0,.1)
+    border-bottom-left-radius: 20px
+    border-bottom-right-radius: 20px

@@ -1,0 +1,119 @@
+.b-link
+    display: inline-flex
+    flex-direction: row
+    align-items: center
+    cursor: pointer
+
+
+.b-link__icon
+    margin: 0 5px 
+    font-size: 16px
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+    &:first-child
+        margin-left: 0px
+        margin-right: 10px
+    
+    &:last-child
+        margin-left: 0px
+        margin-right: 0px
+    
+    +lg(font-size, 14px)
+
+.b-link__icon_lg
+    font-size: 22px
+
+
+.b-link__texts
+    color: $darkColor
+    white-space: nowrap
+    display: inline-block
+    position: relative
+    margin: 0 -2.5px
+
+.b-link__texts_first
+    .b-link__text,
+    .b-link__text-first,
+    .b-link__text-second
+        +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+.b-link__texts_second
+    .b-link__text,
+    .b-link__text-first,
+    .b-link__text-second
+        +gradient-text(0deg, $secondGradientStart, $secondGradientEnd)
+
+.b-link__texts_underline:before,
+.b-link__texts_underline:after,
+.b-link__texts_underline-first:before,
+.b-link__texts_underline-first:after,
+.b-link__texts_underline-second:before,
+.b-link__texts_underline-second:after
+    content: ''
+    width: calc(100% - 5px)
+    height: 1px
+    +absolute(auto, auto, 0, 2.5px)
+    transition: all .2s ease-in-out
+
+.b-link__texts_underline:before
+    background-color: $darkColor
+    width: calc(100% - 5px)
+    opacity: .4
+    
+.b-link__texts_underline:after
+    background-color: $darkColor
+    width: 0
+
+.b-link__texts_underline-first:before,
+    background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+    width: calc(100% - 5px)
+    opacity: .4
+
+.b-link__texts_underline-first:after,
+    background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+    width: 0
+
+.b-link__texts_underline-second:before,
+    background: linear-gradient(90deg, $secondGradientStart, $secondGradientEnd)
+    width: calc(100% - 5px)
+    opacity: .4
+
+.b-link__texts_underline-second:after
+    background: linear-gradient(90deg, $secondGradientStart, $secondGradientEnd)
+    width: 0
+
+
+.b-link:hover .b-link__texts_underline:after,
+.b-link:hover .b-link__texts_underline-first:after,
+.b-link:hover .b-link__texts_underline-second:after,
+    width: calc(100% - 5px)
+
+
+.b-link__texts_uppercase
+    text-transform: uppercase
+
+
+.b-link__text
+    margin: 0 2.5px
+    display: inline-block
+    +text(inherit, 16px, 700, 1)
+    position: relative
+    
+    +lg(font-size, 14px)
+
+.b-link__text-first
+    margin: 0 2.5px
+    display: inline-block
+    +text(inherit, 16px, 900, 1)
+    position: relative
+    
+    +lg(font-size, 14px)
+
+
+.b-link__text-second
+    margin: 0 2.5px
+    display: inline-block
+    +text(inherit, 16px, 400, 1)
+    position: relative
+
+    +lg(font-size, 14px)

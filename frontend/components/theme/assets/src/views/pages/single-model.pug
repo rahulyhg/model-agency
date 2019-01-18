@@ -1,0 +1,279 @@
+extends ../layouts/page.pug
+
+block head
+    title Celeb Cloud - model agency
+    
+    +style('./assets/lib/jquery.fancybox/jquery.fancybox.min.css')
+    +style('./assets/lib/slick-1.8.1/slick.css')
+    
+
+block body
+
+    .b-page
+        aside.b-sidebar.b-page__sidebar
+            .b-sidebar__inner
+                header.b-sidebar__header
+                    .b-logo.b-sidebar__logo
+                        a.b-logo__link(href='index.html')
+                            +logo-svg('sidebar-logo')
+
+                nav.b-menu.b-sidebar__menu
+                    ul.b-menu__items
+                        li.b-menu__item
+                            a.b-menu__item-link(href='index.html') Home
+                        li.b-menu__item.b-menu__item_active
+                            a.b-menu__item-link(href='our-models.html') Our models
+                        li.b-menu__item
+                            a.b-menu__item-link(href='contacts.html') Contacts
+
+                footer.b-sidebar__footer
+                    .b-social.b-sidebar__social
+                        ul.b-social__items
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our vk')
+                                    i.b-social__item-icon.fab.fa-vk
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our facebook')
+                                    i.b-social__item-icon.fab.fa-facebook-f
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our twitter')
+                                    i.b-social__item-icon.fab.fa-twitter
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our instagram')
+                                    i.b-social__item-icon.fab.fa-instagram
+                        
+
+                    p.b-sidebar__copyright © Model Agency "Celeb Cloud", 2018
+        
+        
+        .b-content.b-page__content
+            header.b-header.b-content__header
+                .b-header__inner
+                    .b-header__left
+                        .b-toggle.b-header__sidebar-toggle
+                            .b-toggle__items
+                                i.b-toggle__item.b-toggle__item_active.b-link__icon_lg.fas.fa-bars
+                                i.b-toggle__item.b-link__icon_lg.fas.fa-times
+
+                    .b-header__middle
+                        .b-logo-sm.b-header__logo-sm
+                            a.b-logo-sm__link(href='index.html')
+                                +logo-sm-svg('header-logo-sm')
+
+
+                    .b-header__right
+                        a.b-link.b-header__login(href='login-model.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-ninja
+
+                        a.b-link.b-header__login(href='login-user.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-tie
+
+
+
+
+            main.b-main.b-content__main
+
+                nav.b-nav-line.b-main__nav-line
+                    .b-nav-line__left
+                        a.b-link.b-nav-line__bread-crumbs(href='index.html')
+                            i.b-link__icon.fas.fa-home
+                            span.b-link__texts
+                                span.b-link__text-first Home
+
+                        a.b-link.b-nav-line__bread-crumbs(href='our-models.html')
+                            span.b-link__texts
+                                span.b-link__text-first Our models
+
+                        a.b-link.b-nav-line__bread-crumbs(href='single-model.html')
+                            span.b-link__texts
+                                span.b-link__text-first Julia Bogdanova
+                                    
+                    .b-nav-line__right
+                        a.b-link.b-nav-line__login(href='login-model.html')
+                            i.b-link__icon.fas.fa-user-ninja
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first.b-link__text-first_uppercase Models 
+                                span.b-link__text-second.b-link__text-first_uppercase sign in
+
+                        a.b-link.b-nav-line__login(href='login-user.html')
+                            i.b-link__icon.fas.fa-user-tie
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first User 
+                                span.b-link__text-second sign in
+
+
+                .b-main__inner
+                    .b-main__items
+                        section.b-section.b-main__item
+                            header.b-section__header
+                                h1.b-title.b-section__header-title
+                                    span.b-title__texts.b-title__texts_line-first
+                                        span.b-title__text-first Julia
+                                        span.b-title__text-second Bogdanova
+
+                                button.b-button.b-button_first.b-section__header-contacts-model-btn
+                                    span.b-button__texts
+                                        span.b-button__text-first Contacts Model
+
+                            
+                            .b-single-model.b-section__main
+                                .b-single-model__inner
+                                    .b-single-model__slider
+                                        .b-single-model__slider-items
+
+                                            .b-single-model__slider-item
+                                                a.b-single-model__img-box(href="./assets/img/tmp/single-model/1.jpg" style="background-image: url('./assets/img/tmp/single-model/1.jpg'" data-fancybox="gallery")
+                                                    img.b-single-model__img(alt="julia bogdanova" src="./assets/img/tmp/single-model/1.jpg")
+                                                .b-single-model__footer
+                                                    .b-like.b-single-model__like
+                                                        i.b-like__icon.fas.fa-heart
+                                                        .b-like__value 1448
+
+                                            .b-single-model__slider-item
+                                                a.b-single-model__img-box(href="./assets/img/tmp/single-model/1.jpg" style="background-image: url('./assets/img/tmp/single-model/1.jpg'" data-fancybox="gallery")
+                                                    img.b-single-model__img(alt="julia bogdanova" src="./assets/img/tmp/single-model/1.jpg")
+                                                .b-single-model__footer
+                                                    .b-like.b-single-model__like
+                                                        i.b-like__icon.fas.fa-heart
+                                                        .b-like__value 1222
+
+                                            .b-single-model__slider-item
+                                                a.b-single-model__img-box(href="./assets/img/tmp/single-model/1.jpg" style="background-image: url('./assets/img/tmp/single-model/1.jpg'" data-fancybox="gallery")
+                                                    img.b-single-model__img(alt="julia bogdanova" src="./assets/img/tmp/single-model/1.jpg")
+                                                .b-single-model__footer
+                                                    .b-like.b-single-model__like
+                                                        i.b-like__icon.fas.fa-heart
+                                                        .b-like__value 1123
+
+                                            .b-single-model__slider-item
+                                                a.b-single-model__img-box(href="./assets/img/tmp/single-model/1.jpg" style="background-image: url('./assets/img/tmp/single-model/1.jpg'" data-fancybox="gallery")
+                                                    img.b-single-model__img(alt="julia bogdanova" src="./assets/img/tmp/single-model/1.jpg")
+                                                .b-single-model__footer
+                                                    .b-like.b-single-model__like
+                                                        i.b-like__icon.fas.fa-heart
+                                                        .b-like__value 1321
+                                        
+
+                                        .b-single-model__slider-arrows
+                                            .b-single-model__slider-arrow-prev
+                                                i.b-single-model__slider-arrow-icon.fas.fa-chevron-left
+
+                                            .b-single-model__slider-arrow-next
+                                                i.b-single-model__slider-arrow-icon.fas.fa-chevron-right
+                                    
+                                    .b-features.b-single-model__features
+                                        ul.b-features__items
+                                            li.b-features__item-title
+                                                span.b-features__title Name:
+                                                    span.b-features__title-line.b-features__title-line_delay-1
+                                            li.b-features__item-value
+                                                span.b-features__value Julia Bogdanova
+                                            li.b-features__item-title
+                                                span.b-features__title Height:
+                                                    span.b-features__title-line.b-features__title-line_delay-2
+                                            li.b-features__item-value
+                                                span.b-features__value 179 cm
+                                            li.b-features__item-title
+                                                span.b-features__title Bust:
+                                                    span.b-features__title-line.b-features__title-line_delay-3
+                                            li.b-features__item-value
+                                                span.b-features__value 86 cm
+                                            li.b-features__item-title
+                                                span.b-features__title Waist:
+                                                    span.b-features__title-line.b-features__title-line_delay-4
+                                            li.b-features__item-value
+                                                span.b-features__value 61 cm
+                                            li.b-features__item-title
+                                                span.b-features__title Hips:
+                                                    span.b-features__title-line.b-features__title-line_delay-5
+                                            li.b-features__item-value
+                                                span.b-features__value 90 cm
+                                            li.b-features__item-title
+                                                span.b-features__title Eyes:
+                                                    span.b-features__title-line.b-features__title-line_delay-6
+                                            li.b-features__item-value
+                                                span.b-features__value brown
+                                            li.b-features__item-title
+                                                span.b-features__title Hair:
+                                                    span.b-features__title-line.b-features__title-line_delay-7
+                                            li.b-features__item-value
+                                                span.b-features__value brown
+                                            li.b-features__item-title
+                                                span.b-features__title Shoes:
+                                                    span.b-features__title-line.b-features__title-line_delay-8
+                                            li.b-features__item-value
+                                                span.b-features__value 39,5
+                                            li.b-features__item-title
+                                                span.b-features__title Languages:
+                                                    span.b-features__title-line.b-features__title-line_delay-9
+                                            li.b-features__item-value
+                                                span.b-features__value english
+
+                        section.b-section.b-main__item
+                            .b-pagination-model.b-section__main
+                                .b-pagination-model__items
+                                    a.b-pagination-model__item(href='single-model.html')
+                                        .b-pagination-model__item-icon.fas.fa-arrow-left
+                                        .b-pagination-model__item-text Julia Bogdanova
+                                        
+                                    .b-pagination-model__item
+                                        .b-pagination-model__item-line
+                                        .b-pagination-model__item-text Julia Bogdanova
+
+                                    a.b-pagination-model__item(href='single-model.html')
+                                        .b-pagination-model__item-text Julia Bogdanova
+                                        .b-pagination-model__item-icon.fas.fa-arrow-right
+
+
+block script
+
+    +script('./assets/lib/jquery.fancybox/jquery.fancybox.min.js')
+    +script('./assets/lib/slick-1.8.1/slick.min.js')
+    
+    script.
+
+        $(document).ready(function() {
+
+            $('.b-single-model__slider-items').slick({
+                fade: true,
+                infinite: true,
+                speed: 200,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                dotsClass: 'b-single-model__slider-dots',
+                prevArrow: $('.b-single-model__slider-arrow-prev'),
+                nextArrow: $('.b-single-model__slider-arrow-next')
+            });
+
+        });
+
+        $(document).ready(e => {
+
+            new ActiveInHover({
+                items: '.b-menu__items',
+                item: '.b-menu__item',
+                activeClass: 'b-menu__item_active'
+            })
+
+            new ToggleTrigger({
+                items: '.b-toggle__items',
+                item: '.b-toggle__item',
+                activeClass: 'b-toggle__item_active'
+            }, () => {
+                $('.b-main').toggleClass('b-main_sm-scroll-lock')
+                $('.b-main').toggleClass('b-main_sm-transparent')
+                $('.b-content').toggleClass('b-content_sm-blackout')
+                $('.b-page__sidebar').toggleClass('b-page__sidebar_sm-open')
+                $('.b-page__content').toggleClass('b-page__content_sm-shift')                
+            })
+            
+            new AnimFeatures({
+                parrent: '.b-features__items',
+                itemTitle: '.b-features__title',
+                lineTitle: '.b-features__title-line',
+                itemValue: '.b-features__value',
+                breakPoints: [1500, 1300, 1100, 960, 780, 560]
+            })
+
+        })

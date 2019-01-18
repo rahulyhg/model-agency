@@ -1,0 +1,207 @@
+extends ../layouts/page.pug
+
+block head
+    title Celeb Cloud - model agency
+    
+
+block body
+
+    .b-page
+        aside.b-sidebar.b-page__sidebar
+            .b-sidebar__inner
+                header.b-sidebar__header
+                    .b-logo.b-sidebar__logo
+                        a.b-logo__link(href='index.html')
+                            +logo-svg('sidebar-logo')
+
+                nav.b-menu.b-sidebar__menu
+                    ul.b-menu__items
+                        li.b-menu__item
+                            a.b-menu__item-link(href='index.html') Home
+                        li.b-menu__item
+                            a.b-menu__item-link(href='our-models.html') Our models
+                        li.b-menu__item.b-menu__item_active
+                            a.b-menu__item-link(href='contacts.html') Contacts
+
+                footer.b-sidebar__footer
+                    .b-social.b-sidebar__social
+                        ul.b-social__items
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our vk')
+                                    i.b-social__item-icon.fab.fa-vk
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our facebook')
+                                    i.b-social__item-icon.fab.fa-facebook-f
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our twitter')
+                                    i.b-social__item-icon.fab.fa-twitter
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our instagram')
+                                    i.b-social__item-icon.fab.fa-instagram
+                        
+
+                    p.b-sidebar__copyright © Model Agency "Celeb Cloud", 2018
+        
+        
+        .b-content.b-page__content
+            header.b-header.b-content__header
+                .b-header__inner
+                    .b-header__left
+                        .b-toggle.b-header__sidebar-toggle
+                            .b-toggle__items
+                                i.b-toggle__item.b-toggle__item_active.b-link__icon_lg.fas.fa-bars
+                                i.b-toggle__item.b-link__icon_lg.fas.fa-times
+
+                    .b-header__middle
+                        .b-logo-sm.b-header__logo-sm
+                            a.b-logo-sm__link(href='index.html')
+                                +logo-sm-svg('header-logo-sm')
+
+
+                    .b-header__right
+                        a.b-link.b-header__login(href='login-model.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-ninja
+
+                        a.b-link.b-header__login(href='login-user.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-tie
+
+
+
+
+            main.b-main.b-content__main
+
+                nav.b-nav-line.b-main__nav-line
+                    .b-nav-line__left
+                        a.b-link.b-nav-line__bread-crumbs(href='index.html')
+                            i.b-link__icon.fas.fa-home
+                            span.b-link__texts
+                                span.b-link__text-first Home
+
+                        a.b-link.b-nav-line__bread-crumbs(href='index.html')
+                            span.b-link__texts
+                                span.b-link__text-first Contacts
+                                    
+                    .b-nav-line__right
+                        a.b-link.b-nav-line__login(href='login-model.html')
+                            i.b-link__icon.fas.fa-user-ninja
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first.b-link__text-first_uppercase Models 
+                                span.b-link__text-second.b-link__text-first_uppercase sign in
+
+                        a.b-link.b-nav-line__login(href='login-user.html')
+                            i.b-link__icon.fas.fa-user-tie
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first User 
+                                span.b-link__text-second sign in
+
+
+                .b-main__inner
+                    .b-main__items
+                        section.b-section.b-main__item
+                            header.b-section__header
+                                h1.b-title.b-section__header-title
+                                    span.b-title__texts.b-title__texts_line-first
+                                        span.b-title__text-second Our
+                                        span.b-title__text-first contacts
+                            
+                            .b-contacts.b-section__main
+                                .b-contacts__items
+                                    .b-contact.b-contacts__item
+                                        .b-contact__inner
+                                            .b-contact__img-box
+                                                img.b-contact__img(src='./assets/img/tmp/contacts/1.png' alt='Ivanov Ivan Nikolaevich')
+                                            .b-contact__content-box
+                                                h2.b-contact__name Ivanov Ivan Nikolaevich
+                                                .b-contact__position Manager
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__email(href='mailto:ivanov_i@industriation.ru') ivanov_i@industriation.ru
+ 
+                                    .b-contact.b-contacts__item
+                                        .b-contact__inner
+                                            .b-contact__img-box
+                                                img.b-contact__img(src='./assets/img/tmp/contacts/2.png' alt='Ivanov Ivan Nikolaevich')
+                                            .b-contact__content-box
+                                                h2.b-contact__name Ivanov Ivan Nikolaevich
+                                                .b-contact__position Manager
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__email(href='mailto:ivanov_i@industriation.ru') ivanov_i@industriation.ru
+ 
+                                    .b-contact.b-contacts__item
+                                        .b-contact__inner
+                                            .b-contact__img-box
+                                                img.b-contact__img(src='./assets/img/tmp/contacts/4.png' alt='Ivanov Ivan Nikolaevich')
+                                            .b-contact__content-box
+                                                h2.b-contact__name Ivanov Ivan Nikolaevich
+                                                .b-contact__position Manager
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__email(href='mailto:ivanov_i@industriation.ru') ivanov_i@industriation.ru
+ 
+                                    .b-contact.b-contacts__item
+                                        .b-contact__inner
+                                            .b-contact__img-box
+                                                img.b-contact__img(src='./assets/img/tmp/contacts/3.png' alt='Ivanov Ivan Nikolaevich')
+                                            .b-contact__content-box
+                                                h2.b-contact__name Ivanov Ivan Nikolaevich
+                                                .b-contact__position Manager
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__phone(href='tel:+7 999 777 8797') +7 (999) 777-87-97
+                                                a.b-contact__email(href='mailto:ivanov_i@industriation.ru') ivanov_i@industriation.ru
+ 
+                        .b-combine-two-sections.b-main__item.b-main__item_stick-top
+                            .b-combine-two-sections__items
+                                .b-contacts-map.b-combine-two-sections__item
+                                    .b-contacts-map__google-maps
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14373.82770127371!2d-73.96988306203733!3d40.76807176748303!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258eceefd111d%3A0xd88ef5290f5e20e8!2sThe+Frick+Collection!5e0!3m2!1sru!2sua!4v1547410111359" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                        
+                                .b-contacts-feedback.b-combine-two-sections__item
+                                    h1.b-subtitle.b-contacts-feedback__title
+                                        span.b-subtitle__texts
+                                            span.b-subtitle__text-first Write
+                                            span.b-subtitle__text-second to us
+
+                                    form.b-contacts-feedback__form(action='contacts-feedback')
+                                        label.b-field.b-contacts-feedback__form-field
+                                            input.b-field__input(type="text" name="name" required placeholder="Your name *")
+                                        label.b-field.b-contacts-feedback__form-field
+                                            input.b-field__input(type="text" name="phone" required placeholder="Your phone *")
+                                        label.b-field.b-contacts-feedback__form-field
+                                            input.b-field__input(type="email" name="email" placeholder="Your email")
+                                        label.b-field.b-contacts-feedback__form-field
+                                            textarea.b-field__textarea(type="text" name="message" placeholder="Your message *" required maxlength="3600" data-textarea-autosize)
+                                        button.b-button.b-button_first.b-contacts-feedback__form-submit(type='submit')
+                                            span.b-button__texts
+                                            span.b-button__text-first Submit
+
+                                    
+block script
+
+    +script('./assets/lib/autosize.min.js')
+    
+    script.
+
+        $(document).ready(e => {
+
+            new ActiveInHover({
+                items: '.b-menu__items',
+                item: '.b-menu__item',
+                activeClass: 'b-menu__item_active'
+            })
+
+            new ToggleTrigger({
+                items: '.b-toggle__items',
+                item: '.b-toggle__item',
+                activeClass: 'b-toggle__item_active'
+            }, () => {
+                $('.b-main').toggleClass('b-main_sm-scroll-lock')
+                $('.b-main').toggleClass('b-main_sm-transparent')
+                $('.b-content').toggleClass('b-content_sm-blackout')
+                $('.b-page__sidebar').toggleClass('b-page__sidebar_sm-open')
+                $('.b-page__content').toggleClass('b-page__content_sm-shift')                
+            })
+
+            autosize(document.querySelectorAll('[data-textarea-autosize]'))
+
+        })

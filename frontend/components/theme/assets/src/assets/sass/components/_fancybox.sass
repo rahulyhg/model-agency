@@ -1,0 +1,39 @@
+.fancybox-progress
+    background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+
+.fancybox-bg
+    background: $lightColor
+
+.fancybox-is-open .fancybox-bg
+    opacity: .95
+
+.fancybox-button
+    background: $lightColor
+    color: $firstGradientStart
+
+.fancybox-button:hover
+    color: lighten($firstGradientStart, 10%)
+
+.fancybox-button,
+.fancybox-button:link,
+.fancybox-button:visited
+    color: $firstGradientStart
+
+
+.fancybox-button[disabled],
+.fancybox-button[disabled]:hover
+    color: $darkColor
+
+
+.fancybox-infobar
+    color: $lightColor
+
+
+.fancybox-slide--image
+    padding-left: 10px
+    padding-right: 10px
+    
+
+.fancybox-image
+    border-radius: 20px
+    box-shadow: 0 5px 20px rgba(0,0,0,.2)

@@ -1,0 +1,52 @@
+.b-login
+.b-login__form
+    display: flex
+    flex-direction: column
+    margin: -15px 0
+
+    +sm(margin, -10px 0)
+
+.b-login__form-field
+    margin: 15px 0
+
+    +sm(margin, 10px 0)
+
+
+.b-login__form-footer
+    display: flex
+    flex-direction: row
+    align-items: center
+    flex-wrap: wrap
+    margin: 15px 0
+
+    +sm(margin, 10px 0)
+
+.b-login__form-redirect
+    display: inline-block
+    +text($darkColor, 16px, 700, 1)
+    position: relative
+    
+    +lg-block()
+        margin-left: auto
+        font-size: 14px
+    
+    +xs-block()
+        margin-left: 0
+        order: 1
+
+.b-login__form-redirect-link
+    margin-left: 10px
+
+.b-login__form-remember
+    margin-left: auto
+
+    +lg-block()
+        order: -1
+        margin-left: initial
+
+.b-login__form-submit
+    margin-left: 30px
+
+    +lg-block()
+        margin: 15px 0 30px 0
+        width: 100%

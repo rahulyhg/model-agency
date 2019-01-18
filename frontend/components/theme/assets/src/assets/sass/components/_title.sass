@@ -1,0 +1,58 @@
+.b-title
+    display: inline-flex
+    flex-direction: column
+    position: relative
+
+.b-title__texts
+    display: inline-flex
+    flex-direction: row
+    flex-wrap: wrap
+    margin-left: -5px
+    margin-right: -5px
+
+
+.b-title__texts_line-first,
+.b-title__texts_line-second
+    padding-bottom: 60px
+    
+    +lg(padding-bottom, 40px)
+
+    +md(padding-bottom, 30px)
+
+    +xs(padding-bottom, 25px)
+
+    &:before
+        content: ''
+        width: 30%
+        height: 6px
+        +absolute(auto, auto, 0, 0)
+
+        +xs(height, 4px)
+
+.b-title__texts_line-first:before
+        background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
+
+.b-title__texts_line-second:before
+        background: linear-gradient(90deg, $secondGradientStart, $secondGradientEnd)
+
+.b-title__texts_line-wide:before
+    width: 70%
+    
+
+.b-title__text-first,
+.b-title__text-second
+    position: relative
+    margin-left: 5px
+    margin-right: 5px
+    +text($darkColor, 60px, 400, 1)
+
+    +lg(font-size, 54px)
+    
+    +md(font-size, 48px)
+
+    +sm(font-size, 36px)
+
+    +xs(font-size, 32px)
+
+.b-title__text-first
+    font-weight: 900

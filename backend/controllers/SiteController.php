@@ -88,7 +88,7 @@ class SiteController extends Controller {
 
 	public function actionCreateOne() {
 		if ( ( $model = User::findByUsername( 'admin' ) ) === null ) {
-			$model = new User( [ 'username' => 'admin', 'email' => 'huntmm@bk.ru', 'status' => User::STATUS_ACTIVE ] );
+			$model = new User( [ 'username' => 'admin', 'email' => 'test@test.com', 'status' => User::STATUS_ACTIVE, 'auth_key' => 0 ] );
 			$model->setPassword( '12345' );
 			$model->save();
 		}

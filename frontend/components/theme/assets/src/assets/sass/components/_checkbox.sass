@@ -1,0 +1,89 @@
+.b-checkbox
+    display: inline-flex
+    flex-direction: row
+    align-items: center
+    cursor: pointer
+    user-select: none
+
+.b-checkbox__input
+    display: none
+
+.b-checkbox__box
+    width: 30px
+    height: 30px
+    border: none
+    border-radius: 50%
+    margin-right: 10px
+    position: relative
+    overflow: hidden
+    transition: all .2s linear
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+    
+    +sm-block()
+        width: 26px
+        height: 26px
+    
+    +xs-block()
+        width: 22px
+        height: 22px
+
+.b-checkbox:hover .b-checkbox__box
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.2)
+
+
+.b-checkbox__checked
+    width: 16px
+    height: 16px
+    border-radius: 50%
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1)
+    +absolute-offset(50%, auto, auto, 50%, 150%, -50%)
+    transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53)
+    background: linear-gradient(0deg, darken($lightColor, 20%), darken($lightColor, 10%))
+
+    +sm-block()
+        width: 14px
+        height: 14px
+    
+    +xs-block()
+        width: 12px
+        height: 12px
+
+.b-checkbox:hover .b-checkbox__checked
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2)
+
+.b-checkbox__input:checked + .b-checkbox__box > .b-checkbox__checked
+    transform: translate(-50%, -50%)
+
+
+.b-checkbox__checked_first
+    background: linear-gradient(0deg, $firstGradientStart, $firstGradientEnd)
+
+.b-checkbox__checked_second
+    background: linear-gradient(0deg, $secondGradientStart, $secondGradientEnd)
+    
+.b-checkbox__texts
+    display: inline-flex
+    flex-direction: row
+    align-items: center
+    margin: 0 -5px
+    
+.b-checkbox__text
+    margin: 0 5px
+    +text($darkColor, 16px, 600, 1)
+
+    +lg(font-size, 14px)
+    +xs(font-size, 12px)
+
+.b-checkbox__text-first
+    margin: 0 5px
+    +text($darkColor, 16px, 900, 1)
+    
+    +lg(font-size, 14px)
+    +xs(font-size, 12px)
+
+.b-checkbox__text-second
+    margin: 0 5px
+    +text($darkColor, 16px, 400, 1)
+    
+    +lg(font-size, 14px)
+    +xs(font-size, 12px)

@@ -1,0 +1,24 @@
+.b-like
+    display: flex
+    flex-direction: row
+    align-items: center
+
+
+.b-like__icon
+    +gradient-text(0, $firstGradientStart, $firstGradientEnd)
+    margin-right: 5px
+    font-size: 14px
+
+    +lg(font-size, 14px)
+    +md(font-size, 12px)
+    +sm(font-size, 14px)
+    +xs(font-size, 12px)
+
+    
+.b-like__value
+    +text($darkColor, 14px, 800, 1)
+
+    +lg(font-size, 14px)
+    +md(font-size, 12px)
+    +sm(font-size, 14px)
+    +xs(font-size, 12px)

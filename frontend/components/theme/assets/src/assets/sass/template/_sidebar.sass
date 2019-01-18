@@ -1,0 +1,63 @@
+.b-sidebar
+    background-color: $lightColor
+    box-shadow: 0 0 20px rgba(0,0,0,.1)
+
+    +sm(box-shadow, none)
+
+.b-sidebar__inner
+    height: 100vh
+    padding: 60px 40px 40px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    overflow: auto
+
+    +from($break_md)
+        scrollbar-face-color: $firstColor
+        scrollbar-shadow-color: darken($lightColor, 5%)
+        scrollbar-highlight-color: $lightColor
+        scrollbar-3dlight-color: $lightColor
+        scrollbar-darkshadow-color: $lightColor
+        scrollbar-track-color: $lightColor
+        scrollbar-arrow-color: $firstColor
+
+        &::-webkit-scrollbar
+            width: 10px
+            cursor: pointer
+
+        &::-webkit-scrollbar-track
+            cursor: pointer
+            background-color: $lightColor
+
+        &::-webkit-scrollbar-thumb
+            cursor: pointer
+            background-color: darken($lightColor, 5%)
+
+    +lg(padding, 40px 30px 30px)
+
+
+.b-sidebar__header
+
+.b-sidebar__logo
+
+
+.b-sidebar__menu
+    margin: 60px 0
+
+
+.b-sidebar__footer
+    // text-align: center
+
+.b-sidebar__social
+    margin-bottom: 15px
+
+.b-sidebar__copyright
+    display: block
+    +text($darkColor, 12px, 400, 1)
+    transition: all 100ms linear
+
+    +lg(font-size, 10px)
+
+    +sm(font-size, 12px)
+
+    +xs(font-size, 10px)

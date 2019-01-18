@@ -1,0 +1,31 @@
+//- ----------------------------------------------------------------------
+//- Starter markup template miliday - "Made with love, especially for you"
+//- ----------------------------------------------------------------------
+//- nickname: "Michael Holiday"
+//- email: "miliday.developer@gmail.com"
+//- ----------------------------------------------------------------------
+
+
+include ../addons/variables.pug
+include ../addons/mixins.pug
+
+include ../components/*.pug
+
+include ./head.pug
+
+
+doctype html
+html(lang='en')
+    +headFirst()
+        block head
+
+    body
+        block body
+
+        +script('./assets/lib/jquery-3.3.1.min.js')
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous")
+        
+        block script
+
+        +script('./assets/js/main.js')

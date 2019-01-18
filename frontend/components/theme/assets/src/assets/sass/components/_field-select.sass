@@ -1,0 +1,92 @@
+.b-field-select
+    display: flex
+    flex-direction: column
+    position: relative
+
+.b-field-select__title
+    margin-left: 30px
+    margin-bottom: 15px
+    +text($darkColor, 16px, 700, 1)
+
+    +xs-block()
+        margin-left: 15px
+
+
+.b-field-select__icon
+    +absolute-offset(auto, auto, 29px, 32px, 50%, -50%)
+    padding: 2px
+    color: $darkColor
+    transition: all .2s linear
+    font-size: 19px
+    z-index: 100
+
+    +xs-block()
+        bottom: 20px
+        left: 22px
+        font-size: 13px
+
+.b-field-select__icon_first,
+.select2-container--open ~ .b-field-select__icon_focus-first,
+.select2-container:active ~ .b-field-select__icon_focus-first
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+.b-field-select__icon_second,
+.select2-container--open ~ .b-field-select__icon_focus-second,
+.select2:active ~ .b-field-select__icon_focus-second
+    +gradient-text(0deg, $secondGradientStart, $secondGradientEnd)
+
+
+.b-field-select__select2
+    width: 100% !important
+
+.b-field-select
+    .select2-container
+        width: 100% !important
+        max-width: 100%
+        font-size: 0
+
+    .selection
+        width: 100%
+
+    .select2-container--default .select2-selection--single
+        width: 100% !important
+        height: auto
+        padding: 15px 30px
+        white-space: nowrap
+        border: none
+        border-radius: 25px
+        outline: none
+        overflow: hidden
+        position: relative
+        transition: all 200ms linear
+        box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+        +text($darkColor, 16px, 600, 1)
+
+        +xs-block()
+            font-size: 12px
+            padding: 12px 15px
+
+    .select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
+    .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple
+        border-bottom-left-radius: 0
+        border-bottom-right-radius: 0
+
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow
+        +absolute-offset(auto, 10px, 25px, auto, 50%, -50%)
+
+        +xs(bottom, 18px)
+
+    .select2-container .select2-selection--single .select2-selection__rendered
+        padding: 0
+
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered
+        line-height: 1.25
+
+
+.b-field-select_icon
+    .select2-container--default .select2-selection--single
+        padding-left: 60px
+
+        +xs(padding-left, 40px)

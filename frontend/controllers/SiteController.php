@@ -74,9 +74,7 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
-    $lastBulletins = Bulletin::find()->limit(12)->orderBy('created_at DESC')->all();
     return $this->render('index', [
-      'lastBulletins' => $lastBulletins
     ]);
   }
 

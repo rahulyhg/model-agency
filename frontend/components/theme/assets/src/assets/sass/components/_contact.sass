@@ -1,0 +1,187 @@
+.b-contact
+
+.b-contact__inner
+    height: 100%
+    display: flex
+    flex-direction: row
+
+    +to(1400px)
+        justify-content: flex-end
+        flex-direction: column
+
+    +lg-block()
+        flex-direction: row
+        justify-content: initial
+    
+    +xs-block()
+        align-items: center
+        flex-direction: column
+
+.b-contact__img-box
+    padding-top: 30px
+    min-height: 300px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    width: 35%
+    margin-right: 30px
+    position: relative
+    overflow: hidden
+    border-bottom-left-radius: 200px
+    border-bottom-right-radius: 200px
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,.2))
+
+    &:before
+        content: ''
+        width: 100%
+        padding-bottom: 100%
+        +absolute(auto, auto, 0, 0)
+        border-radius: 50%
+        background: linear-gradient(0deg, $firstGradientStart, $firstGradientEnd)
+
+    +to(1800px)
+        min-height: 200px
+
+    +to(1600px)
+        min-height: 150px
+
+    +to(1400px)
+        min-height: 175px
+        width: 60%
+        margin-right: 0
+
+    +lg-block()
+        min-height: 185px
+        width: 35%
+        margin-right: 30px
+
+    +md(min-height, 150px)
+
+    +sm-block()
+        min-height: 200px
+        width: 40%
+
+    +xs-block()
+        min-height: 155px
+        width: 60%
+        margin-right: 0
+
+
+.b-contact__img
+    width: 100%
+    display: block
+    position: relative
+    transition: all .6s ease-in-out
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,.2))
+    transform: translate3d(0, 15px, 0)
+
+.b-contact:hover .b-contact__img
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,.4))
+    transform: translate3d(0, 0px, 0)
+
+
+.b-contact__content-box
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin-top: 50px
+
+    +to(1400px)
+        margin-top: 30px
+
+    +xs-block()
+        align-items: center
+        margin-top: 45px
+
+
+.b-contact__name
+    cursor: default
+    margin-bottom: 15px
+    +text($darkColor, 34px, 900, 1)
+
+    +to(1800px)
+        font-size: 26px
+
+    +to(1600px)
+        font-size: 22px
+
+    +to(1400px)
+        font-size: 32px    
+    
+    +to(1250px)
+        font-size: 26px
+    
+    +lg(font-size, 28px)
+    +md(font-size, 22px)
+    +sm(font-size, 24px)
+    
+    +xs-block()
+        margin-bottom: 10px
+        font-size: 22px
+
+.b-contact__position
+    cursor: default
+    margin-bottom: 15px
+    +text($darkColor, 16px, 900, 1)
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+    +to(1600px)
+        font-size: 14px
+
+    +to(1400px)
+        font-size: 16px
+
+    +to(1250px)
+        font-size: 14px
+
+    +lg(font-size, 16px)
+    +md(font-size, 14px)
+
+    +xs-block()
+        margin-bottom: 10px
+        font-size: 12px
+
+
+.b-contact__phone
+    cursor: pointer
+    margin-bottom: 15px
+    +text($darkColor, 30px, 900, 1)
+    letter-spacing: 0.25px
+
+    +to(1800px)
+        font-size: 22px
+
+    +to(1600px)
+        font-size: 20px
+
+    +to(1400px)
+        font-size: 28px
+    
+    +to(1250px)
+        font-size: 22px
+    
+    +lg(font-size, 26px)
+    +md(font-size, 20px)
+    +sm(font-size, 20px)
+
+    +xs-block()
+        margin-bottom: 10px
+        font-size: 18px
+
+
+.b-contact__email
+    cursor: pointer
+    +text($darkColor, 18px, 600, 1)
+    
+    +to(1800px)
+        font-size: 16px
+
+    +to(1400px)
+        font-size: 18px
+    
+    +to(1250px)
+        font-size: 16px
+
+    +lg(font-size, 18px)
+    +md(font-size, 14px)
+    +xs(font-size, 12px)

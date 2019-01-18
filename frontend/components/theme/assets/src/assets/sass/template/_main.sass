@@ -1,0 +1,93 @@
+.b-main
+    overflow-y: auto
+    transition: all 200ms linear
+
+    +from($break_md)
+        scrollbar-face-color: $firstColor
+        scrollbar-shadow-color: darken($lightColor, 5%)
+        scrollbar-highlight-color: $lightColor
+        scrollbar-3dlight-color: $lightColor
+        scrollbar-darkshadow-color: $lightColor
+        scrollbar-track-color: $lightColor
+        scrollbar-arrow-color: $firstColor
+
+        &::-webkit-scrollbar
+            width: 15px
+            cursor: pointer
+
+        &::-webkit-scrollbar-track 
+            cursor: pointer
+            background-color: $lightColor
+
+        &::-webkit-scrollbar-thumb
+            cursor: pointer
+            background: linear-gradient(0deg, $firstGradientStart, $firstGradientEnd)
+
+
+.b-main_sm-scroll-lock
+    +sm(overflow, hidden)
+
+.b-main_sm-transparent
+    +sm(opacity, 0)
+
+
+.b-main__nav-line
+    width: calc(100% - 320px)
+    height: 60px
+    position: relative
+    +fixed(0, auto, auto, 320px)
+    z-index: 1
+
+    +lg-block()
+        width: calc(100% - 260px)
+        left: 260px
+
+    +sm-block()
+        width: 100%
+        position: static
+        height: 40px
+
+.b-main__inner
+    min-height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 80px 30px
+
+    +lg(padding, 60px 30px)
+
+    +md(padding, 30px 15px)
+
+    +sm(min-height, calc(100% - 60px))
+
+.b-main__items
+    height: auto
+    max-height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin-top: -30px
+    margin-bottom: -30px
+    
+    +sm-block()
+        margin-top: -15px
+        margin-bottom: -15px
+
+
+.b-main__item
+    width: 100%
+    margin-top: 30px
+    margin-bottom: 30px
+
+    +sm-block()
+        margin-top: 15px
+        margin-bottom: 15px
+
+.b-main__item_stick-top
+    margin-top: -30px
+
+    +sm(margin-top, -15px)
+
+.b-main__item_login
+    max-width: 900px

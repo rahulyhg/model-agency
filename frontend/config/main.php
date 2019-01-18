@@ -26,7 +26,7 @@ return [
       ],
     ],
     'theme' => [
-      'class' => \frontend\components\theme\AdvTheme::class,
+      'class' => \frontend\components\theme\Theme::class,
     ],
     'request' => [
       'class' => \modules\lang\components\LangRequest::class,
