@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m181224_144832_create_table_mod_image
+ * Class m190118_144252_add_mod_column_image
  */
-class m181224_144832_create_table_mod_image extends Migration
+class m190118_144252_add_mod_column_image extends Migration
 {
   /**
    * {@inheritdoc}

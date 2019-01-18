@@ -68,8 +68,6 @@ class ModSearch extends Mod
       'eyes_color_id' => $this->eyes_color_id,
       'hair_color_id' => $this->hair_color_id,
       'shoes' => $this->shoes,
-
-
 //          'phone_number',
 //          'email',
 //          'country',

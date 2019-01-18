@@ -44,6 +44,9 @@ return [
     'mod' => [
       'class' => modules\mod\Module::class,
     ],
+    'user' => [
+      'class' => modules\user\Module::class,
+    ],
   ],
   'components' => [
     'i18n' => [

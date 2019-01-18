@@ -32,7 +32,6 @@ return [
       'class' => \modules\lang\components\LangRequest::class,
       'csrfParam' => '_csrf-frontend',
     ],
-    // todo: plug in module user instead
     'user' => [
       'identityClass' => 'common\models\User',
       'enableAutoLogin' => true,
