@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/views/layouts/main.php" afterDir="false" />
-    </list>
+    <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +35,7 @@
           <entry key="init" value="1" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="242" />
+          <entry key="php" value="243" />
           <entry key="pug" value="3" />
           <entry key="sass" value="2" />
           <entry key="todo" value="1" />
@@ -50,7 +47,7 @@
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="243" />
+          <entry key="PHP" value="244" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Sass" value="2" />
           <entry key="htaccess" value="1" />
@@ -82,11 +79,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/main.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="275">
               <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/modules/page/frontend/views/default/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="7" column="49" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="7" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -142,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/mod/migrations/m190119_123957_add_column_country_id_to_mod_table.php" />
         <option value="$PROJECT_DIR$/frontend/components/theme/assets/dist/registration-model.html" />
         <option value="$PROJECT_DIR$/frontend/components/theme/assets/src/views/pages/cabinet-model-basic.pug" />
         <option value="$PROJECT_DIR$/frontend/components/theme/assets/src/assets/sass/components/_field.sass" />
@@ -193,6 +198,7 @@
         <option value="$PROJECT_DIR$/app/common/config/main-local.php" />
         <option value="$PROJECT_DIR$/app/frontend/config/test-local.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/main.php" />
+        <option value="$PROJECT_DIR$/app/modules/page/frontend/views/default/view.php" />
       </list>
     </option>
   </component>
@@ -404,6 +410,29 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -411,9 +440,11 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -469,12 +500,12 @@
       <workItem from="1547980874115" duration="8830000" />
       <workItem from="1548064507844" duration="10882000" />
       <workItem from="1548099025517" duration="6674000" />
-      <workItem from="1548151235290" duration="2560000" />
+      <workItem from="1548151235290" duration="2726000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56484000" />
+    <option name="totallyTimeSpent" value="56650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -508,13 +539,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/mod/lib/ActiveForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/mod/frontend/controllers/ModelController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
@@ -834,6 +858,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/page/frontend/views/default/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="49" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="7" selection-end-column="49" />
         </state>
       </provider>
     </entry>
