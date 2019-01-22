@@ -1,0 +1,144 @@
+.b-field
+    display: inline-block
+    position: relative
+
+
+.b-field__label
+    display: block
+
+
+.b-field__hint
+    margin-left: 25px;
+    font-size: 1rem;
+    font-style: italic
+
+
+.b-field__help
+    margin-left: 25px;
+    font-size: 1rem;
+    font-weight: bold
+
+
+.b-field__has-error .b-field__help
+    color: red;
+
+
+.b-field__title
+    margin-left: 30px
+    margin-bottom: 15px
+    +text($darkColor, 16px, 700, 1)
+
+    +xs-block()
+        margin-left: 15px
+
+
+.b-field__wrap
+    display: block
+    position: relative
+
+
+.b-field__icon
+    +absolute-offset(-2px, auto, auto, 32px, 50%, -50%)
+    padding: 2px
+    color: $darkColor
+    transition: all .2s linear
+    line-height: 1.25
+    font-size: 19px
+    z-index: 1
+
+    +xs-block()
+        top: 0px
+        left: 22px
+        font-size: 13px
+
+.b-field__icon_first,
+.b-field__input:focus ~ .b-field__icon_focus-first,
+.b-field__input:active ~ .b-field__icon_focus-first,
+.b-field__input:focus:valid ~ .b-field__icon_focus-first
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+.b-field__icon_second,
+.b-field__input:focus ~ .b-field__icon_focus-second,
+.b-field__input:active ~ .b-field__icon_focus-second,
+.b-field__input:focus:valid ~ .b-field__icon_focus-second
+    +gradient-text(0deg, $secondGradientStart, $secondGradientEnd)
+
+
+.b-field__icon_xs-none
+    +xs(display, none)
+
+
+.b-field__input
+    width: 100%
+    padding: 15px 30px
+    white-space: nowrap
+    border: none
+    border-radius: 25px
+    outline: none
+    overflow: hidden
+    position: relative
+    transition: all 200ms linear
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+    +text($darkColor, 16px, 600, 1)
+
+    +sm(font-size, 14px)
+
+    +xs-block()
+        font-size: 12px
+        padding: 12px 15px
+
+    &::placeholder
+        +text($darkColor, 16px, 700, 1)
+
+        +xs(font-size, 12px)
+
+    +focus(box-shadow, inset 2px 2px 5px rgba(0,0,0,.2), .2s, linear)
+
+
+.b-field__has-error .b-field__input
+    box-shadow: inset 2px 2px 5px rgb(221, 11, 0);
+
+
+.b-field__textarea
+    width: 100%
+    min-height: 160px
+    max-height: 900px
+    padding: 30px
+    border: none
+    border-radius: 50px
+    overflow-x: hidden
+    overflow-wrap: break-word
+    outline: none
+    resize: none
+    position: relative
+    transition: all 200ms linear
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+    +text($darkColor, 16px, 600, 1.2)
+
+    &::placeholder
+        +text($darkColor, 16px, 700, 1)
+
+        +xs(font-size, 12px)
+
+    +focus(box-shadow, inset 2px 2px 5px rgba(0,0,0,.2), .2s, linear)
+
+    +sm(font-size, 14px)
+
+    +xs-block()
+        border-radius: 20px
+        font-size: 12px
+        padding: 15px
+
+
+.b-field__input_icon
+    padding-left: 60px
+    
+    +xs(padding-left, 40px)
+    
+.b-field__input_icon-xs-none
+    +xs(padding-left, 30px)
+
+.b-field__input_search
+    padding-right: 160px
+
+    +xs(padding-right, 75px)

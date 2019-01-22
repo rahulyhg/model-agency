@@ -1,0 +1,290 @@
+extends ../layouts/page.pug
+
+block head
+    title Celeb Cloud - model agency
+    
+
+block body
+
+    .b-page
+        aside.b-sidebar.b-page__sidebar
+            .b-sidebar__inner
+                header.b-sidebar__header
+                    .b-logo.b-sidebar__logo
+                        a.b-logo__link(href='index.html')
+                            +logo-svg('sidebar-logo')
+
+                nav.b-menu.b-sidebar__menu
+                    ul.b-menu__items
+                        li.b-menu__item.b-menu__item_active
+                            a.b-menu__item-link(href='index.html') Home
+                        li.b-menu__item
+                            a.b-menu__item-link(href='our-models.html') Our models
+                        li.b-menu__item
+                            a.b-menu__item-link(href='contacts.html') Contacts
+
+                footer.b-sidebar__footer
+                    .b-social.b-sidebar__social
+                        ul.b-social__items
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our vk')
+                                    i.b-social__item-icon.fab.fa-vk
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our facebook')
+                                    i.b-social__item-icon.fab.fa-facebook-f
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our twitter')
+                                    i.b-social__item-icon.fab.fa-twitter
+                            li.b-social__item
+                                a.b-social__item-link(href='#' title='our instagram')
+                                    i.b-social__item-icon.fab.fa-instagram
+                        
+
+                    p.b-sidebar__copyright © Model Agency "Celeb Cloud", 2018
+        
+        
+        .b-content.b-page__content
+            header.b-header.b-content__header
+                .b-header__inner
+                    .b-header__left
+                        .b-toggle.b-header__sidebar-toggle
+                            .b-toggle__items
+                                i.b-toggle__item.b-toggle__item_active.b-link__icon_lg.fas.fa-bars
+                                i.b-toggle__item.b-link__icon_lg.fas.fa-times
+
+                    .b-header__middle
+                        .b-logo-sm.b-header__logo-sm
+                            a.b-logo-sm__link(href='index.html')
+                                +logo-sm-svg('header-logo-sm')
+
+
+                    .b-header__right
+                        a.b-link.b-header__login(href='login-model.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-ninja
+
+                        a.b-link.b-header__login(href='login-user.html')
+                            i.b-link__icon.b-link__icon_lg.fas.fa-user-tie
+
+
+
+
+            main.b-main.b-content__main
+
+                nav.b-nav-line.b-main__nav-line
+                    .b-nav-line__left
+                        a.b-link.b-nav-line__bread-crumbs(href='index.html')
+                            i.b-link__icon.fas.fa-home
+                            span.b-link__texts
+                                span.b-link__text-first Home
+                                
+                                    
+                    .b-nav-line__right
+                        a.b-link.b-nav-line__login(href='login-model.html')
+                            i.b-link__icon.fas.fa-user-ninja
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first.b-link__text-first_uppercase Models 
+                                span.b-link__text-second.b-link__text-first_uppercase sign in
+
+                        a.b-link.b-nav-line__login(href='login-user.html')
+                            i.b-link__icon.fas.fa-user-tie
+                            span.b-link__texts.b-link__texts_underline
+                                span.b-link__text-first User 
+                                span.b-link__text-second sign in
+
+
+                .b-main__inner
+                    .b-main__items
+                        section.b-alert.b-alert_success.b-main__alert
+                            .b-alert__message some alert text success
+                            .b-alert__close
+                                i.fas.fa-times
+                        section.b-alert.b-alert_warning.b-main__alert
+                            .b-alert__message some alert text warning
+                            .b-alert__close
+                                i.fas.fa-times
+                        section.b-alert.b-alert_error.b-main__alert
+                            .b-alert__message some alert text error
+                            .b-alert__close
+                                i.fas.fa-times
+                        section.b-alert.b-alert_danger.b-main__alert
+                            .b-alert__message some alert text danger
+                            .b-alert__close
+                                i.fas.fa-times
+                        section.b-alert.b-alert_info.b-main__alert
+                            .b-alert__message some alert text info
+                            .b-alert__close
+                                i.fas.fa-times
+                        section.b-section.b-main__item
+                            header.b-section__header
+                                h1.b-title.b-section__header-title
+                                    span.b-title__texts.b-title__texts_line-first
+                                        span.b-title__text-first Elite model
+                                        span.b-title__text-second agency
+                            
+                            .b-section__main
+                                .b-section__texts
+                                    p.b-text.b-section__text Project description... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+                                    p.b-text.b-section__text Project description... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+                        
+                        
+                        .b-combine-two-sections.b-main__item.b-main__item_stick-top
+                            .b-combine-two-sections__items
+                                .b-call-to-action.b-combine-two-sections__item
+                                    .b-call-to-action__inner(style='background-image: url("./assets/img/tmp/call-to-actions/1.jpg"')
+                                        .b-call-to-action__static
+                                            h2.b-call-to-action__title I am a model
+
+                                        .b-call-to-action__absolute
+                                            h3.b-call-to-action__subtitle And I want to become popular
+                                            a.b-button.b-button_first.b-call-to-action__button(href='registration-model.html')
+                                                span.b-button__texts.b-button__texts_uppercase
+                                                    span.b-button__text-second Register as a
+                                                    span.b-button__text-first model
+
+
+                                .b-call-to-action.b-combine-two-sections__item
+                                    .b-call-to-action__inner(style='background-image: url("./assets/img/tmp/call-to-actions/2.jpg"')
+                                        .b-call-to-action__static
+                                            h2.b-call-to-action__title I am a manager
+
+                                        .b-call-to-action__absolute
+                                            h3.b-call-to-action__subtitle And I need a company face
+                                            a.b-button.b-button_second.b-call-to-action__button(href='registration-user.html')
+                                                span.b-button__texts.b-button__texts_uppercase
+                                                    span.b-button__text-second Register as a
+                                                    span.b-button__text-first User
+
+
+                        section.b-section.b-main__item
+                            header.b-section__header
+                                h1.b-title.b-section__header-title
+                                    span.b-title__texts.b-title__texts_line-first
+                                        span.b-title__text-first Top rated
+                                        span.b-title__text-second models
+                            
+                            .b-our-models.b-section__main
+                                .b-our-models__items
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/1.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                        
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+                                            
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/2.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/3.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+                                            
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/1.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/2.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/3.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+                                            
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/1.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/2.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+
+
+                                    a.b-our-model.b-our-models__item(href="single-model.html")
+                                        .b-our-model__box
+                                            img.b-our-model__img(alt="julia bogdanova" src="./assets/img/tmp/our-models/3.jpg")
+                                            h2.b-our-model__name Julia Bogdanova
+                                         
+                                        .b-like.b-our-model__footer
+                                            .b-like.b-our-model__like
+                                                i.b-like__icon.fas.fa-heart
+                                                .b-like__value 1447
+                            
+
+block script
+    
+    script.
+
+        $(document).ready(e => {
+
+            new ActiveInHover({
+                items: '.b-menu__items',
+                item: '.b-menu__item',
+                activeClass: 'b-menu__item_active'
+            })
+
+            new ToggleTrigger({
+                items: '.b-toggle__items',
+                item: '.b-toggle__item',
+                activeClass: 'b-toggle__item_active'
+            }, () => {
+                $('.b-main').toggleClass('b-main_sm-scroll-lock')
+                $('.b-main').toggleClass('b-main_sm-transparent')
+                $('.b-content').toggleClass('b-content_sm-blackout')
+                $('.b-page__sidebar').toggleClass('b-page__sidebar_sm-open')
+                $('.b-page__content').toggleClass('b-page__content_sm-shift')                
+            })
+
+        })
