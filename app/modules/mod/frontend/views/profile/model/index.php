@@ -11,11 +11,11 @@ $this->title = "{$model->full_name} - Profile";
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
-  $('#country').select2({
-      "searchInputPlaceholder": 'Enter the name of the settlement',
+  $('#bust_selector').select2({
+      "searchInputPlaceholder": 'Введите...',
       'language': {
           'noResults': function () {
-              return "No results to search";
+              return "Не найдено";
           }
       }
   });
@@ -141,9 +141,20 @@ JS
         <?= $form->field($model, 'weight', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-weight')->textInput([
           'placeholder' => 'Вес',
         ]) ?>
-        <?= $form->field($model, 'bust', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-snowflake')->textInput([
-          'placeholder' => 'Размер груди',
-        ]) ?>
+        <div class="b-field-select b-field-select_icon b-cabinet__form-field">
+          <label class="b-field-select__label"><span class="b-field-select__title">Размер груди</span>
+            <div class="b-field__wrap">
+              <?= $form->field($model, 'bust', ['template' => '{input}', 'options' => ['tag' => false]])
+                ->label(false)
+                ->dropDownList($model->getBustSizeMap(), [
+                  'id' => 'bust_selector',
+                  'class' => 'b-field-select__select2',
+                  'placeholder' => 'Выберите...',
+                ]); ?>
+              <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
+            </div>
+          </label>
+        </div>
         <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
           'placeholder' => 'Размер ноги',
         ]) ?>

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/views/site/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +60,7 @@
           <entry key="init" value="1" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="385" />
+          <entry key="php" value="386" />
           <entry key="pug" value="3" />
           <entry key="sass" value="2" />
           <entry key="todo" value="1" />
@@ -73,7 +72,7 @@
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="386" />
+          <entry key="PHP" value="387" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Sass" value="2" />
           <entry key="htaccess" value="1" />
@@ -83,7 +82,7 @@
         <counts>
           <entry key="dummy" value="44" />
           <entry key="html" value="2" />
-          <entry key="php" value="14103" />
+          <entry key="php" value="14288" />
           <entry key="pug" value="217" />
           <entry key="txt" value="6" />
         </counts>
@@ -93,7 +92,7 @@
           <entry key="HTML" value="5" />
           <entry key="Jade" value="217" />
           <entry key="JavaScript" value="8" />
-          <entry key="PHP" value="14092" />
+          <entry key="PHP" value="14277" />
           <entry key="PLAIN_TEXT" value="50" />
         </counts>
       </usages-collector>
@@ -118,8 +117,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="145" column="13" lean-forward="true" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+            <state relative-caret-position="250">
+              <caret line="144" column="83" selection-start-line="144" selection-start-column="83" selection-end-line="144" selection-end-column="83" />
               <folding>
                 <element signature="e#6#139#0#PHP" expanded="true" />
                 <element signature="e#140#172#0#PHP" expanded="true" />
@@ -129,10 +128,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="62" column="1" selection-start-line="15" selection-end-line="62" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+            <state relative-caret-position="-260">
+              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
               <folding>
                 <element signature="e#45#73#0#PHP" expanded="true" />
               </folding>
@@ -144,9 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>b-section__ma</find>
-      <find>field</find>
-      <find>field(</find>
       <find>public function field(</find>
       <find>input</find>
       <find>public function field</find>
@@ -174,6 +179,9 @@
       <find>lib/jquery.fancybox/jquery.fancybox.min.css</find>
       <find>delete</find>
       <find>delete(</find>
+      <find>hair_color</find>
+      <find>bust-selector</find>
+      <find>bust_selector</find>
     </findStrings>
     <replaceStrings>
       <replace>photo_id</replace>
@@ -239,11 +247,11 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_property.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/site/index.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
       </list>
     </option>
   </component>
@@ -501,6 +509,16 @@
               <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="profile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -581,12 +599,12 @@
       <workItem from="1549450435354" duration="7682000" />
       <workItem from="1549488618342" duration="106000" />
       <workItem from="1549538031089" duration="17073000" />
-      <workItem from="1549622305275" duration="1584000" />
+      <workItem from="1549622305275" duration="1926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102649000" />
+    <option name="totallyTimeSpent" value="102991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -925,13 +943,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
           <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="145" column="37" lean-forward="true" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -969,18 +983,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+        <state relative-caret-position="-260">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
           <folding>
             <element signature="e#45#73#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="62" column="1" selection-start-line="15" selection-end-line="62" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="145" column="13" lean-forward="true" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+        <state relative-caret-position="250">
+          <caret line="144" column="83" selection-start-line="144" selection-start-column="83" selection-end-line="144" selection-end-column="83" />
           <folding>
             <element signature="e#6#139#0#PHP" expanded="true" />
             <element signature="e#140#172#0#PHP" expanded="true" />

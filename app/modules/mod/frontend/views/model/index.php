@@ -157,7 +157,8 @@ JS
               <?= $form->field($filterForm, 'hair_color_id', ['template' => '{input}', 'options' => ['tag' => false]])
                 ->label(false)
                 ->dropDownList($hairColorMap, [
-                  'id' => 'hair_color',
+                  'id' => '
+                  ',
                   'class' => 'b-field-select__select2',
                   'placeholder' => 'Введите...',
                 ]); ?>
