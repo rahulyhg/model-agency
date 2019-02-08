@@ -21,15 +21,15 @@
     ]) ?>
     <?= $this->render('_property', [
       'value' => $model->bust,
-      'label' => 'Бюст'
+      'label' => 'Размер груди'
     ]) ?>
     <?= $this->render('_property', [
       'value' => $model->waist,
-      'label' => 'Талия'
+      'label' => 'Обхват талии'
     ]) ?>
     <?= $this->render('_property', [
       'value' => $model->hips,
-      'label' => 'Бедра'
+      'label' => 'Обхват бедер'
     ]) ?>
     <?= $this->render('_property', [
       'value' => $model->eyesColor->color,
