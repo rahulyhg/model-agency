@@ -12,10 +12,7 @@ use modules\mod\common\models\Mod;
  */
 class ModSearch extends Mod
 {
-  // lang model properties
-  public $first_name;
-  public $middle_name;
-  public $last_name;
+  public $full_name;
 
   /**
    * @inheritdoc
@@ -24,7 +21,7 @@ class ModSearch extends Mod
   {
     return [
       [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes'], 'integer'],
-      [['first_name', 'middle_name', 'last_name'], 'safe'],
+      [['full_name'], 'safe'],
     ];
   }
 
@@ -46,7 +43,7 @@ class ModSearch extends Mod
    */
   public function search($params)
   {
-    $query = Mod::find()->joinWith('defaultTranslation');
+    $query = Mod::find();
 
     // add conditions that should always apply here
 

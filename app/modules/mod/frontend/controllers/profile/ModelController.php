@@ -1,6 +1,7 @@
 <?php
 namespace modules\mod\frontend\controllers\profile;
 
+use modules\mod\common\models\ModImage;
 use modules\mod\common\models\ModUser;
 use Yii;
 use yii\base\Model;
@@ -40,7 +41,19 @@ class ModelController extends Controller
 
   public function actionPhoto()
   {
-    return $this->render('photo');
+    /**
+     * @var $modUser ModUser
+     */
+    $modUser = \Yii::$app->user->identity;
+    $model = $modUser->mod;
+    if ($model->uploadOnePhoto()) {
+      Yii::$app->session->setFlash('success', 'Фото успешно загружено.');
+      $model->refresh();
+    }
+    return $this->render('photo', [
+      'modUser' => $modUser,
+      'model' => $model
+    ]);
   }
 
   public function actionPayment()

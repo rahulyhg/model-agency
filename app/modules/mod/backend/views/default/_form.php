@@ -5,9 +5,8 @@ use modules\mod\common\models\EyesColor;
 use modules\mod\common\models\HairColor;
 use modules\mod\common\services\ModService;
 use yii\helpers\Html;
-use modules\lang\widgets\langActiveForm\ActiveForm;
+use backend\widgets\activeForm\ActiveForm;
 use backend\widgets\crudActions\CrudActions;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model modules\mod\common\models\Mod */
@@ -18,7 +17,6 @@ use yii\helpers\Url;
 <div class="mod-form">
 
   <?php $form = ActiveForm::begin([
-    'defaultLangInd' => $model->getDefaultLangInd(),
   ]); ?>
 
     <div class="m-portlet__head">
@@ -28,20 +26,26 @@ use yii\helpers\Url;
         <div class="m-portlet__head-tools">
             <ul class="m-portlet__nav">
                 <li class="m-portlet__nav-item">
-                  <?= Html::dropDownList(null, $model->getDefaultLangInd(), $model->getLangMap(), [
-                    'class' => 'form-control',
-                    'id' => 'lang-dropdown',
-                  ]) ?>
-                </li>
-                <li class="m-portlet__nav-item">
                   <?= CrudActions::widget(['model' => $model,]); ?>
                 </li>
             </ul>
         </div>
     </div>
     <div class="m-portlet__body">
+      <?= $form->errorSummary($model); ?>
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
+                  </div>
+                  <div class="col-md-3">
+                    <?= $form->field($model, 'height')->textInput(['type' => 'number']) ?>
+                  </div>
+                  <div class="col-md-3">
+                    <?= $form->field($model, 'weight')->textInput(['type' => 'number']) ?>
+                  </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                       <?= $form->field($model, 'bust')->textInput() ?>
@@ -74,43 +78,31 @@ use yii\helpers\Url;
                       <?= $form->field($model, 'shoes')->textInput() ?>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                      <?= $form->field($model->variationModels, 'first_name')->textInput(['maxlength' => true]) ?>
-                    </div>
-                    <div class="col-md-6">
-                      <?= $form->field($model->variationModels, 'middle_name')->textInput(['maxlength' => true]) ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                      <?= $form->field($model->variationModels, 'last_name')->textInput(['maxlength' => true]) ?>
-                    </div>
-                </div>
             </div>
-            <div class="col-cl-4">
-              <?php
-              $fileInputData = ModService::getFileInputData($model);
+            <div class="row">
+              <div class="col-xl-12">
+                <?php
+                $fileInputData = ModService::getFileInputData($model);
 
-              echo $form->field($model, 'images[]')->widget(FileInput::class, [
-                'options' => [
-                  'accept' => 'image/*',
-                  'multiple' => true,
-                ],
-                'pluginOptions' => [
-                  'previewFileType' => 'image',
-                  'showCaption' => false,
-                  'showUpload' => false,
-                  'showClose' => false,
-                  'removeLabel' => '',
-                  'initialPreview' => $fileInputData['imagesUrls'],
-                  'initialPreviewAsData' => true,
-                  'overwriteInitial' => true,
-                  'maxFileSize' => 2800,
-                  'initialPreviewConfig' => $fileInputData['initialPreviewConfig']
-                ],
-                'pluginEvents' => [
-                  'filesorted' => "function (event, params) {
+                echo $form->field($model, 'images[]')->widget(FileInput::class, [
+                  'options' => [
+                    'accept' => 'image/*',
+                    'multiple' => true,
+                  ],
+                  'pluginOptions' => [
+                    'previewFileType' => 'image',
+                    'showCaption' => false,
+                    'showUpload' => false,
+                    'showClose' => false,
+                    'removeLabel' => '',
+                    'initialPreview' => $fileInputData['imagesUrls'],
+                    'initialPreviewAsData' => true,
+                    'overwriteInitial' => true,
+                    'maxFileSize' => 2800,
+                    'initialPreviewConfig' => $fileInputData['initialPreviewConfig']
+                  ],
+                  'pluginEvents' => [
+                    'filesorted' => "function (event, params) {
                         var orderArr = params.stack;                        
                         var order = [];
                         orderArr.forEach(function(element){
@@ -121,11 +113,11 @@ use yii\helpers\Url;
                         $('#modImageId').val(order);                        
                     }
                       "
-                ],
-              ])
-              ?>
-
-              <?= $form->field($model, 'images_order_json')->hiddenInput(['id' => 'modImageId'])->label(false) ?>
+                  ],
+                ])
+                ?>
+                <?= $form->field($model, 'images_order_json')->hiddenInput(['id' => 'modImageId'])->label(false) ?>
+              </div>
             </div>
         </div>
       <?php ActiveForm::end(); ?>

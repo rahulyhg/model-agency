@@ -1,21 +1,21 @@
 <?php
-namespace modules\mod\backend\controllers;
-
+namespace modules\mod\frontend\controllers\profile;
 use modules\mod\common\models\Mod;
-use modules\mod\common\models\ModImage;
+use modules\mod\common\services\ModService;
 use Yii;
 use common\lib\Controller;
-
 class ModImageController extends Controller
 {
   public function actionDeleteImage(int $modId)
   {
     $modObject = Mod::findOne(['id' => $modId]);
+
     $fileId = Yii::$app->request->post('key');
-    $modImage = ModImage::findOne(['image_id' => $fileId, 'entity_id' => $modObject->id]);
-    if($modImage->delete()) {
+    if(Yii::$app->filestorage->removeFile($fileId)){
+      ModService::resetImagesOrder($modObject, false, $fileId);
       return true;
     }
+
     return false;
   }
 }

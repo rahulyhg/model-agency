@@ -3,6 +3,8 @@ extends ../layouts/page.pug
 block head
     title Celeb Cloud - model agency
     
+    +style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css')
+    +style('./assets/lib/jquery.scrollbar/jquery.scrollbar.css')
 
 block body
 
@@ -97,6 +99,40 @@ block body
 
                 .b-main__inner
                     .b-main__items
+                        //- section.b-section.b-main__item(class="collapse" id="modelFilter")
+                        //-     .b-filter-form.b-section__main
+                        //-         .b-filter-form__items
+                        //-             .b-field.b-filter-form__item
+                        //-                 label.b-field__label
+                        //-                     span.b-field__title Возраст
+                        //-                     .b-field__wrap
+                        //-                         input.b-field__input.b-field__input_icon(type="text" name="age")
+                        //-                         i.b-field__icon.b-field__icon_focus-first.fas.fa-birthday-cake
+                        //-             .b-field.b-filter-form__item
+                        //-                 label.b-field__label
+                        //-                     span.b-field__title Рост
+                        //-                     .b-field__wrap
+                        //-                         input.b-field__input.b-field__input_icon(type="text" name="height")
+                        //-                         i.b-field__icon.b-field__icon_focus-first.fas.fa-arrows-alt-v
+                        //-             .b-field.b-filter-form__item
+                        //-                 label.b-field__label
+                        //-                     span.b-field__title Вес
+                        //-                     .b-field__wrap
+                        //-                         input.b-field__input.b-field__input_icon(type="text" name="weight")
+                        //-                         i.b-field__icon.b-field__icon_focus-first.fas.fa-weight
+                        //-             .b-field.b-filter-form__item
+                        //-                 label.b-field__label
+                        //-                     span.b-field__title Цвет волос
+                        //-                     .b-field__wrap
+                        //-                         input.b-field__input.b-field__input_icon(type="text" name="hair_color")
+                        //-                         i.b-field__icon.b-field__icon_focus-first.fas.fa-female
+                        //-             .b-field.b-filter-form__item
+                        //-                 label.b-field__label
+                        //-                     span.b-field__title Имя / фамилия
+                        //-                     .b-field__wrap
+                        //-                         input.b-field__input.b-field__input_icon(type="text" name="name")
+                        //-                         i.b-field__icon.b-field__icon_focus-first.fas.fa-search
+
                         section.b-section.b-main__item
                             header.b-section__header
                                 h1.b-title.b-section__header-title
@@ -104,16 +140,59 @@ block body
                                         span.b-title__text-first Our
                                         span.b-title__text-second models
                                 
-                                form.b-search.b-section__header-search(action="search-model")
-                                    label.b-field.b-search__field
-                                        input.b-field__input.b-field__input_icon.b-field__input_icon-xs-none.b-field__input_search(type="text" name="name-model" placeholder="Enter model name")
-                                        i.b-field__icon.b-field__icon_xs-none.b-field__icon_first.fas.fa-search
-                                    button.b-button.b-button_first.b-button_search.b-search__button(type="submit")
+                                div.b-search.b-section__header-search(action="search-model")
+                                    button.b-button.b-button_first.b-search__btn(data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="collapseExample")
                                         span.b-button__texts
-                                            span.b-button__text-first Search
                                             i.b-button__icon.fas.fa-search
-
+                                            span.b-button__text-first Open filter
                             
+                            .b-section__main(class="collapse" id="modelFilter")
+                                .b-filter-form
+                                    .b-filter-form__items
+                                        .b-double-field.b-filter-form__item
+                                            label.b-double-field__label
+                                                .b-double-field__title
+                                                    i.b-double-field__icon.b-double-field__icon_focus-first.fas.fa-birthday-cake
+                                                    span.b-double-field__title-text Возраст
+                                                .b-double-field__wrap
+                                                    input.b-double-field__input-1(type="text" name="age_from" placeholder="от")
+                                                    input.b-double-field__input-2(type="text" name="age_to" placeholder="до")
+                                        .b-double-field.b-filter-form__item
+                                            label.b-double-field__label
+                                                .b-double-field__title
+                                                    i.b-double-field__icon.b-double-field__icon_focus-first.fas.fa-arrows-alt-v
+                                                    span.b-double-field__title-text Рост
+                                                .b-double-field__wrap
+                                                    input.b-double-field__input-1(type="text" name="height_from" placeholder="от")
+                                                    input.b-double-field__input-2(type="text" name="height_to" placeholder="до")
+                                        .b-double-field.b-filter-form__item
+                                            label.b-double-field__label
+                                                .b-double-field__title
+                                                    i.b-double-field__icon.b-double-field__icon_focus-first.fas.fa-weight
+                                                    span.b-double-field__title-text Вес
+                                                .b-double-field__wrap
+                                                    input.b-double-field__input-1(type="text" name="weight_from" placeholder="от")
+                                                    input.b-double-field__input-2(type="text" name="weight_to" placeholder="до")
+                                        .b-field-select.b-field-select_icon.b-filter-form__item
+                                            label.b-field-select__label
+                                                span.b-field-select__title Цвет волос
+                                                .b-field__wrap
+                                                    select#hair_color.b-field-select__select2(required)
+                                                        option Блондинка
+                                                        option Брюнетка
+                                                        option Шатенка
+                                                        option Какая-то еще
+                                                    i.b-field-select__icon.b-field-select__icon_focus-first.fas.fa-female
+                                        .b-field.b-filter-form__item
+                                            label.b-field__label
+                                                span.b-field__title Имя / фамилия
+                                                .b-field__wrap
+                                                    input.b-field__input.b-field__input_icon(type="text" name="name" placeholder="Введите...")
+                                                    i.b-field__icon.b-field__icon_focus-first.fas.fa-search
+                                        button.b-button.b-button_first.b-filter-form__item.b-filter-form__item_submit(type="submit")
+                                            span.b-button__texts
+                                                span.b-button__text-first Search
+
                             .b-our-models.b-section__main
                                 .b-our-models__items
                                     a.b-our-model.b-our-models__item(href="single-model.html")
@@ -271,5 +350,58 @@ block script
                 $('.b-page__sidebar').toggleClass('b-page__sidebar_sm-open')
                 $('.b-page__content').toggleClass('b-page__content_sm-shift')                
             })
+
+        })
+
+    +script('./assets/lib/autosize.min.js')
+    +script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js')
+    +script('./assets/lib/jquery.scrollbar/jquery.scrollbar.min.js')
+    +script('./assets/lib/select2-searchInputPlaceholder.js')
+
+    script.
+
+        $(document).ready(function () {
+            $('#hair_color').select2({
+                "searchInputPlaceholder": 'Поиск...',
+                'language': {
+                    'noResults': function () {
+                        return "No results to search";
+                    }
+                }
+            });
+
+            $('select').on('select2:open', function (e) {
+                $('.select2-results__options').scrollbar().parent().addClass('scrollbar-outer');
+                $('.select2-search input').prop('focus', false);
+            });
+
+            $('[data-select2-non-search]').select2({
+                'minimumResultsForSearch': -1
+            });
+            
+            $('[data-select2-search]').select2();
+        });
+    
+        $(document).ready(e => {
+
+            $('#search-location').select2({
+                "searchInputPlaceholder": 'Введите название населенного пункта',
+                "language": {
+                    "noResults": function () {
+                        return "Ничего не найдено";
+                    }
+                }
+            });
+
+            $('select').on('select2:open', function (e) {
+                $('.select2-results__options').scrollbar().parent().addClass('scrollbar-outer');
+                $('.select2-search input').prop('focus', false);
+            });
+
+            $('[data-select2-non-search]').select2({
+                "minimumResultsForSearch": -1
+            });
+            
+            $('[data-select2-search]').select2();
 
         })

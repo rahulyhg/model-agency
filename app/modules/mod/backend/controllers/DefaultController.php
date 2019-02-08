@@ -2,7 +2,7 @@
 
 namespace modules\mod\backend\controllers;
 
-use modules\mod\backend\models\ModImage;
+use modules\mod\common\models\ModImage;
 use modules\mod\common\services\ModService;
 use Yii;
 use modules\mod\common\models\Mod;
@@ -85,7 +85,7 @@ class DefaultController extends Controller
     $model = $this->findModel($id);
 
     $post = Yii::$app->request->post();
-    if ($model->load($post) && Model::loadMultiple($model->variationModels, $post) && $model->save()) {
+    if ($model->load($post) /*&& Model::loadMultiple($model->variationModels, $post)*/ && $model->save()) {
       if ($model->upload()) {
         Yii::$app->session->setFlash('success', 'Запись успешно обновлена.');
         return $this->redirect(['update', 'id' => $model->id]);

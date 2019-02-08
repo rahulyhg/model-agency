@@ -1,20 +1,42 @@
 <?php
 namespace modules\mod\frontend\controllers;
 
+use modules\mod\common\models\HairColor;
 use modules\mod\common\models\Mod;
-use yii\data\ActiveDataProvider;
-use yii\debug\models\timeline\DataProvider;
+use modules\mod\frontend\forms\ModelFilterForm;
+use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class ModelController extends Controller
 {
   public function actionIndex()
   {
-    $dataProvider = new ActiveDataProvider([
-      'query' => Mod::find()
-    ]);
+    $filterForm = new ModelFilterForm();
+    $showFilterForm = isset($_REQUEST[$filterForm->formName()]);
+    $dataProvider = $filterForm->search(Yii::$app->request->queryParams);
     return $this->render('index', [
-      'dataProvider' => $dataProvider
+      'dataProvider' => $dataProvider,
+      'filterForm' => $filterForm,
+      'hairColorMap' => HairColor::getMap(),
+      'showFilterForm' => $showFilterForm
     ]);
+  }
+
+  public function actionView($id)
+  {
+    $model = $this->findModel($id);
+    return $this->render('view', [
+      'model' => $model
+    ]);
+  }
+
+  protected function findModel($id)
+  {
+    $model = Mod::findOne($id);
+    if(!$model) {
+      throw new NotFoundHttpException('not found');
+    }
+    return $model;
   }
 }

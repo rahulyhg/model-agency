@@ -15,6 +15,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
   public $options = [
     'tag' => 'div',
+    'double' => false, // is it double field
     'class' => 'b-field'
   ];
 
@@ -125,6 +126,25 @@ class ActiveField extends \yii\widgets\ActiveField
       $title ?: $this->model->getAttributeLabel($this->attribute),
       ArrayHelper::merge($this->titleOptions, $options)
     );
+    return $this;
+  }
+
+  public function textInput($options = [])
+  {
+    $options = array_merge($this->inputOptions, $options);
+
+    if ($this->form->validationStateOn === ActiveForm::VALIDATION_STATE_ON_INPUT) {
+      $this->addErrorClassIfNeeded($options);
+    }
+
+    $this->addAriaAttributes($options);
+    $this->adjustLabelFor($options);
+    $this->parts['{input}'] = Html::activeTextInput($this->model, $this->attribute, $options);
+
+    if($this->options['double'] === true) {
+      $this->parts['{input}'] .= Html::activeTextInput($this->model, $this->attribute, $options);
+    }
+
     return $this;
   }
 }

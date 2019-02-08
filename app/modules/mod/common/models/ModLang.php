@@ -11,9 +11,6 @@ use modules\lang\common\models\Lang;
 * @property integer $id
 * @property integer $lang_id
 * @property integer $entity_id
-* @property string $first_name
-* @property string $middle_name
-* @property string $last_name
 *
 * @property Lang $lang
 * @property Mod $entity
@@ -34,9 +31,8 @@ class ModLang extends \modules\lang\lib\LangActiveRecord
     public function rules()
     {
         return [
-            [['lang_id', 'first_name', 'last_name'], 'required'],
+            [['lang_id'], 'required'],
             [['lang_id', 'entity_id'], 'integer'],
-            [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 255],
             [['lang_id'], 'exist', 'skipOnError' => true, 'targetClass' => Lang::class, 'targetAttribute' => ['lang_id' => 'id']],
             [['entity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mod::class, 'targetAttribute' => ['entity_id' => 'id']],
         ];
@@ -51,9 +47,6 @@ class ModLang extends \modules\lang\lib\LangActiveRecord
             'id' => 'ID',
             'lang_id' => 'Lang ID',
             'entity_id' => 'Entity ID',
-            'first_name' => 'First Name',
-            'middle_name' => 'Middle Name',
-            'last_name' => 'Last Name',
         ];
     }
 

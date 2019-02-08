@@ -47,13 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
           'columns' => [
             ['class' => \backend\lib\CheckboxColumn::class],
             [
-              'label' => 'ФИО',
+              'label' => 'Имя',
               'format' => 'raw',
               'value' => function ($model) {
                 /**
                  * @var $model \modules\mod\common\models\Mod
                  */
-                return Html::a("{$model->last_name} {$model->first_name} {$model->middle_name}", ['update', 'id' => $model->id]);
+                return Html::a($model->full_name, ['update', 'id' => $model->id]);
               }
             ],
             [

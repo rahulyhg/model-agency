@@ -9,10 +9,10 @@ class ModelSignUpForm extends Model
 {
   public $phone;
   public $email;
-  public $firstName;
-  public $lastName;
-  public $middleName;
+  public $fullName;
   public $age;
+  public $height;
+  public $weight;
   public $password;
   public $passwordRepeat;
 
@@ -22,10 +22,11 @@ class ModelSignUpForm extends Model
   public function rules()
   {
     return [
-      [['phone', 'firstName', 'lastName', 'middleName', 'age'], 'required'],
-      [['email', 'phone', 'firstName', 'lastName', 'middleName', 'age'], 'trim'],
+      [['phone', 'fullName', 'age', 'weight', 'height'], 'required'],
+      [['email', 'phone', 'fullName', 'age'], 'trim'],
       ['email', 'email'],
-      [['email', 'phone', 'firstName', 'lastName', 'middleName'], 'string', 'max' => 255],
+      [['email', 'phone', 'fullName'], 'string', 'max' => 255],
+      [['weight', 'height'], 'integer'],
       [['email'], 'unique', 'targetClass' => ModUser::class, 'message' => 'This email address has already been taken.'],
       [['phone'], 'unique', 'targetClass' => ModUser::class, 'message' => 'This phone has already been taken.'],
       [['password', 'passwordRepeat'], 'required'],
@@ -58,11 +59,11 @@ class ModelSignUpForm extends Model
     }
 
     $mod = new Mod();
-    $mod->first_name = $this->firstName;
-    $mod->last_name = $this->lastName;
-    $mod->middle_name = $this->middleName;
+    $mod->full_name = $this->fullName;
     $mod->age = $this->age;
     $mod->mod_user_id = $user->id;
+    $mod->height = $this->height;
+    $mod->weight = $this->weight;
     if(!$mod->save()) {
       $transaction->rollBack();
       return null;

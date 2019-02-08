@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\mod\backend\models;
+namespace modules\mod\common\models;
 
 use modules\mod\common\models\Mod;
 use Yii;
@@ -14,11 +14,20 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  *
- * @property Yii::$app->filestorage $image
  * @property Mod $entity
+ * @property string $url
  */
 class ModImage extends \common\lib\ActiveRecord
 {
+  private $url;
+
+  public function getUrl()
+  {
+    if(!$this->url) {
+      $this->url = Yii::$app->filestorage->getFileUrl($this->image_id);
+    }
+    return $this->url;
+  }
 
   /**
    * {@inheritdoc}
@@ -57,16 +66,16 @@ class ModImage extends \common\lib\ActiveRecord
   /**
    * @return \yii\db\ActiveQuery
    */
-  public function getImage()
-  {
-    return $this->hasOne(Yii::$app->filestorage::className(), ['id' => 'image_id']);
-  }
-
-  /**
-   * @return \yii\db\ActiveQuery
-   */
   public function getEntity()
   {
-    return $this->hasOne(Mod::className(), ['id' => 'entity_id']);
+    return $this->hasOne(Mod::class, ['id' => 'entity_id']);
+  }
+
+  public function beforeDelete()
+  {
+    if(Yii::$app->filestorage->removeFile($this->image_id)) {
+      return parent::beforeDelete();
+    }
+    return false;
   }
 }

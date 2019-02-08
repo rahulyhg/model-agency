@@ -141,6 +141,8 @@ class ModUser extends ActiveRecord implements IdentityInterface
       'status' => 'Status',
       'created_at' => 'Created At',
       'updated_at' => 'Updated At',
+      'newPassword' => 'Пароль',
+      'passwordRepeat' => 'Повторите пароль',
     ];
   }
 

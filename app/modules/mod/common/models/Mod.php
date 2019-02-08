@@ -2,9 +2,12 @@
 
 namespace modules\mod\common\models;
 
-use modules\mod\backend\models\ModImage;
+use common\lib\ActiveRecord;
+use modules\mod\common\models\ModImage;
 use modules\mod\common\services\ModService;
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\UploadedFile;
 
 /**
@@ -19,22 +22,21 @@ use yii\web\UploadedFile;
  * @property integer $shoes
  * @property integer $country_id
  * @property integer $age
+ * @property integer $height
+ * @property integer $weight
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $mod_user_id
  * @property string $images_order_json
- *
- * properties from lang model
- * @property string first_name
- * @property string last_name
- * @property string middle_name
+ * @property string full_name
  *
  * @property EyesColor $eyesColor
  * @property HairColor $hairColor
  * @property ModUser $modUser
  * @property ModLang[] $translations
+ * @property ModImage[] $modImages
  */
-class Mod extends \modules\lang\lib\TranslatableActiveRecord
+class Mod extends ActiveRecord
 {
 
   /**
@@ -55,10 +57,20 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
    */
   public function rules()
   {
+    /**
+     * рост от 100 до 250 см
+     * вес 35 - 150
+     * размер груди а не бюст. от 0 до 6 может быть.
+     * талия в см. от 40 до 150 см
+     * бедра в см. от 40 до 200 см
+     * цвета самому найти
+     * в языки добавить всевозможные языки мира
+     */
     return [
-      [['age', 'mod_user_id'], 'required'],
-      [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'age', 'country_id', 'mod_user_id', 'created_at', 'updated_at'], 'integer'],
+      [['age', 'mod_user_id', 'weight', 'height', 'full_name'], 'required'],
+      [['bust', 'waist', 'hips', 'eyes_color_id', 'hair_color_id', 'shoes', 'age', 'country_id', 'mod_user_id', 'created_at', 'updated_at', 'weight', 'height'], 'integer'],
       [['images_order_json'], 'string'],
+      [['full_name'], 'string', 'max' => 255],
       [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'maxFiles' => 10],
       [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
       [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
@@ -77,13 +89,24 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
       'waist' => 'Талия',
       'hips' => 'Бедра',
       'age' => 'Возраст',
+      'weight' => 'Вес',
+      'height' => 'Рост',
       'country_id' => 'Страна',
       'eyes_color_id' => 'Цвет глаз',
       'hair_color_id' => 'Цвет волос',
       'shoes' => 'Размер обуви',
       'created_at' => 'Дата создания',
       'updated_at' => 'Дата последнего обновления',
+      'full_name' => 'Имя',
     ];
+  }
+
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getModImages()
+  {
+    return $this->hasMany(ModImage::class, ['entity_id' => 'id']);
   }
 
   /**
@@ -110,14 +133,6 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
   public function getHairColor()
   {
     return $this->hasOne(HairColor::class, ['id' => 'hair_color_id']);
-  }
-
-  /**
-   * @return \yii\db\ActiveQuery
-   */
-  public function getTranslations()
-  {
-    return $this->hasMany(ModLang::class, ['entity_id' => 'id']);
   }
 
   /**
@@ -164,22 +179,30 @@ class Mod extends \modules\lang\lib\TranslatableActiveRecord
         return true;
       }
 
-      $oldImagesOrder = json_decode($this->images_order_json);
-
       if ($imagesIds = Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR)) {
         $modImagesData = ModService::generateModImageObjects($imagesIds, $this->id);
-
-        if($oldImagesOrder) ModService::deleteExcessImages($oldImagesOrder, $modImagesData['imagesOrder']);
-
-        $this->images_order_json = json_encode($modImagesData['imagesOrder']);
         $this->save(true, ['images_order_json']);
-
         $this->populateRelation('modImages', $modImagesData['modImages']);
-
         return true;
       }
     }
 
+    return false;
+  }
+
+  public function uploadOnePhoto()
+  {
+    $this->images = UploadedFile::getInstances($this, 'images');
+    if ($this->validate('images')) {
+      if (empty($this->images)) {
+        return true;
+      }
+      if ($imagesIds = Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR)) {
+        $modImagesData = ModService::generateModImageObjects($imagesIds, $this->id);
+        $this->populateRelation('modImages', $modImagesData['modImages']);
+        return true;
+      }
+    }
     return false;
   }
 }

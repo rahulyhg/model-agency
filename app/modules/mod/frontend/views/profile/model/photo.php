@@ -4,7 +4,8 @@
  * @var $modUser \modules\mod\common\models\ModUser
  * @var $model \modules\mod\common\models\Mod
  */
-use \modules\mod\lib\ActiveForm;
+
+use \yii\widgets\ActiveForm;
 use \yii\helpers\Url;
 
 $this->title = "{$model->full_name} - Profile";
@@ -96,11 +97,14 @@ JS
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
-    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span
-            class="b-title__text-first"><?= $model->full_name ?></span></span></h1>
+    <h1 class="b-title b-section__header-title">
+      <span class="b-title__texts b-title__texts_line-first">
+        <span class="b-title__text-first"><?= $model->full_name ?></span>
+      </span>
+    </h1>
     <div class="b-tabs b-section__header-tabs">
       <ul class="b-tabs__items">
-        <li class="b-tabs__item b-tabs__item_line-first">
+        <li class="b-tabs__item">
           <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/index']) ?>">
             <span class="b-tabs__texts">
               <span class="b-tabs__text-first">Basic</span>
@@ -108,7 +112,8 @@ JS
             </span>
           </a>
         </li>
-        <li class="b-tabs__item"><a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
+        <li class="b-tabs__item b-tabs__item_line-first">
+          <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
             <span class="b-tabs__texts">
               <span class="b-tabs__text-second">My</span>
               <span class="b-tabs__text-first">photos</span>
@@ -127,62 +132,39 @@ JS
     </div>
   </header>
   <div class="b-cabinet b-section__main">
-    <?php $form = ActiveForm::begin(['options' => ['class' => 'b-cabinet__form']]) ?>
-      <div class="b-cabinet__form-inner">
-        <?= $form->field($model, 'full_name', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-user-ninja')->textInput([
-          'placeholder' => 'Полное имя',
-        ]) ?>
-        <?= $form->field($model, 'age', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-birthday-cake')->textInput([
-          'placeholder' => 'Возраст',
-        ]) ?>
-        <?= $form->field($model, 'height', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-v')->textInput([
-          'placeholder' => 'Рост',
-        ]) ?>
-        <?= $form->field($model, 'weight', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-weight')->textInput([
-          'placeholder' => 'Вес',
-        ]) ?>
-        <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
-          'placeholder' => 'Номер телефона',
-        ]) ?>
-        <?= $form->field($modUser, 'email', ['options' => ['class' => 'b-cabinet__form-field']])->icon('far fa-envelope')->textInput([
-          'placeholder' => 'Email',
-        ]) ?>
-        <?= $form->field($modUser, 'newPassword', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-key')->passwordInput([
-          'placeholder' => 'Введите...',
-        ]) ?>
-        <?= $form->field($modUser, 'passwordRepeat', ['options' => ['class' => 'b-cabinet__form-field']])
-          ->icon('fas fa-key')
-          ->passwordInput([
-            'placeholder' => 'Введите...',
-          ]) ?>
-      </div>
-      <div class="b-upload b-cabinet__form-upload">
-        <div class="b-upload__header"><span class="b-upload__title">Main photo</span>
-          <label class="b-upload__label">
-            <div class="b-link b-upload__link">
-              <i class="b-link__icon fas fa-upload"></i>
-              <span class="b-link__texts b-link__texts_underline">
-                <span class="b-link__text-first">Upload </span>
-                <span class="b-link__text-second">new</span>
-              </span>
+    <div class="b-cabinet__photos">
+      <?php foreach ($model->modImages as $image) :
+        /**
+         * @var $image \modules\mod\common\models\ModImage
+         */ ?>
+        <div class="b-cabinet-photo b-cabinet__photo">
+          <div class="b-cabinet-photo__box"><img class="b-cabinet-photo__img" alt="julia bogdanova" src="<?= $image->url ?>"></div>
+          <div class="b-cabinet-photo__footer">
+            <div class="b-like b-cabinet-photo__like">
+              <i class="b-like__icon fas fa-heart"></i>
+              <div class="b-like__value">1447</div>
             </div>
-            <?= $form->field($modUser, 'photoFile')->title(false)->fileInput([
-                'class' => 'b-upload__input'
-            ]) ?>
-          </label>
+          </div>
         </div>
-        <a class="b-upload__preview"
-           href="<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>"
-           style="background-image: url('<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>'"
-           data-fancybox="gallery"></a>
-      </div>
-      <div class="b-cabinet__form-footer">
-        <button class="b-button b-button_first b-cabinet__form-submit" type="submit">
-          <span class="b-button__texts">
-            <span class="b-button__text-first">Сохранить изменения</span>
-          </span>
-        </button>
-      </div>
+      <?php endforeach; ?>
+    </div>
+
+    <br>
+    <br>
+
+    <?php $form = ActiveForm::begin(); ?>
+      <label class="b-add-photos b-cabinet__add-photos">
+        <?= $form->field($model, 'images[]', ['template' => '{input}', 'options' => ['tag' => false]])
+          ->label(false)
+          ->fileInput([
+            'class' => 'b-add-photos__input'
+          ]); ?>
+      </label>
+      <button class="b-button b-button_first b-cabinet__submit">
+        <span class="b-button__texts">
+          <span class="b-button__text-first">Загрузить фото</span>
+        </span>
+      </button>
     <?php ActiveForm::end(); ?>
   </div>
 </section>

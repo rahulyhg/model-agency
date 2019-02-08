@@ -1,0 +1,142 @@
+.b-double-field
+    display: inline-block
+    position: relative
+
+
+.b-double-field__label
+    display: block
+
+
+.b-double-field__hint
+    margin-left: 25px;
+    font-size: 1rem;
+    font-style: italic
+
+
+.b-double-field__help
+    margin-left: 25px;
+    font-size: 1rem;
+    font-weight: bold
+
+
+.b-double-field__has-error .b-double-field__help
+    color: red;
+
+
+.b-double-field__title
+    margin-left: 30px
+    margin-bottom: 15px
+    +text($darkColor, 16px, 700, 1)
+
+    +xs-block()
+        margin-left: 15px
+
+
+.b-double-field__wrap
+    display: flex
+    position: relative
+
+
+.b-double-field__icon
+  position: relative
+  left: -15px
+  font-size: 16px
+
+.b-double-field__icon_first,
+.b-double-field__input:focus ~ .b-double-field__icon_focus-first,
+.b-double-field__input:active ~ .b-double-field__icon_focus-first,
+.b-double-field__input:focus:valid ~ .b-double-field__icon_focus-first
+    +gradient-text(0deg, $firstGradientStart, $firstGradientEnd)
+
+.b-double-field__icon_second,
+.b-double-field__input:focus ~ .b-double-field__icon_focus-second,
+.b-double-field__input:active ~ .b-double-field__icon_focus-second,
+.b-double-field__input:focus:valid ~ .b-double-field__icon_focus-second
+    +gradient-text(0deg, $secondGradientStart, $secondGradientEnd)
+
+
+.b-double-field__icon_xs-none
+    +xs(display, none)
+
+
+.b-double-field__input-1, .b-double-field__input-2
+    width: 50%
+    padding: 15px 30px
+    white-space: nowrap
+    border: none
+    outline: none
+    overflow: hidden
+    position: relative
+    transition: all 200ms linear
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+    +text($darkColor, 16px, 600, 1)
+
+    +sm(font-size, 14px)
+
+    +xs-block()
+        font-size: 12px
+        padding: 12px 15px
+
+    &::placeholder
+        +text($darkColor, 16px, 700, 1)
+
+        +xs(font-size, 12px)
+
+    +focus(box-shadow, inset 2px 2px 5px rgba(0,0,0,.2), .2s, linear)
+
+
+.b-double-field__input-1
+    border-radius: 25px 0 0 25px
+
+
+.b-double-field__input-2
+    border-radius:  0 25px 25px 0
+
+
+.b-double-field__has-error .b-double-field__input
+    box-shadow: inset 2px 2px 5px rgb(221, 11, 0);
+
+
+.b-double-field__textarea
+    width: 100%
+    min-height: 160px
+    max-height: 900px
+    padding: 30px
+    border: none
+    border-radius: 50px
+    overflow-x: hidden
+    overflow-wrap: break-word
+    outline: none
+    resize: none
+    position: relative
+    transition: all 200ms linear
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1)
+    +text($darkColor, 16px, 600, 1.2)
+
+    &::placeholder
+        +text($darkColor, 16px, 700, 1)
+
+        +xs(font-size, 12px)
+
+    +focus(box-shadow, inset 2px 2px 5px rgba(0,0,0,.2), .2s, linear)
+
+    +sm(font-size, 14px)
+
+    +xs-block()
+        border-radius: 20px
+        font-size: 12px
+        padding: 15px
+
+
+.b-double-field__input_icon
+    padding-left: 60px
+    
+    +xs(padding-left, 40px)
+    
+.b-double-field__input_icon-xs-none
+    +xs(padding-left, 30px)
+
+.b-double-field__input_search
+    padding-right: 160px
+
+    +xs(padding-right, 75px)

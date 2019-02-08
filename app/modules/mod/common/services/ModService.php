@@ -9,7 +9,7 @@
 namespace modules\mod\common\services;
 
 
-use modules\mod\backend\models\ModImage;
+use modules\mod\common\models\ModImage;
 use modules\mod\common\models\Mod;
 use Yii;
 use yii\helpers\Url;

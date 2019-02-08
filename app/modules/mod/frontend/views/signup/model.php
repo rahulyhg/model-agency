@@ -19,7 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
       </h1>
     </header>
     <div class="b-registration b-section__main">
-
       <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'b-registration__form']
@@ -27,28 +26,30 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="b-registration__form-inner">
           <?= $form->field($model, 'phone', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-mobile-alt')->textInput([
             'autofocus' => true,
-            'placeholder' => 'Phone number',
+            'placeholder' => 'Номер телефона',
           ]) ?>
           <?= $form->field($model, 'email', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-envelope')->textInput([
             'placeholder' => 'Email',
           ]) ?>
-          <?= $form->field($model, 'firstName', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-user-ninja')->textInput([
-            'placeholder' => 'First name',
+          <?= $form->field($model, 'fullName', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-user-ninja')->textInput([
+            'placeholder' => 'Полное имя',
           ]) ?>
           <?= $form->field($model, 'age', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-birthday-cake')->textInput([
-            'placeholder' => 'Age',
+            'placeholder' => 'Возраст',
           ]) ?>
-          <?= $form->field($model, 'lastName', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-user-ninja')->textInput([
-            'placeholder' => 'Last name',
+          <?= $form->field($model, 'height', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-birthday-cake')->textInput([
+            'type' => 'number',
+            'placeholder' => 'Рост',
+          ]) ?>
+          <?= $form->field($model, 'weight', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-birthday-cake')->textInput([
+            'type' => 'number',
+            'placeholder' => 'Вес',
           ]) ?>
           <?= $form->field($model, 'password', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-key')->passwordInput([
-            'placeholder' => 'Password',
-          ]) ?>
-          <?= $form->field($model, 'middleName', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-user-ninja')->textInput([
-            'placeholder' => 'Middle name',
+            'placeholder' => 'Пароль',
           ]) ?>
           <?= $form->field($model, 'passwordRepeat', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-key')->passwordInput([
-            'placeholder' => 'Confirm password',
+            'placeholder' => 'Повторите пароль',
           ]) ?>
           <div class="b-registration__form-footer">
             <span class="b-link b-login__form-redirect">
