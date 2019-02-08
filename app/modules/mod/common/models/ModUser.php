@@ -117,9 +117,9 @@ class ModUser extends ActiveRecord implements IdentityInterface
       [
         [ 'photoFile' ],
         'file',
-        'maxSize'        => 300000 /* 300 кб */,
+        'maxSize'        => 3000000 /* 3000 кб */,
         'skipOnEmpty'    => true,
-        'tooBig'         => 'The file is too large. The maximum size is 300kb.',
+        'tooBig'         => 'Файл слишком большой. Максимальный размер - 3 Mb.',
         'extensions'     => [ 'jpg', 'png', 'gif', 'jpeg' ],
         'wrongExtension' => 'The file format is not correct. Available formats: jpg, jpeg, png, gif.',
       ],

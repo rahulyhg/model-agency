@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModImageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelFilterForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_property.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/our-models.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/our-models.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_search.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_search.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_section.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_section.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/our-models.pug" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/our-models.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/backend/controllers/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/backend/controllers/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/backend/controllers/ModImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/backend/controllers/ModImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/backend/models/ModImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/ModImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/backend/views/default/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/backend/views/default/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/backend/views/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/backend/views/default/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/ModLang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/ModLang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/ModSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/ModSearch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/services/ModService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/services/ModService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelSignUpForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelSignUpForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/lib/ActiveField.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/lib/ActiveField.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +44,9 @@
           <entry key="project.open.time.25" value="2" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,7 +58,7 @@
           <entry key="init" value="1" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="377" />
+          <entry key="php" value="379" />
           <entry key="pug" value="3" />
           <entry key="sass" value="2" />
           <entry key="todo" value="1" />
@@ -100,7 +70,7 @@
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="378" />
+          <entry key="PHP" value="380" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Sass" value="2" />
           <entry key="htaccess" value="1" />
@@ -110,7 +80,7 @@
         <counts>
           <entry key="dummy" value="44" />
           <entry key="html" value="2" />
-          <entry key="php" value="13882" />
+          <entry key="php" value="13942" />
           <entry key="pug" value="217" />
           <entry key="txt" value="6" />
         </counts>
@@ -120,7 +90,7 @@
           <entry key="HTML" value="5" />
           <entry key="Jade" value="217" />
           <entry key="JavaScript" value="8" />
-          <entry key="PHP" value="13871" />
+          <entry key="PHP" value="13931" />
           <entry key="PLAIN_TEXT" value="50" />
         </counts>
       </usages-collector>
@@ -132,7 +102,29 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
+              <folding>
+                <element signature="e#45#73#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="566">
+              <caret line="121" column="73" selection-start-line="121" selection-start-column="73" selection-end-line="121" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -221,7 +213,6 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelFilterForm.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelSignUpForm.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModImageController.php" />
         <option value="$PROJECT_DIR$/app/common/config/main.php" />
@@ -236,6 +227,7 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" />
       </list>
     </option>
   </component>
@@ -415,7 +407,7 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1380" />
     <option name="height" value="742" />
   </component>
@@ -436,27 +428,6 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
@@ -591,16 +562,18 @@
       <workItem from="1549450435354" duration="7682000" />
       <workItem from="1549488618342" duration="106000" />
       <workItem from="1549538031089" duration="17073000" />
+      <workItem from="1549622305275" duration="645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101065000" />
+    <option name="totallyTimeSpent" value="101710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15245202" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15405117" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -702,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-          <folding>
-            <element signature="e#45#85#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,10 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-438">
           <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
-          <folding>
-            <element signature="e#6#139#0#PHP" expanded="true" />
-            <element signature="e#140#172#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -768,16 +734,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModImageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#50#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModImageController.php" />
     <entry file="file://$PROJECT_DIR$/app/common/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -799,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/migrations/m190118_144252_add_mod_column_image.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="634">
@@ -817,9 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="813">
           <caret line="396" column="13" selection-start-line="396" selection-start-column="13" selection-end-line="396" selection-end-column="13" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#main#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -893,9 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
           <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
-          <folding>
-            <element signature="e#7#36#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -910,10 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="634">
           <caret line="156" column="42" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
-          <folding>
-            <element signature="e#6#139#0#PHP" expanded="true" />
-            <element signature="e#141#169#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,9 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
-          <folding>
-            <element signature="e#59#98#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,9 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding>
-            <element signature="e#50#84#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -976,9 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#6#85#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -986,12 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
           <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
-          <folding>
-            <element signature="e#42#497#0#PHP" />
-            <element signature="e#499#1454#0#PHP" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,19 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
           <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
-          <folding>
-            <element signature="e#45#73#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1029,6 +941,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="145" column="37" lean-forward="true" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="70" column="67" selection-start-line="70" selection-start-column="67" selection-end-line="70" selection-end-column="67" />
+          <folding>
+            <element signature="e#45#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="121" column="73" selection-start-line="121" selection-start-column="73" selection-end-line="121" selection-end-column="73" />
         </state>
       </provider>
     </entry>
