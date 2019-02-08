@@ -4,6 +4,8 @@
  */
 
 use yii\helpers\Url;
+
+$this->title = 'Модельное агентство Celeb Cloud';
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">

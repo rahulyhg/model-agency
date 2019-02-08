@@ -141,6 +141,18 @@ JS
         <?= $form->field($model, 'weight', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-weight')->textInput([
           'placeholder' => 'Вес',
         ]) ?>
+        <?= $form->field($model, 'bust', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-snowflake')->textInput([
+          'placeholder' => 'Размер груди',
+        ]) ?>
+        <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
+          'placeholder' => 'Размер ноги',
+        ]) ?>
+        <?= $form->field($model, 'waist', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+          'placeholder' => 'Обхват талии',
+        ]) ?>
+        <?= $form->field($model, 'hips', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+          'placeholder' => 'Обхват бедер',
+        ]) ?>
         <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
           'placeholder' => 'Номер телефона',
         ]) ?>

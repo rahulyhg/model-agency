@@ -85,12 +85,12 @@ class Mod extends ActiveRecord
   {
     return [
       'id' => 'ID',
-      'bust' => 'Бюст',
-      'waist' => 'Талия',
-      'hips' => 'Бедра',
+      'bust' => 'Размер груди',
+      'waist' => 'Обхват талии (см)',
+      'hips' => 'Обхват бедер (см)',
       'age' => 'Возраст',
-      'weight' => 'Вес',
-      'height' => 'Рост',
+      'weight' => 'Вес (кг)',
+      'height' => 'Рост (см)',
       'country_id' => 'Страна',
       'eyes_color_id' => 'Цвет глаз',
       'hair_color_id' => 'Цвет волос',
