@@ -9,10 +9,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'Login';
+$this->title = 'Вход для менеджеров';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-  <section class="b-section b-main__item b-main__item_login">
+  <h1>In development</h1>
+  <?php /* <section class="b-section b-main__item b-main__item_login">
     <header class="b-section__header">
       <h1 class="b-title b-section__header-title"><span
             class="b-title__texts b-title__texts_line-second b-title__texts_line-wide"><span
@@ -46,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
       </form>
     </div>
-  </section>
+  </section> */ ?>
 <?php
 /*
 <div class="site-login">

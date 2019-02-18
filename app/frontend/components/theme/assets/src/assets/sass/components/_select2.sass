@@ -1,4 +1,4 @@
-.select2-container--default .select2-selection--single .select2-selection__arrow 
+.select2-container--default .select2-selection--single .select2-selection__arrow, .select2-container--default .select2-selection--multiple .select2-selection__arrow
     position: absolute
     top: 50%
     right: 10px
@@ -141,6 +141,21 @@
         background: linear-gradient(90deg, $firstGradientStart, $firstGradientEnd)
 
         +xs(height, 2px)
+
+
+
+.select2-results__option[aria-selected="true"]
+    &:after
+        content: ''
+        width: 60%
+        height: 4px
+        position: absolute
+        top: auto
+        bottom: 0
+        left: 0
+        right: auto
+        transition: all 200ms cubic-bezier(0.64, 0.57, 0.67, 1.53)
+        background: linear-gradient(90deg, #dd0a00, #fe7f32)
     
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]

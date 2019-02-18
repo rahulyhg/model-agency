@@ -14,7 +14,7 @@ class AuthController extends Controller
     }
     $model = new ModelLoginForm();
     if ($model->load(Yii::$app->request->post()) && $model->login()) {
-      Yii::$app->session->setFlash('success', 'You have successfully logged in. Welcome back!');
+      Yii::$app->session->setFlash('success', 'Вы успешно вошли в личный кабинет. С возвращением!');
       return $this->goBack();
     } else {
       $model->password = '';

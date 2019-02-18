@@ -4,6 +4,8 @@
  * @var $model \modules\mod\common\models\Mod
  */
 
+use \yii\helpers\Url;
+
 $this->title = $model->full_name;
 
 $this->registerJs(
@@ -58,8 +60,19 @@ JS
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
-    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span class="b-title__text-first">Julia</span><span class="b-title__text-second">Bogdanova</span></span></h1>
-    <button class="b-button b-button_first b-section__header-contacts-model-btn"><span class="b-button__texts"><span class="b-button__text-first">Contacts Model</span></span></button>
+    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first">
+        <span class="b-title__text-first">Julia</span><span class="b-title__text-second">Bogdanova</span></span>
+    </h1>
+    <a href="<?= Url::to(['/mod/model/index']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
+      <span class="b-button__texts">
+        <span class="b-button__text-first">Все модели</span>
+      </span>
+    </a>
+    <a href="<?= Url::to(['/mod/model/contact']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
+      <span class="b-button__texts">
+        <span class="b-button__text-first">Связаться с моделью</span>
+      </span>
+    </a>
   </header>
   <div class="b-single-model b-section__main">
     <div class="b-single-model__inner">
@@ -102,19 +115,41 @@ JS
         'elementClass' => 'b-single-model__features'
       ]) ?>
     </div>
+    <div class="b-single-model__footer">
+      <div class="b-single-model__share">
+        <script type="text/javascript">(function() {
+            if (window.pluso)if (typeof window.pluso.start == "function") return;
+            if (window.ifpluso==undefined) { window.ifpluso = 1;
+              var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+              s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+              s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+              var h=d[g]('body')[0];
+              h.appendChild(s);
+            }})();</script>
+        <div class="pluso" data-background="none;" data-options="small,square,line,horizontal,counter,sepcounter=1,theme=14" data-services="vkontakte,odnoklassniki,facebook,twitter,moimir"></div>
+      </div>
+    </div>
   </div>
 </section>
 <section class="b-section b-main__item">
   <div class="b-pagination-model b-section__main">
-    <div class="b-pagination-model__items"><a class="b-pagination-model__item" href="single-model.html">
+    <div class="b-pagination-model__items">
+      <?php if($model->prevMod) : ?>
+      <a class="b-pagination-model__item" href="<?= Url::to(['/mod/model/view/', 'id' => $model->prevMod->id]) ?>">
         <div class="b-pagination-model__item-icon fas fa-arrow-left"></div>
-        <div class="b-pagination-model__item-text">Julia Bogdanova</div></a>
+        <div class="b-pagination-model__item-text"><?= $model->prevMod->full_name ?></div>
+      </a>
+      <?php endif; ?>
       <div class="b-pagination-model__item">
         <div class="b-pagination-model__item-line"></div>
         <div class="b-pagination-model__item-text">Julia Bogdanova</div>
-      </div><a class="b-pagination-model__item" href="single-model.html">
-        <div class="b-pagination-model__item-text">Julia Bogdanova</div>
-        <div class="b-pagination-model__item-icon fas fa-arrow-right"></div></a>
+      </div>
+      <?php if($model->nextMod) : ?>
+      <a class="b-pagination-model__item" href="<?= Url::to(['/mod/model/view/', 'id' => $model->nextMod->id]) ?>">
+        <div class="b-pagination-model__item-text"><?= $model->nextMod->full_name ?></div>
+        <div class="b-pagination-model__item-icon fas fa-arrow-right"></div>
+      </a>
+      <?php endif; ?>
     </div>
   </div>
 </section>

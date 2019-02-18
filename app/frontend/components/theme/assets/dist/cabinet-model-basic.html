@@ -269,6 +269,29 @@
                           </div>
                         </label>
                       </div>
+                      <div class="b-field-select b-field-select_icon b-cabinet__form-field">
+                        <label class="b-field-select__label"><span class="b-field-select__title">Country</span>
+                          <div class="b-field__wrap">
+                            <select class="b-field-select__select2" id="tags-example" required multiple="multiple">
+                              <option>New York</option>
+                              <option selected>Los Angeles</option>
+                              <option>Chicago</option>
+                              <option>Houston</option>
+                              <option>Phoenix</option>
+                              <option>Philadelphia</option>
+                              <option>San Antonio</option>
+                              <option>San Antonio</option>
+                              <option>San Diego</option>
+                              <option>Dallas</option>
+                              <option>San Jose</option>
+                              <option>Austin</option>
+                              <option>Jacksonville</option>
+                              <option>San Francisco</option>
+                              <option>Columbus</option>
+                            </select><i class="b-field-select__icon b-field-select__icon_focus-first fas fa-map-marker-alt"></i>
+                          </div>
+                        </label>
+                      </div>
                       <div class="b-field b-cabinet__form-field">
                         <label class="b-field__label"><span class="b-field__title">New password</span>
                           <div class="b-field__wrap">
@@ -336,6 +359,16 @@
                       return "No results to search";
                   }
               }
+          });
+      
+          $('#tags-example').select2({
+              "searchInputPlaceholder": 'Enter...',
+              'language': {
+                  'noResults': function () {
+                      return "No results to search";
+                  }
+              },
+              tags: true
           });
       
           $('select').on('select2:open', function (e) {

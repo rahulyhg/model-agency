@@ -52,6 +52,9 @@ return [
     'lang' => [
       'class' => modules\lang\Module::class,
     ],
+    'like' => [
+      'class' => modules\like\Module::class,
+    ],
   ],
   'as initializer' => [
     'class' => common\initializers\ApplicationInitializer::class,

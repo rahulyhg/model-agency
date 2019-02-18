@@ -3,6 +3,7 @@ namespace modules\mod\frontend\controllers\profile;
 
 use modules\mod\common\models\ModImage;
 use modules\mod\common\models\ModUser;
+use modules\mod\common\models\SpokenLang;
 use Yii;
 use yii\base\Model;
 use yii\web\Controller;
@@ -35,7 +36,8 @@ class ModelController extends Controller
     }
     return $this->render('index', [
       'modUser' => $modUser,
-      'model' => $model
+      'model' => $model,
+      'spokenLangMap' => SpokenLang::getMap()
     ]);
   }
 
@@ -52,7 +54,8 @@ class ModelController extends Controller
     }
     return $this->render('photo', [
       'modUser' => $modUser,
-      'model' => $model
+      'model' => $model,
+      'images' => ModImage::find()->where(['entity_id' => $model->id])->orderBy('created_at DESC')->all()
     ]);
   }
 

@@ -3,6 +3,7 @@
  * @var $this \yii\web\View
  * @var $modUser \modules\mod\common\models\ModUser
  * @var $model \modules\mod\common\models\Mod
+ * @var $images \modules\mod\common\models\ModImage[]
  */
 
 use \yii\widgets\ActiveForm;
@@ -107,16 +108,16 @@ JS
         <li class="b-tabs__item">
           <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/index']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-first">Basic</span>
-              <span class="b-tabs__text-second">data</span>
+              <span class="b-tabs__text-first">Основная</span>
+              <span class="b-tabs__text-second">информация</span>
             </span>
           </a>
         </li>
         <li class="b-tabs__item b-tabs__item_line-first">
           <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-second">My</span>
-              <span class="b-tabs__text-first">photos</span>
+              <span class="b-tabs__text-second">Мои</span>
+              <span class="b-tabs__text-first">фото</span>
             </span>
           </a>
         </li>
@@ -133,7 +134,7 @@ JS
   </header>
   <div class="b-cabinet b-section__main">
     <div class="b-cabinet__photos">
-      <?php foreach ($model->modImages as $image) :
+      <?php foreach ($images as $image) :
         /**
          * @var $image \modules\mod\common\models\ModImage
          */ ?>

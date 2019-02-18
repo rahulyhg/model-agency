@@ -15,6 +15,7 @@ class ModelController extends Controller
     $filterForm = new ModelFilterForm();
     $showFilterForm = isset($_REQUEST[$filterForm->formName()]);
     $dataProvider = $filterForm->search(Yii::$app->request->queryParams);
+    $dataProvider->query->orderBy('created_at DESC');
     return $this->render('index', [
       'dataProvider' => $dataProvider,
       'filterForm' => $filterForm,
@@ -29,6 +30,11 @@ class ModelController extends Controller
     return $this->render('view', [
       'model' => $model
     ]);
+  }
+
+  public function actionContact()
+  {
+    return $this->render('contact', []);
   }
 
   protected function findModel($id)

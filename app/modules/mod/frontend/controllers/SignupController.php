@@ -31,4 +31,9 @@ class SignupController extends Controller
   {
     return $this->render('manager');
   }
+
+  public function actionRole()
+  {
+    return $this->render('role');
+  }
 }

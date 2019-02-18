@@ -8,6 +8,7 @@ use modules\mod\common\services\ModService;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -35,10 +36,17 @@ use yii\web\UploadedFile;
  * @property ModUser $modUser
  * @property ModLang[] $translations
  * @property ModImage[] $modImages
+ * @property ModSpokenLang[] $modSpokenLangs
+ *
+ * @property array $spoken_lang_ids
+ * @property Mod $nextMod
+ * @property Mod $prevMod
  */
 class Mod extends ActiveRecord
 {
-  public function getBustSizeMap()
+  public $spoken_lang_ids;
+
+  public static function getBustSizeMap()
   {
     return [
       1 => 1,
@@ -86,6 +94,7 @@ class Mod extends ActiveRecord
       [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
       [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
       [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Country::class, 'targetAttribute' => ['country_id' => 'id']],
+      [['spoken_lang_ids'], 'each', 'rule' => ['integer']]
     ];
   }
 
@@ -118,6 +127,14 @@ class Mod extends ActiveRecord
   public function getModImages()
   {
     return $this->hasMany(ModImage::class, ['entity_id' => 'id']);
+  }
+
+  /**
+   * @return \yii\db\ActiveQuery
+   */
+  public function getModSpokenLangs()
+  {
+    return $this->hasMany(ModSpokenLang::class, ['mod_id' => 'id']);
   }
 
   /**
@@ -205,8 +222,8 @@ class Mod extends ActiveRecord
   {
     $this->images = UploadedFile::getInstances($this, 'images');
     if ($this->validate('images')) {
-      if (empty($this->images)) {
-        return true;
+      if (count($this->images) === 0) {
+        return false;
       }
       if ($imagesIds = Yii::$app->filestorage->multipleUploadFromModel($this, 'images', self::IMAGES_DIR)) {
         $modImagesData = ModService::generateModImageObjects($imagesIds, $this->id);
@@ -215,5 +232,19 @@ class Mod extends ActiveRecord
       }
     }
     return false;
+  }
+
+  public function getNextMod()
+  {
+    $nextMod = $this->find()->where(['>', 'id', $this->id])->orderBy('id ASC')->one();
+    if(!$nextMod) return null;
+    return $nextMod;
+  }
+
+  public function getPrevMod()
+  {
+    $prevMod = $this->find()->where(['<', 'id', $this->id])->orderBy('id DESC')->one();
+    if(!$prevMod) return null;
+    return $prevMod;
   }
 }

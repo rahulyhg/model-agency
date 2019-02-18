@@ -13,8 +13,30 @@ class ModelSignUpForm extends Model
   public $age;
   public $height;
   public $weight;
+  public $waist;
+  public $hips;
+  public $shoes;
+  public $bust;
   public $password;
   public $passwordRepeat;
+
+  public function attributeLabels()
+  {
+    return [
+      'phone' => 'Номер телефона',
+      'email' => 'Email',
+      'fullName' => 'Полное имя',
+      'age' => 'Возраст',
+      'height' => 'Рост',
+      'weight' => 'Вес',
+      'waist' => 'Обхват талии',
+      'hips' => 'Обхват бедер',
+      'shoes' => 'Размер ноги',
+      'bust' => 'Размер груди',
+      'password' => 'Пароль',
+      'passwordRepeat' => 'Подтверждение пароля',
+    ];
+  }
 
   /**
    * {@inheritdoc}
@@ -26,7 +48,7 @@ class ModelSignUpForm extends Model
       [['email', 'phone', 'fullName', 'age'], 'trim'],
       ['email', 'email'],
       [['email', 'phone', 'fullName'], 'string', 'max' => 255],
-      [['weight', 'height'], 'integer'],
+      [['weight', 'height', 'waist', 'hips', 'shoes', 'bust'], 'integer'],
       [['email'], 'unique', 'targetClass' => ModUser::class, 'message' => 'This email address has already been taken.'],
       [['phone'], 'unique', 'targetClass' => ModUser::class, 'message' => 'This phone has already been taken.'],
       [['password', 'passwordRepeat'], 'required'],
@@ -64,6 +86,10 @@ class ModelSignUpForm extends Model
     $mod->mod_user_id = $user->id;
     $mod->height = $this->height;
     $mod->weight = $this->weight;
+    $mod->waist = $this->waist;
+    $mod->hips = $this->hips;
+    $mod->shoes = $this->shoes;
+    $mod->bust = $this->bust;
     if(!$mod->save()) {
       $transaction->rollBack();
       return null;

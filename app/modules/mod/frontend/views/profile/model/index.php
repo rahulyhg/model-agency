@@ -3,21 +3,36 @@
  * @var $this \yii\web\View
  * @var $modUser \modules\mod\common\models\ModUser
  * @var $model \modules\mod\common\models\Mod
+ * @var array $spokenLangMap
  */
+
 use \modules\mod\lib\ActiveForm;
 use \yii\helpers\Url;
+use modules\mod\common\models\Mod;
 
-$this->title = "{$model->full_name} - Profile";
+$this->title = "{$model->full_name} - Профиль";
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
   $('#bust_selector').select2({
+      "minimumResultsForSearch": -1,
       "searchInputPlaceholder": 'Введите...',
       'language': {
           'noResults': function () {
               return "Не найдено";
           }
       }
+  });
+  
+  $('#spoken_lang_selector').select2({
+      "searchInputPlaceholder": 'Введите...',
+      'language': {
+          'noResults': function () {
+              return "Не найдено";
+          }
+      },
+      tags: true,
+      tokenSeparators: [',', ' ']
   });
 
   $('select').on('select2:open', function (e) {
@@ -103,15 +118,15 @@ JS
         <li class="b-tabs__item b-tabs__item_line-first">
           <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/index']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-first">Basic</span>
-              <span class="b-tabs__text-second">data</span>
+              <span class="b-tabs__text-first">Основная</span>
+              <span class="b-tabs__text-second">информация</span>
             </span>
           </a>
         </li>
         <li class="b-tabs__item"><a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-second">My</span>
-              <span class="b-tabs__text-first">photos</span>
+              <span class="b-tabs__text-second">Мои</span>
+              <span class="b-tabs__text-first">фото</span>
             </span>
           </a>
         </li>
@@ -128,84 +143,99 @@ JS
   </header>
   <div class="b-cabinet b-section__main">
     <?php $form = ActiveForm::begin(['options' => ['class' => 'b-cabinet__form']]) ?>
-      <div class="b-cabinet__form-inner">
-        <?= $form->field($model, 'full_name', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-user-ninja')->textInput([
-          'placeholder' => 'Полное имя',
-        ]) ?>
-        <?= $form->field($model, 'age', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-birthday-cake')->textInput([
-          'placeholder' => 'Возраст',
-        ]) ?>
-        <?= $form->field($model, 'height', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-v')->textInput([
-          'placeholder' => 'Рост',
-        ]) ?>
-        <?= $form->field($model, 'weight', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-weight')->textInput([
-          'placeholder' => 'Вес',
-        ]) ?>
-        <div class="b-field-select b-field-select_icon b-cabinet__form-field">
-          <label class="b-field-select__label"><span class="b-field-select__title">Размер груди</span>
-            <div class="b-field__wrap">
-              <?= $form->field($model, 'bust', ['template' => '{input}', 'options' => ['tag' => false]])
-                ->label(false)
-                ->dropDownList($model->getBustSizeMap(), [
-                  'id' => 'bust_selector',
-                  'class' => 'b-field-select__select2',
-                  'placeholder' => 'Выберите...',
-                ]); ?>
-              <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
-            </div>
-          </label>
-        </div>
-        <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
-          'placeholder' => 'Размер ноги',
-        ]) ?>
-        <?= $form->field($model, 'waist', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
-          'placeholder' => 'Обхват талии',
-        ]) ?>
-        <?= $form->field($model, 'hips', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
-          'placeholder' => 'Обхват бедер',
-        ]) ?>
-        <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
-          'placeholder' => 'Номер телефона',
-        ]) ?>
-        <?= $form->field($modUser, 'email', ['options' => ['class' => 'b-cabinet__form-field']])->icon('far fa-envelope')->textInput([
-          'placeholder' => 'Email',
-        ]) ?>
-        <?= $form->field($modUser, 'newPassword', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-key')->passwordInput([
+    <div class="b-cabinet__form-inner">
+      <?= $form->field($model, 'full_name', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-user-ninja')->textInput([
+        'placeholder' => 'Полное имя',
+      ]) ?>
+      <?= $form->field($model, 'age', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-birthday-cake')->textInput([
+        'placeholder' => 'Возраст',
+      ]) ?>
+      <?= $form->field($model, 'height', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-v')->textInput([
+        'placeholder' => 'Рост',
+      ]) ?>
+      <?= $form->field($model, 'weight', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-weight')->textInput([
+        'placeholder' => 'Вес',
+      ]) ?>
+      <div class="b-field-select b-field-select_icon b-cabinet__form-field">
+        <label class="b-field-select__label"><span class="b-field-select__title">Размер груди</span>
+          <div class="b-field__wrap">
+            <?= $form->field($model, 'bust', ['template' => '{input}', 'options' => ['tag' => false]])
+              ->label(false)
+              ->dropDownList(Mod::getBustSizeMap(), [
+                'id' => 'bust_selector',
+                'class' => 'b-field-select__select2',
+                'placeholder' => 'Выберите...',
+              ]); ?>
+            <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
+          </div>
+        </label>
+      </div>
+      <div class="b-field-select b-field-select_icon b-cabinet__form-field">
+        <label class="b-field-select__label"><span class="b-field-select__title">Знаю языки</span>
+          <div class="b-field__wrap">
+            <?= $form->field($model, 'spoken_lang_ids', ['template' => '{input}', 'options' => ['tag' => false]])
+              ->label(false)
+              ->dropDownList($spokenLangMap, [
+                'id' => 'spoken_lang_selector',
+                'class' => 'b-field-select__select2',
+                'placeholder' => 'Выберите...',
+                'multiple' => 'multiple'
+              ]); ?>
+            <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
+          </div>
+        </label>
+      </div>
+      <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
+        'placeholder' => 'Размер ноги',
+      ]) ?>
+      <?= $form->field($model, 'waist', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+        'placeholder' => 'Обхват талии',
+      ]) ?>
+      <?= $form->field($model, 'hips', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+        'placeholder' => 'Обхват бедер',
+      ]) ?>
+      <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
+        'placeholder' => 'Номер телефона',
+      ]) ?>
+      <?= $form->field($modUser, 'email', ['options' => ['class' => 'b-cabinet__form-field']])->icon('far fa-envelope')->textInput([
+        'placeholder' => 'Email',
+      ]) ?>
+      <?= $form->field($modUser, 'newPassword', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-key')->passwordInput([
+        'placeholder' => 'Введите...',
+      ]) ?>
+      <?= $form->field($modUser, 'passwordRepeat', ['options' => ['class' => 'b-cabinet__form-field']])
+        ->icon('fas fa-key')
+        ->passwordInput([
           'placeholder' => 'Введите...',
         ]) ?>
-        <?= $form->field($modUser, 'passwordRepeat', ['options' => ['class' => 'b-cabinet__form-field']])
-          ->icon('fas fa-key')
-          ->passwordInput([
-            'placeholder' => 'Введите...',
-          ]) ?>
-      </div>
-      <div class="b-upload b-cabinet__form-upload">
-        <div class="b-upload__header"><span class="b-upload__title">Main photo</span>
-          <label class="b-upload__label">
-            <div class="b-link b-upload__link">
-              <i class="b-link__icon fas fa-upload"></i>
-              <span class="b-link__texts b-link__texts_underline">
-                <span class="b-link__text-first">Upload </span>
-                <span class="b-link__text-second">new</span>
+    </div>
+    <div class="b-upload b-cabinet__form-upload">
+      <div class="b-upload__header"><span class="b-upload__title">Главное фото</span>
+        <label class="b-upload__label">
+          <div class="b-link b-upload__link">
+            <i class="b-link__icon fas fa-upload"></i>
+            <span class="b-link__texts b-link__texts_underline">
+                <span class="b-link__text-first">Загрузить </span>
+                <span class="b-link__text-second">новое</span>
               </span>
-            </div>
-            <?= $form->field($modUser, 'photoFile')->title(false)->fileInput([
-                'class' => 'b-upload__input'
-            ]) ?>
-          </label>
-        </div>
-        <a class="b-upload__preview"
-           href="<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>"
-           style="background-image: url('<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>'"
-           data-fancybox="gallery"></a>
+          </div>
+          <?= $form->field($modUser, 'photoFile')->title(false)->fileInput([
+            'class' => 'b-upload__input'
+          ]) ?>
+        </label>
       </div>
-      <div class="b-cabinet__form-footer">
-        <button class="b-button b-button_first b-cabinet__form-submit" type="submit">
+      <a class="b-upload__preview"
+         href="<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>"
+         style="background-image: url('<?= $modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>'"
+         data-fancybox="gallery"></a>
+    </div>
+    <div class="b-cabinet__form-footer">
+      <button class="b-button b-button_first b-cabinet__form-submit" type="submit">
           <span class="b-button__texts">
             <span class="b-button__text-first">Сохранить изменения</span>
           </span>
-        </button>
-      </div>
+      </button>
+    </div>
     <?php ActiveForm::end(); ?>
   </div>
 </section>

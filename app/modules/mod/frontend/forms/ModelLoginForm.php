@@ -13,6 +13,14 @@ class ModelLoginForm extends Model
 
   private $_user;
 
+  public function attributeLabels()
+  {
+    return [
+      'phone' => 'Номер телефона',
+      'password' => 'Пароль',
+    ];
+  }
+
   /**
    * {@inheritdoc}
    */

@@ -16,6 +16,7 @@ $this->title = 'Наши модели';
 $this->registerJs(<<<JS
 $(document).ready(function () {
   $('#hair_color').select2({
+      "minimumResultsForSearch": -1,
       "searchInputPlaceholder": 'Поиск...',
       'language': {
           'noResults': function () {
@@ -64,9 +65,9 @@ JS
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
-    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span class="b-title__text-first">Our</span><span class="b-title__text-second">models</span></span></h1>
+    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span class="b-title__text-first">Наши</span><span class="b-title__text-second">модели</span></span></h1>
     <div class="b-search b-section__header-search" action="search-model">
-      <button class="b-button b-button_first b-search__btn" data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="modelFilter"><span class="b-button__texts"><i class="b-button__icon fas fa-search"></i><span class="b-button__text-first">Open filter</span></span></button>
+      <button class="b-button b-button_first b-search__btn" data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="modelFilter"><span class="b-button__texts"><i class="b-button__icon fas fa-search"></i><span class="b-button__text-first">Открыть фильтр</span></span></button>
     </div>
   </header>
   <div class="b-section__main collapse <?= $showFilterForm ? 'in' : '' ?>" id="modelFilter">
@@ -86,7 +87,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-1',
-                  'type' => 'number',
                   'placeholder' => 'от',
                   'value' => 18,
                   'min' => 18,
@@ -96,7 +96,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-2',
-                  'type' => 'number',
                   'placeholder' => 'до',
                   'min' => 18,
                   'max' => 99
@@ -112,7 +111,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-1',
-                  'type' => 'number',
                   'placeholder' => 'от',
                   'min' => 0,
                 ]); ?>
@@ -120,7 +118,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-2',
-                  'type' => 'number',
                   'placeholder' => 'до',
                   'min' => 0,
                 ]); ?>
@@ -135,7 +132,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-1',
-                  'type' => 'number',
                   'placeholder' => 'от',
                   'min' => 0,
                 ]); ?>
@@ -143,7 +139,6 @@ JS
                 ->label(false)
                 ->textInput([
                   'class' => 'b-double-field__input-2',
-                  'type' => 'number',
                   'placeholder' => 'до',
                   'min' => 0,
                 ]); ?>
@@ -166,7 +161,7 @@ JS
           </label>
         </div>
         <div class="b-field b-filter-form__item">
-          <label class="b-field__label"><span class="b-field__title">Имя / фамилия</span>
+          <label class="b-field__label"><span class="b-field__title">Полное имя</span>
             <div class="b-field__wrap">
               <?= $form->field($filterForm, 'full_name', ['template' => '{input}', 'options' => ['tag' => false]])
                 ->label(false)
@@ -178,7 +173,7 @@ JS
             </div>
           </label>
         </div>
-        <button class="b-button b-button_first b-filter-form__item b-filter-form__item_submit" type="submit"><span class="b-button__texts"><span class="b-button__text-first">Search</span></span></button>
+        <button class="b-button b-button_first b-filter-form__item b-filter-form__item_submit" type="submit"><span class="b-button__texts"><span class="b-button__text-first">Поиск</span></span></button>
       </div>
     <?php ActiveForm::end(); ?>
   </div>

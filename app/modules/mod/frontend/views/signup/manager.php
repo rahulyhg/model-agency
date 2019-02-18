@@ -12,9 +12,10 @@ use yii\helpers\Url;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-  <section class="b-section b-main__item">
+<h1>In development</h1>
+  <?php /*<section class="b-section b-main__item">
     <header class="b-section__header">
-      <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-second b-title__texts_line-wide"><span class="b-title__text-second">Register as a</span><span class="b-title__text-first">user</span></span></h1>
+      <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-second b-title__texts_line-wide"><span class="b-title__text-second">Регистрация</span><span class="b-title__text-first">менеджера</span></span></h1>
     </header>
     <div class="b-registration b-section__main">
       <h1>In development!</h1>
@@ -65,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
       </form>
     </div>
-  </section>
+  </section> */ ?>
 <?php
 /*
 <div class="site-login">

@@ -199,6 +199,28 @@ block body
 
                                                     i.b-field-select__icon.b-field-select__icon_focus-first.fas.fa-map-marker-alt
 
+                                        .b-field-select.b-field-select_icon.b-cabinet__form-field
+                                            label.b-field-select__label
+                                                span.b-field-select__title Country
+                                                .b-field__wrap
+                                                    select#tags-example.b-field-select__select2(required multiple="multiple")
+                                                        option New York
+                                                        option(selected) Los Angeles
+                                                        option Chicago
+                                                        option Houston
+                                                        option Phoenix
+                                                        option Philadelphia
+                                                        option San Antonio
+                                                        option San Antonio
+                                                        option San Diego
+                                                        option Dallas
+                                                        option San Jose
+                                                        option Austin
+                                                        option Jacksonville
+                                                        option San Francisco
+                                                        option Columbus
+
+                                                    i.b-field-select__icon.b-field-select__icon_focus-first.fas.fa-map-marker-alt
                                         
                                         .b-field.b-cabinet__form-field
                                             label.b-field__label
@@ -267,6 +289,16 @@ block script
                         return "No results to search";
                     }
                 }
+            });
+
+            $('#tags-example').select2({
+                "searchInputPlaceholder": 'Enter...',
+                'language': {
+                    'noResults': function () {
+                        return "No results to search";
+                    }
+                },
+                tags: true
             });
 
             $('select').on('select2:open', function (e) {
