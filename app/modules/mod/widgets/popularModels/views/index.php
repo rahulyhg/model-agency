@@ -14,11 +14,12 @@ use yii\helpers\Url;
        */
       ?>
       <a class="b-our-model b-our-models__item" href="<?= Url::to(['/mod/model/view', 'id' => $model->id]) ?>">
-        <div class="b-our-model__box">
+        <div class="b-our-model__box" style="background-image: url('<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>')">
           <img class="b-our-model__img"
                alt="<?= "{$model->full_name}" ?>"
                src="<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>">
           <h2 class="b-our-model__name"><?= "{$model->full_name}" ?></h2>
+          <div class="b-our-model__id"><?= $model->id ?></div>
         </div>
         <div class="b-our-model__footer">
           <div class="b-like b-our-model__like"><i class="b-like__icon fas fa-heart"></i>
