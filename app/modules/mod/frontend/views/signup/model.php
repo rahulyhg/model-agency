@@ -78,7 +78,7 @@ JS
             'placeholder' => 'Обхват бедер',
           ]) ?>
           <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-shoe-prints')->textInput([
-            'placeholder' => 'Размер ноги',
+            'placeholder' => 'Размер обуви',
           ]) ?>
           <div class="b-field-select b-field-select_icon b-registration__form-field">
               <div class="b-field__wrap">

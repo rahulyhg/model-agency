@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Еще не зарегистрированы?
             <a class="b-link b-login__form-redirect-link" href="<?= Url::to(['/mod/signup/model']) ?>">
               <span class="b-link__texts b-link__texts_first b-link__texts_underline-first">
-                <span class="b-link__text">Зарегисрироваться!</span>
+                <span class="b-link__text">Зарегистрироваться!</span>
               </span>
             </a>
           </span>

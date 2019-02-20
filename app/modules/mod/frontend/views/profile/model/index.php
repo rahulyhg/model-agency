@@ -10,7 +10,7 @@ use \modules\mod\lib\ActiveForm;
 use \yii\helpers\Url;
 use modules\mod\common\models\Mod;
 
-$this->title = "{$model->full_name} - Профиль";
+$this->title = "{$model->full_name} - Мой кабинет";
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
@@ -125,8 +125,8 @@ JS
         </li>
         <li class="b-tabs__item"><a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-second">Мои</span>
-              <span class="b-tabs__text-first">фото</span>
+              <span class="b-tabs__text-second">Моя</span>
+              <span class="b-tabs__text-first">галерея</span>
             </span>
           </a>
         </li>
@@ -170,6 +170,29 @@ JS
           </div>
         </label>
       </div>
+      <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
+        'placeholder' => 'Размер обуви',
+      ]) ?>
+      <?= $form->field($model, 'waist', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+        'placeholder' => 'Обхват талии',
+      ]) ?>
+      <?= $form->field($model, 'hips', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
+        'placeholder' => 'Обхват бедер',
+      ]) ?>
+      <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
+        'placeholder' => 'Номер телефона',
+      ]) ?>
+      <?= $form->field($modUser, 'newPassword', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-key')->passwordInput([
+        'placeholder' => 'Введите...',
+      ]) ?>
+      <?= $form->field($modUser, 'email', ['options' => ['class' => 'b-cabinet__form-field']])->icon('far fa-envelope')->textInput([
+        'placeholder' => 'Email',
+      ]) ?>
+      <?= $form->field($modUser, 'passwordRepeat', ['options' => ['class' => 'b-cabinet__form-field']])
+        ->icon('fas fa-key')
+        ->passwordInput([
+          'placeholder' => 'Введите...',
+        ]) ?>
       <div class="b-field-select b-field-select_icon b-cabinet__form-field">
         <label class="b-field-select__label"><span class="b-field-select__title">Знаю языки</span>
           <div class="b-field__wrap">
@@ -185,29 +208,6 @@ JS
           </div>
         </label>
       </div>
-      <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-shoe-prints')->textInput([
-        'placeholder' => 'Размер ноги',
-      ]) ?>
-      <?= $form->field($model, 'waist', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
-        'placeholder' => 'Обхват талии',
-      ]) ?>
-      <?= $form->field($model, 'hips', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-arrows-alt-h')->textInput([
-        'placeholder' => 'Обхват бедер',
-      ]) ?>
-      <?= $form->field($modUser, 'phone', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-mobile-alt')->textInput([
-        'placeholder' => 'Номер телефона',
-      ]) ?>
-      <?= $form->field($modUser, 'email', ['options' => ['class' => 'b-cabinet__form-field']])->icon('far fa-envelope')->textInput([
-        'placeholder' => 'Email',
-      ]) ?>
-      <?= $form->field($modUser, 'newPassword', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-key')->passwordInput([
-        'placeholder' => 'Введите...',
-      ]) ?>
-      <?= $form->field($modUser, 'passwordRepeat', ['options' => ['class' => 'b-cabinet__form-field']])
-        ->icon('fas fa-key')
-        ->passwordInput([
-          'placeholder' => 'Введите...',
-        ]) ?>
     </div>
     <div class="b-upload b-cabinet__form-upload">
       <div class="b-upload__header"><span class="b-upload__title">Главное фото</span>

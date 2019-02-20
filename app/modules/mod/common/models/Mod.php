@@ -121,6 +121,14 @@ class Mod extends ActiveRecord
     ];
   }
 
+  public function beforeDelete()
+  {
+    // delete mod user before mod delete
+    if($this->modUser->delete()) {
+      return parent::beforeDelete();
+    }
+  }
+
   /**
    * @return \yii\db\ActiveQuery
    */

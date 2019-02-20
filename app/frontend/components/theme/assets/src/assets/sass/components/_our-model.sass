@@ -9,6 +9,13 @@
     box-shadow: 0 5px 20px rgba(0,0,0,.1)
     transition: all 200ms linear
     overflow: hidden
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    height: 400px
+    
+    +md(height, 350px)
+    +sm(height, 300px)
     
     &:hover
         box-shadow: 0 5px 20px rgba(0,0,0,.15)
@@ -28,10 +35,7 @@
 
 
 .b-our-model__img
-    width: 100%
-    max-width: 100%
-    height: auto
-    position: relative
+    display: none
 
 
 .b-our-model__name
@@ -68,6 +72,16 @@
     &:before
         transform: translate3d(calc(-100% + 15px), -50%, 0)
         width: 20px
+
+.b-our-model__id
+    position: absolute
+    top: 0
+    right: 0
+    padding: 15px
+    color: #fff
+    background: linear-gradient(90deg, #dd0a00, #fe7f32)
+    border-radius: 0 20px 0 20px
+    z-index: 3
 
     
 .b-our-model__footer

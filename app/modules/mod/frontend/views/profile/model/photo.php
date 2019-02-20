@@ -9,7 +9,7 @@
 use \yii\widgets\ActiveForm;
 use \yii\helpers\Url;
 
-$this->title = "{$model->full_name} - Profile";
+$this->title = "{$model->full_name} - Моя галерея";
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
@@ -116,8 +116,8 @@ JS
         <li class="b-tabs__item b-tabs__item_line-first">
           <a class="b-tabs__item-link" href="<?= Url::to(['/mod/profile/model/photo']) ?>">
             <span class="b-tabs__texts">
-              <span class="b-tabs__text-second">Мои</span>
-              <span class="b-tabs__text-first">фото</span>
+              <span class="b-tabs__text-second">Моя</span>
+              <span class="b-tabs__text-first">галерея</span>
             </span>
           </a>
         </li>

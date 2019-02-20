@@ -134,7 +134,7 @@ class ModUser extends ActiveRecord implements IdentityInterface
     return [
       'id' => 'ID',
       'email' => 'Email',
-      'phone' => 'Phone',
+      'phone' => 'Номер телефона',
       'auth_key' => 'Auth Key',
       'password_hash' => 'Password Hash',
       'password_reset_token' => 'Password Reset Token',

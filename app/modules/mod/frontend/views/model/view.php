@@ -61,14 +61,14 @@ JS
 <section class="b-section b-main__item">
   <header class="b-section__header">
     <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first">
-        <span class="b-title__text-first">Julia</span><span class="b-title__text-second">Bogdanova</span></span>
+        <span class="b-title__text-second"><?= $model->full_name ?></span></span>
     </h1>
     <a href="<?= Url::to(['/mod/model/index']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
       <span class="b-button__texts">
         <span class="b-button__text-first">Все модели</span>
       </span>
     </a>
-    <a href="<?= Url::to(['/mod/model/contact']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
+    <a href="<?= Url::to(['/page/default/view', 'slug' => 'contacts']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
       <span class="b-button__texts">
         <span class="b-button__text-first">Связаться с моделью</span>
       </span>
@@ -78,21 +78,7 @@ JS
     <div class="b-single-model__inner">
       <div class="b-single-model__slider">
         <div class="b-single-model__slider-items">
-          <?php
-          if($model->modImages):
-          foreach ($model->modImages as $image) : ?>
-            <div class="b-single-model__slider-item">
-              <a class="b-single-model__img-box" href="<?= $image->url ?>" style="background-image: url('<?= $image->url ?>')" data-fancybox="gallery">
-                <img class="b-single-model__img" alt="julia bogdanova" src="<?= $image->url ?>">
-              </a>
-              <div class="b-single-model__footer">
-                <div class="b-like b-single-model__like"><i class="b-like__icon fas fa-heart"></i>
-                  <div class="b-like__value">1448</div>
-                </div>
-              </div>
-            </div>
-          <?php endforeach;
-          else: ?>
+          <?php if($model->modUser->photo_id) : ?>
             <div class="b-single-model__slider-item">
               <a class="b-single-model__img-box" href="<?= $model->modUser->photoUrl ?>" style="background-image: url('<?= $model->modUser->photoUrl ?>')" data-fancybox="gallery">
                 <img class="b-single-model__img" alt="<?= $model->full_name ?>" src="<?= $model->modUser->photoUrl ?>">
@@ -103,6 +89,20 @@ JS
                 </div>
               </div>
             </div>
+          <?php endif;
+          if($model->modImages):
+            foreach ($model->modImages as $image) : ?>
+              <div class="b-single-model__slider-item">
+                <a class="b-single-model__img-box" href="<?= $image->url ?>" style="background-image: url('<?= $image->url ?>')" data-fancybox="gallery">
+                  <img class="b-single-model__img" alt="<?= $model->full_name ?>" src="<?= $image->url ?>">
+                </a>
+                <div class="b-single-model__footer">
+                  <div class="b-like b-single-model__like"><i class="b-like__icon fas fa-heart"></i>
+                    <div class="b-like__value">1448</div>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
           <?php endif; ?>
         </div>
         <div class="b-single-model__slider-arrows">
@@ -142,7 +142,7 @@ JS
       <?php endif; ?>
       <div class="b-pagination-model__item">
         <div class="b-pagination-model__item-line"></div>
-        <div class="b-pagination-model__item-text">Julia Bogdanova</div>
+        <div class="b-pagination-model__item-text"><?= $model->full_name ?></div>
       </div>
       <?php if($model->nextMod) : ?>
       <a class="b-pagination-model__item" href="<?= Url::to(['/mod/model/view/', 'id' => $model->nextMod->id]) ?>">

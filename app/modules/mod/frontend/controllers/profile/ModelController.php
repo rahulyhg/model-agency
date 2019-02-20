@@ -1,4 +1,5 @@
 <?php
+
 namespace modules\mod\frontend\controllers\profile;
 
 use modules\mod\common\models\ModImage;
@@ -6,10 +7,27 @@ use modules\mod\common\models\ModUser;
 use modules\mod\common\models\SpokenLang;
 use Yii;
 use yii\base\Model;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 
 class ModelController extends Controller
 {
+  public function behaviors()
+  {
+    return [
+      'access' => [
+        'class' => AccessControl::class,
+        'rules' => [
+          [
+            'actions' => ['index', 'photo', 'payment'],
+            'allow' => true,
+            'roles' => ['@'],
+          ],
+        ],
+      ]
+    ];
+  }
+
   public function actionIndex()
   {
     /**
@@ -22,14 +40,14 @@ class ModelController extends Controller
     $modUserSave = false;
     $modelSave = false;
     $post = Yii::$app->request->post();
-    if($modUser->load($post) && $modUser->save()) {
+    if ($modUser->load($post) && $modUser->save()) {
       $modUserSave = true;
     }
-    if($model->load($post) && $model->save()) {
+    if ($model->load($post) && $model->save()) {
       $modelSave = true;
     }
-    if( $modUserSave && $modelSave ) {
-      \Yii::$app->session->setFlash('success', 'Successfully saved!');
+    if ($modUserSave && $modelSave) {
+      \Yii::$app->session->setFlash('success', 'Успешно сохранено!');
       $transaction->commit();
     } else {
       $transaction->rollBack();

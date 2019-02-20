@@ -7,6 +7,7 @@ use yii\web\AssetBundle;
 class ThemeAsset extends AssetBundle
 {
   public $sourcePath = '@frontend/components/theme/assets/dist/assets';
+
   public $css = [
     'lib/jquery.fancybox/jquery.fancybox.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css',
@@ -15,6 +16,7 @@ class ThemeAsset extends AssetBundle
 
     'css/main.css',
   ];
+
   public $js = [
     'lib/autosize.min.js',
     'lib/jquery.fancybox/jquery.fancybox.min.js',
@@ -25,10 +27,12 @@ class ThemeAsset extends AssetBundle
 
     'js/main.js'
   ];
+
   public $depends = [
     'yii\bootstrap\BootstrapPluginAsset',
     'yii\web\JqueryAsset',
   ];
+
   public $publishOptions = [
     'forceCopy' => true
   ];

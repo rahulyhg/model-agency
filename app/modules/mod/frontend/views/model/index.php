@@ -177,6 +177,7 @@ JS
       </div>
     <?php ActiveForm::end(); ?>
   </div>
+  <?php if($dataProvider->models) : ?>
   <div class="b-our-models b-section__main">
     <div class="b-our-models__items">
       <?php foreach ($dataProvider->models as $model) :
@@ -185,11 +186,12 @@ JS
        */
       ?>
         <a class="b-our-model b-our-models__item" href="<?= Url::to(['/mod/model/view', 'id' => $model->id]) ?>">
-          <div class="b-our-model__box">
+          <div class="b-our-model__box" style="background-image: url('<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>')">
             <img class="b-our-model__img"
                  alt="<?= "{$model->full_name}" ?>"
                  src="<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>">
             <h2 class="b-our-model__name"><?= "{$model->full_name}" ?></h2>
+            <div class="b-our-model__id"><?= $model->id ?></div>
           </div>
           <div class="b-our-model__footer">
             <div class="b-like b-our-model__like"><i class="b-like__icon fas fa-heart"></i>
@@ -197,7 +199,12 @@ JS
             </div>
           </div>
         </a>
-      <?php  endforeach; ?>
+      <?php endforeach; ?>
     </div>
   </div>
+  <?php else : ?>
+    <div class="b-section__main">
+      <p>К сожалению мы Вам не можем ничего предложить. Попробуйте изменить параметры.</p>
+    </div>
+  <?php endif; ?>
 </section>
