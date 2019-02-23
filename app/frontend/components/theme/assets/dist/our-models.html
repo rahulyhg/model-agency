@@ -192,8 +192,21 @@
               <section class="b-section b-main__item">
                 <header class="b-section__header">
                   <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span class="b-title__text-first">Our</span><span class="b-title__text-second">models</span></span></h1>
-                  <div class="b-search b-section__header-search" action="search-model">
-                    <button class="b-button b-button_first b-search__btn" data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="collapseExample"><span class="b-button__texts"><i class="b-button__icon fas fa-search"></i><span class="b-button__text-first">Open filter</span></span></button>
+                  <div class="b-section__header-actions">
+                    <div class="b-actions-line">
+                      <div class="b-actions-line__item">
+                        <form class="b-sort-form" id="sort-form">
+                          <div class="b-sort-form__title">Сортировать по: </div>
+                          <select class="b-sort-form__select" id="sort-model" name="orderBy">
+                            <option value="created_at">Новизне</option>
+                            <option value="rating">Рейтингу</option>
+                          </select>
+                        </form>
+                      </div>
+                      <div class="b-actions-line__item">
+                        <button class="b-button b-button_first" data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="collapseExample"><span class="b-button__texts"><i class="b-button__icon fas fa-search"></i><span class="b-button__text-first" id="openFilterBtnTxt">Открыть фильтр</span></span></button>
+                      </div>
+                    </div>
                   </div>
                 </header>
                 <div class="b-section__main collapse" id="modelFilter">
@@ -399,6 +412,20 @@
     <script src="./assets/lib/select2-searchInputPlaceholder.js"></script>
     <script>
       $(document).ready(function () {
+      
+          // open filter change text on button
+          $('#modelFilter').on('show.bs.collapse', (e) => {
+              $('#openFilterBtnTxt').html('Закрыть фильтр');
+          })
+          $('#modelFilter').on('hide.bs.collapse', (e) => {
+              $('#openFilterBtnTxt').html('Открыть фильтр');
+          })
+      
+          //
+          $('#sort-model').change((e) => {
+              $('#sort-form').submit();
+          })
+      
           $('#hair_color').select2({
               "searchInputPlaceholder": 'Поиск...',
               'language': {

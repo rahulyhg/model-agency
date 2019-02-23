@@ -8,7 +8,7 @@ use yii\helpers\Url;
 ?>
 <nav class="b-nav-line b-main__nav-line">
   <div class="b-nav-line__left">
-    <a class="b-link b-nav-line__bread-crumbs" href="index.html">
+    <a class="b-link b-nav-line__bread-crumbs" href="<?= Url::to(['/']) ?>">
       <i class="b-link__icon fas fa-home"></i>
       <span class="b-link__texts">
         <span class="b-link__text-first">Главная</span>

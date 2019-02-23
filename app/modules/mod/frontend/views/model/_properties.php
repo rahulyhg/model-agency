@@ -12,6 +12,10 @@
       'label' => 'Имя'
     ]) ?>
     <?= $this->render('_property', [
+      'value' => $model->age,
+      'label' => 'Возраст'
+    ]) ?>
+    <?= $this->render('_property', [
       'value' => $model->height,
       'label' => 'Рост'
     ]) ?>

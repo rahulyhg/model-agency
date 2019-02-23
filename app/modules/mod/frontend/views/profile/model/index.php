@@ -108,6 +108,15 @@ $(document).ready(e => {
 })
 JS
 );
+
+$this->registerJs(<<<JS
+
+$('#mainPhotoInput').change((e) => {
+  $('#profile-form').submit()
+})
+
+JS
+);
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
@@ -142,7 +151,7 @@ JS
     </div>
   </header>
   <div class="b-cabinet b-section__main">
-    <?php $form = ActiveForm::begin(['options' => ['class' => 'b-cabinet__form']]) ?>
+    <?php $form = ActiveForm::begin(['options' => ['id' => 'profile-form', 'class' => 'b-cabinet__form']]) ?>
     <div class="b-cabinet__form-inner">
       <?= $form->field($model, 'full_name', ['options' => ['class' => 'b-cabinet__form-field']])->icon('fas fa-user-ninja')->textInput([
         'placeholder' => 'Полное имя',
@@ -220,6 +229,7 @@ JS
               </span>
           </div>
           <?= $form->field($modUser, 'photoFile')->title(false)->fileInput([
+            'id' => 'mainPhotoInput',
             'class' => 'b-upload__input'
           ]) ?>
         </label>

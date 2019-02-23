@@ -135,17 +135,17 @@ JS
   <div class="b-pagination-model b-section__main">
     <div class="b-pagination-model__items">
       <?php if($model->prevMod) : ?>
-      <a class="b-pagination-model__item" href="<?= Url::to(['/mod/model/view/', 'id' => $model->prevMod->id]) ?>">
+      <a class="b-pagination-model__item b-pagination-model__item_prev" href="<?= Url::to(['/mod/model/view/', 'id' => $model->prevMod->id]) ?>">
         <div class="b-pagination-model__item-icon fas fa-arrow-left"></div>
         <div class="b-pagination-model__item-text"><?= $model->prevMod->full_name ?></div>
       </a>
       <?php endif; ?>
-      <div class="b-pagination-model__item">
+      <div class="b-pagination-model__item b-pagination-model__item_current">
         <div class="b-pagination-model__item-line"></div>
         <div class="b-pagination-model__item-text"><?= $model->full_name ?></div>
       </div>
       <?php if($model->nextMod) : ?>
-      <a class="b-pagination-model__item" href="<?= Url::to(['/mod/model/view/', 'id' => $model->nextMod->id]) ?>">
+      <a class="b-pagination-model__item b-pagination-model__item_next" href="<?= Url::to(['/mod/model/view/', 'id' => $model->nextMod->id]) ?>">
         <div class="b-pagination-model__item-text"><?= $model->nextMod->full_name ?></div>
         <div class="b-pagination-model__item-icon fas fa-arrow-right"></div>
       </a>

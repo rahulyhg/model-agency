@@ -139,12 +139,22 @@ block body
                                     span.b-title__texts.b-title__texts_line-first
                                         span.b-title__text-first Our
                                         span.b-title__text-second models
+
                                 
-                                div.b-search.b-section__header-search(action="search-model")
-                                    button.b-button.b-button_first.b-search__btn(data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="collapseExample")
-                                        span.b-button__texts
-                                            i.b-button__icon.fas.fa-search
-                                            span.b-button__text-first Open filter
+                                
+                                div.b-section__header-actions
+                                    .b-actions-line
+                                        .b-actions-line__item
+                                            form.b-sort-form#sort-form
+                                                .b-sort-form__title Сортировать по: 
+                                                select.b-sort-form__select#sort-model(name="orderBy")
+                                                    option(value="created_at") Новизне
+                                                    option(value="rating") Рейтингу
+                                        .b-actions-line__item
+                                            button.b-button.b-button_first(data-toggle="collapse" href="#modelFilter" role="button" aria-expanded="false" aria-controls="collapseExample")
+                                                span.b-button__texts
+                                                    i.b-button__icon.fas.fa-search
+                                                    span.b-button__text-first#openFilterBtnTxt Открыть фильтр
                             
                             .b-section__main(class="collapse" id="modelFilter")
                                 .b-filter-form
@@ -373,6 +383,20 @@ block script
     script.
 
         $(document).ready(function () {
+
+            // open filter change text on button
+            $('#modelFilter').on('show.bs.collapse', (e) => {
+                $('#openFilterBtnTxt').html('Закрыть фильтр');
+            })
+            $('#modelFilter').on('hide.bs.collapse', (e) => {
+                $('#openFilterBtnTxt').html('Открыть фильтр');
+            })
+
+            //
+            $('#sort-model').change((e) => {
+                $('#sort-form').submit();
+            })
+
             $('#hair_color').select2({
                 "searchInputPlaceholder": 'Поиск...',
                 'language': {

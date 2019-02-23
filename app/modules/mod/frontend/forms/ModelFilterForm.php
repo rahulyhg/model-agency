@@ -17,12 +17,24 @@ class ModelFilterForm extends Model
   public $full_name;
   public $hair_color_id;
 
+  public $orderBy = 'created_at';
+
+  public static function getOrderMap()
+  {
+    return [
+      'created_at' => 'Новизне',
+      'rating' => 'Рейтингу',
+    ];
+  }
+
   public function rules()
   {
     return [
       [['age_from', 'age_to', 'height_from', 'height_to', 'weight_from', 'weight_to', 'hair_color_id'], 'integer'],
       [['full_name'], 'string'],
       [['hair_color_id'], 'exist', 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
+
+      [['orderBy'], 'string']
     ];
   }
 
@@ -67,6 +79,10 @@ class ModelFilterForm extends Model
     $query->andFilterWhere(['LIKE', 'full_name', $this->full_name]);
 
     $query->andFilterWhere(['=', 'hair_color_id', $this->hair_color_id]);
+
+    if( $this->orderBy === 'created_at' ) {
+      $query->orderBy('created_at DESC');
+    }
 
     return $dataProvider;
   }

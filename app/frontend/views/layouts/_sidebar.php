@@ -118,7 +118,12 @@ use yii\helpers\Url;
     <nav class="b-menu b-sidebar__menu">
       <ul class="b-menu__items">
         <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__item-link" href="<?= Url::to(['/']) ?>">Главная</a></li>
-        <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/mod/model/index' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__item-link" href="<?= Url::to(['/mod/model/index']) ?>">Наши модели</a></li>
+        <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/mod/model/index'
+                                    || $_SERVER['REQUEST_URI'] === '/mod/profile/model/index'
+                                    || $_SERVER['REQUEST_URI'] === '/mod/profile/model/photo'
+                                    ? 'b-menu__item_active' : '' ?>">
+          <a class="b-menu__item-link" href="<?= Url::to(['/mod/model/index']) ?>">Наши модели</a>
+        </li>
         <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/contacts' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__item-link" href="<?= Url::to(['/page/default/view', 'slug' => 'contacts']) ?>">Контакты</a></li>
       </ul>
     </nav>
