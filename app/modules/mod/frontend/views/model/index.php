@@ -117,7 +117,7 @@ JS
                   aria-controls="collapseExample">
             <span class="b-button__texts">
               <i class="b-button__icon fas fa-search"></i>
-              <span class="b-button__text-first" id="openFilterBtnTxt">Открыть фильтр</span>
+              <span class="b-button__text-first" id="openFilterBtnTxt"><?= $showFilterForm ? 'Закрыть фильтр' : 'Открыть фильтр' ?></span>
             </span>
           </button>
         </div>
