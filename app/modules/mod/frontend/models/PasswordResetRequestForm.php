@@ -66,7 +66,7 @@ class PasswordResetRequestForm extends Model
       )
       ->setFrom([Yii::$app->params['supportEmail'] => 'Робот Celeb Cloud'])
       ->setTo($this->email)
-      ->setSubject('Сброс пароля для ' . Yii::$app->name)
+      ->setSubject('Сброс пароля для Celeb Cloud')
       ->send();
   }
 }
