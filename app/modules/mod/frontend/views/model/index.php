@@ -117,7 +117,8 @@ JS
                   aria-controls="collapseExample">
             <span class="b-button__texts">
               <i class="b-button__icon fas fa-search"></i>
-              <span class="b-button__text-first" id="openFilterBtnTxt"><?= $showFilterForm ? 'Закрыть фильтр' : 'Открыть фильтр' ?></span>
+              <span class="b-button__text-first"
+                    id="openFilterBtnTxt"><?= $showFilterForm ? 'Закрыть фильтр' : 'Открыть фильтр' ?></span>
             </span>
           </button>
         </div>
@@ -244,21 +245,24 @@ JS
            * @var $model \modules\mod\common\models\Mod
            */
           ?>
-          <a class="b-our-model b-our-models__item" href="<?= Url::to(['/mod/model/view', 'id' => $model->id]) ?>">
-            <div class="b-our-model__box"
+          <div class="b-our-model b-our-models__item">
+            <a href="<?= Url::to(['/mod/model/view', 'id' => $model->id]) ?>" class="b-our-model__box"
                  style="background-image: url('<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>')">
               <img class="b-our-model__img"
                    alt="<?= "{$model->full_name}" ?>"
                    src="<?= $model->modUser->photoUrl ?: Yii::$app->theme->getAssetsUrl($this) . '/img/default-model-photo.jpg' ?>">
               <h2 class="b-our-model__name"><?= "{$model->full_name}" ?></h2>
               <div class="b-our-model__id"><?= $model->id ?></div>
-            </div>
+            </a>
             <div class="b-our-model__footer">
-              <div class="b-like b-our-model__like"><i class="b-like__icon fas fa-heart"></i>
-                <div class="b-like__value">1447</div>
-              </div>
+              <?= \modules\like\widgets\like\Like::widget([
+                'options' => [
+                  'class' => 'b-our-model__like'
+                ],
+                'entityId' => $model->id
+              ]) ?>
             </div>
-          </a>
+          </div>
         <?php endforeach; ?>
       </div>
     </div>

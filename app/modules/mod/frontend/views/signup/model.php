@@ -51,52 +51,52 @@ JS
         'options' => ['class' => 'b-registration__form']
       ]); ?>
         <div class="b-registration__form-inner">
-          <?= $form->field($model, 'phone', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-mobile-alt')->textInput([
+          <?= $form->field($model, 'phone', ['options' => ['class' => 'b-registration__form-field']])->title('Номер телефона *')->icon('fas fa-mobile-alt')->textInput([
             'autofocus' => true,
             'placeholder' => 'Номер телефона',
           ]) ?>
-          <?= $form->field($model, 'email', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-envelope')->textInput([
+          <?= $form->field($model, 'email', ['options' => ['class' => 'b-registration__form-field']])->title('Email *')->icon('fas fa-envelope')->textInput([
             'placeholder' => 'Email',
           ]) ?>
-          <?= $form->field($model, 'fullName', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-user-ninja')->textInput([
+          <?= $form->field($model, 'fullName', ['options' => ['class' => 'b-registration__form-field']])->title('Полное имя *')->icon('fas fa-user-ninja')->textInput([
             'placeholder' => 'Полное имя',
           ]) ?>
-          <?= $form->field($model, 'age', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-birthday-cake')->textInput([
+          <?= $form->field($model, 'age', ['options' => ['class' => 'b-registration__form-field']])->title('Возраст *')->icon('fas fa-birthday-cake')->textInput([
             'placeholder' => 'Возраст',
           ]) ?>
-          <?= $form->field($model, 'height', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-arrows-alt-v')->textInput([
+          <?= $form->field($model, 'height', ['options' => ['class' => 'b-registration__form-field']])->title('Рост *')->icon('fas fa-arrows-alt-v')->textInput([
             'placeholder' => 'Рост',
           ]) ?>
-          <?= $form->field($model, 'weight', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-weight')->textInput([
+          <?= $form->field($model, 'weight', ['options' => ['class' => 'b-registration__form-field']])->title('Вес *')->icon('fas fa-weight')->textInput([
             'type' => 'number',
             'placeholder' => 'Вес',
           ]) ?>
-          <?= $form->field($model, 'waist', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-arrows-alt-h')->textInput([
+          <?= $form->field($model, 'waist', ['options' => ['class' => 'b-registration__form-field']])->title('Обхват талии')->icon('fas fa-arrows-alt-h')->textInput([
             'placeholder' => 'Обхват талии',
           ]) ?>
-          <?= $form->field($model, 'hips', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-arrows-alt-h')->textInput([
+          <?= $form->field($model, 'hips', ['options' => ['class' => 'b-registration__form-field']])->title('Обхват бедер')->icon('fas fa-arrows-alt-h')->textInput([
             'placeholder' => 'Обхват бедер',
           ]) ?>
-          <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-shoe-prints')->textInput([
+          <?= $form->field($model, 'shoes', ['options' => ['class' => 'b-registration__form-field']])->title('Размер обуви')->icon('fas fa-shoe-prints')->textInput([
             'placeholder' => 'Размер обуви',
           ]) ?>
           <div class="b-field-select b-field-select_icon b-registration__form-field">
               <div class="b-field__wrap">
-                <?= $form->field($model, 'bust', ['template' => '{input}', 'options' => ['tag' => false]])
-                  ->label(false)
+                <?= $form->field($model, 'bust', ['options' => ['style' => 'width:100%']])
+                  ->title('Размер груди')
+                  ->icon('fas fa-globe-europe')
                   ->dropDownList(Mod::getBustSizeMap(), [
                     'id' => 'bust_selector',
                     'class' => 'b-field-select__select2',
                     'placeholder' => 'Размер груди',
                   ]); ?>
-                <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-globe-europe"></i>
               </div>
             </label>
           </div>
-          <?= $form->field($model, 'password', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-key')->passwordInput([
+          <?= $form->field($model, 'password', ['options' => ['class' => 'b-registration__form-field']])->title('Пароль *')->icon('fas fa-key')->passwordInput([
             'placeholder' => 'Пароль',
           ]) ?>
-          <?= $form->field($model, 'passwordRepeat', ['options' => ['class' => 'b-registration__form-field']])->title(false)->icon('fas fa-key')->passwordInput([
+          <?= $form->field($model, 'passwordRepeat', ['options' => ['class' => 'b-registration__form-field']])->title('Повторите пароль *')->icon('fas fa-key')->passwordInput([
             'placeholder' => 'Повторите пароль',
           ]) ?>
           <div class="b-registration__form-footer">

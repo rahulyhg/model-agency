@@ -2,6 +2,7 @@
 return [
   'controllerMap' => [
     'file' => \common\components\filestorage\controllers\FileController::class,
+    'like' => \modules\like\widgets\like\controllers\LikeWidgetController::class,
   ],
   'aliases' => [
     '@bower' => '@vendor/bower-asset',
@@ -21,6 +22,8 @@ return [
     'filestorage' => [
       'class' => common\components\filestorage\FileStorage::class,
       'fileRoute' => '/file/index',
+      'useFileController' => false,
+      'storageUrl' => '/filestorage'
     ],
     'cache' => [
       'class' => 'yii\caching\FileCache',

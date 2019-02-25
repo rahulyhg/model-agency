@@ -29,7 +29,7 @@ class Like extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['entity_id', 'created_at'], 'required'],
+            [['entity_id'], 'required'],
             [['entity_id', 'user_id', 'created_at'], 'integer'],
             [['ip'], 'string', 'max' => 20],
         ];

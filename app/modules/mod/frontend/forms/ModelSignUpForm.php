@@ -44,7 +44,7 @@ class ModelSignUpForm extends Model
   public function rules()
   {
     return [
-      [['phone', 'fullName', 'age', 'weight', 'height'], 'required'],
+      [['phone', 'fullName', 'age', 'weight', 'height', 'email'], 'required'],
       [['email', 'phone', 'fullName', 'age'], 'trim'],
       ['email', 'email'],
       [['email', 'phone', 'fullName'], 'string', 'max' => 255],

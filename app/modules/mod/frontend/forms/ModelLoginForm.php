@@ -7,7 +7,7 @@ use yii\base\Model;
 
 class ModelLoginForm extends Model
 {
-  public $phone;
+  public $phoneOrEmail;
   public $password;
   public $rememberMe = true;
 
@@ -16,7 +16,7 @@ class ModelLoginForm extends Model
   public function attributeLabels()
   {
     return [
-      'phone' => 'Номер телефона',
+      'phoneOrEmail' => 'Номер телефона или email',
       'password' => 'Пароль',
     ];
   }
@@ -28,7 +28,7 @@ class ModelLoginForm extends Model
   {
     return [
       // username and password are both required
-      [['phone', 'password'], 'required'],
+      [['phoneOrEmail', 'password'], 'required'],
       // rememberMe must be a boolean value
       ['rememberMe', 'boolean'],
       // password is validated by validatePassword()
@@ -48,7 +48,7 @@ class ModelLoginForm extends Model
     if (!$this->hasErrors()) {
       $user = $this->getUser();
       if (!$user || !$user->validatePassword($this->password)) {
-        $this->addError($attribute, 'Incorrect phone or password.');
+        $this->addError($attribute, 'Неверный номер телефона / email или пароль.');
       }
     }
   }
@@ -75,9 +75,12 @@ class ModelLoginForm extends Model
   protected function getUser()
   {
     if ($this->_user === null) {
-      $this->_user = ModUser::findByPhone($this->phone);
+      $user = ModUser::findByPhone($this->phoneOrEmail);
+      if(!$user) {
+        $user = ModUser::findByEmail($this->phoneOrEmail);
+      }
+      $this->_user = $user;
     }
-
     return $this->_user;
   }
 }

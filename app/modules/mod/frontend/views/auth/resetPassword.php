@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
       ->icon('fas fa-key')
       ->passwordInput([
         'autofocus' => true,
-        'placeholder' => 'Email',
+        'placeholder' => 'Новый пароль',
       ]) ?>
     <div class="b-login__form-footer">
       <button class="b-button b-button_first b-login__form-submit" type="submit">

@@ -64,6 +64,8 @@ class ModelFilterForm extends Model
     $dataProvider = new ActiveDataProvider([
       'query' => $query,
     ]);
+    $query->orderBy('created_at DESC');
+
     if (!$this->load($params) || !$this->validate()) {
       return $dataProvider;
     }
@@ -80,8 +82,12 @@ class ModelFilterForm extends Model
 
     $query->andFilterWhere(['=', 'hair_color_id', $this->hair_color_id]);
 
+    if(!$this->orderBy) {
+      $this->orderBy = 'created_at';
+    }
+
     if( $this->orderBy === 'created_at' ) {
-      $query->orderBy('created_at DESC');
+      $query->orderBy('created_at ASC');
     }
 
     return $dataProvider;

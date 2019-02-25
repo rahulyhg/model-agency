@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 
-/* @var $model \common\models\LoginForm */
+/* @var $model \modules\mod\frontend\forms\ModelLoginForm */
 
 use \modules\mod\lib\ActiveForm;
 use yii\helpers\Url;
@@ -19,13 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </header>
     <div class="b-login b-section__main">
       <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'b-login__form']]); ?>
-      <?= $form->field($model, 'phone', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-mobile-alt')->textInput([
+      <?= $form->field($model, 'phoneOrEmail', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-mobile-alt')->textInput([
         'autofocus' => true,
-        'placeholder' => 'Номер телефона',
+        'placeholder' => 'Номер телефона или email *',
       ]) ?>
       <?= $form->field($model, 'password', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-key')->passwordInput([
         'autofocus' => true,
-        'placeholder' => 'Пароль',
+        'placeholder' => 'Пароль *',
       ]) ?>
       <div class="b-login__forgot-password-wrp">
         <a class="b-link b-login__forgot-password" href="<?= Url::to(['/mod/auth/request-password-reset']) ?>">
