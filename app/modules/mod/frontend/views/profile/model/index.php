@@ -34,6 +34,10 @@ $(document).ready(function () {
       tags: true,
       tokenSeparators: [',', ' ']
   });
+  $('#spoken_lang_selector').on('select2:unselect', function(e) {
+    var oldVal = $('#deleted_spoken_lang_ids').val();
+    $('#deleted_spoken_lang_ids').val((oldVal ? oldVal + ',' : '') + e.params.data.id)
+  })
 
   $('select').on('select2:open', function (e) {
       $('.select2-results__options').scrollbar().parent().addClass('scrollbar-outer');
@@ -205,6 +209,9 @@ JS
       <div class="b-field-select b-field-select_icon b-cabinet__form-field">
         <label class="b-field-select__label"><span class="b-field-select__title">Знаю языки</span>
           <div class="b-field__wrap">
+            <?= $form->field($model, 'deleted_spoken_lang_ids', ['template' => '{input}', 'options' => ['tag' => false]])
+              ->label(false)
+              ->hiddenInput(['id' => 'deleted_spoken_lang_ids']) ?>
             <?= $form->field($model, 'spoken_lang_ids', ['template' => '{input}', 'options' => ['tag' => false]])
               ->label(false)
               ->dropDownList($spokenLangMap, [
@@ -213,7 +220,7 @@ JS
                 'placeholder' => 'Выберите...',
                 'multiple' => 'multiple'
               ]); ?>
-            <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
+            <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-language"></i>
           </div>
         </label>
       </div>

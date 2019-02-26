@@ -12,7 +12,8 @@ $(document).ready(function(e) {
           method: 'POST',
           url: LIKE_WIDGET_CONFIG.url,
           data: {
-            entityId: $(this).data('like-entity-id')
+            entityId: $(this).data('like-entity-id'),
+            entity: $(this).data('like-entity')
           },
           success: function(response) {
             if(response.status === 'success') {

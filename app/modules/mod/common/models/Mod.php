@@ -45,6 +45,7 @@ use yii\web\UploadedFile;
 class Mod extends ActiveRecord
 {
   public $spoken_lang_ids;
+  public $deleted_spoken_lang_ids;
 
   public static function getBustSizeMap()
   {
@@ -94,7 +95,8 @@ class Mod extends ActiveRecord
       [['eyes_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => EyesColor::class, 'targetAttribute' => ['eyes_color_id' => 'id']],
       [['hair_color_id'], 'exist', 'skipOnError' => true, 'targetClass' => HairColor::class, 'targetAttribute' => ['hair_color_id' => 'id']],
       [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Country::class, 'targetAttribute' => ['country_id' => 'id']],
-      [['spoken_lang_ids'], 'each', 'rule' => ['integer']]
+      [['spoken_lang_ids'], 'each', 'rule' => ['integer']],
+      [['deleted_spoken_lang_ids'], 'safe']
     ];
   }
 
@@ -121,12 +123,55 @@ class Mod extends ActiveRecord
     ];
   }
 
+  public function afterFind()
+  {
+    $this->spoken_lang_ids = [];
+    $modSpokenLangs = ModSpokenLang::find()->where(['mod_id' => $this->id])->all();
+    if($modSpokenLangs) {
+      foreach ($modSpokenLangs as $modSpokenLang) {
+        $this->spoken_lang_ids[] = $modSpokenLang->spoken_lang_id;
+      }
+    }
+    parent::afterFind();
+  }
+
   public function beforeDelete()
   {
     // delete mod user before mod delete
     if($this->modUser->delete()) {
+      if($this->modSpokenLangs) {
+        foreach ($this->modSpokenLangs as $modSpokenLang) {
+          $modSpokenLang->delete();
+        }
+      }
       return parent::beforeDelete();
     }
+  }
+
+  public function beforeSave($insert)
+  {
+    // delete deleted :D
+    if($this->deleted_spoken_lang_ids) {
+      $deleted_spoken_lang_ids = explode(',', $this->deleted_spoken_lang_ids);
+      foreach ($deleted_spoken_lang_ids as $deleted_spoken_lang_id) {
+        $toDeleteMSL = ModSpokenLang::findOne(['mod_id' => $this->id, 'spoken_lang_id' => intval($deleted_spoken_lang_id)]);
+        if($toDeleteMSL) {
+          $toDeleteMSL->delete();
+        }
+      }
+    }
+    // save new
+    foreach ($this->spoken_lang_ids as $spoken_lang_id) {
+      $exist = ModSpokenLang::findOne(['mod_id' => $this->id, 'spoken_lang_id' => intval($spoken_lang_id)]);
+      if(!$exist) {
+        $modSpokenLang = new ModSpokenLang([
+          'mod_id' => $this->id,
+          'spoken_lang_id' => intval($spoken_lang_id)
+        ]);
+        $modSpokenLang->save();
+      }
+    }
+    return parent::beforeSave($insert);
   }
 
   /**

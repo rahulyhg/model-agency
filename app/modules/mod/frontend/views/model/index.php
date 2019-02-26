@@ -259,7 +259,8 @@ JS
                 'options' => [
                   'class' => 'b-our-model__like'
                 ],
-                'entityId' => $model->id
+                'entityId' => $model->id,
+                'entityClass' => \modules\mod\common\models\Mod::class,
               ]) ?>
             </div>
           </div>

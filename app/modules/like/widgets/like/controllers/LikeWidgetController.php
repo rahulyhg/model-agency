@@ -16,13 +16,15 @@ class LikeWidgetController extends Controller
     }
     \Yii::$app->response->format = Response::FORMAT_JSON;
     $entityId = intval(\Yii::$app->request->post('entityId'));
-    if(!$this->canCurrentUserAddLike($entityId)) {
+    $entity = strval(\Yii::$app->request->post('entity'));
+    if(!$this->canCurrentUserAddLike($entity, $entityId)) {
       return [
         'status' => 'error',
         'message' => 'Вы уже поставили свой лайк :)'
       ];
     }
     $like = new Like([
+      'entity' => $entity,
       'entity_id' => $entityId,
       'ip' => \Yii::$app->request->userIP,
       'user_id' => \Yii::$app->user->id ?: null
@@ -30,7 +32,7 @@ class LikeWidgetController extends Controller
     if ($like->save()) {
       return [
         'status' => 'success',
-        'count' => Like::find()->where(['entity_id' => $entityId])->count()
+        'count' => Like::find()->where(['entity_id' => $entityId, 'entity' => $entity])->count()
       ];
     }
     return [
@@ -39,14 +41,14 @@ class LikeWidgetController extends Controller
     ];
   }
 
-  protected function canCurrentUserAddLike(int $entityId): bool
+  protected function canCurrentUserAddLike(string $entity, int $entityId): bool
   {
     $user = \Yii::$app->user->identity;
-    if($user && Like::findOne(['user_id' => $user->id, 'entity_id' => $entityId])) {
+    if($user && Like::findOne(['user_id' => $user->id, 'entity_id' => $entityId, 'entity' => $entity])) {
       return false;
     }
     $ip = \Yii::$app->request->userIP;
-    if($ip && Like::findOne(['ip' => $ip, 'entity_id' => $entityId])) {
+    if($ip && Like::findOne(['ip' => $ip, 'entity_id' => $entityId, 'entity' => $entity])) {
       return false;
     }
     return true;

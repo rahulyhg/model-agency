@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/LikeAsset.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/common/components/filestorage/FileStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/components/filestorage/FileStorage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/common/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/common/lib/ActiveRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/lib/ActiveRecord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_like.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_like.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/like/common/models/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/common/models/Like.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/ModUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelFilterForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelFilterForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelLoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelLoginForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelSignUpForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelSignUpForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/resetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/like/widgets/like/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/Like.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,13 +42,13 @@
     <session id="-1901138969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="40" />
+          <entry key="project.closed" value="41" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
@@ -73,7 +65,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="43" />
+          <entry key="project.opened" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,9 +76,9 @@
           <entry key="htaccess" value="1" />
           <entry key="html" value="29" />
           <entry key="init" value="1" />
-          <entry key="js" value="2" />
+          <entry key="js" value="3" />
           <entry key="json" value="1" />
-          <entry key="php" value="594" />
+          <entry key="php" value="628" />
           <entry key="pug" value="3" />
           <entry key="sass" value="4" />
           <entry key="todo" value="1" />
@@ -97,8 +89,8 @@
           <entry key="HTML" value="29" />
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
-          <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="595" />
+          <entry key="JavaScript" value="3" />
+          <entry key="PHP" value="629" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="Sass" value="4" />
           <entry key="htaccess" value="1" />
@@ -108,8 +100,8 @@
         <counts>
           <entry key="dummy" value="51" />
           <entry key="html" value="27" />
-          <entry key="js" value="749" />
-          <entry key="php" value="23991" />
+          <entry key="js" value="773" />
+          <entry key="php" value="25181" />
           <entry key="pug" value="217" />
           <entry key="sass" value="25" />
           <entry key="txt" value="6" />
@@ -119,8 +111,8 @@
         <counts>
           <entry key="HTML" value="30" />
           <entry key="Jade" value="217" />
-          <entry key="JavaScript" value="783" />
-          <entry key="PHP" value="23954" />
+          <entry key="JavaScript" value="814" />
+          <entry key="PHP" value="25137" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="Sass" value="25" />
         </counts>
@@ -135,19 +127,40 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="262" column="19" selection-start-line="257" selection-start-column="14" selection-end-line="262" selection-end-column="19" />
+            <state relative-caret-position="249">
+              <caret line="212" column="28" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
+              <folding>
+                <element signature="e#6#168#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+            <state relative-caret-position="271">
+              <caret line="158" column="33" selection-start-line="158" selection-start-column="33" selection-end-line="158" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/ModSpokenLang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-494">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -163,17 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>spoken_lang_selector</find>
-      <find>ModImage</find>
-      <find>Mod::</find>
-      <find>You have successfully logged in. Welcome back!</find>
-      <find>Рост</find>
-      <find>block</find>
-      <find>$model-&gt;title</find>
-      <find>contacts</find>
-      <find>Связаться</find>
-      <find>before</find>
-      <find>Номер</find>
       <find>ноги</find>
       <find>Мои фото</find>
       <find>Мои</find>
@@ -190,9 +192,20 @@
       <find>phone</find>
       <find>findBy</find>
       <find>useFileController</find>
-      <find>like</find>
       <find>\</find>
       <find>created_at</find>
+      <find>encrypt</find>
+      <find>entity</find>
+      <find>like-co</find>
+      <find>like</find>
+      <find>$entity</find>
+      <find>Знаю</find>
+      <find>beforeSave</find>
+      <find>selected</find>
+      <find>spoken_lang_ids</find>
+      <find>$deleted_spoken_lang_ids</find>
+      <find>spoken_lang_selector</find>
+      <find>deleted_spoken_lang_ids</find>
     </findStrings>
     <replaceStrings>
       <replace>photo_id</replace>
@@ -210,6 +223,9 @@
       <replace>phoneOrEmail/</replace>
       <replace>/</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>C:\OSPanel\domains\model-agency.tot\app\vendor\yii2mod\yii2-comments</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -217,7 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/manager.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/manager.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/widgets/popularModels/PopularModels.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/contact.php" />
@@ -230,21 +245,16 @@
         <option value="$PROJECT_DIR$/app/modules/like/backend/controllers/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" />
         <option value="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/addons/_normalize.sass" />
-        <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/migrations/m190119_113548_create_table_mod_user_add_mod_user_id_column_to_mod_table_add_fk.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/migrations/m190220_065600_add_cascade_delete_for_mod_user_on_mod_delete.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/_nav-line.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" />
         <option value="$PROJECT_DIR$/app/frontend/config/params.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/Module.php" />
         <option value="$PROJECT_DIR$/app/common/config/main-local.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/mail/passwordResetToken-text.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/mail/passwordResetToken-html.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/requestPasswordResetToken.php" />
@@ -259,15 +269,21 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/auth/model.php" />
         <option value="$PROJECT_DIR$/app/modules/like/widgets/like/LikeAsset.php" />
-        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php" />
         <option value="$PROJECT_DIR$/app/common/config/main.php" />
-        <option value="$PROJECT_DIR$/app/modules/like/common/models/Like.php" />
         <option value="$PROJECT_DIR$/app/common/lib/ActiveRecord.php" />
-        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/Like.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
-        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/migrations/m190226_173138_add_entity_column_like_table.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/common/models/Like.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php" />
         <option value="$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/Like.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
       </list>
     </option>
   </component>
@@ -448,7 +464,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
+    <option name="x" value="-139" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -473,7 +489,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -490,25 +505,6 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -516,22 +512,14 @@
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -539,7 +527,7 @@
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -548,48 +536,8 @@
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
@@ -598,6 +546,17 @@
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="profile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
@@ -624,6 +583,16 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="profile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="widgets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -645,10 +614,60 @@
               <item name="popularModels" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2mod" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2mod" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-comments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2mod" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-comments" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2mod" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-comments" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2mod" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-comments" type="462c0819:PsiDirectoryNode" />
+              <item name="widgets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -735,12 +754,13 @@
       <workItem from="1550844288385" duration="1204000" />
       <workItem from="1550925332503" duration="13133000" />
       <workItem from="1551088776335" duration="541000" />
-      <workItem from="1551104572161" duration="8562000" />
+      <workItem from="1551104572161" duration="9929000" />
+      <workItem from="1551196138790" duration="6211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160559000" />
+    <option name="totallyTimeSpent" value="168137000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,16 +772,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19509594" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19722815" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32929516" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24118942" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4592511" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
@@ -806,102 +826,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="122" column="82" selection-start-line="122" selection-start-column="81" selection-end-line="122" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3302">
-          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/components/theme/assets/dist/login-model.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="201" column="257" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="257" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="167" column="3" lean-forward="true" selection-start-line="167" selection-start-column="3" selection-end-line="216" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/views/site/requestPasswordResetToken.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/views/site/resetPassword.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/views/site/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/mail/layouts/html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/config/params.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/Module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/mail/passwordResetToken-text.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/mail/passwordResetToken-html.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/runtime/mail/20190223-200045-9992-1521.eml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="53" column="42" selection-start-line="52" selection-start-column="18" selection-end-line="53" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/runtime/mail/20190223-195716-0682-1697.eml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/helpers/BaseHtml.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="108" column="27" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/runtime/mail/20190223-200946-0642-5183.eml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="53" column="76" lean-forward="true" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/common/config/main-local.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1000,13 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/common/components/filestorage/FileStorage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1028,9 +945,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like.php" />
     <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/auth/model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1045,9 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="15" />
-          <folding>
-            <element signature="e#44#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1062,16 +974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding>
-            <element signature="e#29#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/common/models/Like.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1082,54 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/ErrorHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="158" selection-start-line="158" selection-end-line="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1117">
-          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding>
-            <element signature="e#56#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-          <folding>
-            <element signature="e#6#41#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/Like.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="e#44#93#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1140,17 +998,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="262" column="19" selection-start-line="257" selection-start-column="14" selection-end-line="262" selection-end-column="19" />
+        <state relative-caret-position="390">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/models/CommentModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/controllers/ManageController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/controllers/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="104" column="41" lean-forward="true" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/migrations/m160629_121330_add_relatedTo_column_to_comment.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/events/CommentEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/migrations/m010101_100001_init_comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/migrations/m190217_151946_likes_table_init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yii2mod/yii2-comments/widgets/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="150" column="56" lean-forward="true" selection-start-line="150" selection-start-column="56" selection-end-line="150" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/common/models/Like.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/migrations/m190226_173138_add_entity_column_like_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+        <state relative-caret-position="501">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/Like.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding>
+            <element signature="e#44#93#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="256" column="45" selection-start-line="256" selection-start-column="45" selection-end-line="256" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="86" column="61" lean-forward="true" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/ModSpokenLang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-494">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/ErrorHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="788" selection-start-line="788" selection-end-line="788" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="212" column="28" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
+          <folding>
+            <element signature="e#6#168#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="158" column="33" selection-start-line="158" selection-start-column="33" selection-end-line="158" selection-end-column="33" />
         </state>
       </provider>
     </entry>

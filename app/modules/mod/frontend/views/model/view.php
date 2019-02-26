@@ -84,9 +84,13 @@ JS
                 <img class="b-single-model__img" alt="<?= $model->full_name ?>" src="<?= $model->modUser->photoUrl ?>">
               </a>
               <div class="b-single-model__footer">
-                <div class="b-like b-single-model__like"><i class="b-like__icon fas fa-heart"></i>
-                  <div class="b-like__value">1448</div>
-                </div>
+                <?= \modules\like\widgets\like\Like::widget([
+                  'options' => [
+                    'class' => 'b-single-model__like'
+                  ],
+                  'entityId' => $model->id,
+                  'entityClass' => \modules\mod\common\models\Mod::class,
+                ]) ?>
               </div>
             </div>
           <?php endif;
@@ -97,9 +101,13 @@ JS
                   <img class="b-single-model__img" alt="<?= $model->full_name ?>" src="<?= $image->url ?>">
                 </a>
                 <div class="b-single-model__footer">
-                  <div class="b-like b-single-model__like"><i class="b-like__icon fas fa-heart"></i>
-                    <div class="b-like__value">1448</div>
-                  </div>
+                  <?= \modules\like\widgets\like\Like::widget([
+                    'options' => [
+                      'class' => 'b-single-model__like'
+                    ],
+                    'entityId' => $image->id,
+                    'entityClass' => \modules\mod\common\models\ModImage::class,
+                  ]) ?>
                 </div>
               </div>
             <?php endforeach; ?>

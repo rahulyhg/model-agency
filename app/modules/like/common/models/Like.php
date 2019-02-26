@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "{{%like}}".
  *
  * @property int $id
+ * @property int $entity
  * @property int $entity_id
  * @property string $ip
  * @property int $user_id
@@ -29,9 +30,10 @@ class Like extends \common\lib\ActiveRecord
     public function rules()
     {
         return [
-            [['entity_id'], 'required'],
+            [['entity_id', 'entity'], 'required'],
             [['entity_id', 'user_id', 'created_at'], 'integer'],
             [['ip'], 'string', 'max' => 20],
+            [['entity'], 'string', 'max' => 10],
         ];
     }
 
@@ -43,6 +45,7 @@ class Like extends \common\lib\ActiveRecord
         return [
             'id' => 'ID',
             'entity_id' => 'ID объекта',
+            'entity' => 'Hash объекта',
             'ip' => 'IP',
             'user_id' => 'ID пользователя',
             'created_at' => 'Дата создания',
