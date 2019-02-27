@@ -11,6 +11,7 @@ use \yii\helpers\Url;
 use modules\mod\common\models\Mod;
 
 $this->title = "{$model->full_name} - Мой кабинет";
+$this->params['active_nav_item'] = 'our_models';
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
@@ -124,8 +125,12 @@ JS
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
-    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first"><span
-            class="b-title__text-first"><?= $model->full_name ?></span></span></h1>
+    <h1 class="b-title b-section__header-title">
+      <span class="b-title__texts b-title__texts_line-first">
+        <span class="b-title__text-first"><?= $model->full_name ?></span>
+        <span class="b-title__text-small">ID: <?= $model->id ?></span>
+      </span>
+    </h1>
     <div class="b-tabs b-section__header-tabs">
       <ul class="b-tabs__items">
         <li class="b-tabs__item b-tabs__item_line-first">

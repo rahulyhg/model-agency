@@ -10,6 +10,7 @@ use \yii\widgets\ActiveForm;
 use \yii\helpers\Url;
 
 $this->title = "{$model->full_name} - Моя галерея";
+$this->params['active_nav_item'] = 'our_models';
 
 $this->registerJs(<<<JS
 $(document).ready(function () {

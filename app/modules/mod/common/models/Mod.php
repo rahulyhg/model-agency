@@ -119,7 +119,7 @@ class Mod extends ActiveRecord
       'shoes' => 'Размер обуви',
       'created_at' => 'Дата создания',
       'updated_at' => 'Дата последнего обновления',
-      'full_name' => 'Имя',
+      'full_name' => 'Полное имя',
     ];
   }
 

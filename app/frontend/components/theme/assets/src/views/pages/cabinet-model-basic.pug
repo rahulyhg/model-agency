@@ -6,6 +6,7 @@ block head
     +style('./assets/lib/jquery.fancybox/jquery.fancybox.min.css')
     +style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css')
     +style('./assets/lib/jquery.scrollbar/jquery.scrollbar.css')
+    +style('https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css')
 
 block body
 
@@ -106,10 +107,12 @@ block body
                     .b-main__items
                         section.b-section.b-main__item
                             header.b-section__header
-                                h1.b-title.b-section__header-title
-                                    span.b-title__texts.b-title__texts_line-first
-                                        span.b-title__text-first Julia
-                                        span.b-title__text-second Bogdanova
+                                .b-section__header-left
+                                    .b-title.b-section__header-title
+                                        span.b-title__texts.b-title__texts_line-first
+                                            span.b-title__text-first Julia
+                                            span.b-title__text-second Bogdanova
+                                            span.b-title__text-small ID: 566432
 
                                 .b-tabs.b-section__header-tabs
                                     ul.b-tabs__items

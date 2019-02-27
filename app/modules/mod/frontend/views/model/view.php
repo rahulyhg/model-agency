@@ -7,6 +7,7 @@
 use \yii\helpers\Url;
 
 $this->title = $model->full_name;
+$this->params['active_nav_item'] = 'our_models';
 
 $this->registerJs(
   <<<JS
@@ -60,8 +61,11 @@ JS
 ?>
 <section class="b-section b-main__item">
   <header class="b-section__header">
-    <h1 class="b-title b-section__header-title"><span class="b-title__texts b-title__texts_line-first">
-        <span class="b-title__text-second"><?= $model->full_name ?></span></span>
+    <h1 class="b-title b-section__header-title">
+      <span class="b-title__texts b-title__texts_line-first">
+        <span class="b-title__text-second"><?= $model->full_name ?></span>
+        <span class="b-title__text-small">ID: <?= $model->id ?></span>
+      </span>
     </h1>
     <a href="<?= Url::to(['/mod/model/index']) ?>" class="b-button b-button_first b-section__header-contacts-model-btn">
       <span class="b-button__texts">

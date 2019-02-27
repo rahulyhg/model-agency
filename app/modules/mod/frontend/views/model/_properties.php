@@ -47,8 +47,15 @@
       'value' => $model->shoes,
       'label' => 'Размер ноги'
     ]) ?>
-
-    <li class="b-features__item-title"><span class="b-features__title">Languages:<span class="b-features__title-line b-features__title-line_delay-9"></span></span></li>
-    <li class="b-features__item-value"><span class="b-features__value">english</span></li>
+    <?php
+    $spokenLangs = [];
+    foreach ($model->modSpokenLangs as $spokenLang) {
+      $spokenLangs[] = $spokenLang->spokenLang->name;
+    }
+    $langsStr = implode(', ', $spokenLangs) ?>
+    <?= $this->render('_property', [
+      'value' => $langsStr,
+      'label' => 'Языки'
+    ]) ?>
   </ul>
 </div>

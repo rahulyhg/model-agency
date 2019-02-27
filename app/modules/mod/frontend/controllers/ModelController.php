@@ -13,13 +13,11 @@ class ModelController extends Controller
   public function actionIndex()
   {
     $filterForm = new ModelFilterForm();
-    $showFilterForm = isset($_REQUEST[$filterForm->formName()]);
     $dataProvider = $filterForm->search(Yii::$app->request->queryParams);
     return $this->render('index', [
       'dataProvider' => $dataProvider,
       'filterForm' => $filterForm,
-      'hairColorMap' => HairColor::getMap(),
-      'showFilterForm' => $showFilterForm
+      'hairColorMap' => HairColor::getMap()
     ]);
   }
 

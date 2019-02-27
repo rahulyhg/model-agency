@@ -12,6 +12,7 @@ use yii\widgets\ActiveForm;
 use modules\mod\frontend\forms\ModelFilterForm;
 
 $this->title = 'Наши модели';
+$this->params['active_nav_item'] = 'our_models';
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
@@ -118,14 +119,14 @@ JS
             <span class="b-button__texts">
               <i class="b-button__icon fas fa-search"></i>
               <span class="b-button__text-first"
-                    id="openFilterBtnTxt"><?= $showFilterForm ? 'Закрыть фильтр' : 'Открыть фильтр' ?></span>
+                    id="openFilterBtnTxt">Открыть фильтр</span>
             </span>
           </button>
         </div>
       </div>
     </div>
   </header>
-  <div class="b-section__main collapse <?= $showFilterForm ? 'in' : '' ?>" id="modelFilter">
+  <div class="b-section__main collapse" id="modelFilter">
     <?php $form = ActiveForm::begin([
       'method' => 'GET',
       'options' => ['class' => 'b-filter-form']
