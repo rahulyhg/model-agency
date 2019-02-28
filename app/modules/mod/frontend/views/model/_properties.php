@@ -40,7 +40,7 @@
       'label' => 'Цвет глаз'
     ]) ?>
     <?= $this->render('_property', [
-      'value' => $model->hairColor->color->color,
+      'value' => $model->hairColor->color,
       'label' => 'Цвет волос'
     ]) ?>
     <?= $this->render('_property', [

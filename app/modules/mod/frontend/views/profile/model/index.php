@@ -15,6 +15,16 @@ $this->params['active_nav_item'] = 'our_models';
 
 $this->registerJs(<<<JS
 $(document).ready(function () {
+  $('#hair_color_selector').select2({
+      "minimumResultsForSearch": -1,
+      "searchInputPlaceholder": 'Введите...',
+      'language': {
+          'noResults': function () {
+              return "Не найдено";
+          }
+      }
+  });
+  
   $('#bust_selector').select2({
       "minimumResultsForSearch": -1,
       "searchInputPlaceholder": 'Введите...',
@@ -226,6 +236,20 @@ JS
                 'multiple' => 'multiple'
               ]); ?>
             <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-language"></i>
+          </div>
+        </label>
+      </div>
+      <div class="b-field-select b-field-select_icon b-cabinet__form-field">
+        <label class="b-field-select__label"><span class="b-field-select__title">Цвет волос</span>
+          <div class="b-field__wrap">
+            <?= $form->field($model, 'hair_color_id', ['template' => '{input}', 'options' => ['tag' => false]])
+              ->label(false)
+              ->dropDownList(\modules\mod\common\models\HairColor::getMap(), [
+                'id' => 'hair_color_selector',
+                'class' => 'b-field-select__select2',
+                'placeholder' => 'Выберите...',
+              ]); ?>
+            <i class="b-field-select__icon b-field-select__icon_focus-first fas fa-snowflake"></i>
           </div>
         </label>
       </div>

@@ -3,22 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/cabinet-model-basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/cabinet-model-basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_section.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_section.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_select2.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_select2.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_title.sass" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/assets/sass/components/_title.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/cabinet-model-basic.pug" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/cabinet-model-basic.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/views/site/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +33,7 @@
     <session id="-1901138969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="42" />
+          <entry key="project.closed" value="43" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
@@ -55,6 +41,7 @@
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="2" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
@@ -71,7 +58,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="45" />
+          <entry key="project.opened" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,7 +71,7 @@
           <entry key="init" value="1" />
           <entry key="js" value="3" />
           <entry key="json" value="1" />
-          <entry key="php" value="647" />
+          <entry key="php" value="654" />
           <entry key="pug" value="3" />
           <entry key="sass" value="4" />
           <entry key="todo" value="1" />
@@ -96,7 +83,7 @@
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="648" />
+          <entry key="PHP" value="655" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="Sass" value="4" />
           <entry key="htaccess" value="1" />
@@ -107,7 +94,7 @@
           <entry key="dummy" value="51" />
           <entry key="html" value="27" />
           <entry key="js" value="773" />
-          <entry key="php" value="25527" />
+          <entry key="php" value="25589" />
           <entry key="pug" value="217" />
           <entry key="sass" value="25" />
           <entry key="txt" value="6" />
@@ -117,8 +104,8 @@
         <counts>
           <entry key="HTML" value="30" />
           <entry key="Jade" value="217" />
-          <entry key="JavaScript" value="814" />
-          <entry key="PHP" value="25483" />
+          <entry key="JavaScript" value="815" />
+          <entry key="PHP" value="25544" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="Sass" value="25" />
         </counts>
@@ -133,33 +120,28 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frontend/views/site/index.php">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="8" selection-end-column="42" />
+            <state relative-caret-position="542">
+              <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/contact.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+            <state relative-caret-position="-32">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+            <state relative-caret-position="455">
+              <caret line="245" column="28" selection-start-line="245" selection-start-column="28" selection-end-line="245" selection-end-column="28" />
               <folding>
                 <element signature="e#6#168#0#PHP" expanded="true" />
               </folding>
@@ -167,29 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="122" column="84" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+            <state relative-caret-position="556">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -205,7 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sort-form</find>
       <find>ModelFilterForm</find>
       <find>age</find>
       <find>age_from</find>
@@ -235,6 +198,7 @@
       <find>'\e682'</find>
       <find>English</find>
       <find>$showFilterForm</find>
+      <find>bust_se</find>
     </findStrings>
     <replaceStrings>
       <replace>photo_id</replace>
@@ -305,14 +269,14 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
         <option value="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/site/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" />
-        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
+        <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
       </list>
     </option>
   </component>
@@ -534,35 +498,6 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -578,7 +513,16 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="mod" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
@@ -587,7 +531,6 @@
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="mod" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
@@ -628,16 +571,6 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="profile" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="signup" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -732,12 +665,13 @@
       <workItem from="1551088776335" duration="541000" />
       <workItem from="1551104572161" duration="9929000" />
       <workItem from="1551196138790" duration="6609000" />
-      <workItem from="1551280429407" duration="2407000" />
+      <workItem from="1551280429407" duration="3049000" />
+      <workItem from="1551358276301" duration="919000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170942000" />
+    <option name="totallyTimeSpent" value="172503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,7 +686,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15884861" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16044776" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -803,20 +737,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/auth/requestPasswordResetToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/forms/ModelFilterForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/common/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -1048,13 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="121" column="32" selection-start-line="121" selection-start-column="32" selection-end-line="121" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
@@ -1068,16 +981,6 @@
           <caret line="988" column="27" lean-forward="true" selection-start-line="988" selection-start-column="27" selection-end-line="988" selection-end-column="27" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_property.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/controllers/ModelController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1096,13 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1127,13 +1023,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state relative-caret-position="455">
+          <caret line="245" column="28" selection-start-line="245" selection-start-column="28" selection-end-line="245" selection-end-column="28" />
           <folding>
             <element signature="e#6#168#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/HairColorLang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/HairColor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/common/models/Mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_property.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
         </state>
       </provider>
     </entry>
