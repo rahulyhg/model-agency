@@ -123,7 +123,7 @@ use yii\helpers\Url;
         <li class="b-menu__item <?= $this->params['active_nav_item'] === 'our_models' ? 'b-menu__item_active' : '' ?>">
           <a class="b-menu__item-link" href="<?= Url::to(['/mod/model/index']) ?>">Наши модели</a>
         </li>
-        <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/contacts' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__item-link" href="<?= Url::to(['/page/default/view', 'slug' => 'contacts']) ?>">Контакты</a></li>
+        <li class="b-menu__item <?= $_SERVER['REQUEST_URI'] === '/site/contact' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__item-link" href="<?= Url::to(['/site/contact']) ?>">Контакты</a></li>
       </ul>
     </nav>
     <footer class="b-sidebar__footer">

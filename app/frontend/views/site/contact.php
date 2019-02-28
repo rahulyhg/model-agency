@@ -1,45 +1,54 @@
 <?php
-
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
+/* @var $model \modules\mod\frontend\forms\ModelLoginForm */
 
-$this->title = 'Contact';
+use \modules\mod\lib\ActiveForm;
+use yii\helpers\Url;
+
+$this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-    </p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'subject') ?>
-
-                <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                ]) ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
+  <section class="b-section b-main__item b-main__item_login">
+    <header class="b-section__header">
+      <h1 class="b-title b-section__header-title">
+        <span class="b-title__texts b-title__texts_line-first b-title__texts_line-wide">
+          <span class="b-title__text-first">Контакты</span>
+        </span>
+      </h1>
+    </header>
+    <div class="b-login b-section__main">
+      <p><b>Наш email:</b> contact@celeb.cloud</p>
+      <br>
+      <br>
+      <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'b-login__form']]); ?>
+      <?= $form->field($model, 'name', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-user')->textInput([
+        'autofocus' => true,
+        'placeholder' => 'Имя *',
+      ]) ?>
+      <?= $form->field($model, 'email', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-envelope')->textInput([
+        'autofocus' => true,
+        'placeholder' => 'Email *',
+      ]) ?>
+      <?= $form->field($model, 'subject', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fab fa-acquisitions-incorporated')->textInput([
+        'autofocus' => true,
+        'placeholder' => 'Тема письма *',
+      ]) ?>
+      <?= $form->field($model, 'body', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-align-justify')->textarea([
+        'style' => 'resize: none;',
+        'autofocus' => true,
+        'placeholder' => 'Ваше сообщение *',
+        'rows' => 6
+      ]) ?>
+      <div class="b-login__form-footer">
+        <button class="b-button b-button_first b-login__form-submit" type="submit">
+            <span class="b-button__texts">
+              <span class="b-button__text-first">Отправить</span>
+            </span>
+        </button>
+      </div>
+      <?php ActiveForm::end(); ?>
     </div>
-
-</div>
+  </section>
