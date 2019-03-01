@@ -137,6 +137,8 @@ use yii\helpers\Url;
                 class="b-social__item-icon fab fa-twitter"></i></a></li>
           <li class="b-social__item"><a class="b-social__item-link" href="#" title="our instagram"><i
                 class="b-social__item-icon fab fa-instagram"></i></a></li>
+          <li class="b-social__item"><a class="b-social__item-link" href="#" title="our instagram">
+              <img src="<?= Yii::$app->theme->getAssetsUrl($this) ?>//img/18-plus.png"></a></li>
         </ul>
       </div>
       <p class="b-sidebar__copyright">© Model Agency "Celeb Cloud", 2018</p>
