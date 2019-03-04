@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/theme/assets/src/views/pages/index.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +32,7 @@
     <session id="-1901138969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="45" />
+          <entry key="project.closed" value="46" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
@@ -50,7 +47,7 @@
           <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.20" value="3" />
-          <entry key="project.open.time.21" value="3" />
+          <entry key="project.open.time.21" value="4" />
           <entry key="project.open.time.22" value="5" />
           <entry key="project.open.time.23" value="3" />
           <entry key="project.open.time.25" value="2" />
@@ -61,7 +58,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.opened" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -74,7 +71,7 @@
           <entry key="init" value="1" />
           <entry key="js" value="3" />
           <entry key="json" value="1" />
-          <entry key="php" value="666" />
+          <entry key="php" value="674" />
           <entry key="pug" value="3" />
           <entry key="sass" value="4" />
           <entry key="todo" value="1" />
@@ -86,7 +83,7 @@
           <entry key="JSON" value="1" />
           <entry key="Jade" value="2" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="667" />
+          <entry key="PHP" value="675" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="Sass" value="4" />
           <entry key="htaccess" value="1" />
@@ -97,7 +94,7 @@
           <entry key="dummy" value="51" />
           <entry key="html" value="27" />
           <entry key="js" value="773" />
-          <entry key="php" value="25978" />
+          <entry key="php" value="26602" />
           <entry key="pug" value="217" />
           <entry key="sass" value="25" />
           <entry key="txt" value="6" />
@@ -108,7 +105,7 @@
           <entry key="HTML" value="30" />
           <entry key="Jade" value="217" />
           <entry key="JavaScript" value="815" />
-          <entry key="PHP" value="25933" />
+          <entry key="PHP" value="26557" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="Sass" value="25" />
         </counts>
@@ -122,29 +119,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="140" column="74" selection-start-line="140" selection-start-column="74" selection-end-line="140" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
+        <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+            <state relative-caret-position="364">
+              <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/web/CookieCollection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -252,7 +240,6 @@
         <option value="$PROJECT_DIR$/app/modules/like/widgets/like/assets/js/like.js" />
         <option value="$PROJECT_DIR$/app/modules/mod/widgets/popularModels/views/index.php" />
         <option value="$PROJECT_DIR$/app/modules/like/widgets/like/Like.php" />
-        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/controllers/profile/ModelController.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/common/models/Mod.php" />
         <option value="$PROJECT_DIR$/app/frontend/components/theme/ThemeAsset.php" />
@@ -268,6 +255,7 @@
         <option value="$PROJECT_DIR$/app/common/config/params.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php" />
+        <option value="$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php" />
       </list>
     </option>
   </component>
@@ -447,7 +435,7 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-139" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -473,7 +461,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -490,42 +477,6 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -533,39 +484,57 @@
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="widgets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="widgets" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="widgets" type="462c0819:PsiDirectoryNode" />
+              <item name="like" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -657,12 +626,13 @@
       <workItem from="1551280429407" duration="3049000" />
       <workItem from="1551358276301" duration="4608000" />
       <workItem from="1551440986645" duration="91000" />
-      <workItem from="1551442327764" duration="4344000" />
+      <workItem from="1551442327764" duration="5282000" />
+      <workItem from="1551707414425" duration="2046000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180627000" />
+    <option name="totallyTimeSpent" value="183611000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -674,16 +644,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1652452" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32929516" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4592511" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.23788546" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
@@ -728,13 +698,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/signup/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="96" column="38" lean-forward="true" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like.php" />
     <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/LikeAsset.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -761,13 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="50" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
         </state>
       </provider>
     </entry>
@@ -865,20 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/ErrorHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
@@ -1042,10 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php">
+    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="140" column="74" selection-start-line="140" selection-start-column="74" selection-end-line="140" selection-end-column="74" />
+        <state relative-caret-position="494">
+          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1056,10 +998,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/mod/frontend/views/model/_properties.php">
+    <entry file="file://$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+        <state relative-caret-position="516">
+          <caret line="140" column="74" selection-start-line="140" selection-start-column="74" selection-end-line="140" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/web/CookieCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/ErrorHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/vendor/yiisoft/yii2/base/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/like/widgets/like/controllers/LikeWidgetController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
         </state>
       </provider>
     </entry>
