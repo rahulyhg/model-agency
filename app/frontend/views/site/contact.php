@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'autofocus' => true,
         'placeholder' => 'Email *',
       ]) ?>
-      <?= $form->field($model, 'subject', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fab fa-acquisitions-incorporated')->textInput([
+      <?= $form->field($model, 'subject', ['options' => ['class' => 'b-login__form-field']])->title(false)->icon('fas fa-font')->textInput([
         'autofocus' => true,
         'placeholder' => 'Тема письма *',
       ]) ?>
