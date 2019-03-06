@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44c38f93-6726-47b5-b86b-0a8831dcd3de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/frontend/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/config/params.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +31,7 @@
     <session id="-1901138969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="51" />
+          <entry key="project.closed" value="52" />
           <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
@@ -45,7 +44,7 @@
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
-          <entry key="project.open.time.2" value="3" />
+          <entry key="project.open.time.2" value="4" />
           <entry key="project.open.time.20" value="3" />
           <entry key="project.open.time.21" value="4" />
           <entry key="project.open.time.22" value="5" />
@@ -58,7 +57,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="54" />
+          <entry key="project.opened" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -94,7 +93,7 @@
           <entry key="dummy" value="51" />
           <entry key="html" value="27" />
           <entry key="js" value="773" />
-          <entry key="php" value="26611" />
+          <entry key="php" value="26623" />
           <entry key="pug" value="217" />
           <entry key="sass" value="25" />
           <entry key="txt" value="6" />
@@ -105,7 +104,7 @@
           <entry key="HTML" value="30" />
           <entry key="Jade" value="217" />
           <entry key="JavaScript" value="815" />
-          <entry key="PHP" value="26566" />
+          <entry key="PHP" value="26578" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="Sass" value="25" />
         </counts>
@@ -118,21 +117,15 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frontend/config/params.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/frontend/config/params-local.php">
+        <entry file="file://$PROJECT_DIR$/app/frontend/models/ContactForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="338">
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <folding>
+                <element signature="e#35#43#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -247,7 +240,6 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/photo.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/index.php" />
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/profile/model/index.php" />
-        <option value="$PROJECT_DIR$/app/frontend/models/ContactForm.php" />
         <option value="$PROJECT_DIR$/app/frontend/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/app/common/config/params.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/layouts/_sidebar.php" />
@@ -256,6 +248,7 @@
         <option value="$PROJECT_DIR$/app/modules/mod/frontend/views/model/view.php" />
         <option value="$PROJECT_DIR$/app/frontend/views/site/contact.php" />
         <option value="$PROJECT_DIR$/app/frontend/config/params.php" />
+        <option value="$PROJECT_DIR$/app/frontend/models/ContactForm.php" />
       </list>
     </option>
   </component>
@@ -466,6 +459,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -482,12 +476,6 @@
               <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -495,48 +483,12 @@
               <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="model-agency.tot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="model-agency.tot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -634,12 +586,13 @@
       <workItem from="1551795422824" duration="1746000" />
       <workItem from="1551799286322" duration="411000" />
       <workItem from="1551800566036" duration="807000" />
-      <workItem from="1551804100170" duration="18000" />
+      <workItem from="1551804100170" duration="101000" />
+      <workItem from="1551861428644" duration="19000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187867000" />
+    <option name="totallyTimeSpent" value="187969000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -654,7 +607,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17324094" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -993,16 +946,6 @@
     <entry file="file://$PROJECT_DIR$/app/frontend/config/main-local.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/models/ContactForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <element signature="e#35#43#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/common/config/params-local.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -1028,9 +971,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
-          <folding>
-            <element signature="e#40#84#0#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/config/params-local.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -1041,10 +988,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/config/params-local.php">
+    <entry file="file://$PROJECT_DIR$/app/frontend/models/ContactForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="338">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#35#43#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
